@@ -28,11 +28,11 @@ h3 { font-size: 1rem; margin: 0 0 2px; }
 .lede { font-size: 1.05rem; color: var(--muted); max-width: 60ch; margin: 0 0 16px; }
 
 /* layout */
-.top { position: sticky; top: 0; z-index: 1000; display: flex; flex-wrap: wrap; gap: 4px 24px; align-items: center;
-  justify-content: space-between; padding: 10px 16px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.top { position: sticky; top: 0; z-index: 1000; display: flex; gap: 8px 16px; align-items: center;
+  justify-content: space-between; padding: 8px 12px 8px 16px; background: var(--surface); border-bottom: 1px solid var(--line); }
 .brand { font-weight: 700; font-size: 1.1rem; color: var(--fg); text-decoration: none; }
-.top nav { display: flex; gap: 4px; flex-wrap: wrap; }
-.top nav a { padding: 6px 10px; border-radius: var(--radius); text-decoration: none; color: var(--fg); font-size: .95rem; }
+.top nav { display: flex; gap: 2px; }
+.top nav a { padding: 8px 10px; border-radius: var(--radius); text-decoration: none; color: var(--fg); font-size: .95rem; white-space: nowrap; }
 .top nav a:hover { background: var(--accent-soft); }
 .top nav a[aria-current] { color: var(--accent); font-weight: 600; }
 main { max-width: 1040px; margin: 0 auto; padding: 16px 16px 40px; min-height: 70vh; }
@@ -173,3 +173,45 @@ ul.links { padding-left: 18px; columns: 2 260px; }
 .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: .8rem; color: var(--muted); }
 .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; border: 1px solid var(--line-strong); }
 .leaflet-container { font: inherit; }
+
+/* ---- touch and small-screen polish ---- */
+a, button, .chip, select { -webkit-tap-highlight-color: transparent; }
+table.works td[data-label="Work"] > a { color: var(--fg); font-weight: 600; text-decoration: none; }
+table.works td[data-label="Work"] > a:hover { color: var(--accent); text-decoration: underline; }
+table.works td[data-label="Work"] > a:visited { color: var(--muted); }
+.chips .chip { min-height: 36px; }
+@media (max-width: 720px) {
+  body { font-size: 15px; }
+  h1 { font-size: 1.35rem; }
+  h1.title { font-size: 1.1rem; line-height: 1.35; }
+  .hero h1 { font-size: 1.55rem; }
+  main { padding: 12px 12px 32px; }
+  .brand { font-size: 1rem; }
+  .top nav a { padding: 8px 7px; font-size: .9rem; }
+  /* Filter chips scroll sideways instead of wrapping. */
+  .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: -12px; padding-right: 12px; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: 0 0 auto; }
+  .toolbar .input { flex-basis: 100%; }
+  /* A whole work card is tappable. */
+  table.works tr { position: relative; }
+  table.works td[data-label="Work"] > a::after { content: ""; position: absolute; inset: 0; }
+  table.works td[data-label="Work"] > a { font-size: .95rem; }
+  /* Summary tables become compact rows: name, then the figures on one line. */
+  table.stack, table.stack tbody, table.stack tr { display: block; width: 100%; }
+  table.stack thead { display: none; }
+  table.stack tr { padding: 8px 12px; border-bottom: 1px solid var(--line); }
+  table.stack td { display: inline; border: 0; padding: 0; font-size: .85rem; color: var(--muted); }
+  table.stack td:first-child { display: block; font-size: .95rem; font-weight: 600; color: var(--fg); margin-bottom: 2px; }
+  table.stack td:first-child a { text-decoration: none; }
+  table.stack td:not(:first-child)::before { content: attr(data-label) " "; }
+  table.stack td:not(:first-child):not(:last-child)::after { content: "  ·  "; white-space: pre; }
+  table.stack td[data-label="MP"] { display: block; }
+  table.stack td[data-label="MP"]::after { content: none !important; }
+  table.fields th, table.fields td { display: block; width: 100%; border: 0; padding: 2px 12px; }
+  table.fields th { padding-top: 10px; font-size: .8rem; }
+  table.fields tr { display: block; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+  .stats dd { font-size: 1.1rem; }
+  .map { height: 300px; }
+  .scrollbox { max-height: 320px; }
+}

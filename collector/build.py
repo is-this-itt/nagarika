@@ -35,6 +35,11 @@ def main():
     if os.path.exists(OUT):
         shutil.rmtree(OUT)
     shutil.copytree(os.path.join(ROOT, "site"), OUT)
+    # New file names on every build, so phones never keep running an old script.
+    stamp = dt.datetime.now().strftime("%Y%m%d%H%M%S")
+    index = os.path.join(OUT, "index.html")
+    html = open(index).read().replace('src="app.js"', f'src="app.js?v={stamp}"').replace('href="style.css"', f'href="style.css?v={stamp}"')
+    open(index, "w").write(html)
     os.makedirs(os.path.join(OUT, "data", "wards"), exist_ok=True)
 
     works = load_works()
@@ -146,8 +151,9 @@ def build_places(meta, ward_index, rows, mp_index):
     for s in mp_index:
         out.append(["State", s["state"], "MP funds (MPLADS)", f"#/mp/{s['slug']}", ""])
         for c in s["constituencies"]:
-            out.append(["Lok Sabha constituency", c["name"], f"{s['state']} · MP: {c['mp']}",
-                        f"#/mp/{s['slug']}/{c['id']}", c["mp"]])
+            mp = c["mp"].title() if c["mp"].isupper() else c["mp"]
+            out.append(["Lok Sabha constituency", c["name"], f"{s['state']} · MP: {mp}",
+                        f"#/mp/{s['slug']}/{c['id']}", mp])
     places = {}
     for r in rows:
         if r["place"] and not r["city"]:

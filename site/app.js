@@ -96,6 +96,11 @@ function date(iso) {
 }
 
 const titleCase = s => String(s || "").toLowerCase().replace(/\b[a-z]/g, c => c.toUpperCase());
+// Names arrive in mixed case ("SHOBHA KARANDLAJE", "Shri LS Tejasvi Surya"); show them consistently.
+const person = s => {
+  const t = String(s || "").trim();
+  return t === t.toUpperCase() ? titleCase(t) : t;
+};
 const FLAG = { overdue: "Overdue", past_estimate: "Past estimated finish" };
 const badge = w => w.flag ? `<span class="badge ${w.flag}">${FLAG[w.flag]}</span>` : "";
 
@@ -168,7 +173,7 @@ function wordIndex(list, keys) {
   return vocab;
 }
 
-function fuzzy(list, query, keys) {
+function fuzzy(list, query, keys, minPrefix = 3) {
   const words = normalise(query).split(" ").filter(Boolean);
   if (!words.length) return list;
   const vocab = wordIndex(list, keys);
@@ -184,7 +189,7 @@ function fuzzy(list, query, keys) {
     for (const [t, tk, ids] of vocab) {
       let d, target = spelled;
       if (t === w) d = 0;
-      else if (last && t.startsWith(w) && (w.length >= 3 || digits)) d = 0.3;
+      else if (last && t.startsWith(w) && (w.length >= minPrefix || digits)) d = 0.3;
       else if (max && (d = editDistance(w, t, max)) <= max) { /* typo within limit */ }
       else if (max && last && (d = editDistance(w, t.slice(0, w.length), max) + 0.3) <= max + 0.3) { /* typo in a prefix */ }
       else if (wk && tk === wk) { d = 0.5; target = sounded; }
@@ -254,27 +259,45 @@ function searchBox(id, value = "") {
   </form>`;
 }
 
+const KIND_ORDER = ["City", "Lok Sabha constituency", "State", "Ward", "Assembly constituency", "Town or district", "PIN code"];
+
 function wireSearch(id) {
   const form = document.getElementById(id);
   const input = form.q;
   const list = document.getElementById(id + "-list");
   let items = [], active = -1, t;
+  places();  // start loading the place list now, so the first letters are instant
   const close = () => { list.hidden = true; input.setAttribute("aria-expanded", "false"); active = -1; };
   const draw = () => {
     list.innerHTML = items.map((p, i) => `<li role="option" aria-selected="${i === active}">
-      <a href="${p.href}"><span class="kind">${esc(p.kind)}</span> <b>${esc(p.label)}</b> <span class="muted small">${esc(p.detail)}</span></a></li>`).join("");
+      <a href="${p.href}"${p.action ? ` data-action="${p.action}"` : ""}>${p.kind ? `<span class="kind">${esc(p.kind)}</span> ` : ""}<b>${esc(p.label)}</b> <span class="muted small">${esc(p.detail || "")}</span></a></li>`).join("");
     list.hidden = !items.length;
     input.setAttribute("aria-expanded", String(!!items.length));
+    list.querySelectorAll("[data-action=near]").forEach(a => {
+      a.onclick = e => { e.preventDefault(); close(); nearMe(null, document.getElementById("nearout") || document.createElement("p")); };
+    });
   };
-  input.oninput = () => {
-    clearTimeout(t);
-    t = setTimeout(async () => {
-      if (input.value.trim().length < 2) { items = []; close(); return; }
-      items = fuzzy(await places(), input.value, ["label", "detail", "extra"]).slice(0, 8);
-      active = -1;
-      draw();
-    }, 120);
+  const quickPicks = async () => {
+    const meta = await load("meta.json");
+    return [{ label: "Use my location", detail: "find your ward", href: "#/", action: "near" },
+      ...meta.cities.map(c => ({ kind: "City", label: c.name, detail: c.state, href: `#/city/${c.slug}` })),
+      { kind: "Topic", label: "MP funds", detail: "find your MP or constituency", href: "#/mp" }];
   };
+  const update = async () => {
+    const v = input.value.trim();
+    if (!v) { items = await quickPicks(); active = -1; draw(); return; }
+    const all = await places();
+    const hits = fuzzy(all, v, ["label", "detail", "extra"], 1).slice(0, 40);
+    const nv = normalise(v);
+    // Names that start with what was typed first, then by kind (cities and constituencies before wards).
+    const rank = p => (normalise(p.label).startsWith(nv) ? 0 : 1) * 10 + Math.max(0, KIND_ORDER.indexOf(p.kind));
+    items = hits.map((p, i) => [p, rank(p), i]).sort((a, b) => a[1] - b[1] || a[2] - b[2]).map(x => x[0]).slice(0, 8);
+    items.push({ label: `Search for “${v}”`, detail: "in all works", href: "#/search?q=" + enc(v) });
+    active = -1;
+    draw();
+  };
+  input.oninput = () => { clearTimeout(t); t = setTimeout(update, 80); };
+  input.onfocus = () => update();
   input.onkeydown = e => {
     if (list.hidden) return;
     if (e.key === "ArrowDown" || e.key === "ArrowUp") {
@@ -283,11 +306,11 @@ function wireSearch(id) {
       draw();
     } else if (e.key === "Enter" && active >= 0) {
       e.preventDefault();
-      location.hash = items[active].href;
+      list.querySelectorAll("a")[active].click();
     } else if (e.key === "Escape") close();
   };
-  input.onblur = () => setTimeout(close, 200);
-  form.onsubmit = e => { e.preventDefault(); close(); location.hash = "#/search?q=" + enc(input.value.trim()); };
+  input.onblur = () => setTimeout(close, 250);
+  form.onsubmit = e => { e.preventDefault(); close(); input.blur(); location.hash = "#/search?q=" + enc(input.value.trim()); };
 }
 
 // The standard results view: count, filter box, sort, filter chips, table, pagination.
@@ -371,7 +394,7 @@ function roadView(where) {
         <td data-label="Agency"><div>${esc(w.agency) || NP}</div><div class="sub">${w.contractor ? esc(w.contractor) : "Contractor not published"}</div></td>
         <td data-label="Cost" class="num">${inr(w.sanctioned_cost) || (w.paid ? `<span class="sub">paid</span> ${inr(w.paid)}` : NP)}</td>
         <td data-label="Finish by">${finishBy(w) || NP}</td>
-        <td data-label="Status">${esc(w.status) || NP}</td></tr>`).join("")}</tbody></table>`,
+        <td data-label="Status">${esc(w.status).replace(/\d{4}-\d{2}-\d{2}/, date) || NP}</td></tr>`).join("")}</tbody></table>`,
   };
 }
 
@@ -397,7 +420,7 @@ function mpView(stateSlug, showConstituency) {
       <thead><tr><th>Work</th><th>Type</th><th class="num">Amount</th><th>Recommended</th><th>Stage</th></tr></thead>
       <tbody>${rows.map(w => `<tr>
         <td data-label="Work"><a href="#/mpwork/${stateSlug}/${enc(w.id)}">${esc(w.description || w.activity)}</a>
-          ${showConstituency ? `<div class="sub">${esc(w.constituency)} · ${esc(w.mp_name)}</div>` : ""}</td>
+          ${showConstituency ? `<div class="sub">${esc(w.constituency)} · ${esc(person(w.mp_name))}</div>` : ""}</td>
         <td data-label="Type">${esc(w.activity) || NP}</td>
         <td data-label="Amount" class="num">${inr(w.amount) || NP}</td>
         <td data-label="Recommended">${date(w.recommended_date) || NP}</td>
@@ -445,7 +468,7 @@ function inGeometry(x, y, g) {
 
 async function nearMe(btn, out) {
   if (!navigator.geolocation) { out.textContent = "Your browser cannot share location."; return; }
-  btn.disabled = true;
+  if (btn) btn.disabled = true;
   out.textContent = "Finding your location…";
   navigator.geolocation.getCurrentPosition(async pos => {
     const { longitude: x, latitude: y } = pos.coords;
@@ -455,10 +478,10 @@ async function nearMe(btn, out) {
       const f = geo.features.find(f => inGeometry(x, y, f.geometry));
       if (f) { location.hash = `#/city/${c.slug}/ward/${enc(f.properties.ward_key)}`; return; }
     }
-    btn.disabled = false;
+    if (btn) btn.disabled = false;
     out.textContent = `You're outside the cities that have ward maps so far (${meta.cities.map(c => c.name).join(", ")}). Try searching your town or PIN code.`;
   }, () => {
-    btn.disabled = false;
+    if (btn) btn.disabled = false;
     out.textContent = "Location not available. Search by area or PIN code instead.";
   }, { enableHighAccuracy: true, timeout: 15000 });
 }
@@ -525,8 +548,8 @@ async function roadsHome() {
         <p>${fmtN(c.works)} works · ${c.wards} wards${c.overdue ? ` · ${fmtN(c.overdue)} past finish date` : ""}</p></a>`).join("")}</div>
     <h2>By state</h2>
     <p class="muted small">Outside the cities above, works are listed by town or district, as the source gives it.</p>
-    <table class="plain"><thead><tr><th>State</th><th class="num">Works</th><th class="num">Past finish date</th></tr></thead>
-    <tbody>${states.map(([s, v]) => `<tr><td><a href="#/state/${enc(s)}">${esc(s)}</a></td><td class="num">${fmtN(v.works)}</td><td class="num">${fmtN(v.flagged)}</td></tr>`).join("")}</tbody></table>`;
+    <table class="plain stack"><thead><tr><th>State</th><th class="num">Works</th><th class="num">Past finish date</th></tr></thead>
+    <tbody>${states.map(([s, v]) => `<tr><td><a href="#/state/${enc(s)}">${esc(s)}</a></td><td class="num" data-label="Works">${fmtN(v.works)}</td><td class="num" data-label="Past finish date">${fmtN(v.flagged)}</td></tr>`).join("")}</tbody></table>`;
 }
 
 async function city(slug) {
@@ -562,7 +585,7 @@ async function city(slug) {
     <h2>All works in ${esc(c.name)}</h2>
     <div id="res"></div>`;
   const drawWards = t => {
-    const shown = t ? fuzzy(wl, t, ["name", "no", "assembly"]) : wl;
+    const shown = t ? fuzzy(wl, t, ["name", "no", "assembly"], 1) : wl;
     document.querySelector("#wt tbody").innerHTML = shown.map(w =>
       `<tr><td><a href="#/city/${slug}/ward/${enc(w.key)}">${esc(wardLabel(slug, w))}</a></td><td class="num">${per[w.key] || 0}</td></tr>`).join("");
   };
@@ -604,7 +627,7 @@ async function ward(slug, key) {
       const wn = normalise(w.name);
       const named = (await mpWorks(st.slug)).filter(x => x.constituency_id === pcId && normalise(x.description).includes(wn));
       mpHtml = `<h2>MP funds</h2>
-        <p>This ward is in <b>${esc(pcName)}</b> Lok Sabha constituency (MP: ${esc(con.mp)}).
+        <p>This ward is in <b>${esc(pcName)}</b> Lok Sabha constituency (MP: ${esc(person(con.mp))}).
         <a href="#/mp/${st.slug}/${pcId}">See all ${fmtN(con.works)} MPLADS works</a>${named.length ? `. ${named.length} mention ${esc(w.name)}:` : "."}</p>
         ${named.length ? `<ul class="links">${named.slice(0, 8).map(x => `<li><a href="#/mpwork/${st.slug}/${enc(x.id)}">${esc(x.description)}</a> <span class="muted small">${inr(x.amount)} · ${esc(x.stage || "")}</span></li>`).join("")}</ul>` : ""}`;
     }
@@ -667,7 +690,7 @@ async function work(id) {
       ${row("Start or award date", date(w.start_date))}
       ${row("Period of work", w.period_days ? `${w.period_days} days` : "")}
       ${row("Finish by", w.deadline ? `${finishBy(w)}${w.deadline_basis !== "official" ? `<div class="muted small">${esc(w.deadline_basis)}</div>` : ""}` : "")}
-      ${row("Status", esc(w.status))}
+      ${row("Status", esc(w.status).replace(/\d{4}-\d{2}-\d{2}/, date))}
       ${row("Ward", wardLinks ? `${wardLinks}<div class="muted small">${how}</div>` : `<span class="np">${how}</span>`)}
       ${row("Location in source", esc(w.location_text))}
       ${row("Place", esc([w.place, w.pincode, w.state].filter(Boolean).join(", ")))}
@@ -711,14 +734,14 @@ async function mpHome() {
     <div class="toolbar"><input class="input" id="cq" type="search" placeholder="Find your constituency or MP (typos are fine)" aria-label="Find a constituency or MP"></div>
     <div id="cons"></div>
     <h2>By state</h2>
-    <table class="plain"><thead><tr><th>State</th><th class="num">Works</th><th class="num">Sanctioned</th><th class="num">Completed</th></tr></thead>
-    <tbody>${idx.map(s => `<tr><td><a href="#/mp/${s.slug}">${esc(s.state)}</a></td><td class="num">${fmtN(s.works)}</td><td class="num">${inr(s.sanctioned) || "—"}</td><td class="num">${fmtN(s.completed)}</td></tr>`).join("")}</tbody></table>
+    <table class="plain stack"><thead><tr><th>State</th><th class="num">Works</th><th class="num">Sanctioned</th><th class="num">Completed</th></tr></thead>
+    <tbody>${idx.map(s => `<tr><td><a href="#/mp/${s.slug}">${esc(s.state)}</a></td><td class="num" data-label="Works">${fmtN(s.works)}</td><td class="num" data-label="Sanctioned">${inr(s.sanctioned) || "—"}</td><td class="num" data-label="Completed">${fmtN(s.completed)}</td></tr>`).join("")}</tbody></table>
     <p class="muted small">Source: <a href="https://mplads.mospi.gov.in/digigov/dashboard.html">eSAKSHI MPLADS dashboard</a>, Ministry of Statistics and Programme Implementation.</p>`;
   const all = idx.flatMap(s => s.constituencies.map(c => ({ ...c, state: s.state, slug: s.slug })));
   document.getElementById("cq").oninput = e => {
-    const hits = e.target.value.trim().length > 1 ? fuzzy(all, e.target.value, ["name", "mp", "state"]).slice(0, 10) : [];
+    const hits = e.target.value.trim().length > 1 ? fuzzy(all, e.target.value, ["name", "mp", "state"], 1).slice(0, 10) : [];
     document.getElementById("cons").innerHTML = hits.length ? `<ul class="placehits">${hits.map(c =>
-      `<li><a href="#/mp/${c.slug}/${c.id}"><b>${esc(c.name)}</b></a> <span class="muted small">${esc(c.state)} · MP: ${esc(c.mp)}</span></li>`).join("")}</ul>` : "";
+      `<li><a href="#/mp/${c.slug}/${c.id}"><b>${esc(c.name)}</b></a> <span class="muted small">${esc(c.state)} · MP: ${esc(person(c.mp))}</span></li>`).join("")}</ul>` : "";
   };
 }
 
@@ -732,11 +755,18 @@ async function mpState(slug) {
     <h1>MP funds in ${esc(s.state)}</h1>
     ${stats([[fmtN(s.works), "Works recommended"], [inr(s.sanctioned) || "—", "Sanctioned"], [fmtN(s.completed), "Completed"], [esc(s.tenure), "Lok Sabha"]])}
     <h2>Constituencies</h2>
-    <table class="plain"><thead><tr><th>Constituency</th><th>MP</th><th class="num">Works</th><th class="num">Sanctioned</th><th class="num">Completed</th></tr></thead>
-    <tbody>${s.constituencies.map(c => `<tr><td><a href="#/mp/${slug}/${c.id}">${esc(c.name)}</a></td><td>${esc(c.mp)}</td>
-      <td class="num">${fmtN(c.works)}</td><td class="num">${inr(c.sanctioned) || "—"}</td><td class="num">${fmtN(c.completed)}</td></tr>`).join("")}</tbody></table>
+    <div class="toolbar"><input class="input" id="cq" type="search" placeholder="Find a constituency or MP" aria-label="Find a constituency or MP"></div>
+    <table class="plain stack" id="ct"><thead><tr><th>Constituency</th><th>MP</th><th class="num">Works</th><th class="num">Sanctioned</th><th class="num">Completed</th></tr></thead><tbody></tbody></table>
     <h2>All works in ${esc(s.state)}</h2>
     <div id="res"></div>`;
+  const drawCons = t => {
+    const shown = t ? fuzzy(s.constituencies, t, ["name", "mp"], 1) : s.constituencies;
+    document.querySelector("#ct tbody").innerHTML = shown.map(c => `<tr><td><a href="#/mp/${slug}/${c.id}">${esc(c.name)}</a></td>
+      <td class="sub-cell" data-label="MP">${esc(person(c.mp))}</td><td class="num" data-label="Works">${fmtN(c.works)}</td>
+      <td class="num" data-label="Sanctioned">${inr(c.sanctioned) || "—"}</td><td class="num" data-label="Completed">${fmtN(c.completed)}</td></tr>`).join("");
+  };
+  drawCons("");
+  document.getElementById("cq").oninput = e => drawCons(e.target.value);
   results(document.getElementById("res"), list, mpView(slug, true));
 }
 
@@ -749,7 +779,7 @@ async function mpConstituency(slug, id) {
   app.innerHTML = `
     ${crumbs([["Home", "#/"], ["MP funds", "#/mp"], [s.state, `#/mp/${slug}`], [c.name]])}
     <h1>${esc(c.name)}</h1>
-    <p class="muted">MP: <b>${esc(c.mp)}</b> · ${esc(s.tenure)}</p>
+    <p class="muted">MP: <b>${esc(person(c.mp))}</b> · ${esc(s.tenure)}</p>
     ${stats([[fmtN(c.works), "Works recommended"], [inr(c.sanctioned) || "—", "Sanctioned"], [fmtN(c.completed), "Completed"], [inr(c.spent) || "—", "Spent on completed works"]])}
     <div id="res"></div>
     <p class="muted small">MPs may also recommend some works outside their constituency, so a few works here are in other districts.</p>`;
@@ -766,7 +796,7 @@ async function mpWork(slug, id) {
     ${crumbs([["Home", "#/"], ["MP funds", "#/mp"], [s.state, `#/mp/${slug}`], [w.constituency, `#/mp/${slug}/${w.constituency_id}`], ["Work"]])}
     <h1 class="title">${esc(w.description || w.activity)}</h1>
     <table class="fields"><tbody>
-      ${row("MP", esc(w.mp_name))}
+      ${row("MP", esc(person(w.mp_name)))}
       ${row("Constituency", `<a href="#/mp/${slug}/${w.constituency_id}">${esc(w.constituency)}</a>`)}
       ${row("Type of work", esc(w.activity))}
       ${row("Category", esc(w.category))}
