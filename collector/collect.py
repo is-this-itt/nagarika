@@ -10,12 +10,13 @@ import traceback
 
 from common import Report, load_state, load_works, save_state, save_works
 from places import CITIES, WardMatcher
-from sources import bbmp_workorders, gepnic, kppp
+from sources import bbmp_workorders, gepnic, kppp, mplads
 
 SOURCES = {  # name: (module, default time budget in seconds)
     "bbmp": (bbmp_workorders, 600),
     "kppp": (kppp, 2400),
     "gepnic": (gepnic, 2400),
+    "mplads": (mplads, 1500),  # refreshes at most once a day
 }
 
 

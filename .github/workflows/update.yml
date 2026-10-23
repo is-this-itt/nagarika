@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       sources:
-        description: "Sources to collect (space-separated: bbmp kppp gepnic). Empty = all. 'none' = only rebuild the site."
+        description: "Sources to collect (space-separated: bbmp kppp gepnic mplads). Empty = all. 'none' = only rebuild the site."
         required: false
         default: ""
   push:
@@ -26,7 +26,7 @@ jobs:
   collect:
     if: github.event_name != 'push' && inputs.sources != 'none'
     runs-on: ubuntu-latest
-    timeout-minutes: 110
+    timeout-minutes: 140
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

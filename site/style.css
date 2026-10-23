@@ -76,6 +76,35 @@ button.link { font: inherit; border: 0; background: none; padding: 0; color: var
 .card:hover { border-color: var(--accent); }
 .card p { margin: 0; font-size: .9rem; color: var(--muted); }
 
+.near { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin-top: 12px; }
+.near .examples { margin: 0; }
+.topics .card.live { min-height: 112px; }
+.soonhead { font-size: .9rem; color: var(--muted); font-weight: 600; margin: 16px 0 8px; }
+.soonlist { gap: 6px; }
+.topics .card.soon { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 12px; }
+.topics .card.soon h3 { font-size: .95rem; font-weight: 500; margin: 0; }
+.topics .card.soon .tag { margin: 0; }
+.topics .card.live { border-color: var(--accent); }
+.topics .card.live h3 { color: var(--accent); }
+.soonhead { font-size: .9rem; color: var(--muted); font-weight: 600; margin: 16px 0 8px; }
+.soonlist { gap: 6px; }
+.topics .card.soon { border-style: dashed; background: transparent; color: var(--muted); }
+.topics .card p { margin-top: 4px; }
+.topics .live .tag { margin-top: 8px; }
+
+/* search with suggestions */
+.combo { position: relative; flex: 1; min-width: 0; }
+.suggest { position: absolute; z-index: 1100; left: 0; right: 0; top: calc(100% + 4px); margin: 0; padding: 4px 0; list-style: none;
+  background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--radius); box-shadow: 0 6px 20px rgba(0,0,0,.12);
+  max-height: 60vh; overflow-y: auto; }
+.suggest a { display: block; padding: 8px 12px; color: var(--fg); text-decoration: none; }
+.suggest li[aria-selected="true"] a, .suggest a:hover { background: var(--accent-soft); }
+.kind { display: inline-block; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; color: var(--muted);
+  border: 1px solid var(--line-strong); border-radius: 4px; padding: 0 5px; margin-right: 4px; vertical-align: 1px; }
+.placehits { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.placehits li { padding: 8px 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.placehits a { text-decoration: none; }
+
 /* breadcrumbs and stats */
 .crumbs { font-size: .875rem; color: var(--muted); margin-bottom: 4px; }
 .crumbs .sep { margin: 0 6px; color: var(--line-strong); }
@@ -115,7 +144,9 @@ ul.links { padding-left: 18px; columns: 2 260px; }
   table.works td[data-label="Agency"] .sub::before { content: " · "; }
   table.works td[data-label="Cost"], table.works td[data-label="Finish by"] { display: inline-block; width: auto; padding-right: 0; }
   table.works td[data-label="Finish by"]::before { content: " · Finish by "; color: var(--muted); }
-  table.works td[data-label="Status"] { color: var(--muted); }
+  table.works td[data-label="Status"], table.works td[data-label="Stage"], table.works td[data-label="Type"] { color: var(--muted); }
+  table.works td[data-label="Amount"], table.works td[data-label="Recommended"] { display: inline-block; width: auto; padding-right: 0; }
+  table.works td[data-label="Recommended"]::before { content: " · "; color: var(--muted); }
   table.works td.num { text-align: left; }
   table.works tr.overdue { border-left: 3px solid var(--red); }
   table.works tr.past_estimate { border-left: 3px solid var(--amber); }

@@ -1,14 +1,23 @@
 # Nagarika
 
-Open civic data for India. The first module answers one question:
-**why is this road dug up?** Who is doing the work, what it costs and when it
-should finish, with a link to the official record for every item.
+Open civic data for India: what is being built near you, by whom, and for how much,
+with a link to the official record for every item.
+
+The site is organised **topic first, then place**: topics (road works, MP funds, and
+more to come) sit at the top; inside each topic you go down by state, then city or
+constituency, then ward. Search tolerates typos and spelling variants, and "Use my
+location" finds your ward in cities that have ward maps.
+
+| Topic | Question it answers | Data |
+|---|---|---|
+| Road works | Why is my road dug up? | [`data/works.csv`](data/works.csv) |
+| MP funds (MPLADS) | What did my MP spend their fund on? | [`data/mplads.csv`](data/mplads.csv) |
 
 - **Site:** https://is-this-itt.github.io/nagarika/
-- **Data:** [`data/works.csv`](data/works.csv), ODbL ([data licence](data/LICENSE.md))
+- **Data:** CSV files above, ODbL ([data licence](data/LICENSE.md))
 - **Code:** MIT ([LICENSE](LICENSE))
 
-## What v1 covers
+## Road works coverage
 
 | Level | Where | Sources |
 |---|---|---|
@@ -36,7 +45,7 @@ Everything runs in GitHub Actions. To run locally:
 
 ```sh
 pip install -r requirements.txt
-python collector/collect.py bbmp          # or kppp, gepnic; no argument runs all
+python collector/collect.py bbmp          # or kppp, gepnic, mplads; no argument runs all
 python collector/build.py
 python -m http.server -d _site 8000
 ```

@@ -67,3 +67,28 @@ crosswalk), Greater Chennai Corporation 2022 (200 wards), BMC administrative war
 
 GeM, data.gov.in, PMGSY (omms.nic.in), bbmp.gov.in, accounts.bbmp.gov.in,
 gba.karnataka.gov.in. These need a collector running from an Indian network.
+
+## MPLADS (MP local area development funds): `mplads.py`
+
+- **What:** works recommended, sanctioned and completed under MPLADS, from the
+  Ministry of Statistics' eSAKSHI portal (https://mplads.mospi.gov.in), for the
+  current Lok Sabha, all states. Saved separately as `data/mplads.csv`, because MPs
+  fund every sector, not only roads.
+- **How:** the portal's public dashboard calls POST endpoints under
+  `/rest/PreLoginDashboardData/` that need no login: `getStateData`, `getTilesData`
+  (gives the current tenure) and `getTilesReportData` with
+  `{"combo": "<state>,<constituency>,<mp>,<house>,<tenure>", "key": "Works Recommended"}`
+  (also "Works Sanctioned", "Works Completed"; 0 means all, house 2 = Lok Sabha).
+  The three lists are merged by the work's recommendation id. Runs at most once a day.
+- **Fields:** MP, constituency, implementing district authority, work type and
+  category, description (often naming the ward and locality), recommendation letter
+  number, recommended and sanctioned amounts and dates, stage, completion date and
+  amount spent.
+- **Not yet:** Rajya Sabha MPs (they may pick any district in their state), earlier
+  Lok Sabhas, and attachments (photos, completion certificates).
+- **Linking to wards:** Bengaluru wards carry their assembly constituency; a fixed
+  table (`BENGALURU_AC_TO_PC` in `places.py`, 2008 delimitation) maps it to the Lok
+  Sabha constituency, so a ward page links to its MP's works and lists those whose
+  description names the ward.
+- **Source link:** the eSAKSHI dashboard has no per-work URL; the record gives the
+  state, constituency and letter number to find it.

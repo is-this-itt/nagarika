@@ -108,6 +108,20 @@ files (e.g. OpenCity); OpenStreetMap for map tiles.
 - UI (owner, 2026-10-23): standard components: results table with numbered pagination,
   sort and filter chips kept in the URL, stacked rows on phones; search results page.
 
+- Hierarchy (owner, 2026-10-23): topic first, then place. Home = search + "use my
+  location" + topics as top-level cards (live: Road works, MP funds; others "coming
+  soon"). Inside a topic: state > city or Lok Sabha constituency > ward. Place pages
+  link across topics (a Bengaluru ward page links to its MP's MPLADS works).
+- Search (owner: people don't know exact names): suggestions as you type over a
+  place index (wards, assembly and Lok Sabha constituencies, MPs, towns, PIN codes);
+  typo-tolerant word matching with a sound-alike fallback for Indian spelling
+  variants (Koramangala/Kormangala, Bangalore/Bengaluru); numbers match exactly;
+  geolocation finds the ward. Written in-house (no search library) so behaviour is
+  predictable and nothing extra loads.
+- MPLADS module (owner, 2026-10-23): eSAKSHI public dashboard endpoints, current
+  Lok Sabha, all states, daily; separate dataset data/mplads.csv. Rajya Sabha and
+  earlier tenures later.
+
 ## Open questions
 - Which unconfirmed state GePNIC portals are reachable from GitHub runners (the run
   summary reports each one)

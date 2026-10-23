@@ -97,7 +97,7 @@ def today():
 
 def parse_date(text, fmts=("%d-%m-%Y %H:%M:%S", "%d-%m-%Y", "%d-%b-%Y %I:%M %p",
                             "%d-%b-%Y", "%Y-%m-%d", "%d/%m/%Y")):
-    text = (text or "").strip()
+    text = str(text or "").strip()
     for f in fmts:
         try:
             return dt.datetime.strptime(text, f).date().isoformat()

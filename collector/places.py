@@ -34,6 +34,20 @@ CITIES = {
 }
 
 
+# Bengaluru assembly constituency -> Lok Sabha constituency (2008 delimitation).
+# Values are eSAKSHI constituency ids, used to link a ward to its MP's MPLADS works.
+BENGALURU_AC_TO_PC = {
+    **dict.fromkeys(["K.R. Pura", "Byatarayanapura", "Yeshwanthapura", "Dasarahalli", "Mahalakshmi Layout",
+                     "Malleshwaram", "Hebbal", "Pulakeshinagar"], ("181", "Bangalore North")),
+    **dict.fromkeys(["Shivajinagar", "Shanthinagar", "Gandhinagara", "Rajajinagar", "Chamrajapet",
+                     "Sarvagnanagar", "C.V. Raman Nagar", "Mahadevapura"], ("183", "Bangalore Central")),
+    **dict.fromkeys(["Govindraj Nagar", "Vijayanagar", "Chickpet", "Basavanagudi", "Padmanabanagar",
+                     "B.T.M Layout", "Jayanagar", "Bommanahalli"], ("182", "Bangalore South")),
+    **dict.fromkeys(["Rajarajeshwarinagar", "Bangalore South", "Anekal"], ("166", "Bangalore Rural")),
+    "Yelahanka": ("171", "Chikballapur"),
+}
+
+
 def load_wards(city):
     path = os.path.join(BOUNDARIES, f"{city}.geojson")
     if not os.path.exists(path):
