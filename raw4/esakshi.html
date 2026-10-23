@@ -1,0 +1,465 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<title>FMS</title>
+
+<link rel="stylesheet" type="text/css" href="/zkau/web/2eae2d22/_zkiju-nr/zul/css/zk.wcs"/>
+<link rel="stylesheet" type="text/css" href="/zkau/web/2eae2d22/responsive/css/main.css.dsp?Fri_Oct_23_22_43_32_IST_2026"/>
+
+<script type="text/javascript" src="/zkau/web/2eae2d22/js/zk.wpd" charset="UTF-8">
+</script>
+<script type="text/javascript" src="/zkau/web/2eae2d22/js/zul.lang.wpd" charset="UTF-8">
+</script><script type="text/javascript">zkopt({to:1860,ppos:'center'});</script><style id="antiClickjack">body{display:none !important;}</style>
+			
+			<link rel="shortcut icon" type="image/x-icon" href="/zkImages/favicon.ico" />
+			<!--This code need to insert to solve Drop Down issue in combobox,datebox :End-->
+			<script type="text/javascript" src="/script/common.js"></script>
+			<!--
+			<script type="text/javascript" src="/libs/libs.js.dsp"></script>
+			<link rel="stylesheet" href="/libs/libs.css.dsp"/>
+			-->
+			
+			<script type="text/javascript" src="/libs/libs.min.js.dsp"></script>
+			<link rel="stylesheet" href="/libs/libs.min.css.dsp"/>
+			
+				<link rel="stylesheet" href="/libs/NotificationStyles/css/normalize.css" >
+		
+			<link rel="stylesheet" href="/libs/NotificationStyles/css/ns-default.css">
+			<link rel="stylesheet" href="/libs/NotificationStyles/css/ns-style-growl.css">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,700">
+			
+      		<script src="/libs/NotificationStyles/js/modernizr.custom.js" ></script>
+ 			<script src="/libs/NotificationStyles/js/classie.js" type="text/javascript"></script>
+ 			<script src="/libs/NotificationStyles/js/notificationFx.js" type="text/javascript"></script>
+			
+			<script type="text/javascript" src="/script/c3graphs/Common.js"></script>
+				<script type="text/javascript" src="/script/stateMap.js"></script>
+				<script src="https://d3js.org/d3.v5.min.js"></script>
+			
+			<script type="text/javascript">
+		   if (self === top) {
+		       var antiClickjack = document.getElementById("antiClickjack");
+		       antiClickjack.parentNode.removeChild(antiClickjack);
+		   } else {
+		       top.location = self.location;
+		   }
+		   
+		   /********Temporary fix to disable Alt + <-/->/Bkspace for weblogic (Chrome only) ************/
+
+			   function cancelBack(){
+					var evtobj = window.event ? event : e;
+					var unicode = evtobj.charCode ? e.charCode : evtobj.keyCode;
+					if (unicode == 37 && evtobj.altKey || 
+						unicode == 39 && evtobj.altKey
+					   )
+					{
+						evtobj.cancelBubble = true;
+						evtobj.returnValue = false;
+						return false;
+						evtobj.preventDefault();
+					}
+					return true;
+				}  
+
+				$(document).ready(function(){
+					$('body').on('keydown', cancelBack)
+				});
+
+			   /********************/
+		</script>
+		
+		<link rel="stylesheet" href="/libs/billboard.css">		
+			<script type="text/javascript" src="/libs/billboard.js"></script>
+			<script type="text/javascript" src="/libs/pie.js"></script>
+		</link>
+</head>
+<body>
+<div id="rZ3V_" class="z-temp"></div>
+<script type="text/javascript" src="/script/aes/aes.js">
+</script>
+
+<script type="text/javascript" src="/script/aes/pbkdf2.js">
+</script>
+
+<script type="text/javascript" src="/script/aes/AesUtil.js">
+</script>
+
+<script type="text/javascript">zk.pi=1;zkmx(
+[0,'rZ3V_',{dt:'z_el50',cu:'',uu:'/zkau',ru:'/digigov/Login.zul'},[
+['zul.utl.Style','zk_comp_1',{visible:false,src:'/style/apcmo/logincommon.css'},[]],
+['zul.utl.Style','zk_comp_2',{visible:false,src:'/style/apcmo/loginslider.css'},[]],
+['zhtml.Widget','zk_comp_3',{prolog:'<link id="zk_comp_3" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>'},[]],
+['zul.wnd.Window','zk_comp_4',{id:'winLogin',$$onMinimize:false,$$onZIndex:false,$onCtrlKey:true,$$onMove:false,$onClose:true,$$onOpen:false,$onCancel:true,$$onMaximize:false,$$onSize:false,sclass:'wrapper backgroundWrapper',style:'height:100%;',prolog:'\n\n\t',context:'rightClickDisable',ctrlKeys:'#f11#f5#f6',shadow:false},[
+['zul.utl.Script','zk_comp_5',{},[]],
+['zul.utl.Script','zk_comp_6',{},[]],
+['zul.utl.Script','zk_comp_7',{},[]],
+['zul.wgt.Div','zk_comp_8',{id:'background',style:'height:100%;',prolog:'\n\n\t\t'},[
+['zul.wgt.Div','zk_comp_9',{id:'marquee',visible:false,prolog:'\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t\t'},[
+['zhtml.Widget','zk_comp_10',{prolog:'<marquee id="zk_comp_10" scrolldelay="150" direction="left" behaviour="slide">',epilog:'</marquee>'},[
+['zul.wgt.Label','zk_comp_11',{id:'lblMarquee'},[]]]]]],
+['zul.wgt.Div','zk_comp_12',{sclass:'container-fluid p-0',style:'height:100vh;',prolog:'\n\t\t\t\n\t\t\t\n\n\n\t\t\t'},[
+['zul.wgt.Div','zk_comp_13',{sclass:'row g-0 h-100',prolog:'\n\n\t\t\t\t'},[
+['zul.wgt.Div','zk_comp_14',{sclass:'col-md-6 left-panel',prolog:'\n\n\t\t\t\t\t\n\t\t\t\t\t'},[
+['zul.wgt.Image','zk_comp_15',{sclass:'bg-img',prolog:'\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t',src:'/zkImages/mpslidenew.png'},[]],
+['zul.wgt.Div','zk_comp_16',{sclass:'full-blur',prolog:'\n\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t'},[]],
+['zul.wgt.Div','zk_comp_17',{sclass:'overlay',prolog:'\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t'},[
+['zul.wgt.Div','zk_comp_18',{prolog:'\n\t\t\t\t\t\t\t'},[
+['zul.wgt.Div','zk_comp_19',{sclass:'overlay-title',prolog:'\n\t\t\t\t\t\t\t\t'},[
+['zul.wgt.Label','zk_comp_20',{value:'eSAKSHI'},[]]]],
+['zul.wgt.Div','zk_comp_21',{sclass:'overlay-subtitle',prolog:'\n\t\t\t\t\t\t\t\t'},[
+['zul.wgt.Label','zk_comp_22',{value:'\n\t\t\t\t\t\t\t\t\tSAnsad sadasya sthaniya KSHetra\n\t\t\t\t\t\t\t\t\tvIkas yojana\n\t\t\t\t\t\t\t\t'},[]]]]]]]]]],
+['zul.wgt.Div','zk_comp_23',{sclass:'col-md-6 right-panel d-flex flex-column',prolog:'\n\n\t\t\t\t\t\n\t\t\t\t\t'},[
+['zul.wgt.Div','zk_comp_24',{sclass:'d-flex justify-content-center align-items-center flex-grow-1',prolog:'\n\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t'},[
+['zul.wgt.Div','zk_comp_25',{sclass:'login-text',prolog:'\n\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t'},[
+['zul.wgt.Div','zk_comp_26',{sclass:'text-center mt-4 right_logo_div',prolog:'\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t'},[
+['zul.wgt.Image','zk_comp_27',{sclass:'logo',style:'filter: brightness(0) saturate(100%) invert(12%) sepia(54%) saturate(1325%) hue-rotate(176deg) brightness(92%) contrast(95%);',prolog:'\n\t\t\t\t\t\t\t\t\t',src:'/zkImages/Mplads.png'},[]]]],
+['zul.wgt.Separator','zk_comp_28',{style:'height:1.75rem;',prolog:'\n\t\t\t\t\t\t\t\t',orient:'horizontal'},[]],
+['zul.wgt.Div','zk_comp_29',{style:'text-align: center;color:red;width: 70%;margin-left: 15%;',prolog:'\n\t\t\t\t\t\t\t\t'},[
+['zul.wgt.Html','zk_comp_30',{id:'exception',sclass:'z-label exception grid-pad',style:'padding-left:0;font-weight: 700;',prolog:'\n\t\t\t\t\t\t\t\t\t\t\t'},[]]]],
+['zhtml.Widget','loginForm',{id:'loginForm',prolog:'<form id="loginForm" name="loginForm" action="j_spring_security_check" method="post" autocomplete="off" style=" display: flex;justify-content: center;">',epilog:'</form>'},[
+['zul.box.Box','zk_comp_32',{},[
+['zul.wgt.Div','zk_comp_33',{style:'text-align: center;'},[
+['zul.wgt.Label','zk_comp_34',{sclass:'welc_label',prolog:'\n\t\t\t\t\t        \t\t\n\t\t\t\t\t        \t\t\t',value:'Log In'},[]]]],
+['zul.wgt.Separator','zk_comp_35',{style:'height:1rem;',orient:'horizontal'},[]],
+['zul.wgt.Div','zk_comp_36',{sclass:'uname input_div'},[
+['zhtml.Widget','zk_comp_37',{prolog:'<i id="zk_comp_37" class="fa fa-user input_icon">',epilog:'</i>'},[]],
+['zhtml.Widget','j_username',{id:'j_username',prolog:'<input id="j_username" value="" class="username input_field" placeholder="Username" name="j_username" onBlur="validateUsername()" OnKeyPress="keyPress(event)" autocomplete="off"/>'},[]]]],
+['zul.wgt.Separator','zk_comp_39',{style:'height:1.25rem;',orient:'horizontal'},[]],
+['zul.wgt.Div','zk_comp_40',{sclass:'pass input_div'},[
+['zhtml.Widget','zk_comp_41',{prolog:'<i id="zk_comp_41" class="fa fa-key input_icon">',epilog:'</i>'},[]],
+['zhtml.Widget','j_password',{id:'j_password',prolog:'<input id="j_password" value="" class="password input_field" placeholder="Password" type="password" name="j_password" OnKeyPress="keyPress(event)" autocomplete="off" readonly="true" onFocus="$(this).removeAttr(\'readonly\')"/>'},[]],
+['zhtml.Widget','temp_password',{id:'temp_password',visible:false,prolog:'<input id="temp_password" value="" type="password" style="display:none" autocomplete="off" name="temp_password"/>'},[]],
+['zhtml.Widget','temp_key',{id:'temp_key',prolog:'<input id="temp_key" value="" type="hidden" name="temp_key"/>'},[]],
+['zhtml.Widget','zk_comp_45',{prolog:'<span id="zk_comp_45" class="fa fa-eye toggle-password" style="position: relative; z-index: 4;">',epilog:'</span>'},[]]]],
+['zhtml.Widget','divGetCredential',{id:'divGetCredential',prolog:'<div id="divGetCredential" class="" style="text-align:right;">',epilog:'</div>'},[
+['zul.wgt.A','zk_comp_47',{style:'color:#083259;',label:'Forgot Password?',href:'/retriveUser.zul'},[]],
+['zhtml.Widget','rowGetCredential',{id:'rowGetCredential',prolog:'<tr id="rowGetCredential">',epilog:'</tr>'},[]]]],
+['zul.wgt.Separator','zk_comp_49',{style:'height:9px;',orient:'horizontal'},[]],
+['zul.wgt.Div','zk_comp_50',{sclass:'captcha_div'},[
+['zul.wgt.Div','zk_comp_51',{prolog:'\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t       \n\t\t\t\t\t\t\t\t        '},[
+['zul.wgt.Div','zk_comp_52',{visible:false,prolog:'\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t'},[
+['zul.wgt.Div','zk_comp_53',{style:'padding-top: 20%;',prolog:'\n\t\t\t\t\t\t\t\t\t\t\t\t'},[
+['zhtml.Widget','loginCaptchaEnable',{id:'loginCaptchaEnable',prolog:'<input id="loginCaptchaEnable" value="Y" type="hidden" name="LoginCaptcha"/>'},[]]]],
+['zhtml.Widget','captchaURL',{id:'captchaURL',prolog:'<input id="captchaURL" value="/rest/CaptchaRestServiceProvider/getName" type="hidden"/>'},[]]]],
+['zul.wgt.Div','zk_comp_56',{id:'captchaBox',style:'position:relative;display:inline;vertical-align:15%; width=110px;',prolog:'\n\t\t\t\t  \t\t\t\t\t\t \t'},[
+['zhtml.Widget','captchaImg',{id:'captchaImg',prolog:'<img id="captchaImg" style="max-width:130px;" alt="captcha"/>'},[]]]]]],
+['zhtml.Widget','refreshIcon',{id:'refreshIcon',prolog:'<i id="refreshIcon" class="fa fa-refresh" onClick="getdetails()" style="font-size:30px;min-width: 30px;color:#280070;cursor:pointer;">',epilog:'</i>'},[]],
+['zul.wgt.Div','zk_comp_59',{prolog:'\n\t\t\t\t\t\t\t\t        \n\t\t\t\t\t\t\t\t        '},[
+['zhtml.Widget','txt_Captcha',{id:'txt_Captcha',prolog:'<input id="txt_Captcha" value="" placeholder="Captcha" name="txt_Captcha" OnKeyPress="keyPress(event)" autocomplete="off" style="width: 100%;margin-top:0px;"/>'},[]]]]]],
+['zul.wgt.Separator','zk_comp_61',{style:'height:20px;',orient:'horizontal'},[]],
+['zul.wgt.Div','zk_comp_62',{sclass:'button'},[
+['zhtml.Widget','grad',{id:'grad',prolog:'<input id="grad" value="Login" class="button_style1" type="button" name="loginBtn" onClick="startLogin()"/>'},[]]]],
+['zul.wgt.Separator','zk_comp_64',{style:'height:5px;',orient:'horizontal'},[]],
+['zul.wgt.Div','zk_comp_65',{sclass:'bottom-section'},[
+['zul.wgt.Div','zk_comp_66',{visible:false,sclass:'terms-of-use',prolog:'\n\t\t\t\t\t\t\t        \t'},[
+['zhtml.Widget','zk_comp_67',{prolog:'<label id="zk_comp_67" class="tou" onClick="javascript:showTOU();" value="Terms of Use : ">',epilog:'</label>'},[]],
+['zhtml.Widget','j_termsofuse',{id:'j_termsofuse',prolog:'<input id="j_termsofuse" value="" checked="false" type="checkbox" name="j_termsofuse" onClick="toggleLoginBtn(this.checked)" OnKeyPress="keyPress(event)"/>'},[]],
+['zhtml.Widget','zk_comp_69',{prolog:'<label id="zk_comp_69" for="j_termsofuse">',epilog:'</label>'},[
+['zhtml.Text','zk_comp_70',{value:'I Agree'},[]]]]]],
+['zul.wgt.Div','zk_comp_71',{prolog:'\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t',align:'center'},[
+['zul.wgt.Separator','zk_comp_72',{prolog:'\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t        \t\t\n\t\t\t\t\t\t\t        \t\t\t',orient:'horizontal'},[]]]]]],
+['zul.wgt.Div','zk_comp_73',{},[
+['zhtml.Widget','zk_comp_74',{prolog:'<table id="zk_comp_74" width="100%" border="0">',epilog:'</table>'},[
+['zhtml.Widget','zk_comp_75',{prolog:'<tr id="zk_comp_75">',epilog:'</tr>'},[]]]],
+['zhtml.Widget','browserDetails',{id:'browserDetails',prolog:'<input id="browserDetails" value="" type="hidden" name="browserDetails"/>'},[]],
+['zhtml.Widget','ENCRYPTIONFLAG',{id:'ENCRYPTIONFLAG',prolog:'<input id="ENCRYPTIONFLAG" value="" type="hidden" name="ENCRYPTIONFLAG"/>'},[]],
+['zhtml.Widget','hostNME',{id:'hostNME',prolog:'<input id="hostNME" value="" type="hidden" name="hostNME"/>'},[]]]]],'vertical']]],
+['zul.wgt.Div','zk_comp_79',{style:'color: red;width: 100%;text-align: center;',prolog:'\n\t\t\t\t\t         '},[
+['zul.wgt.Label','zk_comp_80',{prolog:'\n\t\t\t\t\t        \t\t\t',value:'If the OTP is not received via SMS, please check your registered email inbox for the OTP.'},[]]]]]]]],
+['zul.wgt.Div','zk_comp_81',{sclass:'d-flex justify-content-between p-3 footer-div',prolog:'\n\t\t\t\n\t\t\t            \n\t\t\t            '},[
+['zul.wgt.Span','zk_comp_82',{sclass:'copright_span',style:'margin-left: 123px;',prolog:'\n\t\t\t                \n\t\t\t                '},[
+['zul.wgt.Label','zk_comp_83',{value:'Copyright ©2024 Tata Consultancy Services Limited. All Rights Reserve'},[]]]]]]]]]]]]]],
+['zul.utl.Script','zk_comp_84',{},[]],
+['zul.wgt.Popup','zk_comp_85',{id:'rightClickDisable',visible:false,$$onOpen:false,style:'height:0;width:0;overflow:hidden',zclass:'z-popup-plain'},[]]]]]],9,
+['script','["window.constructClientPagePath = function (pageName) {return \\"\\/hdfc\\/\\"+ pageName;}"]',
+'script','["window.aes= \'4d67fd8ee80132c6115e39880b08165d\';"]',
+'script','["window.passphrase= \'dfcd97a3-1580-42d2-8ba8-23e346df3647\';"]',
+'script','["try{showTimer(15);}catch(e){}"]',
+'script','["document.getElementById(\\"ENCRYPTIONFLAG\\").value = \'Y\';"]',
+'script','["document.getElementById(\\"j_username\\").focus();"]',
+'script','["getdetails();"]']);
+var code;
+		
+		function validateUsername()
+		{
+			var winFormm = document.getElementById('loginForm');
+			if(winFormm.j_username.value.trim() != '')
+			{
+				var regFlagg=/^[a-zA-Z0-9_.]+$/.test(winFormm.j_username.value.trim());
+				if (!regFlagg) 
+				{
+					alert('Inner Only alphanumeric characters and underscores are allowed');
+					winFormm.j_username.value='';
+					winFormm.j_username.focus();
+					return false;
+				}
+			}
+			
+		}
+		
+				
+			function keyPress(evn)
+			{
+				var keyCode = evn.keyCode ? evn.keyCode :evn.which ? evn.which : evn.charCode;
+
+				 if (keyCode == 13)
+				 {
+			   		if(!document.forms['loginForm'].loginBtn.disabled)
+			   			startLogin();
+			 	 }
+			 	 else
+			 	 {
+			 		return false;
+			 	 }
+			}
+			
+	function openWindow() {
+				window.showModalDialog("help/pages/TermsOfUse.htm");
+			}
+				
+			
+			
+			function loadPopup()
+{
+window.open("/hdfc/challangeneration.zul",90,150);
+    
+  
+}
+
+			function showTOU() {
+				window.showModalDialog("help/pages/TermsOfUse.htm");
+			}
+				
+			function toggleLoginBtn(stat)
+			{
+				document.forms['loginForm'].loginBtn.disabled = !stat;
+			}
+
+			function flashDetect()
+			{
+			  	if(navigator.plugins)
+			  	{
+	      			numPlugins = navigator.plugins.length;
+	      			if (numPlugins > 1)
+	      			{
+						if ((navigator.appName == 'Netscape'))
+					    {
+		  					for(i in navigator.plugins)
+		  					{
+		      					if (i.indexOf('Flash') != -1)
+		      					{
+			  						return true;
+			  						break;
+		      					}
+		      				}
+		  				 }
+		      			else
+		      			{
+				  			for (i in numPlugins)
+				  			{
+				      			daPlugin = navigator.plugins[i];
+				      			if ((daPlugin.description.indexOf('Flash') != -1) || (daPlugin.name.indexOf('Flash') != -1))
+				      			{
+					  				return true;
+					  				break;
+				      			}
+				  			}
+		      			}
+					}
+				}
+				return false;
+			}
+
+			function startLogin()
+			{
+				
+				var browserDetails = 'BrowserName=' + navigator.appName + ',BrowserVersion=' + navigator.appVersion + ',OperatingSystem=' + navigator.platform;
+				browserDetails = browserDetails + ',ScreenHeight=' + screen.height + ',ScreenWidth=' + screen.width + ',ScreenColor=' + screen.colorDepth;
+				browserDetails = browserDetails + ',BrowserHeight=' + document.body.clientHeight + ',BrowserWidth=' + document.body.clientWidth + ',JavaEnabled=' + navigator.javaEnabled();
+				browserDetails = browserDetails + ',FlashEnabled=' + flashDetect();
+				document.getElementById("browserDetails").value = browserDetails;
+
+				var winForm = document.getElementById('loginForm');
+				
+				if(winForm.j_username.value.trim()=='')
+				{
+					alert('User Name is required.');
+					winForm.j_username.value='';
+					winForm.j_username.focus();
+					return false;
+				}
+				
+				
+				var regFlag=/^[a-zA-Z0-9_.]+$/.test(winForm.j_username.value.trim());
+				
+				if (!regFlag) 
+				{
+					alert('Only alphanumeric characters and underscores are allowed');
+					winForm.j_username.value='';
+					winForm.j_username.focus();
+					return false;
+				}
+				
+				if(winForm.j_password.value.trim()=='')
+				{
+					alert('Password is required.');
+					winForm.j_password.value='';
+					winForm.j_password.focus();
+					return false;
+				}
+
+				if (document.getElementById('loginCaptchaEnable').value == 'Y')
+				{
+					if (winForm.txt_Captcha.value.trim() == '') 
+					{
+						alert('Captcha is required.');
+						winForm.txt_Captcha.value = '';
+						winForm.txt_Captcha.focus();
+						return false;
+					}
+				}
+				
+				var input = $("#j_password");
+				if(input.attr('type') === 'text')
+				{
+					input.attr('type','password')
+					
+					$(".toggle-password").removeClass("fa-eye-slash");
+					$(".toggle-password").addClass("fa-eye");
+				}
+				
+				var inputUserName = $("#j_username"); 
+				inputUserName.attr('type','password');
+				
+				var x=CryptoJS.lib.WordArray.random(8);
+				document.getElementById("temp_key").value = x.toString();
+
+				if(document.getElementById('ENCRYPTIONFLAG').value=='Y')
+					levelUp(winForm.j_password,winForm.temp_key);
+					
+				if(document.getElementById('ENCRYPTIONFLAG').value=='Y')
+				levelUp(winForm.j_username,winForm.temp_key);
+
+				var m = new zk.eff.FullMask();
+				zk.startProcessing(0);
+				winForm.submit();
+			}
+			
+			$(document).on('click', '.toggle-password', function() 
+			{
+    			$(this).toggleClass("fa-eye fa-eye-slash");
+    			var input = $("#j_password");
+    			input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
+			});
+			
+			
+		
+		
+	function createCaptcha()
+	{
+		var canv = document.getElementById("myCanvas");
+		var ctx = canv.getContext("2d");
+		ctx.resetTransform();
+		ctx.clearRect(0,0,canv.width, canv.height);
+		
+		var charsArray = "0123456789abcdefghijklmnopqrstuvwxyz";
+		var captcha = [];
+		var count = 5;
+		var stars = 300;
+		
+		var i;
+		for(i=0; i!=count; i++)
+		{
+			var index = Math.floor(Math.random() * charsArray.length);  
+			captcha.push(charsArray[index]);
+	    }
+		
+		code = captcha.join("");
+				
+		for (var j = 0; j != stars; j++) 
+		{
+			x = Math.random() * canv.offsetWidth;
+			y = Math.random() * canv.offsetHeight;
+			radius = Math.random() * 1.2;
+			ctx.beginPath();
+			ctx.arc(x, y, radius, 0, 360);
+			ctx.fillStyle = "hsl(210, 100%, 45%, 0.9)";
+			ctx.fill();
+		}
+		
+		ctx.font = "30px Arial Black";
+		ctx.transform(1,0,0.5,1,0,0);
+		ctx.strokeStyle ="hsla(200,100%,30%,0.9)";		
+		
+		ctx.shadowBlur = 2;
+		ctx.shadowOffsetX = 1;
+		ctx.shadowOffsetY = 1;
+		ctx.shadowColor = "#34495e";
+		
+		var xLine = 12;
+		var maxWidth = 200;
+		ctx.lineWidth = 1;
+		ctx.strokeText(captcha.join(""),xLine,35, maxWidth);
+		
+		ctx.shadowOffsetX = 0;
+		ctx.shadowOffsetY = 0;
+		
+		var xBeginTo = xLine - 35;
+		var yBeginTo = Math.floor(Math.random() * 40) + 10;
+		var xEndTo = xLine + 130;
+		var yEndTo = Math.floor(Math.random() * 40) + 10;
+		
+		ctx.beginPath();
+		ctx.moveTo(xBeginTo, yBeginTo);
+		ctx.bezierCurveTo(25,30,45,21,xEndTo, yEndTo);
+		ctx.lineWidth = 3;
+		ctx.strokeStyle ="hsla(200,100%,30%,1)";
+		ctx.lineCap = 'round';
+		ctx.stroke();
+	}	
+	
+	function getdetails() 
+  {
+         var  xmlhttp = new XMLHttpRequest();  
+        var url = document.getElementById('captchaURL').value;
+       xmlhttp.open('Post',url,true);
+      xmlhttp.setRequestHeader("token", "bUY5VkV0eHBOK3JUYUF1TGJjM1FHRGh4N1hYejhYSEw=");
+     xmlhttp.send();
+    xmlhttp.onreadystatechange = function() 
+    {
+   if (xmlhttp.readyState == 4) 
+   {
+    if ( xmlhttp.status == 200) 
+    {
+     if(xmlhttp.responseText=="false"){
+      alert("Limit exceeded. Please try after sometime.");
+     }else{
+      var baseImage = xmlhttp.responseText;
+      $("#captchaImg").attr('src', 'data:image/png;base64,'+baseImage);
+     }
+    }
+    else
+    { 
+
+     alert("Error ->" + xmlhttp.responseText);
+    }
+   }
+  };
+ }
+
+	function getHostName(){
+	var newhname = String(window.location.hostname);
+var hName = "HostNm=".concat(newhname);
+console.log("Host Name : " + hName);
+hostNME.value = window.location.hostname;
+document.cookie = "hName";
+}
+</script>
+<noscript>
+<div class="noscript"><p>Sorry, JavaScript must be enabled.<br/>Change your browser options, then <a href="">try again</a>.</p></div>
+</noscript>
+
+</body>
+</html>

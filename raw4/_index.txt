@@ -1,0 +1,11 @@
+200 63540 mospi_home.html https://mplads.mospi.gov.in/
+000  mplads_gov_home.html https://www.mplads.gov.in/
+000  mplads_gov_home2.html https://mplads.gov.in/
+200 21502 esakshi.html https://mplads.mospi.gov.in/eSAKSHI/
+200 2644 mospi_main.html https://www.mospi.gov.in/
+200 240473 mospi_js_landingpage.js https://mplads.mospi.gov.in/libs/simplegrid/landingpage.js
+200 801049 mospi_js_dash.all.min.js https://cdn.dashjs.org/latest/dash.all.min.js
+200 78743 mospi_js_bootstrap.bundle.min.js https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js
+200 80421 mospi_js_bootstrap.bundle.min.js https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js
+200 366859 mospi_js_dataTables.js https://cdn.datatables.net/2.0.7/js/dataTables.js
+200 3170 mospi_js_dataTables.bootstrap5.js https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js
