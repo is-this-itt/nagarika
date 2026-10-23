@@ -1,0 +1,22 @@
+[
+ {
+  "site": "odisha",
+  "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='mlalads.odisha.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='mlalads.odisha.gov.in', port=443) at 0x7fdeac8a92b0>, 'Connection to mlalads.odisha.gov.in timed out. (connect timeout=60)"
+ },
+ {
+  "site": "mp",
+  "error": "ConnectTimeout(MaxRetryError(\"HTTPConnectionPool(host='mlalads.mp.gov.in', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPConnection(host='mlalads.mp.gov.in', port=80) at 0x7fdeac27d040>, 'Connection to mlalads.mp.gov.in timed out. (connect timeout=60)'))\"))"
+ },
+ {
+  "site": "up",
+  "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'mlalads.up.gov.in\\', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host=\\'mlalads.up.gov.in\\', port=443): Failed to resolve \\'mlalads.up.gov.in\\' ([Errno -2] Name or service not known)\"))'))"
+ },
+ {
+  "site": "delhi",
+  "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='udd.delhi.gov.in', port=443): Max retries exceeded with url: /mlalad (Caused by ConnectTimeoutError(<HTTPSConnection(host='udd.delhi.gov.in', port=443) at 0x7fdeac8a8860>, 'Connection to udd.delhi.gov.in timed out. (connect timeout=60)'))\"))"
+ },
+ {
+  "site": "kar_plan",
+  "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='planning.karnataka.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='planning.karnataka.gov.in', port=443) at 0x7fdeac27d7c0>, 'Connection to planning.karnataka.gov.in timed out. (connect"
+ }
+]
