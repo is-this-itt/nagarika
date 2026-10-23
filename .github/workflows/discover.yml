@@ -5,7 +5,7 @@ name: Discover sources
 on:
   push:
     branches: [discovery]
-    paths: [scripts/discover.sh, .github/workflows/discover.yml]
+    paths: [scripts/discover*, .github/workflows/discover.yml]
   workflow_dispatch:
 
 permissions:
@@ -16,9 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: scripts/discover.sh
+      - run: pip install requests && python scripts/discover2.py
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898+github-actions[bot]@users.noreply.github.com"
-          git add raw
-          git commit -m "Discovery samples" && git push
+          git add raw2
+          git commit -m "Discovery samples 2" && git push
