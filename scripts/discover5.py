@@ -1,94 +1,41 @@
-"""Screenshots of the eSAKSHI MPLADS dashboard, step by step, for a citizen guide."""
-import asyncio, os, json
-from playwright.async_api import async_playwright
-
-OUT = "raw8"
-os.makedirs(OUT, exist_ok=True)
+"""Mumbai: read every active MCGM tender on mahatenders and save the key fields."""
+import csv, json, os, re, sys, time, traceback, urllib.parse
+sys.path.insert(0, "scripts")
+os.makedirs("raw9", exist_ok=True)
 log = []
 try:
-
-    async def shot(pg, name, full=False):
-        await pg.screenshot(path=f"{OUT}/{name}.png", full_page=full)
-        log.append(name)
-
-    async def main():
-        async with async_playwright() as p:
-            b = await p.chromium.launch()
-            pg = await b.new_page(viewport={"width": 1280, "height": 900})
-            await pg.goto("https://mplads.mospi.gov.in/", wait_until="domcontentloaded", timeout=120000)
-            await pg.wait_for_timeout(3000)
-            log.append("home loaded")
-            await shot(pg, "01_home")
-            # Visible menu and button texts on the home page.
-            texts = await pg.evaluate("""() => [...document.querySelectorAll('a,button')].filter(e => e.offsetParent)
-                .map(e => (e.innerText || '').trim()).filter(t => t && t.length < 60)""")
-            json.dump(texts, open(f"{OUT}/home_links.json", "w"), indent=0)
-            await pg.goto("https://mplads.mospi.gov.in/digigov/dashboard.html", wait_until="domcontentloaded", timeout=120000)
-            await pg.wait_for_timeout(5000)
-            await shot(pg, "02_dashboard_popup")
-            for sel in [".privacy-close", "#privacyPolicyModal .btn-close", "#privacyPolicyModal button"]:
-                try:
-                    await pg.click(sel, timeout=4000)
-                    log.append(f"closed popup with {sel}")
-                    break
-                except Exception:
-                    pass
-            await pg.wait_for_timeout(1500)
-            await shot(pg, "02_dashboard")
-            await shot(pg, "02_dashboard_full", True)
-            texts = await pg.evaluate("""() => [...document.querySelectorAll('a,button,label,h1,h2,h3,h4,h5,select,option,input')].filter(e => e.offsetParent || e.tagName=='OPTION')
-                .map(e => e.tagName + ' #' + e.id + ' ' + ((e.innerText || e.value || e.placeholder || '')+'').trim().slice(0,80))""")
-            json.dump(texts, open(f"{OUT}/dashboard_elems.json", "w"), indent=0)
-            # Open the filter, choose Karnataka > Bangalore South, search.
-            try:
-                await pg.click("#lok", timeout=10000)
-                await pg.wait_for_timeout(1500)
-                await pg.click("#dropdownMenuButton1", timeout=10000)
-                await pg.wait_for_timeout(1500)
-                await shot(pg, "03_filter_open")
-                await pg.select_option("#tenure", label="18th Lok Sabha")
-                await pg.wait_for_timeout(1000)
-                await pg.select_option("#demo", label="Karnataka")
-                await pg.wait_for_timeout(2500)
-                await pg.select_option("#constituency", label="BANGALORE SOUTH")
-                await pg.wait_for_timeout(2500)
-                await pg.wait_for_timeout(2500)
-                await shot(pg, "04_filter_chosen")
-                await pg.click("#searchFilter")
-                await pg.wait_for_timeout(5000)
-                await shot(pg, "05_after_search")
-                await shot(pg, "05_after_search_full", True)
-            except Exception as e:
-                log.append(f"filter error {e!r}")
-            try:
-                tiles = await pg.query_selector_all(".Dashboard-tile, .financeData .tile")
-                log.append(f"tiles {len(tiles)}")
-                for t in tiles:
-                    v = await t.get_attribute("value")
-                    log.append(f"tile value {v}")
-                target = None
-                for t in tiles:
-                    if (await t.get_attribute("value") or "").startswith("Works Recommended"):
-                        target = t
-                if target:
-                    await target.click()
-                    await pg.wait_for_timeout(8000)
-                    await shot(pg, "06_works_table")
-                    await shot(pg, "06_works_table_full", True)
-                    await pg.mouse.wheel(0, 600)
-                    await pg.wait_for_timeout(1000)
-                    await shot(pg, "07_table_scrolled")
-            except Exception as e:
-                log.append(f"tile error {e!r}")
-            json.dump(log, open(f"{OUT}/_log.json", "w"), indent=0)
-            await b.close()
-
-    try:
-        asyncio.run(main())
-    except Exception as e:
-        log.append(f"fatal {e!r}")
-    json.dump(log, open(f"{OUT}/_log.json", "w"), indent=0)
-except Exception as e:
-    import traceback
+    import requests
+    import gepnic_copy as g
+    from common import is_road_work
+    base = "https://mahatenders.gov.in/nicgep/app"
+    s = requests.Session(); s.headers.update(g.UA)
+    page = s.get(base + "?page=FrontEndTendersByOrganisation&service=page", timeout=60).text
+    orgs = g.org_links(page)
+    json.dump([o for o, _ in orgs], open("raw9/orgs.json", "w"), indent=0)
+    href = next((h for o, h in orgs if o == "Municipal Corporation of Greater Mumbai"), None)
+    log.append(f"MCGM link found: {bool(href)}")
+    lst = s.get(urllib.parse.urljoin(base, href), timeout=60).text
+    open("raw9/mcgm_list.html", "w").write(lst)
+    rows = g.tender_rows(lst)
+    log.append(f"MCGM rows {len(rows)}")
+    out = []
+    for tid, link in rows:
+        try:
+            f = g.detail_fields(s.get(urllib.parse.urljoin(base, link), timeout=60).text)
+        except Exception as e:
+            log.append(f"ERR {tid} {e!r}")
+            continue
+        out.append({"tid": tid, "chain": f.get("Organisation Chain", ""), "title": f.get("Title", ""),
+                    "desc": f.get("Work Description", ""), "location": f.get("Location", ""),
+                    "category": f.get("Product Category", ""), "subcat": f.get("Sub category", ""),
+                    "value": f.get("Tender Value in ₹", ""), "period": f.get("Period Of Work(Days)", ""),
+                    "road": is_road_work(f.get("Work Description", ""), f.get("Title", ""))})
+        time.sleep(0.4)
+    with open("raw9/mcgm.csv", "w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(out[0].keys()))
+        w.writeheader()
+        w.writerows(out)
+    log.append(f"read {len(out)}, road {sum(r['road'] for r in out)}")
+except Exception:
     log.append("fatal " + traceback.format_exc())
 json.dump(log, open("raw9/_log.json", "w"), indent=0)
