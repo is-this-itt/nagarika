@@ -130,9 +130,10 @@ files (e.g. OpenCity); OpenStreetMap for map tiles.
   file limit; works sanctioned over a year ago and not complete are flagged, per the
   portal's own one-year guideline.
 
-- Logo (owner asked, 2026-10-23): a citizen inside a map pin, white on the site's
-  blue (#1d5a91): "a citizen at a place". Files: site/logo.svg (source),
-  site/apple-touch-icon.png, site/logo-512.png; alternatives in docs/brand/.
+- Logo (owner chose round 2, option 5, 2026-10-23): "citizens together": a white map
+  pin with a citizen, flanked by two fainter pins, on the site's blue (#1d5a91).
+  Files: site/logo.svg (source), site/apple-touch-icon.png, site/logo-512.png; all
+  concepts from both rounds are in docs/brand/.
 
 ## Open questions
 - Which unconfirmed state GePNIC portals are reachable from GitHub runners (the run
