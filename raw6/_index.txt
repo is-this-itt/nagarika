@@ -1,0 +1,11 @@
+200 23611 dashboard.html GET https://mplads.mospi.gov.in/digigov/dashboard.html None
+200 114615 js_poptable.js GET https://mplads.mospi.gov.in/libs/simplegrid/poptable.js None
+200 8498 js_graph.js GET https://mplads.mospi.gov.in/libs/simplegrid/graph.js None
+200 34014 js_preLoginDashboard.js GET https://mplads.mospi.gov.in/libs/simplegrid/preLoginDashboard.js None
+200 73 tenure.json POST https://mplads.mospi.gov.in/rest/PreLoginDashboardData/getTenureData b'{"uname": "0,0,0,2"}'
+200 515 tiles_ls.json POST https://mplads.mospi.gov.in/rest/PreLoginDashboardData/getTilesData b'{"uname": "0,0,0,2"}'
+200 513 tiles_rs.json POST https://mplads.mospi.gov.in/rest/PreLoginDashboardData/getTilesData b'{"uname": "0,0,0,1"}'
+200 231 total_tiles.json POST https://mplads.mospi.gov.in/rest/PreLoginDashboardData/getTotalTilesData b'{"uname": "0,0,0,2"}'
+200 1532 states.json POST https://mplads.mospi.gov.in/rest/PreLoginDashboardData/getStateData b'{}'
+200 969 const_ka.json POST https://mplads.mospi.gov.in/rest/PreLoginDashboardData/getConstituencyData b'{"id": 18}'
+tenure sample [{"ID": 5, "CAPTION": "17th Lok Sabha"}, {"ID": 7, "CAPTION": "18th Lok Sabha"}]
