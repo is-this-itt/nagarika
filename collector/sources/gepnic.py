@@ -135,12 +135,14 @@ def run_portal(key, works, matchers, report, deadline_ts):
         return
     orgs = [(o, h) for o, h in org_links(page)
             if (o in org_city or ORG_RE.search(o)) and not ORG_SKIP.search(o)]
+    orgs.sort(key=lambda oh: oh[0] not in org_city)  # pilot-city organisations first
     if not orgs:
         report.add(f"gepnic-{key}", "no organisation list found (page layout or blocking)")
         return
     new = kept = 0
     for org, href in orgs:
-        if time.time() > deadline_ts or new >= MAX_NEW_PER_PORTAL:
+        cap = MAX_NEW_PER_PORTAL * (3 if org in org_city else 1)
+        if time.time() > deadline_ts or new >= cap:
             break
         try:
             lst = s.get(urllib.parse.urljoin(base, href), timeout=60).text
@@ -151,7 +153,7 @@ def run_portal(key, works, matchers, report, deadline_ts):
             if rid in works:
                 works[rid]["last_checked"] = time.strftime("%Y-%m-%d")
                 continue
-            if new >= MAX_NEW_PER_PORTAL or time.time() > deadline_ts:
+            if new >= cap or time.time() > deadline_ts:
                 break
             try:
                 f = detail_fields(s.get(urllib.parse.urljoin(base, link), timeout=60).text)
