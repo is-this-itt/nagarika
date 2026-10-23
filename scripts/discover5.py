@@ -24,6 +24,15 @@ async def main():
         json.dump(texts, open(f"{OUT}/home_links.json", "w"), indent=0)
         await pg.goto("https://mplads.mospi.gov.in/digigov/dashboard.html", wait_until="domcontentloaded", timeout=120000)
         await pg.wait_for_timeout(5000)
+        await shot(pg, "02_dashboard_popup")
+        for sel in [".privacy-close", "#privacyPolicyModal .btn-close", "#privacyPolicyModal button"]:
+            try:
+                await pg.click(sel, timeout=4000)
+                log.append(f"closed popup with {sel}")
+                break
+            except Exception:
+                pass
+        await pg.wait_for_timeout(1500)
         await shot(pg, "02_dashboard")
         await shot(pg, "02_dashboard_full", True)
         texts = await pg.evaluate("""() => [...document.querySelectorAll('a,button,label,h1,h2,h3,h4,h5,select,option,input')].filter(e => e.offsetParent || e.tagName=='OPTION')
@@ -31,12 +40,17 @@ async def main():
         json.dump(texts, open(f"{OUT}/dashboard_elems.json", "w"), indent=0)
         # Open the filter, choose Karnataka > Bangalore South, search.
         try:
+            await pg.click("#lok", timeout=10000)
+            await pg.wait_for_timeout(1500)
             await pg.click("#dropdownMenuButton1", timeout=10000)
             await pg.wait_for_timeout(1500)
             await shot(pg, "03_filter_open")
+            await pg.select_option("#tenure", label="18th Lok Sabha")
+            await pg.wait_for_timeout(1000)
             await pg.select_option("#demo", label="Karnataka")
             await pg.wait_for_timeout(2500)
             await pg.select_option("#constituency", label="BANGALORE SOUTH")
+            await pg.wait_for_timeout(2500)
             await pg.wait_for_timeout(2500)
             await shot(pg, "04_filter_chosen")
             await pg.click("#searchFilter")
@@ -60,6 +74,9 @@ async def main():
                 await pg.wait_for_timeout(8000)
                 await shot(pg, "06_works_table")
                 await shot(pg, "06_works_table_full", True)
+                await pg.mouse.wheel(0, 600)
+                await pg.wait_for_timeout(1000)
+                await shot(pg, "07_table_scrolled")
         except Exception as e:
             log.append(f"tile error {e!r}")
         json.dump(log, open(f"{OUT}/_log.json", "w"), indent=0)
