@@ -1,0 +1,14 @@
+200 23611 dashboard.html https://mplads.mospi.gov.in/digigov/dashboard.html
+200 63540 home.html https://mplads.mospi.gov.in/
+ERR js_23_poptable.js https://mplads.mospi.gov.in/WebContent/libs/simplegrid/poptable.js ConnectTimeout(MaxRetryError("HTTPConnectionPool(host='mplads.mospi.gov.in', port=80): Max retries exceeded with url: /digigov/Login.zul (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f2a381a2d50>, 'Connection to mplads.mospi.gov.in timed out. (connect timeout=60)'))"))
+200 240473 js_24_landingpage.js https://mplads.mospi.gov.in/libs/simplegrid/landingpage.js
+200 8187 js_25_loksaba.js https://mplads.mospi.gov.in/libs/simplegrid/loksaba.js
+200 34014 js_26_preLoginDashboard.js https://mplads.mospi.gov.in/libs/simplegrid/preLoginDashboard.js
+200 3505 js_27_rajyasaba.js https://mplads.mospi.gov.in/libs/simplegrid/rajyasaba.js
+405 4920 ep_0.json https://mplads.mospi.gov.in/rest/PreLoginCitizenWorkRcmdRest/getBlockByDistrict
+405 4912 ep_1.json https://mplads.mospi.gov.in/rest/PreLoginCitizenWorkRcmdRest/getCitizenRequestByPhNumber
+405 4912 ep_2.json https://mplads.mospi.gov.in/rest/PreLoginCitizenWorkRcmdRest/getVillageByBlock
+405 4912 ep_3.json https://mplads.mospi.gov.in/rest/PreLoginCitizenWorkRcmdRest/verifyOTPForCitizenLogin
+405 4912 ep_4.json https://mplads.mospi.gov.in/rest/PreLoginDashboardData/getRedirectUrl
+405 4912 ep_5.json https://mplads.mospi.gov.in/rest/PreLoginDashboardData/getTotalTilesData
+400 4005 ep_6.json https://mplads.mospi.gov.in/rest/PreLoginDashboardData/stream

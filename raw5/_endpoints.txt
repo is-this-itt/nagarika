@@ -1,0 +1,7 @@
+/rest/PreLoginCitizenWorkRcmdRest/getBlockByDistrict
+/rest/PreLoginCitizenWorkRcmdRest/getCitizenRequestByPhNumber
+/rest/PreLoginCitizenWorkRcmdRest/getVillageByBlock
+/rest/PreLoginCitizenWorkRcmdRest/verifyOTPForCitizenLogin
+/rest/PreLoginDashboardData/getRedirectUrl
+/rest/PreLoginDashboardData/getTotalTilesData
+/rest/PreLoginDashboardData/stream
