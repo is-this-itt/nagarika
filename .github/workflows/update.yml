@@ -1,0 +1,73 @@
+name: Update data and site
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"   # every 6 hours
+  workflow_dispatch:
+    inputs:
+      sources:
+        description: "Sources to collect (space-separated: bbmp kppp gepnic). Empty = all. 'none' = only rebuild the site."
+        required: false
+        default: ""
+  push:
+    branches: [main]
+    paths: ["site/**", "collector/**", "data/**", ".github/workflows/update.yml"]
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  collect:
+    if: github.event_name != 'push' && inputs.sources != 'none'
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Ward maps (only if missing)
+        run: test -f data/boundaries/bengaluru.geojson || python collector/boundaries.py
+      - name: Collect
+        run: python collector/collect.py ${{ inputs.sources }}
+      - name: Commit data
+        run: |
+          git config user.name "nagarika-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then echo "No data changes"; exit 0; fi
+          git commit -m "Data update $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
+
+  deploy:
+    needs: collect
+    if: always() && (needs.collect.result == 'success' || needs.collect.result == 'skipped')
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python collector/build.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4
+      - run: echo "Site: ${{ steps.deploy.outputs.page_url }}" >> "$GITHUB_STEP_SUMMARY"
