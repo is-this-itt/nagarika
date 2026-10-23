@@ -14,14 +14,15 @@ async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch()
         pg = await b.new_page(viewport={"width": 1280, "height": 900})
-        await pg.goto("https://mplads.mospi.gov.in/", wait_until="networkidle", timeout=120000)
+        await pg.goto("https://mplads.mospi.gov.in/", wait_until="domcontentloaded", timeout=120000)
         await pg.wait_for_timeout(3000)
+        log.append("home loaded")
         await shot(pg, "01_home")
         # Visible menu and button texts on the home page.
         texts = await pg.evaluate("""() => [...document.querySelectorAll('a,button')].filter(e => e.offsetParent)
             .map(e => (e.innerText || '').trim()).filter(t => t && t.length < 60)""")
         json.dump(texts, open(f"{OUT}/home_links.json", "w"), indent=0)
-        await pg.goto("https://mplads.mospi.gov.in/digigov/dashboard.html", wait_until="networkidle", timeout=120000)
+        await pg.goto("https://mplads.mospi.gov.in/digigov/dashboard.html", wait_until="domcontentloaded", timeout=120000)
         await pg.wait_for_timeout(5000)
         await shot(pg, "02_dashboard")
         await shot(pg, "02_dashboard_full", True)
@@ -64,4 +65,8 @@ async def main():
         json.dump(log, open(f"{OUT}/_log.json", "w"), indent=0)
         await b.close()
 
-asyncio.run(main())
+try:
+    asyncio.run(main())
+except Exception as e:
+    log.append(f"fatal {e!r}")
+json.dump(log, open(f"{OUT}/_log.json", "w"), indent=0)
