@@ -1,0 +1,9 @@
+[
+"attempt 1 at 20:09:07",
+"02_dashboard_popup",
+"closed popup with #privacyPolicyModal [data-bs-dismiss=modal]",
+"popup closed by click: True",
+"03_dashboard",
+"04_filter_open",
+"error TimeoutError('Page.select_option: Timeout 30000ms exceeded.\\nCall log:\\n  - waiting for locator(\"#tenure\")\\n    - locator resolved to <select id=\"tenure\" name=\"tenure\" tabindex=\"-1\" aria-hidden=\"true\" class=\"sel select2-hidden-accessible\" data-select2-id=\"select2-data-tenure\">\u2026</select>\\n  - attempting select option action\\n    2 \u00d7 waiting for element to be visible and enabled\\n      - element is not visible\\n    - retrying select option action\\n    - waiting 20ms\\n    2 \u00d7 waiting for element to be visible and enabled\\n      - element is not visible\\n    - retrying select option action\\n      - waiting 100ms\\n    60 \u00d7 waiting for element to be visible and enabled\\n       - element is not visible\\n     - retrying select option action\\n       - waiting 500ms\\n')"
+]
