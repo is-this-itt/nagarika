@@ -1,22 +1,67 @@
-"""MPLADS eSAKSHI pass 3: per-work report for one constituency."""
-import os, json
-import requests
+"""Screenshots of the eSAKSHI MPLADS dashboard, step by step, for a citizen guide."""
+import asyncio, os, json
+from playwright.async_api import async_playwright
 
-B = "https://mplads.mospi.gov.in/rest/PreLoginDashboardData/"
-os.makedirs("raw7", exist_ok=True)
-s = requests.Session()
-UA = "Mozilla/5.0 (X11; Linux x86_64) Chrome/126 Safari/537.36"
-s.headers.update({"User-Agent": UA, "X-Client-UA": UA, "Referer": "https://mplads.mospi.gov.in/digigov/dashboard.html"})
-log = open("raw7/_index.txt", "w")
-def post(name, path, body):
-    try:
-        r = s.post(B + path, json=body, timeout=180)
-        open(f"raw7/{name}", "wb").write(r.content[:3_000_000])
-        log.write(f"{r.status_code} {len(r.content)} {name} {json.dumps(body)}\n"); log.flush()
-    except Exception as e:
-        log.write(f"ERR {name} {e!r}\n")
-post("mps_ka.json", "getMpNamesData", {"state_combo": "18,2,7"})
-post("mpconst_blrs.json", "getMpAndConstCombo", {"const_combo": "182,2,7"})
-for i, combo in enumerate(["18,182,0,2", "18,182,0,2,7", "18,0,0,2,7"]):
-    for key in ["Works Sanctioned", "Works Completed", "Works Recommended"]:
-        post(f"rep_{i}_{key.split()[1].lower()}.json", "getTilesReportData", {"combo": combo, "key": key})
+OUT = "raw8"
+os.makedirs(OUT, exist_ok=True)
+log = []
+
+async def shot(pg, name, full=False):
+    await pg.screenshot(path=f"{OUT}/{name}.png", full_page=full)
+    log.append(name)
+
+async def main():
+    async with async_playwright() as p:
+        b = await p.chromium.launch()
+        pg = await b.new_page(viewport={"width": 1280, "height": 900})
+        await pg.goto("https://mplads.mospi.gov.in/", wait_until="networkidle", timeout=120000)
+        await pg.wait_for_timeout(3000)
+        await shot(pg, "01_home")
+        # Visible menu and button texts on the home page.
+        texts = await pg.evaluate("""() => [...document.querySelectorAll('a,button')].filter(e => e.offsetParent)
+            .map(e => (e.innerText || '').trim()).filter(t => t && t.length < 60)""")
+        json.dump(texts, open(f"{OUT}/home_links.json", "w"), indent=0)
+        await pg.goto("https://mplads.mospi.gov.in/digigov/dashboard.html", wait_until="networkidle", timeout=120000)
+        await pg.wait_for_timeout(5000)
+        await shot(pg, "02_dashboard")
+        await shot(pg, "02_dashboard_full", True)
+        texts = await pg.evaluate("""() => [...document.querySelectorAll('a,button,label,h1,h2,h3,h4,h5,select,option,input')].filter(e => e.offsetParent || e.tagName=='OPTION')
+            .map(e => e.tagName + ' #' + e.id + ' ' + ((e.innerText || e.value || e.placeholder || '')+'').trim().slice(0,80))""")
+        json.dump(texts, open(f"{OUT}/dashboard_elems.json", "w"), indent=0)
+        # Open the filter, choose Karnataka > Bangalore South, search.
+        try:
+            await pg.click("#dropdownMenuButton1", timeout=10000)
+            await pg.wait_for_timeout(1500)
+            await shot(pg, "03_filter_open")
+            await pg.select_option("#demo", label="Karnataka")
+            await pg.wait_for_timeout(2500)
+            await pg.select_option("#constituency", label="BANGALORE SOUTH")
+            await pg.wait_for_timeout(2500)
+            await shot(pg, "04_filter_chosen")
+            await pg.click("#searchFilter")
+            await pg.wait_for_timeout(5000)
+            await shot(pg, "05_after_search")
+            await shot(pg, "05_after_search_full", True)
+        except Exception as e:
+            log.append(f"filter error {e!r}")
+        try:
+            tiles = await pg.query_selector_all(".Dashboard-tile, .financeData .tile")
+            log.append(f"tiles {len(tiles)}")
+            for t in tiles:
+                v = await t.get_attribute("value")
+                log.append(f"tile value {v}")
+            target = None
+            for t in tiles:
+                if (await t.get_attribute("value") or "").startswith("Works Recommended"):
+                    target = t
+            if target:
+                await target.click()
+                await pg.wait_for_timeout(8000)
+                await shot(pg, "06_works_table")
+                await shot(pg, "06_works_table_full", True)
+        except Exception as e:
+            log.append(f"tile error {e!r}")
+        json.dump(log, open(f"{OUT}/_log.json", "w"), indent=0)
+        await b.close()
+
+asyncio.run(main())
