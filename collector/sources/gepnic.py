@@ -107,6 +107,8 @@ def to_record(key, state, base, org_city, tid, f, matchers):
     if city in matchers:
         wards = matchers[city].match(" ".join([desc, title, loc] + chain[1:]))
         how = "text" if wards else "none"
+        if wards and matchers[city].approx:
+            how = f"crosswalk from newer ward {matchers[city].approx} (approximate)"
     period = re.sub(r"\D", "", f.get("Period Of Work(Days)", ""))
     opening = parse_date(f.get("Bid Opening Date", ""))
     deadline = add_days(opening, period) if period and int(period) > 0 else ""

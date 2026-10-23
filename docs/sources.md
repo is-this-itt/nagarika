@@ -46,6 +46,8 @@ defined in `collector/common.py` (`FIELDS`).
   "divider" count as road words, and the portal's own "Civil Works - Roads" category
   is trusted. Checked on 2026-10-23 against all 353 active MCGM tenders: 142 kept,
   120 of them matched to a ward.
+  K/North and P/East are newer than the 24-ward map; their works are shown in K/E
+  and P/N, marked approximate.
 - **Missing:** award results (contractor, contract value) are behind a captcha and
   are not collected. Tender detail links are session-bound, so the record gives the
   Tender ID to search for.

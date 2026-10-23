@@ -521,6 +521,243 @@ const HELP = {
 };
 const fieldRow = (label, val) => `<tr><th scope="row">${label}${HELP[label] ? `<span class="help">${HELP[label]}</span>` : ""}</th><td>${val || NP}</td></tr>`;
 
+// ---------- "Ask about this work": ready-to-send RTI applications and complaints ----------
+// Drafts are plain text built from the record. Every field the source leaves out becomes a
+// question. Nothing is sent from here: people copy, download or print the letter themselves.
+const ME_KEY = "nagarika-me";
+function loadMe() {
+  try { return JSON.parse(localStorage.getItem(ME_KEY)) || {}; } catch { return {}; }
+}
+function saveMe(me) {
+  try { localStorage.setItem(ME_KEY, JSON.stringify(me)); } catch { /* private mode: nothing to do */ }
+}
+const todayText = () => new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
+const numbered = items => items.filter(Boolean).map((t, i) => `${i + 1}. ${t}`).join("\n");
+
+function signOff(me) {
+  return [
+    `Place: ${me.place || "[your town or city]"}`,
+    `Date: ${todayText()}`,
+    "",
+    "Yours faithfully,",
+    "",
+    me.name || "[Your full name]",
+    me.address || "[Your postal address]",
+    me.contact || "[Phone or email, optional]",
+  ].join("\n");
+}
+
+const RTI_CLOSE = [
+  "I am a citizen of India. I am paying the application fee of Rs 10 by [postal order / demand draft / court-fee stamp / online payment, as your office accepts]. (If you are below the poverty line, write instead: I am exempt from the fee and enclose a copy of my BPL certificate.)",
+  "I would prefer to receive the information as certified copies, sent to the address below. I will pay the copying charges you tell me.",
+  "If any of this information is held by another public authority, please transfer this application to it under section 6(3) of the Act and let me know.",
+].join("\n\n");
+
+function rtiLetter(to, subject, intro, asks, me) {
+  return [
+    "To,", to, "",
+    `Subject: ${subject}`, "",
+    "Sir or Madam,", "",
+    intro, "",
+    "Information sought:",
+    numbered(asks), "",
+    RTI_CLOSE, "",
+    signOff(me),
+  ].join("\n");
+}
+
+function roadRef(w) {
+  return [
+    `Work: ${w.title}`,
+    `Reference number: ${w.source_id}${w.source.startsWith("gepnic") || w.source === "kppp" ? " (tender ID)" : " (work order)"}`,
+    w.agency ? `Agency: ${[w.agency, w.office].filter(Boolean).join(", ")}` : "",
+    w.contractor ? `Contractor (as published): ${w.contractor}` : "",
+    w.sanctioned_cost ? `Cost (as published): ${inr(w.sanctioned_cost)} (${w.cost_basis})` : "",
+    w.location_text || w.place ? `Location: ${[...new Set([w.location_text, w.place, w.pincode])].filter(x => x && x !== w.office).join(", ") || w.location_text}` : "",
+  ].filter(Boolean).join("\n");
+}
+
+function roadOffice(w) {
+  return [`The Public Information Officer`, w.office ? w.office.split(" / ").pop() : "", w.agency || "[name of the agency]",
+    [w.place, w.state].filter(Boolean).join(", ")].filter(Boolean).join("\n");
+}
+
+function roadRti(w, me) {
+  const official = w.deadline_basis === "official";
+  const asks = [
+    "A certified copy of the work order or agreement for this work, with the approved estimate, the bill of quantities and the scope of work.",
+    w.contractor ? `The date on which the work was awarded to ${w.contractor}.` : "The name and address of the contractor to whom the work was awarded, and the date of award.",
+    w.start_date ? "" : "The date on which the work actually started at the site.",
+    official ? `Copies of any orders extending the completion date of ${date(w.deadline)}, with the reasons recorded in them.`
+      : "The completion date fixed in the agreement, and copies of any orders extending it, with the reasons recorded in them.",
+    `The total amount paid to the contractor so far for this work${w.amount_paid ? ` (published as ${inr(w.amount_paid)})` : ""}, with the date and amount of each bill paid.`,
+    "The present status of the work. If it is not complete, copies of the records showing the reasons for the delay and any penalty imposed on the contractor.",
+    "The name and designation of the engineer in charge of this work.",
+    "Copies of the quality test reports for this work, and the defect liability period in the agreement.",
+    "Under section 2(j) of the Act, I also wish to inspect the measurement book and other records of this work. Please tell me a date and time.",
+  ];
+  return rtiLetter(roadOffice(w), "Application for information under section 6(1) of the Right to Information Act, 2005",
+    `I request the following information about this public work:\n\n${roadRef(w)}`, asks, me);
+}
+
+function roadComplaint(w, me) {
+  const to = [`The Executive Engineer (or the officer in charge of this work)`, w.office ? w.office.split(" / ").pop() : "",
+    w.agency || "[name of the agency]", [w.place, w.state].filter(Boolean).join(", ")].filter(Boolean).join("\n");
+  const due = w.deadline ? `The finish date ${w.deadline_basis === "official" ? "in the official record" : "estimated from the tender"} is ${date(w.deadline)}.` : "No finish date has been published for this work.";
+  return [
+    "To,", to, "",
+    `Subject: Status of work ${w.source_id}: ${w.title.slice(0, 90)}${w.title.length > 90 ? "…" : ""}`, "",
+    "Sir or Madam,", "",
+    "I am writing about this public work in my area:", "",
+    roadRef(w), "",
+    due, "",
+    "What I see at the site: [describe it, for example: the road has been dug up since (date), work has stopped, there are no barricades or signboards].", "",
+    "I request you to:",
+    numbered([
+      "Tell me the date by which this work will be completed.",
+      "Put up barricades and warning signs at the site until the work is finished.",
+      "Restore the road surface properly once the work is done.",
+      "Display a board at the site with the name of the work, the contractor, the cost and the completion date.",
+    ]), "",
+    "Please reply within 15 days. If I do not hear from you, I will seek these details under the Right to Information Act, 2005.", "",
+    signOff(me),
+  ].join("\n");
+}
+
+function mpRef(w) {
+  return [
+    `Work: ${w.description || w.activity}`,
+    `Recommended by: ${person(w.mp_name)}, MP, ${w.constituency} (${w.tenure})`,
+    `Recommendation letter: ${w.letter_no}${w.recommended_date ? ` dated ${date(w.recommended_date)}` : ""}`,
+    w.recommended_amount ? `Amount recommended: ${inr(w.recommended_amount)}` : "",
+    w.sanction_date ? `Sanctioned on: ${date(w.sanction_date)}${w.sanction_amount ? `, ${inr(w.sanction_amount)}` : ""}` : "",
+    w.stage ? `Stage on the eSAKSHI portal: ${w.stage}` : "",
+  ].filter(Boolean).join("\n");
+}
+
+// "BAGALKOTE(Deputy Commissioner Bagalkot_ida)" -> "Bagalkote, Karnataka"
+const mpDistrict = w => [titleCase((w.implementing_agency || "").split("(")[0].trim()), w.state].filter(Boolean).join(", ") || "[district]";
+function mpOffice(w) {
+  return ["The Public Information Officer", "MPLADS cell, Office of the District Collector / Deputy Commissioner", mpDistrict(w)].join("\n");
+}
+
+function mpRti(w, me) {
+  const pending = STAGE_PENDING(w.stage);
+  const asks = pending ? [
+    "The date on which your office received this recommendation.",
+    "The present status of the recommendation, and copies of any notes or letters on it, including any objection or request for changes.",
+    "If it has been rejected or returned, a copy of the order with the reasons recorded.",
+  ] : [
+    "A certified copy of the sanction order for this work, with the approved estimate.",
+    "The name of the implementing agency, and the name of the contractor or vendor carrying out the work, with a copy of the work order.",
+    "The amounts released for this work so far, with dates, and copies of the utilisation certificates received.",
+    STAGE_DONE(w.stage) ? "A copy of the completion certificate, and photographs of the completed asset."
+      : `The present status of the work and the expected completion date. ${overYear(w) ? "The MPLADS guidelines expect sanctioned works to be completed within one year; please give copies of the records showing the reasons for the delay." : ""}`.trim(),
+    "Copies of inspection reports for this work.",
+    "Under section 2(j) of the Act, I also wish to inspect the file for this work. Please tell me a date and time.",
+  ];
+  return rtiLetter(mpOffice(w), "Application for information under section 6(1) of the Right to Information Act, 2005 (MPLADS work)",
+    `I request the following information about this work under the Members of Parliament Local Area Development Scheme:\n\n${mpRef(w)}`, asks, me);
+}
+
+function mpComplaint(w, me) {
+  return [
+    "To,", "The District Collector / Deputy Commissioner (MPLADS cell)", mpDistrict(w), "",
+    `Copy to: ${person(w.mp_name)}, MP, ${w.constituency}; MPLADS Division, Ministry of Statistics and Programme Implementation (cna-mplads@mospi.gov.in)`, "",
+    `Subject: Status of MPLADS work, letter ${w.letter_no}`, "",
+    "Sir or Madam,", "",
+    "I am writing about this MPLADS work:", "",
+    mpRef(w), "",
+    overYear(w) ? `It was sanctioned more than a year ago and is not shown as completed. The MPLADS guidelines say sanctioned works are generally to be completed within one year of sanction.\n` : "",
+    "What I see at the site: [describe it, for example: work not started, work stopped, asset built but not in use].", "",
+    "I request you to:",
+    numbered([
+      "Tell me the present status of this work and the date by which it will be completed.",
+      "Update the stage of this work on the eSAKSHI portal, so that citizens can follow it.",
+      "Display a board at the site saying that the work is funded under MPLADS, with its cost.",
+    ]), "",
+    "Please reply within 15 days. If I do not hear from you, I will seek these details under the Right to Information Act, 2005.", "",
+    signOff(me),
+  ].join("\n");
+}
+
+// The panel shown on a work page. drafts: [[key, tab label, builder(me) -> text], ...]
+function askPanel(intro) {
+  return `<section class="ask" id="ask">
+    <h2>Ask about this work</h2>
+    <p>${intro} Fill in your details, check the letter and edit it if you like, then copy, download or print it. <a href="#/guides/rti">How to file an RTI</a></p>
+    <div class="chips" role="tablist" id="asktabs"></div>
+    <div class="askgrid">
+      <label>Your name<input class="input" id="me-name" autocomplete="name"></label>
+      <label>Town or city<input class="input" id="me-place" autocomplete="address-level2"></label>
+      <label class="wide">Postal address<textarea class="input" id="me-address" rows="2" autocomplete="street-address"></textarea></label>
+      <label class="wide">Phone or email <span class="muted small">(optional)</span><input class="input" id="me-contact"></label>
+    </div>
+    <textarea class="input draft" id="draft" rows="18" aria-label="Letter"></textarea>
+    <div class="askbtns">
+      <button type="button" class="btn primary" id="ask-copy">Copy</button>
+      <button type="button" class="btn" id="ask-dl">Download</button>
+      <button type="button" class="btn" id="ask-print">Print</button>
+      <button type="button" class="link" id="ask-reset" hidden>Undo my edits</button>
+      <span class="muted small" id="ask-msg" aria-live="polite"></span>
+    </div>
+    <p class="muted small">Your details stay on this device; Nagarika does not receive or send anything. Check the facts against the official record before you send the letter. This is a template, not legal advice.</p>
+  </section>`;
+}
+
+function wireAsk(drafts, fileStem) {
+  const me = loadMe();
+  const ids = ["name", "place", "address", "contact"];
+  const box = document.getElementById("draft");
+  const reset = document.getElementById("ask-reset");
+  const msg = document.getElementById("ask-msg");
+  let current = drafts[0][0], edited = false;
+  const build = () => drafts.find(d => d[0] === current)[2](me);
+  const draw = () => { box.value = build(); edited = false; reset.hidden = true; };
+  const tabs = document.getElementById("asktabs");
+  tabs.innerHTML = drafts.map(([k, label]) => `<button type="button" class="chip" role="tab" data-k="${k}" aria-pressed="${k === current}">${esc(label)}</button>`).join("");
+  tabs.querySelectorAll(".chip").forEach(b => {
+    b.onclick = () => {
+      if (edited && !confirm("Switching letters will discard your edits. Continue?")) return;
+      current = b.dataset.k;
+      tabs.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      draw();
+    };
+  });
+  for (const id of ids) {
+    const el = document.getElementById("me-" + id);
+    el.value = me[id] || "";
+    el.oninput = () => {
+      me[id] = el.value.trim();
+      saveMe(me);
+      if (!edited) box.value = build();
+    };
+  }
+  box.oninput = () => { edited = true; reset.hidden = false; };
+  reset.onclick = draw;
+  const say = t => { msg.textContent = t; setTimeout(() => { msg.textContent = ""; }, 3000); };
+  document.getElementById("ask-copy").onclick = async () => {
+    try { await navigator.clipboard.writeText(box.value); say("Copied."); }
+    catch { box.select(); document.execCommand("copy"); say("Copied."); }
+  };
+  document.getElementById("ask-dl").onclick = () => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([box.value], { type: "text/plain;charset=utf-8" }));
+    a.download = `${fileStem}-${current}.txt`.replace(/[^\w.-]+/g, "-");
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  };
+  document.getElementById("ask-print").onclick = () => {
+    const win = window.open("", "_blank");
+    if (!win) { say("Allow pop-ups to print, or use Download."); return; }
+    win.document.write(`<!doctype html><meta charset="utf-8"><title>Letter</title><pre style="white-space:pre-wrap;font:12pt/1.5 Georgia,serif;margin:2cm">${esc(box.value)}</pre>`);
+    win.document.close();
+    win.focus();
+    win.print();
+  };
+  draw();
+}
+
 // ---------- pages: home and search ----------
 async function home() {
   const [meta, mp] = await Promise.all([load("meta.json"), load("mplads_index.json").catch(() => [])]);
@@ -614,6 +851,7 @@ async function city(slug) {
         <div class="toolbar"><input class="input" id="wq" type="search" placeholder="Find a ward (typos are fine)" aria-label="Find a ward">
           <label class="select"><span>Sort</span><select id="ws"><option value="name">Name</option><option value="works"${wsort === "works" ? " selected" : ""}>Most works</option></select></label></div>
         <div class="scrollbox"><table class="plain" id="wt"><thead><tr><th>Ward</th><th class="num">Works</th></tr></thead><tbody></tbody></table></div>
+        <p class="small"><a href="#/city/${slug}/cards">Ward report cards: compare all wards</a></p>
         <p class="small"><a href="#/city/${slug}/ward/_none">${fmtN(c.unmatched)} works with no ward named in the source</a></p>
       </div>
     </div>
@@ -642,6 +880,117 @@ async function city(slug) {
   m.fitBounds(layer.getBounds());
 }
 
+// ---------- ward report cards ----------
+// Per-ward totals and ranks for a city, from the road works found so far.
+const CARD_METRICS = {
+  works: ["Road works", n => fmtN(n)],
+  cost: ["Sanctioned, where published", n => inr(n) || "—"],
+  paid: ["Paid, where published", n => inr(n) || "—"],
+  late: ["Past finish date", n => fmtN(n)],
+};
+async function wardCards(slug) {
+  const ck = "_cards_" + slug;
+  if (!cache[ck]) cache[ck] = Promise.all([works(), wardLookup()]).then(([list, wards]) => {
+    const per = {};
+    for (const k of Object.keys(wards[slug] || {})) {
+      per[k] = { key: k, ward: wards[slug][k], works: 0, cost: 0, paid: 0, late: 0, noContractor: 0, noDate: 0, rank: {} };
+    }
+    let cityN = 0, cityNoC = 0, cityNoD = 0;
+    for (const w of list) {
+      if (w.city !== slug) continue;
+      if (w.wards.length) { cityN++; cityNoC += !w.contractor; cityNoD += !w.deadline; }
+      for (const k of w.wards) {
+        const p = per[k];
+        if (!p) continue;
+        p.works++; p.cost += w.cost; p.paid += w.paid; p.late += !!w.flag;
+        p.noContractor += !w.contractor; p.noDate += !w.deadline;
+      }
+    }
+    const all = Object.values(per);
+    for (const m of Object.keys(CARD_METRICS)) {
+      all.slice().sort((a, b) => b[m] - a[m]).forEach((p, i, arr) => {
+        // Equal values share a rank: "joint 4th".
+        p.rank[m] = i && arr[i - 1][m] === p[m] ? arr[i - 1].rank[m] : i + 1;
+      });
+    }
+    return { per, all, avgNoContractor: cityN ? cityNoC / cityN : 0, avgNoDate: cityN ? cityNoD / cityN : 0 };
+  });
+  return cache[ck];
+}
+const ordinal = n => n + ({ 1: "st", 2: "nd", 3: "rd" }[(n % 100 >= 11 && n % 100 <= 13) ? 0 : n % 10] || "th");
+const pct = (a, b) => b ? Math.round(100 * a / b) + "%" : "—";
+
+function reportCard(slug, c, p, cards, ww) {
+  const n = cards.all.length;
+  const rank = m => p[m] ? `<span class="muted small">${ordinal(p.rank[m])} of ${fmtN(n)} wards</span>` : "";
+  const seen = new Set();  // the same work can be filed twice (tender and work order)
+  const top = ww.filter(x => x.cost).sort((a, b) => b.cost - a.cost)
+    .filter(x => !seen.has(x.title.toLowerCase()) && seen.add(x.title.toLowerCase())).slice(0, 3);
+  const firms = {};
+  ww.forEach(x => { if (x.contractor) firms[x.contractor] = (firms[x.contractor] || 0) + 1; });
+  const topFirms = Object.entries(firms).sort((a, b) => b[1] - a[1]).slice(0, 3);
+  const base = `#/city/${slug}/ward/${enc(p.key)}`;
+  const asks = [
+    p.late ? `<b>${fmtN(p.late)}</b> works are past their finish date. Ask the ward or division office for revised dates. <a href="${base}?f=late">See them</a>` : "",
+    p.noContractor ? `<b>${fmtN(p.noContractor)}</b> works have no contractor published. An RTI application gets the names: open a work and use "Ask about this work". <a href="${base}?f=unknown">See them</a>` : "",
+    top[0] ? `The biggest work is <a href="#/work/${enc(top[0].id)}">${esc(top[0].title.slice(0, 80))}${top[0].title.length > 80 ? "…" : ""}</a> (${inr(top[0].cost)}). Is it visible on the ground, and on time?` : "",
+  ].filter(Boolean);
+  return `<section class="report" id="card">
+    <div class="reporthead"><h2>Ward report card</h2>
+      <span class="noprint"><button type="button" class="btn" id="card-print">Print</button> <button type="button" class="btn" id="card-share">Share</button></span></div>
+    <p class="muted small">${esc(wardLabel(slug, p.ward))}. Compared with ${c.name}'s ${fmtN(n)} wards, using the road works Nagarika has found so far (${date(cards.built)}). Works filed under an older ward map count in every ward they overlap.</p>
+    <table class="fields"><tbody>
+      ${Object.entries(CARD_METRICS).map(([m, [label, f]]) => `<tr><th scope="row">${label}</th><td>${f(p[m])} ${rank(m)}</td></tr>`).join("")}
+      <tr><th scope="row">Contractor not published<span class="help">Share of this ward's works whose contractor the source does not name.</span></th><td>${fmtN(p.noContractor)} of ${fmtN(p.works)} (${pct(p.noContractor, p.works)}) <span class="muted small">city: ${pct(cards.avgNoContractor, 1)}</span></td></tr>
+      ${cards.avgNoDate < .99 ? `<tr><th scope="row">No finish date published</th><td>${fmtN(p.noDate)} of ${fmtN(p.works)} (${pct(p.noDate, p.works)}) <span class="muted small">city: ${pct(cards.avgNoDate, 1)}</span></td></tr>`
+        : `<tr><th scope="row">Finish dates</th><td><span class="np">Not published for any work in ${esc(c.name)}</span></td></tr>`}
+      <tr><th scope="row">Biggest works</th><td>${top.length ? `<ol class="tight">${top.map(x => `<li><a href="#/work/${enc(x.id)}">${esc(x.title.slice(0, 90))}${x.title.length > 90 ? "…" : ""}</a> <span class="muted small">${inr(x.cost)}</span></li>`).join("")}</ol>` : NP}</td></tr>
+      <tr><th scope="row">Most frequent contractors</th><td>${topFirms.length ? topFirms.map(([f, k]) => `${esc(f)} <span class="muted small">(${k} works)</span>`).join("<br>") : NP}</td></tr>
+      ${p.ward.assembly ? `<tr><th scope="row">Assembly constituency</th><td>${esc(p.ward.assembly)}</td></tr>` : ""}
+    </tbody></table>
+    ${asks.length ? `<h3>Questions to raise</h3><ul class="tight">${asks.map(a => `<li>${a}</li>`).join("")}</ul>` : ""}
+    <p class="small noprint"><a href="#/city/${slug}/cards">Compare all wards in ${esc(c.name)}</a></p>
+  </section>`;
+}
+
+function wireCard(title) {
+  const pr = document.getElementById("card-print");
+  if (!pr) return;
+  pr.onclick = () => { document.body.classList.add("printcard"); window.print(); document.body.classList.remove("printcard"); };
+  document.getElementById("card-share").onclick = async () => {
+    const url = location.href.split("?")[0];
+    try {
+      if (navigator.share) await navigator.share({ title, url });
+      else { await navigator.clipboard.writeText(url); document.getElementById("card-share").textContent = "Link copied"; }
+    } catch { /* cancelled */ }
+  };
+}
+
+async function wardCompare(slug) {
+  const [meta, cards] = await Promise.all([load("meta.json"), wardCards(slug)]);
+  const c = meta.cities.find(x => x.slug === slug);
+  if (!c) return notFound();
+  const { q } = parseHash();
+  const sortKey = { works: 1, cost: 1, paid: 1, late: 1, gap: 1 }[q.get("sort")] ? q.get("sort") : "works";
+  const gap = p => p.works ? p.noContractor / p.works : -1;
+  const rows = cards.all.filter(p => p.works).sort(sortKey === "gap" ? (a, b) => gap(b) - gap(a) : (a, b) => b[sortKey] - a[sortKey]);
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Road works", "#/roads"], [c.name, `#/city/${slug}`], ["Compare wards"]])}
+    <h1>Ward report cards: ${esc(c.name)}</h1>
+    <p class="lede">Every ward's road works side by side. Tap a ward for its full report card and the works behind each number.</p>
+    <div class="toolbar"><label class="select"><span>Sort</span><select id="cs">
+      ${[["works", "Most works"], ["cost", "Highest sanctioned"], ["paid", "Most paid"], ["late", "Most past finish date"], ["gap", "Most contractors unpublished"]].map(([k, l]) =>
+        `<option value="${k}"${k === sortKey ? " selected" : ""}>${l}</option>`).join("")}
+    </select></label></div>
+    <table class="plain stack"><thead><tr><th>Ward</th><th class="num">Works</th><th class="num">Sanctioned</th><th class="num">Paid</th><th class="num">Past finish</th><th class="num">No contractor</th></tr></thead>
+    <tbody>${rows.map(p => `<tr><td><a href="#/city/${slug}/ward/${enc(p.key)}">${esc(wardLabel(slug, p.ward))}</a></td>
+      <td class="num" data-label="Works">${fmtN(p.works)}</td><td class="num" data-label="Sanctioned">${inr(p.cost) || "—"}</td>
+      <td class="num" data-label="Paid">${inr(p.paid) || "—"}</td><td class="num" data-label="Past finish">${fmtN(p.late)}</td>
+      <td class="num" data-label="No contractor">${pct(p.noContractor, p.works)}</td></tr>`).join("")}</tbody></table>
+    <p class="muted small">${fmtN(cards.all.length - rows.length)} wards have no road works found yet. Works with no ward named in the source are not counted.</p>`;
+  document.getElementById("cs").onchange = e => setQuery({ sort: e.target.value === "works" ? "" : e.target.value });
+}
+
 async function ward(slug, key) {
   const [meta, list, wards, geo, mp] = await Promise.all([load("meta.json"), works(), wardLookup(), load(`wards/${slug}.geojson`),
     load("mplads_index.json").catch(() => [])]);
@@ -652,6 +1001,8 @@ async function ward(slug, key) {
   if (!none && !w) return notFound();
   const ww = list.filter(x => x.city === slug && (none ? !x.wards.length : x.wards.includes(key)));
   const sum = f => ww.reduce((a, x) => a + x[f], 0);
+  const cards = none ? null : await wardCards(slug);
+  if (cards) cards.built = meta.last_checked;
   // The ward's MP, and MP fund works whose description names the ward.
   let mpHtml = "";
   if (w && w.pc) {
@@ -674,11 +1025,13 @@ async function ward(slug, key) {
     ${stats([[fmtN(ww.length), "Road works"], [fmtN(ww.filter(x => x.flag).length), "Past finish date"],
       [inr(sum("cost")) || "—", "Sanctioned, where published"], [inr(sum("paid")) || "—", "Paid, where published"]])}
     ${none ? "" : '<div id="wardmap" class="map short"></div>'}
+    ${cards && ww.length ? reportCard(slug, c, cards.per[key], cards, ww) : ""}
     ${ww.some(x => x.ward_match.startsWith("crosswalk")) ? `<p class="note">Some works were filed under an older ward map. They are listed in every current ward that overlaps the old ward, so they can also appear in a neighbouring ward.</p>` : ""}
     <h2>Road works</h2>
     <div id="res"></div>
     ${mpHtml}`;
   results(document.getElementById("res"), ww, roadView());
+  wireCard(`${w ? w.name : c.name}: ward report card`);
   if (!none) {
     const m = newMap("wardmap");
     if (!m) return;
@@ -709,10 +1062,12 @@ async function work(id) {
     : w.ward_match.startsWith("crosswalk") ? `Filed under ${esc(w.ward_match.replace("crosswalk from ", "the ").replace(" (approximate)", ""))}. Shown in each current ward overlapping it (approximate).`
     : "The source does not name a ward we could recognise.";
   const row = fieldRow;
+  const missing = [[!w.contractor, "the contractor"], [!w.sanctioned_cost, "the cost"], [!w.start_date, "the start date"],
+    [w.deadline_basis !== "official", "an official finish date"], [!w.amount_paid, "the amount paid"]].filter(x => x[0]).map(x => x[1]);
   app.innerHTML = `
     ${crumbs([["Home", "#/"], ["Road works", "#/roads"], w.city ? [cityName, `#/city/${w.city}`] : [w.state, `#/state/${enc(w.state)}`], ["Work"]])}
     <h1 class="title">${esc(w.title)}</h1>
-    <p>${badge(w)}</p>
+    <p>${badge(w)} <a class="jump" href="#" onclick="document.getElementById('ask').scrollIntoView();return false">Ask about this work ↓</a></p>
     ${w.flag === "overdue" ? `<p class="note warn">The official finish date has passed and the source does not show the work as complete.</p>` : ""}
     ${w.flag === "past_estimate" ? `<p class="note warn">The source gives no finish date. Our estimate (bid opening + period of work) has passed. The work may have started later, so treat this as a question to ask, not a finding.</p>` : ""}
     <table class="fields"><tbody>
@@ -733,7 +1088,9 @@ async function work(id) {
     <h2>Official source</h2>
     <p><a class="btn" href="${esc(w.source_url)}" target="_blank" rel="noopener">Open source record</a></p>
     <p class="muted small">${esc(w.source_note)} Record ${esc(w.source_id)}. First seen ${date(w.first_seen)}, last checked ${date(w.last_checked)}.</p>
+    ${askPanel(missing.length ? `The source does not publish ${missing.join(", ")}. An RTI application makes the agency give it to you.` : "Want the full file, or the work is stuck? Send an RTI application or a complaint.")}
     <p class="small"><a href="${REPO}/issues/new?title=${enc("Data: " + w.id)}">Report a mistake</a></p>`;
+  wireAsk([["rti", "RTI application", me => roadRti(w, me)], ["complaint", "Complaint letter", me => roadComplaint(w, me)]], w.source_id);
 }
 
 async function overdue() {
@@ -832,6 +1189,7 @@ async function mpWork(slug, id) {
   app.innerHTML = `
     ${crumbs([["Home", "#/"], ["MP funds", "#/mp"], [s.state, `#/mp/${slug}`], [w.constituency, `#/mp/${slug}/${w.constituency_id}`], ["Work"]])}
     <h1 class="title">${esc(w.description || w.activity)}</h1>
+    <p><a class="jump" href="#" onclick="document.getElementById('ask').scrollIntoView();return false">Ask about this work ↓</a></p>
     ${overYear(w) ? `<p>${yearBadge(w)}</p><p class="note warn">Sanctioned on ${date(w.sanction_date)} and not marked complete. MPLADS rules say sanctioned works are generally to be completed within one year. The work may be finished but not yet marked complete on the portal, so treat this as a question for the district authority.</p>` : ""}
     <table class="fields"><tbody>
       ${row("MP", esc(person(w.mp_name)))}
@@ -848,7 +1206,12 @@ async function mpWork(slug, id) {
     <h2>Official source</h2>
     <p><a class="btn" href="https://mplads.mospi.gov.in/digigov/dashboard.html" target="_blank" rel="noopener">Open eSAKSHI dashboard</a></p>
     <p class="muted small">On the dashboard choose ${esc(s.state)} › ${esc(w.constituency)}, open "Works Recommended" and search letter ${esc(w.letter_no)}. Last checked ${date(w.last_checked)}.</p>
+    ${askPanel(overYear(w) ? "This work is over a year past sanction and not marked complete. Ask the district authority why."
+      : STAGE_PENDING(w.stage) ? "This work is still waiting for sanction. Ask the district authority where it stands."
+      : "Want the sanction order, the contractor's name or the completion certificate? Ask the district authority.")}
     <p class="small"><a href="${REPO}/issues/new?title=${enc("Data: " + w.id)}">Report a mistake</a></p>`;
+  const ws = { ...w, state: s.state };
+  wireAsk([["rti", "RTI application", me => mpRti(ws, me)], ["complaint", "Letter to the Collector", me => mpComplaint(ws, me)]], w.letter_no || w.id);
 }
 
 // ---------- about ----------
@@ -914,7 +1277,7 @@ const GUIDES = [
     blurb: "How the scheme works, what each stage means, and how to look up your MP's works, download them and suggest a work." },
   { key: "kppp", title: "Karnataka tenders (KPPP)", blurb: "Finding a tender, its value and the awarded contractor." },
   { key: "gepnic", title: "State and central tender portals (eProcure)", blurb: "Searching tenders by organisation and Tender ID." },
-  { key: "rti", title: "Filing an RTI for missing details", blurb: "What to ask, whom to send it to, and how to cite a work number." },
+  { key: "rti", title: "Filing an RTI for missing details", ready: true, blurb: "What to ask, whom to send it to, the fee, the deadlines, and what to do if there is no reply." },
 ];
 
 async function guides() {
@@ -960,10 +1323,10 @@ async function guideMplads() {
     <ol class="steps">
       <li>Open <a href="https://mplads.mospi.gov.in/" target="_blank" rel="noopener">mplads.mospi.gov.in</a> and tap <b>Dashboard</b> in the top menu.</li>
       <li>A notice titled "What you need to know about the process…" opens. Read it if you like, then close it with the <b>×</b> at its top right.${img("02_dashboard_popup.jpg", "The notice that opens over the dashboard; close it with the × at the top right.")}</li>
-      <li>Choose <b>Lok Sabha</b> (or <b>Rajya Sabha</b>).</li>
-      <li>Tap <b>Filter</b>. Pick the <b>Tenure</b> (the current one is 18th Lok Sabha), your <b>State</b>, your <b>Constituency</b> and, if you like, the <b>MP Name</b>. Tap <b>Search</b>.${img("04_filter_chosen.jpg", "The filter with tenure, state and constituency chosen.")}</li>
-      <li>The tiles now show totals for that MP: <b>Allocated Limit</b>, <b>Works Recommended</b>, <b>Works Sanctioned</b>, <b>Works Completed</b> and <b>Expenditure</b>.${img("05_after_search.jpg", "Totals for one constituency after Search.")}</li>
-      <li>Tap a tile, for example <b>Works Recommended</b>. The list of works loads below the tiles.${img("06_works_table.jpg", "The list of works below the tiles.")}</li>
+      <li>Choose <b>Lok Sabha</b> (or <b>Rajya Sabha</b>) at the top right. The tiles show totals for the whole country.${img("03_dashboard.jpg", "The dashboard with the notice closed: the search box with its filter icon, the Lok Sabha and Rajya Sabha buttons, and the all-India totals.")}</li>
+      <li>Tap the <b>filter icon</b> (the sliders at the right end of the search box). Pick the <b>Tenure</b> (the current one is 18th Lok Sabha), your <b>State</b>, your <b>Constituency</b> and, if you like, the <b>MP Name</b>. Tap <b>Search</b>.</li>
+      <li>The search box now shows your choices, and the tiles show totals for that MP: <b>Allocated Limit</b>, <b>Works Recommended</b>, <b>Works Sanctioned</b>, <b>Works Completed</b> and <b>Expenditure</b>.${img("05_after_search.jpg", "After Search: 18th Lok Sabha, Bangalore South, Karnataka, with that constituency's totals.")}</li>
+      <li>Tap a tile, for example <b>Works Recommended</b>. The list of works loads below the tiles, 20 to a page.${img("06_works_table.jpg", "The Works Recommended list for one constituency, with Excel, CSV and PDF download buttons.")}</li>
       <li>Use the <b>Search</b> box above the list to find a place or a recommendation letter number (it looks like <code>LN/MP341/2025-2026/170</code>; Nagarika shows it on every work).</li>
       <li>Tap <b>Excel</b>, <b>CSV</b> or <b>PDF</b> to download the list.</li>
       <li>Some works have <b>Attachments</b> (photos of the asset at each stage, sanction orders) and <b>Reviews and Rating</b> from citizens.</li>
@@ -998,6 +1361,64 @@ async function guideMplads() {
   if (parseHash().q.get("s") === "stages") setTimeout(() => document.getElementById("stages")?.scrollIntoView(), 0);
 }
 
+function guideRti() {
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Guides", "#/guides"], ["RTI"]])}
+    <article class="guide">
+    <h1>Filing an RTI for missing details</h1>
+    <p class="lede">The Right to Information Act, 2005 lets any citizen ask a public authority for records it holds: work orders, bills, sanction orders, inspection reports. It is the main way to fill in what a portal leaves out. Every work page on Nagarika has an "Ask about this work" box that writes the application for you.</p>
+
+    <h2>Before you start</h2>
+    <ul>
+      <li><b>Ask for records, not opinions.</b> "A copy of the work order" or "the dates and amounts of bills paid" gets answers. "Why is the road so bad?" usually does not.</li>
+      <li><b>Quote the reference.</b> Give the tender ID, work-order number or MPLADS recommendation letter number shown on Nagarika. It tells the office exactly which file to open.</li>
+      <li><b>You don't have to give a reason</b> for asking (section 6(2)), only details needed to contact you.</li>
+    </ul>
+
+    <h2>Where to send it</h2>
+    <ul>
+      <li>Address it to the <b>Public Information Officer (PIO)</b> of the office that holds the file: for road works, the agency and division named on the work (for example the city corporation's zone or division office, or the PWD division); for MPLADS works, the District Collector or Deputy Commissioner's office, which sanctions and pays for them.</li>
+      <li>If you send it to the wrong office, the PIO must transfer it to the right public authority within 5 days (section 6(3)), so don't let uncertainty stop you.</li>
+      <li><b>Central government bodies</b> (central ministries, departments and many of their offices) accept applications online at <a href="https://rtionline.gov.in" target="_blank" rel="noopener">rtionline.gov.in</a>. Several states run their own online RTI portals; otherwise send it by post or hand it in.</li>
+    </ul>
+
+    <h2>Fee</h2>
+    <ul>
+      <li>The application fee is ₹10 for central bodies and in most states. Each state sets its own fee and payment methods (postal order, demand draft, court-fee stamp, cash or online), so check what the office accepts.</li>
+      <li>People below the poverty line pay no fee; enclose a copy of the BPL certificate.</li>
+      <li>Copies of documents cost extra, usually a few rupees a page. The PIO tells you the amount.</li>
+    </ul>
+
+    <h2>Sending it</h2>
+    <ol class="steps">
+      <li>Open the work on Nagarika, scroll to <b>Ask about this work</b>, fill in your name and address, and read the draft. Change anything that doesn't fit.</li>
+      <li>Print it and sign it, or copy it into the online portal.</li>
+      <li>Attach the fee. Keep a copy of everything.</li>
+      <li>Send it by Speed Post or registered post, or hand it in and ask for a dated acknowledgement. Note the date it was received: the deadlines run from that day.</li>
+    </ol>
+
+    <h2>Deadlines</h2>
+    <table class="fields"><tbody>
+      <tr><th scope="row">Reply from the PIO</th><td>Within 30 days of receipt (section 7(1)). 48 hours if it concerns someone's life or liberty. 5 more days if it was received through an Assistant PIO.</td></tr>
+      <tr><th scope="row">No reply in time</th><td>The information must then be given free of charge (section 7(6)).</td></tr>
+      <tr><th scope="row">First appeal</th><td>If there is no reply, or the reply is incomplete or refused, appeal to the First Appellate Authority, an officer senior to the PIO in the same office, within 30 days (section 19(1)). No fee is charged under the central rules.</td></tr>
+      <tr><th scope="row">Second appeal</th><td>If the first appeal fails, appeal to the State Information Commission (or the Central Information Commission for central bodies) within 90 days (section 19(3)).</td></tr>
+    </tbody></table>
+
+    <h2>What you can ask for on a public work</h2>
+    <ul>
+      <li>The work order or agreement, the estimate and bill of quantities.</li>
+      <li>The contractor's name, the date of award, the completion date and any extensions.</li>
+      <li>Bills paid, with dates and amounts, and the measurement book entries behind them.</li>
+      <li>Quality test reports, inspection reports and the defect liability period.</li>
+      <li>For MPLADS: the sanction order, the implementing agency, funds released, utilisation and completion certificates.</li>
+      <li>Inspection of the records or the work itself, and certified samples of material used (section 2(j)).</li>
+    </ul>
+
+    <p class="muted small">This guide summarises the Act; it is not legal advice. The full text is on <a href="https://rti.gov.in" target="_blank" rel="noopener">rti.gov.in</a>. Spotted something out of date? <a href="${REPO}/issues">Tell us</a>.</p>
+    </article>`;
+}
+
 function notFound() {
   app.innerHTML = `${crumbs([["Home", "#/"], ["Not found"]])}<h1>Page not found</h1><p><a href="#/">Go to the home page</a></p>`;
 }
@@ -1021,6 +1442,7 @@ async function route() {
     else if (parts[0] === "search") await search();
     else if (parts[0] === "roads") await roadsHome();
     else if (parts[0] === "city" && parts[2] === "ward") await ward(parts[1], parts[3]);
+    else if (parts[0] === "city" && parts[2] === "cards") await wardCompare(parts[1]);
     else if (parts[0] === "city") await city(parts[1]);
     else if (parts[0] === "state") await state(parts[1]);
     else if (parts[0] === "work") await work(parts.slice(1).join("/"));
@@ -1031,6 +1453,7 @@ async function route() {
     else if (parts[0] === "mpwork") await mpWork(parts[1], parts.slice(2).join("/"));
     else if (parts[0] === "about") await about();
     else if (parts[0] === "guides" && parts[1] === "mplads") await guideMplads();
+    else if (parts[0] === "guides" && parts[1] === "rti") guideRti();
     else if (parts[0] === "guides") await guides();
     else notFound();
     if (toResults) document.getElementById("res")?.scrollIntoView({ block: "start" });

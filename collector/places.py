@@ -59,6 +59,10 @@ def _norm(s):
     return re.sub(r"[^a-z0-9 ]+", " ", (s or "").lower()).strip()
 
 
+# Mumbai wards created after our 24-ward map, and the ward each was carved from.
+MUMBAI_SPLIT = {"K/N": "K/E", "P/E": "P/N"}
+
+
 class WardMatcher:
     """Finds wards named in free text. Only unambiguous matches are returned."""
 
@@ -80,6 +84,7 @@ class WardMatcher:
         ) if self.names else None
 
     def match(self, text):
+        self.approx = ""  # set to the source's ward code when the match is approximate
         if not self.wards or not text:
             return []
         t = _norm(text)
@@ -91,16 +96,18 @@ class WardMatcher:
                 for n in re.findall(r"\d{1,3}", m.group(1)):
                     found += self.by_no.get(str(int(n)), [])
         elif self.city == "mumbai":
-            # "K/E ward", "L Ward", "P/North ward", "ward G/S"
             # "K/E ward", "G/North", "RC ward", "P South ward", "Pwest Ward", "L Ward", "ward G/S"
             for m in re.finditer(r"\b([A-T])\s*/\s*(N|S|E|W|C|North|South|East|West|Central)\b"
                                  r"|\b([A-T])\s*(N|S|E|W|C|North|South|East|West|Central)\s*-?\s*ward\b"
-                                 r"|\b([A-T])\s+ward\b|\bward\s+([A-T])\b", text, re.I):
+                                 r"|\b([A-T])\s+ward\b|\bward\s+([A-T])\b(?!\s*/)", text, re.I):
                 if m.group(1) or m.group(3):
                     letter, side = (m.group(1), m.group(2)) if m.group(1) else (m.group(3), m.group(4))
                     code = f"{letter.upper()}/{side[0].upper()}"
                 else:
                     code = (m.group(5) or m.group(6)).upper()
+                if code in MUMBAI_SPLIT:  # a ward newer than our map: use the ward it was carved from
+                    self.approx = code
+                    code = MUMBAI_SPLIT[code]
                 found += self.by_no.get(code, [])
         if self.name_re:
             found += [self.names[m.group(1)] for m in self.name_re.finditer(t)]

@@ -222,3 +222,28 @@ table.fields th .help { display: block; font-weight: 400; font-size: .78rem; col
 .shot img { display: block; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); }
 .shot figcaption { font-size: .8rem; color: var(--muted); margin-top: 4px; }
 code { font-size: .85em; background: var(--accent-soft); padding: 1px 4px; border-radius: 4px; }
+
+/* "Ask about this work": RTI and complaint drafts */
+.ask { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 16px 12px; margin: 24px 0 16px; }
+.ask h2 { margin-top: 12px; }
+.askgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; margin: 12px 0; }
+.askgrid label { display: flex; flex-direction: column; gap: 4px; font-size: .85rem; color: var(--muted); }
+.askgrid .wide { grid-column: 1 / -1; }
+.askgrid textarea { resize: vertical; }
+.draft { display: block; font: .9rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; resize: vertical; }
+.askbtns { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 4px; }
+.jump { font-size: .9rem; white-space: nowrap; }
+@media (max-width: 600px) { .askgrid { grid-template-columns: 1fr; } .draft { font-size: .8rem; } }
+
+/* Ward report card */
+.report { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 16px 8px; margin: 16px 0; }
+.reporthead { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.report h3 { font-size: 1rem; margin: 16px 0 6px; }
+ol.tight, ul.tight { margin: 0; padding-left: 20px; }
+ol.tight li, ul.tight li { margin: 2px 0; }
+@media print {
+  .top, .foot, .noprint, .jump, .ask, .map, .crumbs { display: none !important; }
+  body.printcard #app > *:not(#card) { display: none !important; }
+  body.printcard .report { border: 0; padding: 0; }
+  a { color: inherit; text-decoration: none; }
+}

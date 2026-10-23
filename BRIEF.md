@@ -142,6 +142,16 @@ files (e.g. OpenCity); OpenStreetMap for map tiles.
   tenders are remembered, pilot portals get more time, filter and ward matching
   widened (142 of 353 kept in a test, 120 with a ward).
 
+- "Ask about this work" (owner, 2026-10-23): every road and MP fund work page drafts an
+  RTI application and a complaint letter from the record, turning each "not published"
+  field into a question. Text only, built in the browser; the person copies, downloads
+  or prints it. Name and address stay in the browser. A Guides page explains RTI
+  (where to send, fee, 30-day reply, appeals).
+- Ward report cards (owner, 2026-10-23): each ward page in the ward-map cities shows
+  totals with ranks among the city's wards, data gaps against the city average, the
+  biggest works, frequent contractors and questions to raise; /city/<slug>/cards
+  compares all wards. Non-partisan: about works, not people.
+
 ## Open questions
 - Which unconfirmed state GePNIC portals are reachable from GitHub runners (the run
   summary reports each one)
