@@ -1,0 +1,2504 @@
+{
+  "sha": "9b4d1c2ece54cdeb6f5e8bad9ccad7844f783b17",
+  "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/9b4d1c2ece54cdeb6f5e8bad9ccad7844f783b17",
+  "tree": [
+    {
+      "path": "Ahmedabad",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "586bef92a9a81527240ac789674e71dfde6d389a",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/586bef92a9a81527240ac789674e71dfde6d389a"
+    },
+    {
+      "path": "Ahmedabad/AMC Facilities.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3287baf00397fb236319d6f25de420f477b6cf07",
+      "size": 318860,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3287baf00397fb236319d6f25de420f477b6cf07"
+    },
+    {
+      "path": "Ahmedabad/Library.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d0110d65061dbed63d43b39e528279638fdee15",
+      "size": 27303,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3d0110d65061dbed63d43b39e528279638fdee15"
+    },
+    {
+      "path": "Ahmedabad/Municipal_gyms.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "64fdcf6a9ba894025ebbdfe4a29282996a0235ba",
+      "size": 19049,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/64fdcf6a9ba894025ebbdfe4a29282996a0235ba"
+    },
+    {
+      "path": "Ahmedabad/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c3a0c0e3eed10030586bf3c9fb9e361424efa0d9",
+      "size": 959,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c3a0c0e3eed10030586bf3c9fb9e361424efa0d9"
+    },
+    {
+      "path": "Ahmedabad/Swimming_pools.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c33ec2680e646f49b9aae86f1d030fb4be2e5e5d",
+      "size": 6662,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c33ec2680e646f49b9aae86f1d030fb4be2e5e5d"
+    },
+    {
+      "path": "Ahmedabad/Ward_office.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "df546a5dad9d43fbd34c136ea6fabb0f24453539",
+      "size": 26793,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/df546a5dad9d43fbd34c136ea6fabb0f24453539"
+    },
+    {
+      "path": "Ahmedabad/Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "87fa5ef49c01c83a349db498f70f78dfd613d288",
+      "size": 1238225,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/87fa5ef49c01c83a349db498f70f78dfd613d288"
+    },
+    {
+      "path": "Ahmedabad/Zonal_office.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb3cbf51bdbbb44f24026668f1af9346e67783b2",
+      "size": 2534,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/cb3cbf51bdbbb44f24026668f1af9346e67783b2"
+    },
+    {
+      "path": "Bangalore",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3740311b14388248146eded0f84d085dc3c511e1",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/3740311b14388248146eded0f84d085dc3c511e1"
+    },
+    {
+      "path": "Bangalore/BBMP.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "392908c9edd0f2909df27dfc861270b92a4bf0b8",
+      "size": 2103364,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/392908c9edd0f2909df27dfc861270b92a4bf0b8"
+    },
+    {
+      "path": "Bangalore/BBMP_oldWards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "62bb56f6cddc175848cde7bcc06dc5b51f217b72",
+      "size": 1881095,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/62bb56f6cddc175848cde7bcc06dc5b51f217b72"
+    },
+    {
+      "path": "Bangalore/BBMP_oldWards.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "294cac79a20df3fb393f66fb9ff737437572815a",
+      "size": 1639863,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/294cac79a20df3fb393f66fb9ff737437572815a"
+    },
+    {
+      "path": "Bangalore/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af18b69adcb51dab553782593f80568f8930a528",
+      "size": 580,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/af18b69adcb51dab553782593f80568f8930a528"
+    },
+    {
+      "path": "Bhopal",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4487e571c30abcd99a436f3b5e7e9be77637df6c",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/4487e571c30abcd99a436f3b5e7e9be77637df6c"
+    },
+    {
+      "path": "Bhopal/Bhopal_wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ee4f3d37801c578c9a44131524d5b61bab3fc2c5",
+      "size": 1727478,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ee4f3d37801c578c9a44131524d5b61bab3fc2c5"
+    },
+    {
+      "path": "Bhopal/Planning_ Boundary_ 2031.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa949f20844ba60df4d9314af599e5536b9e35cc",
+      "size": 368826,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/aa949f20844ba60df4d9314af599e5536b9e35cc"
+    },
+    {
+      "path": "Bhopal/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8933f63ff270b7aa14b91df57cda7779d9cd45b0",
+      "size": 810,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/8933f63ff270b7aa14b91df57cda7779d9cd45b0"
+    },
+    {
+      "path": "Bhopal/Ward Map of Bhopal.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc8195316c4b5a8c6b61233759e8672db7b898f8",
+      "size": 388554,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/cc8195316c4b5a8c6b61233759e8672db7b898f8"
+    },
+    {
+      "path": "Bhopal/Ward_Offices.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a10b447e978c71762a040cd05eb3ed0923a37b2",
+      "size": 13063,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1a10b447e978c71762a040cd05eb3ed0923a37b2"
+    },
+    {
+      "path": "Bhopal/Zone_Boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc680c5119b123d61e5174e0d0edfa3d4e9f587e",
+      "size": 883036,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/cc680c5119b123d61e5174e0d0edfa3d4e9f587e"
+    },
+    {
+      "path": "Bhopal/Zone_Offices.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3984a64cb74b70dbc004f92ca103e97f9d0fcee3",
+      "size": 2979,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3984a64cb74b70dbc004f92ca103e97f9d0fcee3"
+    },
+    {
+      "path": "Bhubaneswar",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "01993f2377b3d424f09ca4f4206ce656cd2157e4",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/01993f2377b3d424f09ca4f4206ce656cd2157e4"
+    },
+    {
+      "path": "Bhubaneswar/BDA_Boundary.GeoJSON",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "50e92612914751cbc3160c23c127b81501976eb7",
+      "size": 712769,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/50e92612914751cbc3160c23c127b81501976eb7"
+    },
+    {
+      "path": "Bhubaneswar/BDA_Boundary.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b27d99c705dfe91bd172386f4bba8b2c69996884",
+      "size": 607304,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/b27d99c705dfe91bd172386f4bba8b2c69996884"
+    },
+    {
+      "path": "Bhubaneswar/BMC Boundary.GeoJSON",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa36886c4ee236546176416807653585744ef0db",
+      "size": 399404,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/aa36886c4ee236546176416807653585744ef0db"
+    },
+    {
+      "path": "Bhubaneswar/BMC Boundary.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b3602e541c33777638a0bbbdcc8b1893f8e3ee46",
+      "size": 341476,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/b3602e541c33777638a0bbbdcc8b1893f8e3ee46"
+    },
+    {
+      "path": "Bhubaneswar/Police_Jurisdiction.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c4ad18f78f5eab21736e37cda59e5cd7a771a81d",
+      "size": 255100,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c4ad18f78f5eab21736e37cda59e5cd7a771a81d"
+    },
+    {
+      "path": "Bhubaneswar/Police_Jurisdiction.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "41b0b6ef26ad2aa3d8b8c6325839c05fd1b870fe",
+      "size": 203600,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/41b0b6ef26ad2aa3d8b8c6325839c05fd1b870fe"
+    },
+    {
+      "path": "Bhubaneswar/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ed631252bd4a7e1fac9feac9a22ef1b8cbca34cc",
+      "size": 652,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ed631252bd4a7e1fac9feac9a22ef1b8cbca34cc"
+    },
+    {
+      "path": "Bhubaneswar/Wards.GeoJSON",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d2c32040eb67e47f4da2e4c8307868fe3e4de0e4",
+      "size": 723961,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/d2c32040eb67e47f4da2e4c8307868fe3e4de0e4"
+    },
+    {
+      "path": "Bhubaneswar/Wards.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5533c8f85731f7942b57f2c4f63ad05b562fd49",
+      "size": 714255,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/d5533c8f85731f7942b57f2c4f63ad05b562fd49"
+    },
+    {
+      "path": "Bodh_Gaya",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2269409de2613f26436f1d6c8cf8bac3d0e932c2",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/2269409de2613f26436f1d6c8cf8bac3d0e932c2"
+    },
+    {
+      "path": "Bodh_Gaya/Bodh_Gaya_Boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8008ffa3cf6bd6f67fb44d2757a49c64b25a2069",
+      "size": 22751,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/8008ffa3cf6bd6f67fb44d2757a49c64b25a2069"
+    },
+    {
+      "path": "Bodh_Gaya/Bodh_Gaya_Boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c817d36047936fcc6eeeef18efc6d65ac3d13a41",
+      "size": 81034,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c817d36047936fcc6eeeef18efc6d65ac3d13a41"
+    },
+    {
+      "path": "Bodh_Gaya/Bodh_Gaya_Wards-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "15cb0ecb3e219d1701294bfdf0fe3f5cb5d208e7",
+      "size": 22,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/15cb0ecb3e219d1701294bfdf0fe3f5cb5d208e7"
+    },
+    {
+      "path": "Bodh_Gaya/Bodh_Gaya_Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "affa7602015e9639e443f397c327faf6c33a4abb",
+      "size": 153981,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/affa7602015e9639e443f397c327faf6c33a4abb"
+    },
+    {
+      "path": "Bodh_Gaya/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1cf10ba248534390572e5955baa7e75a1982266e",
+      "size": 540,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1cf10ba248534390572e5955baa7e75a1982266e"
+    },
+    {
+      "path": "Chandigarh",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "989d377566ab7cbd9b5e9dfef12f8f5642efcca7",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/989d377566ab7cbd9b5e9dfef12f8f5642efcca7"
+    },
+    {
+      "path": "Chandigarh/Chandigarh_Boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "81356c3686a3eef135acd21c532ce42ed3738263",
+      "size": 9917,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/81356c3686a3eef135acd21c532ce42ed3738263"
+    },
+    {
+      "path": "Chandigarh/Chandigarh_Boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3b6e665fb90dd5b2d3c1b41a9fbd1274aa3a0194",
+      "size": 22929,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3b6e665fb90dd5b2d3c1b41a9fbd1274aa3a0194"
+    },
+    {
+      "path": "Chandigarh/Chandigarh_Sectors-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d475a4cdad04acfccf5f349f90aa945c8127e5d8",
+      "size": 11614,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/d475a4cdad04acfccf5f349f90aa945c8127e5d8"
+    },
+    {
+      "path": "Chandigarh/Chandigarh_Sectors.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4ef6c60296ab94407dc40748b938bf352cbd0c12",
+      "size": 49741,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/4ef6c60296ab94407dc40748b938bf352cbd0c12"
+    },
+    {
+      "path": "Chandigarh/Chandigarh_Wards-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e0dcd339a40a6fa39bf55ba99b2a8e86e9ad550d",
+      "size": 12753,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e0dcd339a40a6fa39bf55ba99b2a8e86e9ad550d"
+    },
+    {
+      "path": "Chandigarh/Chandigarh_Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c32b0c3ec591c035d04b9c4974324969df2737e0",
+      "size": 50922,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c32b0c3ec591c035d04b9c4974324969df2737e0"
+    },
+    {
+      "path": "Chandigarh/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c7bd8c6030541e0219f52316cf957983180ac436",
+      "size": 708,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c7bd8c6030541e0219f52316cf957983180ac436"
+    },
+    {
+      "path": "Chennai",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "63e98b656397b2ad979b26b374ff44238349ea42",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/63e98b656397b2ad979b26b374ff44238349ea42"
+    },
+    {
+      "path": "Chennai/CMA.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fce430eb11d50506f35d3238d2d7e2d2ba261915",
+      "size": 42452,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/fce430eb11d50506f35d3238d2d7e2d2ba261915"
+    },
+    {
+      "path": "Chennai/CMA.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb33c683bef0e853fa5beef8826d1a0008f28da7",
+      "size": 33287,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/cb33c683bef0e853fa5beef8826d1a0008f28da7"
+    },
+    {
+      "path": "Chennai/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "227d14315b731996954e1b57efb019c5aa49a30a",
+      "size": 454,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/227d14315b731996954e1b57efb019c5aa49a30a"
+    },
+    {
+      "path": "Chennai/Wards-2008.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6f87f1edf8e36215cd3517ea4b3d852331e1248f",
+      "size": 172525,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/6f87f1edf8e36215cd3517ea4b3d852331e1248f"
+    },
+    {
+      "path": "Chennai/Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d9f04c3657e787ba61983e45454c089a2fa51a51",
+      "size": 608157,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/d9f04c3657e787ba61983e45454c089a2fa51a51"
+    },
+    {
+      "path": "Chennai/Wards.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "53fe3822e16662a2fda59b1d500995641bc61a7b",
+      "size": 569055,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/53fe3822e16662a2fda59b1d500995641bc61a7b"
+    },
+    {
+      "path": "Chennai/Zones.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d2673415d0a4ed9dd55bca64d0cce11e265b1afb",
+      "size": 201186,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/d2673415d0a4ed9dd55bca64d0cce11e265b1afb"
+    },
+    {
+      "path": "Chennai/Zones.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "49397dca684597729628b75305be0793509356ad",
+      "size": 161769,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/49397dca684597729628b75305be0793509356ad"
+    },
+    {
+      "path": "Coimbatore",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e0d5bcb7499b2cb56964dfce401f7b6566942506",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/e0d5bcb7499b2cb56964dfce401f7b6566942506"
+    },
+    {
+      "path": "Coimbatore/Cbe2011Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e5cb7c4768b2f6a8fa69e1a7fdd44e6148c30a97",
+      "size": 376177,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e5cb7c4768b2f6a8fa69e1a7fdd44e6148c30a97"
+    },
+    {
+      "path": "Coimbatore/CbeCensus2011Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c308f34872ec769d6ba068c7729b4a72abeb84ca",
+      "size": 137443,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c308f34872ec769d6ba068c7729b4a72abeb84ca"
+    },
+    {
+      "path": "Coimbatore/ReadMe.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4514047da15a783a438be90037edf92a1783cdd0",
+      "size": 478,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/4514047da15a783a438be90037edf92a1783cdd0"
+    },
+    {
+      "path": "Delhi",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3a134669178ba5c78ddee49a69b6969b04db8e86",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/3a134669178ba5c78ddee49a69b6969b04db8e86"
+    },
+    {
+      "path": "Delhi/Delhi_Boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b79601c6f534d0cf2820c486cc1135ffb6296cc2",
+      "size": 19025,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/b79601c6f534d0cf2820c486cc1135ffb6296cc2"
+    },
+    {
+      "path": "Delhi/Delhi_Boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "501f392af04c03723c7a3aebf9163e163e7be709",
+      "size": 65343,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/501f392af04c03723c7a3aebf9163e163e7be709"
+    },
+    {
+      "path": "Delhi/Delhi_Wards-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ccb350925b297ee06a1221d73b0f2c9a3df8edf3",
+      "size": 166356,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ccb350925b297ee06a1221d73b0f2c9a3df8edf3"
+    },
+    {
+      "path": "Delhi/Delhi_Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "18d52b81f69d1cfccb99a9218559aee9d22bb0f0",
+      "size": 734870,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/18d52b81f69d1cfccb99a9218559aee9d22bb0f0"
+    },
+    {
+      "path": "Delhi/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2f5df88c9a944dfa6b3e7d13169a97fc06be3183",
+      "size": 718,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/2f5df88c9a944dfa6b3e7d13169a97fc06be3183"
+    },
+    {
+      "path": "Faridabad",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2a7f39bea72cfe6eafd006c95b8fe614a7c48b4d",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/2a7f39bea72cfe6eafd006c95b8fe614a7c48b4d"
+    },
+    {
+      "path": "Faridabad/Faridabad_Boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3cb138c0433f0b8e207577b2646362a1aa5d30c8",
+      "size": 6826,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3cb138c0433f0b8e207577b2646362a1aa5d30c8"
+    },
+    {
+      "path": "Faridabad/Faridabad_Boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11fc87869b934f144ef17dcd626a9fb576f64e8b",
+      "size": 20107,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/11fc87869b934f144ef17dcd626a9fb576f64e8b"
+    },
+    {
+      "path": "Faridabad/Faridabad_Wards-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "817be3ba70ac7276b443d8ed980b1ce7a0ba2fc0",
+      "size": 20514,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/817be3ba70ac7276b443d8ed980b1ce7a0ba2fc0"
+    },
+    {
+      "path": "Faridabad/Faridabad_Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6176c0374ada988a9d1dcc17fd12aba44c4018e5",
+      "size": 101068,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/6176c0374ada988a9d1dcc17fd12aba44c4018e5"
+    },
+    {
+      "path": "Faridabad/Faridabad_Wards.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec4158ac51dc85e602d5d615068e325b77ed8cf7",
+      "size": 174606,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ec4158ac51dc85e602d5d615068e325b77ed8cf7"
+    },
+    {
+      "path": "Faridabad/Layer1_Symbol_ae90e30_0.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "49b3caa7b2d69214622e4305a39492f8be191edb",
+      "size": 99,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/49b3caa7b2d69214622e4305a39492f8be191edb"
+    },
+    {
+      "path": "Faridabad/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "01799d76ecae24f0716421f6c935a05eb8da0462",
+      "size": 608,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/01799d76ecae24f0716421f6c935a05eb8da0462"
+    },
+    {
+      "path": "Hyderabad",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "12129d7620952acf4cc993db18e445d82d328adf",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/12129d7620952acf4cc993db18e445d82d328adf"
+    },
+    {
+      "path": "Hyderabad/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d31b1b637373047c153e26672f86be6154c0572a",
+      "size": 7388,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/d31b1b637373047c153e26672f86be6154c0572a"
+    },
+    {
+      "path": "Hyderabad/ghmc-area.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d3cc7eadd17eac912935fe9ec5ec4866aa5ae94",
+      "size": 73069,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/2d3cc7eadd17eac912935fe9ec5ec4866aa5ae94"
+    },
+    {
+      "path": "Hyderabad/ghmc-area.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "60035539c9ff52ab2dc024d3d65e04d894ffeb63",
+      "size": 19539,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/60035539c9ff52ab2dc024d3d65e04d894ffeb63"
+    },
+    {
+      "path": "Hyderabad/ghmc-wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d4c2248632d1e7b1304592778536d514cc75c09a",
+      "size": 586420,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/d4c2248632d1e7b1304592778536d514cc75c09a"
+    },
+    {
+      "path": "Hyderabad/ghmc-wards.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b895bdbd185bd31b2b0c3ebc347987d9f565acfb",
+      "size": 243732,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/b895bdbd185bd31b2b0c3ebc347987d9f565acfb"
+    },
+    {
+      "path": "Hyderabad/ghmc-zones.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "18e0450e3328fbbc19f97402dbe67a63845266fc",
+      "size": 154881,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/18e0450e3328fbbc19f97402dbe67a63845266fc"
+    },
+    {
+      "path": "Hyderabad/ghmc-zones.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ecc3f642a36bd128ce8b4943eccb544eea7da92",
+      "size": 43966,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/6ecc3f642a36bd128ce8b4943eccb544eea7da92"
+    },
+    {
+      "path": "Jaipur",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "7715d637601f310cee9a0d5895bb6881009f6399",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/7715d637601f310cee9a0d5895bb6881009f6399"
+    },
+    {
+      "path": "Jaipur/Jaipur_Assembly_constituency-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "adbfcc8d34f213b91da7648f88face4da8d8280b",
+      "size": 37305,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/adbfcc8d34f213b91da7648f88face4da8d8280b"
+    },
+    {
+      "path": "Jaipur/Jaipur_Assembly_constituency.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8973f66ec338cd19a11ab1e305443b898b683f70",
+      "size": 164690,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/8973f66ec338cd19a11ab1e305443b898b683f70"
+    },
+    {
+      "path": "Jaipur/Jaipur_Boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a65f2ff4b2ae010d94fd05dc18d359bd79bbcd8a",
+      "size": 18998,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a65f2ff4b2ae010d94fd05dc18d359bd79bbcd8a"
+    },
+    {
+      "path": "Jaipur/Jaipur_Boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9d19ec57b3457f6cf2995eb44f84513ee6fcfb2b",
+      "size": 62704,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/9d19ec57b3457f6cf2995eb44f84513ee6fcfb2b"
+    },
+    {
+      "path": "Jaipur/Jaipur_Wards-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5b8bb10bbb2d2ec97a542c66a602a97249d089df",
+      "size": 74166,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/5b8bb10bbb2d2ec97a542c66a602a97249d089df"
+    },
+    {
+      "path": "Jaipur/Jaipur_Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "803d77cd041fc64d2cf2c55cc8de5af5c68a2d2f",
+      "size": 354043,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/803d77cd041fc64d2cf2c55cc8de5af5c68a2d2f"
+    },
+    {
+      "path": "Jaipur/Jaipur_Zones-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1b5e2beac56b6b4ffa08b7b212c828d3c8833ae2",
+      "size": 37800,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1b5e2beac56b6b4ffa08b7b212c828d3c8833ae2"
+    },
+    {
+      "path": "Jaipur/Jaipur_Zones.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "27b0a73954f3e4408523fde796ffec197f4fe2de",
+      "size": 164544,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/27b0a73954f3e4408523fde796ffec197f4fe2de"
+    },
+    {
+      "path": "Jaipur/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b2063ea6a1e1038d783f4f84bd92ab311b7b65b",
+      "size": 865,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/8b2063ea6a1e1038d783f4f84bd92ab311b7b65b"
+    },
+    {
+      "path": "Kanpur",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a169cb74ba3eefa72d711b7b2a4ad90bb4ac18f7",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/a169cb74ba3eefa72d711b7b2a4ad90bb4ac18f7"
+    },
+    {
+      "path": "Kanpur/Kanpur_city_boundaries-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2ee682ceca8a4c46f29fc61d3f5900edf41ff19b",
+      "size": 10003,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/2ee682ceca8a4c46f29fc61d3f5900edf41ff19b"
+    },
+    {
+      "path": "Kanpur/Kanpur_city_boundaries.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc99ebf10e10092714c9fea6ff47febd8c50ef51",
+      "size": 29132,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/cc99ebf10e10092714c9fea6ff47febd8c50ef51"
+    },
+    {
+      "path": "Kanpur/Kanpur_city_zones-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c7728d2434d3842c39ed4eea0cee87269a36718",
+      "size": 23347,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/7c7728d2434d3842c39ed4eea0cee87269a36718"
+    },
+    {
+      "path": "Kanpur/Kanpur_city_zones.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f82913c20154ee1f688a5806d09c3374ee59e45f",
+      "size": 71460,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/f82913c20154ee1f688a5806d09c3374ee59e45f"
+    },
+    {
+      "path": "Kanpur/Kanpur_wards-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f5fb4719b76880d58363327f7cae2f3fcee0f2ed",
+      "size": 69454,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/f5fb4719b76880d58363327f7cae2f3fcee0f2ed"
+    },
+    {
+      "path": "Kanpur/Kanpur_wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2f6c6a227b07b2d591b134a8fcc8ae0f5ce09665",
+      "size": 204434,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/2f6c6a227b07b2d591b134a8fcc8ae0f5ce09665"
+    },
+    {
+      "path": "Kanpur/kanpur_nagar_nigam.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7b66ad6a2396e1df05821d17206f7bdeb441dab",
+      "size": 18921700,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e7b66ad6a2396e1df05821d17206f7bdeb441dab"
+    },
+    {
+      "path": "Kanpur/readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e359f11ecb30f5ae8b40adecf11590093cd4befb",
+      "size": 9,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e359f11ecb30f5ae8b40adecf11590093cd4befb"
+    },
+    {
+      "path": "Katihar",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "21012158e42e5c742be280b5a279e4b7527a8dab",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/21012158e42e5c742be280b5a279e4b7527a8dab"
+    },
+    {
+      "path": "Katihar/Katihar_Boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4a26e4a5c63f67381fb00e5d8c6bcca18f98030c",
+      "size": 11267,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/4a26e4a5c63f67381fb00e5d8c6bcca18f98030c"
+    },
+    {
+      "path": "Katihar/Katihar_Boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b0c22b63cb6d3ce23350f6a4be304050d1bcfca1",
+      "size": 37109,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/b0c22b63cb6d3ce23350f6a4be304050d1bcfca1"
+    },
+    {
+      "path": "Katihar/Katihar_Wards-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3201500c8a5b47354933a0fc768972eb5085d4ed",
+      "size": 89841,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3201500c8a5b47354933a0fc768972eb5085d4ed"
+    },
+    {
+      "path": "Katihar/Katihar_Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "826fd4f8a73a5ec28b1b460416e104f86bc43ab7",
+      "size": 386149,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/826fd4f8a73a5ec28b1b460416e104f86bc43ab7"
+    },
+    {
+      "path": "Katihar/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "09168099d846d03a51101284da8dcfa74b8218f7",
+      "size": 520,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/09168099d846d03a51101284da8dcfa74b8218f7"
+    },
+    {
+      "path": "Kishangarh",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "84c437c8e5e93518f589450c7f7d445f6ab360f2",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/84c437c8e5e93518f589450c7f7d445f6ab360f2"
+    },
+    {
+      "path": "Kishangarh/Kishangarh_Boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "024724139b0b419694396c843a6d6d7ee61934be",
+      "size": 5745,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/024724139b0b419694396c843a6d6d7ee61934be"
+    },
+    {
+      "path": "Kishangarh/Kishangarh_Boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91fd035e28b68539cc46ca16eafdfb18c3139452",
+      "size": 12707,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/91fd035e28b68539cc46ca16eafdfb18c3139452"
+    },
+    {
+      "path": "Kishangarh/Kishangarh_Wards-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d26020f50568a6c495cf1adb16dd9e03e26825d",
+      "size": 24148,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/7d26020f50568a6c495cf1adb16dd9e03e26825d"
+    },
+    {
+      "path": "Kishangarh/Kishangarh_Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a05c8e00bb1fead4402cee2888488033747c2e34",
+      "size": 77314,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a05c8e00bb1fead4402cee2888488033747c2e34"
+    },
+    {
+      "path": "Kishangarh/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c510abb2caf1366b590c272d2f5d8baae890a182",
+      "size": 678,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c510abb2caf1366b590c272d2f5d8baae890a182"
+    },
+    {
+      "path": "Kochi",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "77e80ddc872d32e80dfd7062e8d136eab8b2ca6c",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/77e80ddc872d32e80dfd7062e8d136eab8b2ca6c"
+    },
+    {
+      "path": "Kochi/KCH_Corporation_Boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1203bba66409b2d151c891ca63546b9194007f62",
+      "size": 72732,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1203bba66409b2d151c891ca63546b9194007f62"
+    },
+    {
+      "path": "Kochi/KCH_wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a499da09d36221b103ec72708c173f3c860a5b84",
+      "size": 943022,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a499da09d36221b103ec72708c173f3c860a5b84"
+    },
+    {
+      "path": "Kochi/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ded5bf26a6b5cb084fae209a6d6da466af072901",
+      "size": 659,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ded5bf26a6b5cb084fae209a6d6da466af072901"
+    },
+    {
+      "path": "Kolkata",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "7bb70a5ac282dbca9aa1234766eb58dac56ae242",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/7bb70a5ac282dbca9aa1234766eb58dac56ae242"
+    },
+    {
+      "path": "Kolkata/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25fbf06c65befbb98aeff2608efcf03afae6da9e",
+      "size": 493,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/25fbf06c65befbb98aeff2608efcf03afae6da9e"
+    },
+    {
+      "path": "Kolkata/kolkata.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4047e8e94419e69ea51356c376a3c2464b9e941c",
+      "size": 2802148,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/4047e8e94419e69ea51356c376a3c2464b9e941c"
+    },
+    {
+      "path": "Lucknow",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "cd8d1b8493049ad713089cd3274d1a6c6d3e4a07",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/cd8d1b8493049ad713089cd3274d1a6c6d3e4a07"
+    },
+    {
+      "path": "Lucknow/Lucknow_city_boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e4538172e5f0433f8608fed5bff37ac2943a1ab6",
+      "size": 4481,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e4538172e5f0433f8608fed5bff37ac2943a1ab6"
+    },
+    {
+      "path": "Lucknow/Lucknow_city_boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9683176a93379aeeecd07bbc2ca4b5b591a78313",
+      "size": 8386,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/9683176a93379aeeecd07bbc2ca4b5b591a78313"
+    },
+    {
+      "path": "Lucknow/Lucknow_map.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "500ea9a31c784e23cc680a5a814bf00506bea1b3",
+      "size": 8656503,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/500ea9a31c784e23cc680a5a814bf00506bea1b3"
+    },
+    {
+      "path": "Lucknow/Lucknow_ward_boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e433ceb242f0208d5592b44434cb800a1e55c8e3",
+      "size": 96828,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e433ceb242f0208d5592b44434cb800a1e55c8e3"
+    },
+    {
+      "path": "Lucknow/Lucknow_ward_boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "912ac36b3665a2654a62dae4d912b5304b9e00f5",
+      "size": 330164,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/912ac36b3665a2654a62dae4d912b5304b9e00f5"
+    },
+    {
+      "path": "Lucknow/Lucknow_zone_boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9485617ef2863adc485ba27776fc75276186172e",
+      "size": 27059,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/9485617ef2863adc485ba27776fc75276186172e"
+    },
+    {
+      "path": "Lucknow/Lucknow_zone_boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43d2678f815b71f09b9a599c7978dfc9cf7d943e",
+      "size": 82964,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/43d2678f815b71f09b9a599c7978dfc9cf7d943e"
+    },
+    {
+      "path": "Lucknow/readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "efd25aba1a61f977898e7b96412b676124a730f3",
+      "size": 10,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/efd25aba1a61f977898e7b96412b676124a730f3"
+    },
+    {
+      "path": "MMR",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2a7925f6eae5fddb545501fd45b2bfabb76f68d5",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/2a7925f6eae5fddb545501fd45b2bfabb76f68d5"
+    },
+    {
+      "path": "MMR/MMR.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a5130ca8d073dbe031f54f36bd847b86c4a5813f",
+      "size": 327187,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a5130ca8d073dbe031f54f36bd847b86c4a5813f"
+    },
+    {
+      "path": "MMR/MMR.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "217dd724e90780c5481a23e072d81a982fbf4a55",
+      "size": 268241,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/217dd724e90780c5481a23e072d81a982fbf4a55"
+    },
+    {
+      "path": "MMR/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8be3e7a18bdeaf743ed93154e9c5fd929f461f5b",
+      "size": 1089,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/8be3e7a18bdeaf743ed93154e9c5fd929f461f5b"
+    },
+    {
+      "path": "Mira-Bhayandar",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ba360d66a674d94b3a3f94a7c8106c986249c8f9",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/ba360d66a674d94b3a3f94a7c8106c986249c8f9"
+    },
+    {
+      "path": "Mira-Bhayandar/Mira-Bhayandar.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "afff1a14778d80d2dfa331eb642544f84366de71",
+      "size": 12345,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/afff1a14778d80d2dfa331eb642544f84366de71"
+    },
+    {
+      "path": "Mira-Bhayandar/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dfd0312891021a7c038826bb881302ace1452dcb",
+      "size": 466,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/dfd0312891021a7c038826bb881302ace1452dcb"
+    },
+    {
+      "path": "Mumbai",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "86b5b4758a3322483a86d7a67afe85175f174d74",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/86b5b4758a3322483a86d7a67afe85175f174d74"
+    },
+    {
+      "path": "Mumbai/BMC_Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6dbbcc4ce19879308cca5f1dada7c2fb02af66e9",
+      "size": 994699,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/6dbbcc4ce19879308cca5f1dada7c2fb02af66e9"
+    },
+    {
+      "path": "Mumbai/BMC_Wards.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8a4c382bc8a918344e8ac8d69f3d46aa2c450ec",
+      "size": 867919,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/f8a4c382bc8a918344e8ac8d69f3d46aa2c450ec"
+    },
+    {
+      "path": "Mumbai/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ddb17b3d60c57b9475a78caa298a0acf2bcbba2a",
+      "size": 520,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ddb17b3d60c57b9475a78caa298a0acf2bcbba2a"
+    },
+    {
+      "path": "Mumbai/bmc_electoral_wards_2017",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "32cb9f05328901adfe15a9c87d9815eb7c7055d7",
+      "size": 3046174,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/32cb9f05328901adfe15a9c87d9815eb7c7055d7"
+    },
+    {
+      "path": "Mumbai/slumClusters.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8786bab37459873d284ee8345190b9c8bf2f6b60",
+      "size": 3373500,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/8786bab37459873d284ee8345190b9c8bf2f6b60"
+    },
+    {
+      "path": "NMMC",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "47453fd8423f745e19d6c81c85e331ec9ec22eea",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/47453fd8423f745e19d6c81c85e331ec9ec22eea"
+    },
+    {
+      "path": "NMMC/NMC_ElectoralWards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e342e803d8374fd9ab5581fd9d4a1c259949420",
+      "size": 424756,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/9e342e803d8374fd9ab5581fd9d4a1c259949420"
+    },
+    {
+      "path": "NMMC/NMMCElection_final_ward 18032015.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b484c613821700ed043371280f60e4644eb0dfdf",
+      "size": 1060333,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/b484c613821700ed043371280f60e4644eb0dfdf"
+    },
+    {
+      "path": "NMMC/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ca3a7a1425447d80d49ea85de29a96903b3be76d",
+      "size": 423,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ca3a7a1425447d80d49ea85de29a96903b3be76d"
+    },
+    {
+      "path": "PCMC",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "27c5793d51c86ff315dbda60bd8cf036b68fce74",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/27c5793d51c86ff315dbda60bd8cf036b68fce74"
+    },
+    {
+      "path": "PCMC/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "97fdf67ae3a136ac312d6898c0321ecff7f88215",
+      "size": 598,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/97fdf67ae3a136ac312d6898c0321ecff7f88215"
+    },
+    {
+      "path": "PCMC/pcmc-electoral-wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b136d647c0a55e0aeeee8c9700deca603bf02d01",
+      "size": 168077,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/b136d647c0a55e0aeeee8c9700deca603bf02d01"
+    },
+    {
+      "path": "Pune",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "da6671ab0296b21f55475af58f69699be672cd1f",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/da6671ab0296b21f55475af58f69699be672cd1f"
+    },
+    {
+      "path": "Pune/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6b05d3f041510b1d5d87cc8f7f7d609f5092374b",
+      "size": 1741,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/6b05d3f041510b1d5d87cc8f7f7d609f5092374b"
+    },
+    {
+      "path": "Pune/pune-admin-wards_2017.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3cf8c9b8303ea5e31020cd50e793ca4c66bd4f15",
+      "size": 297307,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3cf8c9b8303ea5e31020cd50e793ca4c66bd4f15"
+    },
+    {
+      "path": "Pune/pune-electoral-wards_2012.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1dfef920d6832e1a3db6ae339c60dd97afc6c67b",
+      "size": 367715,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1dfef920d6832e1a3db6ae339c60dd97afc6c67b"
+    },
+    {
+      "path": "Pune/pune-electoral-wards_2017.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e15ea9c59d3e4a3f33ad3f0bf1dae2ec300733c5",
+      "size": 101180,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e15ea9c59d3e4a3f33ad3f0bf1dae2ec300733c5"
+    },
+    {
+      "path": "Pune/pune-electoral-wards_2022.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d7cbf9c45c8bc1516542adc4e595382fbc57ff89",
+      "size": 256530,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/d7cbf9c45c8bc1516542adc4e595382fbc57ff89"
+    },
+    {
+      "path": "Purnia",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "25e916acf992c029ce9e49a104cafbb13ffa7f9b",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/25e916acf992c029ce9e49a104cafbb13ffa7f9b"
+    },
+    {
+      "path": "Purnia/Purnia_Boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c7f8dc3e515c025f1fa2af8d0e07903456fcc5d9",
+      "size": 46026,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c7f8dc3e515c025f1fa2af8d0e07903456fcc5d9"
+    },
+    {
+      "path": "Purnia/Purnia_Boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "420555cabeef615ec322002b6a832b89182e8efb",
+      "size": 174161,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/420555cabeef615ec322002b6a832b89182e8efb"
+    },
+    {
+      "path": "Purnia/Purnia_Wards-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "242e621892a5644a8bcb6c29b101667930317565",
+      "size": 168895,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/242e621892a5644a8bcb6c29b101667930317565"
+    },
+    {
+      "path": "Purnia/Purnia_Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e34ad9738d3939b9a9333425371da1228fdc2082",
+      "size": 681600,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e34ad9738d3939b9a9333425371da1228fdc2082"
+    },
+    {
+      "path": "Purnia/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4c1ae6a87032a23218cb6c2f34497c775deb6c8c",
+      "size": 510,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/4c1ae6a87032a23218cb6c2f34497c775deb6c8c"
+    },
+    {
+      "path": "Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1565310688de7a9a965e16d0b634907969e66012",
+      "size": 1474,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1565310688de7a9a965e16d0b634907969e66012"
+    },
+    {
+      "path": "Vadodara",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "96e81a4cbf5cedb3334b9212a3700ed4c3bfc981",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/96e81a4cbf5cedb3334b9212a3700ed4c3bfc981"
+    },
+    {
+      "path": "Vadodara/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "171f3ac49787bf965403ca0d39a8dde966b7f497",
+      "size": 391,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/171f3ac49787bf965403ca0d39a8dde966b7f497"
+    },
+    {
+      "path": "Vadodara/vadodara_wards.kml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad515a66c9c583288d78dc6be509e99cf5c71ecb",
+      "size": 55767,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ad515a66c9c583288d78dc6be509e99cf5c71ecb"
+    },
+    {
+      "path": "Vadodara/vardodara_wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef92862443792a11b857693fa9e3d89760b4e22c",
+      "size": 140846,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ef92862443792a11b857693fa9e3d89760b4e22c"
+    },
+    {
+      "path": "Vijayawada",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "087056170301adfc8f6ce5e7c517c5ddb8333dda",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/087056170301adfc8f6ce5e7c517c5ddb8333dda"
+    },
+    {
+      "path": "Vijayawada/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "02e916bc9e8b3176587f08ec38a3d4bff5c768aa",
+      "size": 549,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/02e916bc9e8b3176587f08ec38a3d4bff5c768aa"
+    },
+    {
+      "path": "Vijayawada/Vijayawada_Boundary-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "35078a4a526500694e6ac18d1911340a11c34b59",
+      "size": 4711,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/35078a4a526500694e6ac18d1911340a11c34b59"
+    },
+    {
+      "path": "Vijayawada/Vijayawada_Boundary.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "97b7f20065ecdf21db6975ed9bfe3136322160d0",
+      "size": 12387,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/97b7f20065ecdf21db6975ed9bfe3136322160d0"
+    },
+    {
+      "path": "Vijayawada/Vijayawada_Wards-SHP.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb9e0884e3fb239b542fd089a5599f48b85692ea",
+      "size": 27662,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/bb9e0884e3fb239b542fd089a5599f48b85692ea"
+    },
+    {
+      "path": "Vijayawada/Vijayawada_Wards.geojson",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b25cda3ed01ae337b1309b6050f6b3a42517d0ae",
+      "size": 145022,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/b25cda3ed01ae337b1309b6050f6b3a42517d0ae"
+    },
+    {
+      "path": "docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a3659afa2b328cf77fe79066af5cb4c36a570b5f",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/a3659afa2b328cf77fe79066af5cb4c36a570b5f"
+    },
+    {
+      "path": "docs/Municipal_Spatial_Data",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "178614f0d9426fa9db97559ddc5be071a5b4dae1",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/178614f0d9426fa9db97559ddc5be071a5b4dae1"
+    },
+    {
+      "path": "docs/Municipal_Spatial_Data/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "22d209833cd5261b941cae17d54c624fb383ac75",
+      "size": 9462,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/22d209833cd5261b941cae17d54c624fb383ac75"
+    },
+    {
+      "path": "docs/ahmedabad",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5a8fecf92a03efafa71b01fa085e80e3be95fd84",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/5a8fecf92a03efafa71b01fa085e80e3be95fd84"
+    },
+    {
+      "path": "docs/ahmedabad/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d91ff04679e0ded1213c203a7536f3d5568c73a1",
+      "size": 11083,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/d91ff04679e0ded1213c203a7536f3d5568c73a1"
+    },
+    {
+      "path": "docs/assembly-constituencies",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "18aee9fe0d6374d8bb8a3866a6402e6dc4b3cc64",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/18aee9fe0d6374d8bb8a3866a6402e6dc4b3cc64"
+    },
+    {
+      "path": "docs/assembly-constituencies/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ace977c928d2cca1cc8d8b9a333e725ab05dec86",
+      "size": 9907,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ace977c928d2cca1cc8d8b9a333e725ab05dec86"
+    },
+    {
+      "path": "docs/bangalore",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "efbb32a1bdf49cfaa9cfadcc992759ebb3385eb8",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/efbb32a1bdf49cfaa9cfadcc992759ebb3385eb8"
+    },
+    {
+      "path": "docs/bangalore/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "181df8858b3ceb5297a01ea7d7c00b2e428937f2",
+      "size": 11041,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/181df8858b3ceb5297a01ea7d7c00b2e428937f2"
+    },
+    {
+      "path": "docs/bhopal",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e5b31a6d519acec85693297dacd33ab397befe3b",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/e5b31a6d519acec85693297dacd33ab397befe3b"
+    },
+    {
+      "path": "docs/bhopal/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "33de3dd6c8f3024d90746e0e86b2e57f5339719f",
+      "size": 11058,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/33de3dd6c8f3024d90746e0e86b2e57f5339719f"
+    },
+    {
+      "path": "docs/bhubaneswar",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "27bd89b2a9c5116ee4cbb5dfa40525f739058b9d",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/27bd89b2a9c5116ee4cbb5dfa40525f739058b9d"
+    },
+    {
+      "path": "docs/bhubaneswar/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a48294aa440bed05ee2bf6d6acff05a06e8fdeaa",
+      "size": 11140,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a48294aa440bed05ee2bf6d6acff05a06e8fdeaa"
+    },
+    {
+      "path": "docs/contributing",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0f8e5ceb24c9bda91fb12a6479d103425a516d49",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/0f8e5ceb24c9bda91fb12a6479d103425a516d49"
+    },
+    {
+      "path": "docs/contributing/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "570d9ae450d45dfd9b4b78ee1117f4e6db2c3f27",
+      "size": 14314,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/570d9ae450d45dfd9b4b78ee1117f4e6db2c3f27"
+    },
+    {
+      "path": "docs/css",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "62578ed4d962deb2034454d4de43e26db48c9321",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/62578ed4d962deb2034454d4de43e26db48c9321"
+    },
+    {
+      "path": "docs/css/base.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d6848249b45a1a8faa82a1067597266d2c7f9d1",
+      "size": 5635,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/2d6848249b45a1a8faa82a1067597266d2c7f9d1"
+    },
+    {
+      "path": "docs/css/base.min.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f7e580f21aa883601db603a00731a503a07040b7",
+      "size": 3487,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/f7e580f21aa883601db603a00731a503a07040b7"
+    },
+    {
+      "path": "docs/css/bootstrap-custom.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "631252d29136f270adc092bf26fc7656a3b54bb8",
+      "size": 132465,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/631252d29136f270adc092bf26fc7656a3b54bb8"
+    },
+    {
+      "path": "docs/css/bootstrap-custom.min.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25d43d468365d0fe04ab02bd82729318d6b54d38",
+      "size": 109468,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/25d43d468365d0fe04ab02bd82729318d6b54d38"
+    },
+    {
+      "path": "docs/css/cinder.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "48345605addba51f8903d4f58965667a07cc93c4",
+      "size": 2131,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/48345605addba51f8903d4f58965667a07cc93c4"
+    },
+    {
+      "path": "docs/css/cinder.min.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb7cc34fdaaff4b17d9e4ee3b6e3d681d547256a",
+      "size": 1637,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/fb7cc34fdaaff4b17d9e4ee3b6e3d681d547256a"
+    },
+    {
+      "path": "docs/css/extra.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "89c6b621c6c5237c9de77823df9f0b1ca15b734f",
+      "size": 543,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/89c6b621c6c5237c9de77823df9f0b1ca15b734f"
+    },
+    {
+      "path": "docs/css/highlight.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a2b9270e4c8c38a8dfa9a813a56c584b390474ea",
+      "size": 1148,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a2b9270e4c8c38a8dfa9a813a56c584b390474ea"
+    },
+    {
+      "path": "docs/css/highlight.min.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1b6ab94131253a7e8105ebd80859b594072c451d",
+      "size": 866,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1b6ab94131253a7e8105ebd80859b594072c451d"
+    },
+    {
+      "path": "docs/districts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ac16b27d8db28ecbbeeb90fba00f9a76aae49038",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/ac16b27d8db28ecbbeeb90fba00f9a76aae49038"
+    },
+    {
+      "path": "docs/districts/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b85df65d380dada9dcad3014302a8a41543f538",
+      "size": 9857,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/7b85df65d380dada9dcad3014302a8a41543f538"
+    },
+    {
+      "path": "docs/fonts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "330069615e3ea9bfc5bf684dcd87fd8556328e65",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/330069615e3ea9bfc5bf684dcd87fd8556328e65"
+    },
+    {
+      "path": "docs/fonts/fontawesome-webfont.eot",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c79c6a6bc9a128a2a8eaffbe49a4338625fdbc2",
+      "size": 38205,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/7c79c6a6bc9a128a2a8eaffbe49a4338625fdbc2"
+    },
+    {
+      "path": "docs/fonts/fontawesome-webfont.svg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "45fdf33830123533459b17fbbf91735489fd6bd8",
+      "size": 202148,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/45fdf33830123533459b17fbbf91735489fd6bd8"
+    },
+    {
+      "path": "docs/fonts/fontawesome-webfont.ttf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e89738de5eaf8fca33a2f2cdc5cb4929caa62b71",
+      "size": 80652,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e89738de5eaf8fca33a2f2cdc5cb4929caa62b71"
+    },
+    {
+      "path": "docs/fonts/fontawesome-webfont.woff",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c1748aab7a790d510fb3f42a8a8971d96efa79d",
+      "size": 44432,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/8c1748aab7a790d510fb3f42a8a8971d96efa79d"
+    },
+    {
+      "path": "docs/img",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "bb5c38ee08257877d9d193e18471567ecda76036",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/bb5c38ee08257877d9d193e18471567ecda76036"
+    },
+    {
+      "path": "docs/img/favicon.ico",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e85006a3ce1c6fd81faa6d5a13095519c4a6fc96",
+      "size": 1150,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e85006a3ce1c6fd81faa6d5a13095519c4a6fc96"
+    },
+    {
+      "path": "docs/img/grid1.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a6c493aba57b3dcf7f3092dd76e01774a36e1f70",
+      "size": 251,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a6c493aba57b3dcf7f3092dd76e01774a36e1f70"
+    },
+    {
+      "path": "docs/img/grid10.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c41953eb231a51b5634152cf18ab137ff1a90b2",
+      "size": 495,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/7c41953eb231a51b5634152cf18ab137ff1a90b2"
+    },
+    {
+      "path": "docs/img/grid11.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef37b27e06d21940965e3662000f99bb9f714dde",
+      "size": 253,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ef37b27e06d21940965e3662000f99bb9f714dde"
+    },
+    {
+      "path": "docs/img/grid12.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f100c41ab3dbd3e80aaeaef07057b689eb14208",
+      "size": 260,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3f100c41ab3dbd3e80aaeaef07057b689eb14208"
+    },
+    {
+      "path": "docs/img/grid13.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a0d83f3af56f947e5f8d4f0031a10c6d2766ce1",
+      "size": 266,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1a0d83f3af56f947e5f8d4f0031a10c6d2766ce1"
+    },
+    {
+      "path": "docs/img/grid14.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "deabc036a01da2f5effd96cb0db4f130cf2d46c3",
+      "size": 240,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/deabc036a01da2f5effd96cb0db4f130cf2d46c3"
+    },
+    {
+      "path": "docs/img/grid15.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f0417a5d4d9713ed1ddcfe0cbdb91da24273143",
+      "size": 442,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1f0417a5d4d9713ed1ddcfe0cbdb91da24273143"
+    },
+    {
+      "path": "docs/img/grid16.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "984454f49d69835c0f85405fb519b07b4a03d838",
+      "size": 442,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/984454f49d69835c0f85405fb519b07b4a03d838"
+    },
+    {
+      "path": "docs/img/grid17.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe48c9dd67a4d0104ef7451d9fcc5960361ffa35",
+      "size": 442,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/fe48c9dd67a4d0104ef7451d9fcc5960361ffa35"
+    },
+    {
+      "path": "docs/img/grid18.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c84524b4f38ffe4782aa572731ef354e15e34c8",
+      "size": 457,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3c84524b4f38ffe4782aa572731ef354e15e34c8"
+    },
+    {
+      "path": "docs/img/grid19.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2bfdd500f96e25d67a1cb3990b30c7b78643c801",
+      "size": 427,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/2bfdd500f96e25d67a1cb3990b30c7b78643c801"
+    },
+    {
+      "path": "docs/img/grid2.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9eed3e966e8171b1e0259649034188b89391046",
+      "size": 271,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c9eed3e966e8171b1e0259649034188b89391046"
+    },
+    {
+      "path": "docs/img/grid20.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30e3faeaf7ea78d396cc74d350a0e456dc459560",
+      "size": 493,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/30e3faeaf7ea78d396cc74d350a0e456dc459560"
+    },
+    {
+      "path": "docs/img/grid3.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4617c9d981cbfd853a1f26f2fc23551f5db55343",
+      "size": 266,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/4617c9d981cbfd853a1f26f2fc23551f5db55343"
+    },
+    {
+      "path": "docs/img/grid4.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a1f1801b129d2c80047823fa45dff8a7b40b08c",
+      "size": 244,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/2a1f1801b129d2c80047823fa45dff8a7b40b08c"
+    },
+    {
+      "path": "docs/img/grid5.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a1d710e03008c0416911a07c095bc55eb6182b54",
+      "size": 442,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a1d710e03008c0416911a07c095bc55eb6182b54"
+    },
+    {
+      "path": "docs/img/grid6.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71b4148db2e42061888a8e7d9edc23bd093408a8",
+      "size": 460,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/71b4148db2e42061888a8e7d9edc23bd093408a8"
+    },
+    {
+      "path": "docs/img/grid7.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6044a41967992d2a932af68b5d456fd07750b0c7",
+      "size": 442,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/6044a41967992d2a932af68b5d456fd07750b0c7"
+    },
+    {
+      "path": "docs/img/grid8.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a4b6d44efda4db9a5f81fc6f119137344175f959",
+      "size": 457,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a4b6d44efda4db9a5f81fc6f119137344175f959"
+    },
+    {
+      "path": "docs/img/grid9.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "627dda51304ff75b255426e84f012d6a41d0304c",
+      "size": 456,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/627dda51304ff75b255426e84f012d6a41d0304c"
+    },
+    {
+      "path": "docs/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d226bc89ff73a494427c4bca081ca2c34bb851c7",
+      "size": 15220,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/d226bc89ff73a494427c4bca081ca2c34bb851c7"
+    },
+    {
+      "path": "docs/indian_village_boundaries",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "79d3225328123f22136cdcfb4dab64d6c9da39ab",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/79d3225328123f22136cdcfb4dab64d6c9da39ab"
+    },
+    {
+      "path": "docs/indian_village_boundaries/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "29af3edf03b081fb98e3f4ebe849d6fb9e9cd435",
+      "size": 9873,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/29af3edf03b081fb98e3f4ebe849d6fb9e9cd435"
+    },
+    {
+      "path": "docs/js",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1db0f19f8011c524354cfc6ed117053b20458530",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/1db0f19f8011c524354cfc6ed117053b20458530"
+    },
+    {
+      "path": "docs/js/base.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1db589caa0ca3ad440219c5c59a1406449b829ad",
+      "size": 5911,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1db589caa0ca3ad440219c5c59a1406449b829ad"
+    },
+    {
+      "path": "docs/js/bootstrap-3.0.3.min.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a6258efcbff4469d71123fbb01c921ac5231f14",
+      "size": 27822,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1a6258efcbff4469d71123fbb01c921ac5231f14"
+    },
+    {
+      "path": "docs/js/extra.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a77dd36b40b1bdfc78908dff7798bc578d672547",
+      "size": 1419,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a77dd36b40b1bdfc78908dff7798bc578d672547"
+    },
+    {
+      "path": "docs/parliamentary-constituencies",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b2cc249956a8dee0cf1e6aa5335a3a06cf059690",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/b2cc249956a8dee0cf1e6aa5335a3a06cf059690"
+    },
+    {
+      "path": "docs/parliamentary-constituencies/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c24f0bc7a9f530bf513afcf09bc1e09aaebd847",
+      "size": 9902,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/9c24f0bc7a9f530bf513afcf09bc1e09aaebd847"
+    },
+    {
+      "path": "docs/pune",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5c817f4c2aa8110347fe1e42d2eb662aea131335",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/5c817f4c2aa8110347fe1e42d2eb662aea131335"
+    },
+    {
+      "path": "docs/pune/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb94db0dac52a983f65c7042c7e7a80d968f0353",
+      "size": 11091,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/cb94db0dac52a983f65c7042c7e7a80d968f0353"
+    },
+    {
+      "path": "docs/reference",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1a73083cfb626a6f4b8292272433f957fde12907",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/1a73083cfb626a6f4b8292272433f957fde12907"
+    },
+    {
+      "path": "docs/reference/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "586ee7be7666473ff87334e4e4b491c9ba65a413",
+      "size": 10140,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/586ee7be7666473ff87334e4e4b491c9ba65a413"
+    },
+    {
+      "path": "docs/search",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "15e07d58da6e3004220127ad464c19524c1b2868",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/15e07d58da6e3004220127ad464c19524c1b2868"
+    },
+    {
+      "path": "docs/search/lunr.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c3537658a629e67cf4e798aca18b759bb9d909a3",
+      "size": 99813,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c3537658a629e67cf4e798aca18b759bb9d909a3"
+    },
+    {
+      "path": "docs/search/main.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a82ab56a6a378734d0354e8e59147951a829b3e",
+      "size": 2766,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/0a82ab56a6a378734d0354e8e59147951a829b3e"
+    },
+    {
+      "path": "docs/search/search_index.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6e43e9ef73af7a9032166ca224178868aa47495d",
+      "size": 17486,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/6e43e9ef73af7a9032166ca224178868aa47495d"
+    },
+    {
+      "path": "docs/search/worker.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3ccc07f28275563550ecfec00580c3382193147",
+      "size": 3585,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a3ccc07f28275563550ecfec00580c3382193147"
+    },
+    {
+      "path": "docs/sitemap.xml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec55769efc3a167776b6dca09ed268fac0c185e5",
+      "size": 1621,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ec55769efc3a167776b6dca09ed268fac0c185e5"
+    },
+    {
+      "path": "docs/sitemap.xml.gz",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e799b3c5abcc200bef1478f7fa0421c04d777d29",
+      "size": 203,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e799b3c5abcc200bef1478f7fa0421c04d777d29"
+    },
+    {
+      "path": "docs/states",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "eb2acf4b8d25d2f6b4060c100eae576f03d3a4d1",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/eb2acf4b8d25d2f6b4060c100eae576f03d3a4d1"
+    },
+    {
+      "path": "docs/states/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "46b7296923218da6bdb3aff543f368dcbd5b0bfd",
+      "size": 9887,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/46b7296923218da6bdb3aff543f368dcbd5b0bfd"
+    },
+    {
+      "path": "website",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "249f4e935a6a621fc621983557a716f0ac7454c8",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/249f4e935a6a621fc621983557a716f0ac7454c8"
+    },
+    {
+      "path": "website/cinder",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "005b555cd7190661e4e657f07bb9a1cc20aa1e70",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/005b555cd7190661e4e657f07bb9a1cc20aa1e70"
+    },
+    {
+      "path": "website/cinder/404.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d58f066d756eba63b6becbc336e47b242c6c443",
+      "size": 383,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/0d58f066d756eba63b6becbc336e47b242c6c443"
+    },
+    {
+      "path": "website/cinder/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "website/cinder/base.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f818eacfe7c1611eac3ec7794e28d7a8a8d0067c",
+      "size": 5726,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/f818eacfe7c1611eac3ec7794e28d7a8a8d0067c"
+    },
+    {
+      "path": "website/cinder/content.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b51ac660d766ab374c0b51d38f95d046fa903d8",
+      "size": 212,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/8b51ac660d766ab374c0b51d38f95d046fa903d8"
+    },
+    {
+      "path": "website/cinder/css",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1ef6dbdb69ada1cb84a3557ba6eb43cf66537b9e",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/1ef6dbdb69ada1cb84a3557ba6eb43cf66537b9e"
+    },
+    {
+      "path": "website/cinder/css/base.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d6848249b45a1a8faa82a1067597266d2c7f9d1",
+      "size": 5635,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/2d6848249b45a1a8faa82a1067597266d2c7f9d1"
+    },
+    {
+      "path": "website/cinder/css/base.min.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f7e580f21aa883601db603a00731a503a07040b7",
+      "size": 3487,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/f7e580f21aa883601db603a00731a503a07040b7"
+    },
+    {
+      "path": "website/cinder/css/bootstrap-custom.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "631252d29136f270adc092bf26fc7656a3b54bb8",
+      "size": 132465,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/631252d29136f270adc092bf26fc7656a3b54bb8"
+    },
+    {
+      "path": "website/cinder/css/bootstrap-custom.min.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25d43d468365d0fe04ab02bd82729318d6b54d38",
+      "size": 109468,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/25d43d468365d0fe04ab02bd82729318d6b54d38"
+    },
+    {
+      "path": "website/cinder/css/cinder.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "48345605addba51f8903d4f58965667a07cc93c4",
+      "size": 2131,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/48345605addba51f8903d4f58965667a07cc93c4"
+    },
+    {
+      "path": "website/cinder/css/cinder.min.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb7cc34fdaaff4b17d9e4ee3b6e3d681d547256a",
+      "size": 1637,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/fb7cc34fdaaff4b17d9e4ee3b6e3d681d547256a"
+    },
+    {
+      "path": "website/cinder/css/highlight.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a2b9270e4c8c38a8dfa9a813a56c584b390474ea",
+      "size": 1148,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a2b9270e4c8c38a8dfa9a813a56c584b390474ea"
+    },
+    {
+      "path": "website/cinder/css/highlight.min.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1b6ab94131253a7e8105ebd80859b594072c451d",
+      "size": 866,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1b6ab94131253a7e8105ebd80859b594072c451d"
+    },
+    {
+      "path": "website/cinder/fonts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "dac6a91377e4facc49332e3104dabd5e9a833ac1",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/dac6a91377e4facc49332e3104dabd5e9a833ac1"
+    },
+    {
+      "path": "website/cinder/fonts/fontawesome-webfont.eot",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "7c79c6a6bc9a128a2a8eaffbe49a4338625fdbc2",
+      "size": 38205,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/7c79c6a6bc9a128a2a8eaffbe49a4338625fdbc2"
+    },
+    {
+      "path": "website/cinder/fonts/fontawesome-webfont.svg",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "45fdf33830123533459b17fbbf91735489fd6bd8",
+      "size": 202148,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/45fdf33830123533459b17fbbf91735489fd6bd8"
+    },
+    {
+      "path": "website/cinder/fonts/fontawesome-webfont.ttf",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "e89738de5eaf8fca33a2f2cdc5cb4929caa62b71",
+      "size": 80652,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e89738de5eaf8fca33a2f2cdc5cb4929caa62b71"
+    },
+    {
+      "path": "website/cinder/fonts/fontawesome-webfont.woff",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "8c1748aab7a790d510fb3f42a8a8971d96efa79d",
+      "size": 44432,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/8c1748aab7a790d510fb3f42a8a8971d96efa79d"
+    },
+    {
+      "path": "website/cinder/img",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "bb5c38ee08257877d9d193e18471567ecda76036",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/bb5c38ee08257877d9d193e18471567ecda76036"
+    },
+    {
+      "path": "website/cinder/img/favicon.ico",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e85006a3ce1c6fd81faa6d5a13095519c4a6fc96",
+      "size": 1150,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e85006a3ce1c6fd81faa6d5a13095519c4a6fc96"
+    },
+    {
+      "path": "website/cinder/img/grid1.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a6c493aba57b3dcf7f3092dd76e01774a36e1f70",
+      "size": 251,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a6c493aba57b3dcf7f3092dd76e01774a36e1f70"
+    },
+    {
+      "path": "website/cinder/img/grid10.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c41953eb231a51b5634152cf18ab137ff1a90b2",
+      "size": 495,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/7c41953eb231a51b5634152cf18ab137ff1a90b2"
+    },
+    {
+      "path": "website/cinder/img/grid11.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef37b27e06d21940965e3662000f99bb9f714dde",
+      "size": 253,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/ef37b27e06d21940965e3662000f99bb9f714dde"
+    },
+    {
+      "path": "website/cinder/img/grid12.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f100c41ab3dbd3e80aaeaef07057b689eb14208",
+      "size": 260,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3f100c41ab3dbd3e80aaeaef07057b689eb14208"
+    },
+    {
+      "path": "website/cinder/img/grid13.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a0d83f3af56f947e5f8d4f0031a10c6d2766ce1",
+      "size": 266,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1a0d83f3af56f947e5f8d4f0031a10c6d2766ce1"
+    },
+    {
+      "path": "website/cinder/img/grid14.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "deabc036a01da2f5effd96cb0db4f130cf2d46c3",
+      "size": 240,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/deabc036a01da2f5effd96cb0db4f130cf2d46c3"
+    },
+    {
+      "path": "website/cinder/img/grid15.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f0417a5d4d9713ed1ddcfe0cbdb91da24273143",
+      "size": 442,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1f0417a5d4d9713ed1ddcfe0cbdb91da24273143"
+    },
+    {
+      "path": "website/cinder/img/grid16.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "984454f49d69835c0f85405fb519b07b4a03d838",
+      "size": 442,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/984454f49d69835c0f85405fb519b07b4a03d838"
+    },
+    {
+      "path": "website/cinder/img/grid17.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe48c9dd67a4d0104ef7451d9fcc5960361ffa35",
+      "size": 442,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/fe48c9dd67a4d0104ef7451d9fcc5960361ffa35"
+    },
+    {
+      "path": "website/cinder/img/grid18.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c84524b4f38ffe4782aa572731ef354e15e34c8",
+      "size": 457,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3c84524b4f38ffe4782aa572731ef354e15e34c8"
+    },
+    {
+      "path": "website/cinder/img/grid19.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2bfdd500f96e25d67a1cb3990b30c7b78643c801",
+      "size": 427,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/2bfdd500f96e25d67a1cb3990b30c7b78643c801"
+    },
+    {
+      "path": "website/cinder/img/grid2.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9eed3e966e8171b1e0259649034188b89391046",
+      "size": 271,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c9eed3e966e8171b1e0259649034188b89391046"
+    },
+    {
+      "path": "website/cinder/img/grid20.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30e3faeaf7ea78d396cc74d350a0e456dc459560",
+      "size": 493,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/30e3faeaf7ea78d396cc74d350a0e456dc459560"
+    },
+    {
+      "path": "website/cinder/img/grid3.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4617c9d981cbfd853a1f26f2fc23551f5db55343",
+      "size": 266,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/4617c9d981cbfd853a1f26f2fc23551f5db55343"
+    },
+    {
+      "path": "website/cinder/img/grid4.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a1f1801b129d2c80047823fa45dff8a7b40b08c",
+      "size": 244,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/2a1f1801b129d2c80047823fa45dff8a7b40b08c"
+    },
+    {
+      "path": "website/cinder/img/grid5.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a1d710e03008c0416911a07c095bc55eb6182b54",
+      "size": 442,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a1d710e03008c0416911a07c095bc55eb6182b54"
+    },
+    {
+      "path": "website/cinder/img/grid6.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71b4148db2e42061888a8e7d9edc23bd093408a8",
+      "size": 460,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/71b4148db2e42061888a8e7d9edc23bd093408a8"
+    },
+    {
+      "path": "website/cinder/img/grid7.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6044a41967992d2a932af68b5d456fd07750b0c7",
+      "size": 442,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/6044a41967992d2a932af68b5d456fd07750b0c7"
+    },
+    {
+      "path": "website/cinder/img/grid8.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a4b6d44efda4db9a5f81fc6f119137344175f959",
+      "size": 457,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a4b6d44efda4db9a5f81fc6f119137344175f959"
+    },
+    {
+      "path": "website/cinder/img/grid9.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "627dda51304ff75b255426e84f012d6a41d0304c",
+      "size": 456,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/627dda51304ff75b255426e84f012d6a41d0304c"
+    },
+    {
+      "path": "website/cinder/js",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "313a9be579d4e68cd3717141add8f2adcf146249",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/313a9be579d4e68cd3717141add8f2adcf146249"
+    },
+    {
+      "path": "website/cinder/js/base.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1db589caa0ca3ad440219c5c59a1406449b829ad",
+      "size": 5911,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1db589caa0ca3ad440219c5c59a1406449b829ad"
+    },
+    {
+      "path": "website/cinder/js/bootstrap-3.0.3.min.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a6258efcbff4469d71123fbb01c921ac5231f14",
+      "size": 27822,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1a6258efcbff4469d71123fbb01c921ac5231f14"
+    },
+    {
+      "path": "website/cinder/keyboard-modal.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3640b62c22d205b2fb06f60bc3fa1f00cbda9da",
+      "size": 1549,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a3640b62c22d205b2fb06f60bc3fa1f00cbda9da"
+    },
+    {
+      "path": "website/cinder/main.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5eabbc2899f56b10e360446bf630e0736df95fd6",
+      "size": 377,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/5eabbc2899f56b10e360446bf630e0736df95fd6"
+    },
+    {
+      "path": "website/cinder/mkdocs_theme.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0829946941644bd7282d7aa7fa4738c0b3a8c1b9",
+      "size": 200,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/0829946941644bd7282d7aa7fa4738c0b3a8c1b9"
+    },
+    {
+      "path": "website/cinder/nav-sub.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3578b057b85e1902324ddb4c0a3658da538871a6",
+      "size": 422,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/3578b057b85e1902324ddb4c0a3658da538871a6"
+    },
+    {
+      "path": "website/cinder/nav.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "77a7aaeae68ccf40b184844ad5dec96bbca0ecb1",
+      "size": 5162,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/77a7aaeae68ccf40b184844ad5dec96bbca0ecb1"
+    },
+    {
+      "path": "website/cinder/search-modal.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b1eddb741e75f9ac47370032706210f7221c94b2",
+      "size": 1169,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/b1eddb741e75f9ac47370032706210f7221c94b2"
+    },
+    {
+      "path": "website/cinder/toc.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "26519c568f12c9c57e54ee04550e76cf8fd4fb45",
+      "size": 673,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/26519c568f12c9c57e54ee04550e76cf8fd4fb45"
+    },
+    {
+      "path": "website/docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9a3455f095054245cdd27f3d74682e5ec8d1498e",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/9a3455f095054245cdd27f3d74682e5ec8d1498e"
+    },
+    {
+      "path": "website/docs/Municipal_Spatial_Data.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "40d1ee85c1877e40672910feeabffab1fb49781e",
+      "size": 95,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/40d1ee85c1877e40672910feeabffab1fb49781e"
+    },
+    {
+      "path": "website/docs/ahmedabad.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c2df2bb9c986c2cbfa1f29818693d84da98c9e9",
+      "size": 840,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/1c2df2bb9c986c2cbfa1f29818693d84da98c9e9"
+    },
+    {
+      "path": "website/docs/assembly-constituencies.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b5ed3cb251f0ebd9db993c8990efb8893e732a6c",
+      "size": 101,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/b5ed3cb251f0ebd9db993c8990efb8893e732a6c"
+    },
+    {
+      "path": "website/docs/bangalore.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a6479b4e8e14a403465d7fa875402fe6d83fcaa9",
+      "size": 747,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a6479b4e8e14a403465d7fa875402fe6d83fcaa9"
+    },
+    {
+      "path": "website/docs/bhopal.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "61d4b1b9441f3f14e94fa7f1f082bcfe794f8509",
+      "size": 837,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/61d4b1b9441f3f14e94fa7f1f082bcfe794f8509"
+    },
+    {
+      "path": "website/docs/bhubaneswar.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "624c8c6d8c9468578eeface60c100ac139a23f0b",
+      "size": 875,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/624c8c6d8c9468578eeface60c100ac139a23f0b"
+    },
+    {
+      "path": "website/docs/contributing.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c4146771deea415f2eac6fbb624cd08f326bc9e3",
+      "size": 2855,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/c4146771deea415f2eac6fbb624cd08f326bc9e3"
+    },
+    {
+      "path": "website/docs/css",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "aec2541e7327105534e751bf2fca638ef8cc502a",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/aec2541e7327105534e751bf2fca638ef8cc502a"
+    },
+    {
+      "path": "website/docs/css/extra.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "89c6b621c6c5237c9de77823df9f0b1ca15b734f",
+      "size": 543,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/89c6b621c6c5237c9de77823df9f0b1ca15b734f"
+    },
+    {
+      "path": "website/docs/districts.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "808f4d1f0f8510a73ed5c4a69166464f0bdbf763",
+      "size": 86,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/808f4d1f0f8510a73ed5c4a69166464f0bdbf763"
+    },
+    {
+      "path": "website/docs/index.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f6558f1c21f4357c22370edf3bf484b23f867d4b",
+      "size": 4133,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/f6558f1c21f4357c22370edf3bf484b23f867d4b"
+    },
+    {
+      "path": "website/docs/indian_village_boundaries.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e1eaceb5d0a13cd17f50bd1e7c4798469cba5ccd",
+      "size": 98,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/e1eaceb5d0a13cd17f50bd1e7c4798469cba5ccd"
+    },
+    {
+      "path": "website/docs/js",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "899366f8aaec2790cf13b4be99ee11c9aaf23c6f",
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/trees/899366f8aaec2790cf13b4be99ee11c9aaf23c6f"
+    },
+    {
+      "path": "website/docs/js/extra.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a77dd36b40b1bdfc78908dff7798bc578d672547",
+      "size": 1419,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a77dd36b40b1bdfc78908dff7798bc578d672547"
+    },
+    {
+      "path": "website/docs/parliamentary-constituencies.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a28b6c5fa9e97bf64f2640decc44e1ae046b3c16",
+      "size": 106,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/a28b6c5fa9e97bf64f2640decc44e1ae046b3c16"
+    },
+    {
+      "path": "website/docs/pune.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25dadf01943ebe735429475878206d9029eba0a6",
+      "size": 798,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/25dadf01943ebe735429475878206d9029eba0a6"
+    },
+    {
+      "path": "website/docs/reference.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c3a2e47801917334f4302d88917d26962efd6dd",
+      "size": 133,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/8c3a2e47801917334f4302d88917d26962efd6dd"
+    },
+    {
+      "path": "website/docs/states.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "577695aaea23edc6e96af92eb091b99477a3e0a0",
+      "size": 83,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/577695aaea23edc6e96af92eb091b99477a3e0a0"
+    },
+    {
+      "path": "website/mkdocs.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8285be3b48b488938f1d9105a6e026476fcc540",
+      "size": 957,
+      "url": "https://api.github.com/repos/datameet/Municipal_Spatial_Data/git/blobs/d8285be3b48b488938f1d9105a6e026476fcc540"
+    }
+  ],
+  "truncated": false
+}
