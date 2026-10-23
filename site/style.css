@@ -23,7 +23,8 @@ h3 { font-size: 1rem; margin: 0 0 2px; }
 /* layout */
 .top { position: sticky; top: 0; z-index: 1000; display: flex; gap: 8px 16px; align-items: center;
   justify-content: space-between; padding: 8px 12px 8px 16px; background: var(--surface); border-bottom: 1px solid var(--line); }
-.brand { font-weight: 700; font-size: 1.1rem; color: var(--fg); text-decoration: none; }
+.brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.1rem; color: var(--fg); text-decoration: none; }
+.brand img { display: block; flex: none; }
 .top nav { display: flex; gap: 2px; }
 .top nav a { padding: 8px 10px; border-radius: var(--radius); text-decoration: none; color: var(--fg); font-size: .95rem; white-space: nowrap; }
 .top nav a:hover { background: var(--accent-soft); }
@@ -179,7 +180,8 @@ table.works td[data-label="Work"] > a:visited { color: var(--muted); }
   h1.title { font-size: 1.1rem; line-height: 1.35; }
   .hero h1 { font-size: 1.55rem; }
   main { padding: 12px 12px 32px; }
-  .brand { font-size: 1rem; }
+  .brand { font-size: 1rem; gap: 6px; }
+  .brand img { width: 24px; height: 24px; }
   .top { padding: 8px 8px 8px 12px; gap: 8px; }
   .top nav a { padding: 8px 5px; font-size: .85rem; }
   /* Filter chips scroll sideways instead of wrapping. */

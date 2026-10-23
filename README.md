@@ -1,3 +1,5 @@
+<img src="site/logo.svg" width="64" alt="Nagarika logo">
+
 # Nagarika
 
 Open civic data for India: what is being built near you, by whom, and for how much,
