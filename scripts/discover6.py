@@ -39,20 +39,34 @@ async def attempt(p):
         await shot(pg, "03_dashboard")
         await pg.click("#lok", timeout=10000)
         await pg.wait_for_timeout(2000)
-        await pg.click("#dropdownMenuButton1", timeout=10000)
+        await pg.evaluate("""() => { const el = document.getElementById('dropdownMenuButton1');
+            try { bootstrap.Dropdown.getOrCreateInstance(el).show(); } catch (e) { el.click(); } }""")
         await pg.wait_for_timeout(1500)
         await shot(pg, "04_filter_open")
-        await pg.select_option("#tenure", label="18th Lok Sabha")
-        await pg.wait_for_timeout(1500)
-        await pg.select_option("#demo", label="Karnataka")
-        await pg.wait_for_timeout(3000)
-        opts = await pg.eval_on_selector_all("#constituency option", "os => os.map(o => o.textContent.trim())")
-        log.append(f"constituencies {opts[:40]}")
-        label = next((o for o in opts if o.upper() == "BANGALORE SOUTH"), None) or next(o for o in opts if "SOUTH" in o.upper())
-        await pg.select_option("#constituency", label=label)
-        await pg.wait_for_timeout(3000)
+        log.append("selects " + json.dumps(await pg.evaluate("""() => [...document.querySelectorAll('select')].map(s => s.id + ':' + s.options.length)""")))
+
+        async def pick(sel, text, contains=False):
+            ok = await pg.evaluate("""([sel, text, contains]) => { const s = document.querySelector(sel); if (!s) return 'no select';
+                const o = [...s.options].find(o => contains ? o.textContent.toUpperCase().includes(text) : o.textContent.trim().toUpperCase() === text);
+                if (!o) return 'no option'; if (window.jQuery) jQuery(s).val(o.value).trigger('change');
+                else { s.value = o.value; s.dispatchEvent(new Event('change', { bubbles: true })); } return 'ok ' + o.textContent.trim(); }""",
+                [sel, text.upper(), contains])
+            log.append(f"pick {sel} {text}: {ok}")
+            await pg.wait_for_timeout(3000)
+
+        await pick("#tenure", "18th Lok Sabha")
+        await pick("#demo", "Karnataka")
+        for _ in range(10):
+            n = await pg.evaluate("() => (document.querySelector('#constituency') || {options: []}).options.length")
+            if n > 1:
+                break
+            await pg.wait_for_timeout(1000)
+        await pick("#constituency", "BANGALORE SOUTH")
         await shot(pg, "04_filter_chosen")
-        await pg.click("#searchFilter")
+        try:
+            await pg.click("#searchFilter", timeout=8000)
+        except Exception:
+            await pg.evaluate("() => document.getElementById('searchFilter').click()")
         await pg.wait_for_timeout(7000)
         await pg.evaluate(CLOSE_JS)
         await shot(pg, "05_after_search")
