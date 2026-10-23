@@ -135,6 +135,13 @@ files (e.g. OpenCity); OpenStreetMap for map tiles.
   Files: site/logo.svg (source), site/apple-touch-icon.png, site/logo-512.png; all
   concepts from both rounds are in docs/brand/.
 
+- Mumbai coverage (2026-10-23): only 5 works were showing out of 353 active MCGM
+  tenders. Causes: the tender collector re-read rejected tenders every run and ran
+  out of time; Mumbai's vocabulary ("passage and drainage", "pathway", "divider")
+  and ward spellings ("RC ward", "P South ward") were not recognised. Fixed: rejected
+  tenders are remembered, pilot portals get more time, filter and ward matching
+  widened (142 of 353 kept in a test, 120 with a ward).
+
 ## Open questions
 - Which unconfirmed state GePNIC portals are reachable from GitHub runners (the run
   summary reports each one)

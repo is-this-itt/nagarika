@@ -9,6 +9,7 @@ collected here.
 Tender pages use session-bound links, so a record's source link points to the
 portal and the note gives the Tender ID to search for.
 """
+import datetime as dt
 import html
 import re
 import time
@@ -16,7 +17,7 @@ import urllib.parse
 
 import requests
 
-from common import STATE_LGD, add_days, is_road_work, money, parse_date, upsert
+from common import FILTER_VERSION, STATE_LGD, add_days, is_road_work, money, parse_date, today, upsert
 
 UA = {"User-Agent": "Mozilla/5.0 (compatible; nagarika civic data; +https://github.com/is-this-itt/nagarika)"}
 
@@ -57,6 +58,8 @@ PORTALS = {
     "ch": ("Chandigarh", "https://etenders.chd.nic.in/nicgep/app", {}),
 }
 MAX_NEW_PER_PORTAL = 150  # detail pages fetched per portal per run
+PILOT_PORTALS = ("tn", "mh")  # portals with a pilot city get a larger share of the time
+SEEN_DAYS = 120  # forget skipped tenders after this long (active tenders close well before)
 
 
 def _text(fragment):
@@ -93,7 +96,8 @@ def tender_rows(page):
 def to_record(key, state, base, org_city, tid, f, matchers):
     desc = f.get("Work Description", "")
     title = f.get("Title", "")
-    if not is_road_work(desc, title):
+    category = " ".join([f.get("Product Category", ""), f.get("Sub category", "")])
+    if not is_road_work(desc, title, category=category):
         return None
     chain = [c.strip() for c in f.get("Organisation Chain", "").split("||") if c.strip()]
     agency = chain[0] if chain else ""
@@ -101,7 +105,7 @@ def to_record(key, state, base, org_city, tid, f, matchers):
     loc = f.get("Location", "")
     wards, how = [], "none"
     if city in matchers:
-        wards = matchers[city].match(" ".join([desc, title, loc]))
+        wards = matchers[city].match(" ".join([desc, title, loc] + chain[1:]))
         how = "text" if wards else "none"
     period = re.sub(r"\D", "", f.get("Period Of Work(Days)", ""))
     opening = parse_date(f.get("Bid Opening Date", ""))
@@ -124,7 +128,7 @@ def to_record(key, state, base, org_city, tid, f, matchers):
     }
 
 
-def run_portal(key, works, matchers, report, deadline_ts):
+def run_portal(key, works, matchers, report, deadline_ts, seen):
     state, base, org_city = PORTALS[key]
     s = requests.Session()
     s.headers.update(UA)
@@ -153,6 +157,8 @@ def run_portal(key, works, matchers, report, deadline_ts):
             if rid in works:
                 works[rid]["last_checked"] = time.strftime("%Y-%m-%d")
                 continue
+            if tid in seen:  # read before and not a road work
+                continue
             if new >= cap or time.time() > deadline_ts:
                 break
             try:
@@ -160,21 +166,31 @@ def run_portal(key, works, matchers, report, deadline_ts):
             except requests.RequestException:
                 continue
             new += 1
-            time.sleep(0.5)
+            time.sleep(0.3)
             rec = to_record(key, state, base, org_city, tid, f, matchers)
             if rec:
                 upsert(works, rec)
                 kept += 1
+            elif f.get("Tender ID"):
+                seen[tid] = today()
     report.add(f"gepnic-{key}", f"{len(orgs)} organisations, {new} new tenders read, {kept} road works kept")
 
 
 def run(works, state, matchers, report, budget_s):
     t0 = time.time()
-    keys = list(PORTALS)
+    st = state.setdefault("gepnic", {})
+    if st.get("filter_version") != FILTER_VERSION:  # filter changed: look at skipped tenders again
+        st["seen"], st["filter_version"] = {}, FILTER_VERSION
+    cutoff = (dt.date.today() - dt.timedelta(days=SEEN_DAYS)).isoformat()
+    seen_all = {k: {t: d for t, d in v.items() if d >= cutoff} for k, v in st.get("seen", {}).items()}
+    st["seen"] = seen_all
+    keys = list(PILOT_PORTALS) + [k for k in PORTALS if k not in PILOT_PORTALS]
+    weight = {k: 4 if k in PILOT_PORTALS else 1 for k in keys}
     for i, key in enumerate(keys):
-        # Share the remaining time between the remaining portals.
+        # Share the remaining time between the remaining portals, more for pilot cities.
         left = budget_s - (time.time() - t0)
         if left <= 0:
             report.add(f"gepnic-{key}", "skipped (time budget used)")
             continue
-        run_portal(key, works, matchers, report, time.time() + left / (len(keys) - i))
+        share = left * weight[key] / sum(weight[k] for k in keys[i:])
+        run_portal(key, works, matchers, report, time.time() + share, seen_all.setdefault(key, {}))

@@ -92,12 +92,15 @@ class WardMatcher:
                     found += self.by_no.get(str(int(n)), [])
         elif self.city == "mumbai":
             # "K/E ward", "L Ward", "P/North ward", "ward G/S"
+            # "K/E ward", "G/North", "RC ward", "P South ward", "Pwest Ward", "L Ward", "ward G/S"
             for m in re.finditer(r"\b([A-T])\s*/\s*(N|S|E|W|C|North|South|East|West|Central)\b"
+                                 r"|\b([A-T])\s*(N|S|E|W|C|North|South|East|West|Central)\s*-?\s*ward\b"
                                  r"|\b([A-T])\s+ward\b|\bward\s+([A-T])\b", text, re.I):
-                if m.group(1):
-                    code = f"{m.group(1).upper()}/{m.group(2)[0].upper()}"
+                if m.group(1) or m.group(3):
+                    letter, side = (m.group(1), m.group(2)) if m.group(1) else (m.group(3), m.group(4))
+                    code = f"{letter.upper()}/{side[0].upper()}"
                 else:
-                    code = (m.group(3) or m.group(4)).upper()
+                    code = (m.group(5) or m.group(6)).upper()
                 found += self.by_no.get(code, [])
         if self.name_re:
             found += [self.names[m.group(1)] for m in self.name_re.finditer(t)]

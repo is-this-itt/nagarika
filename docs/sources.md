@@ -31,12 +31,21 @@ defined in `collector/common.py` (`FIELDS`).
 - **How:** "Tenders by Organisation" (no captcha) lists active tenders per
   organisation. Organisations whose names suggest road building (municipal bodies,
   PWD, highways, development authorities) are opened, and each new tender's detail
-  page is read. At most 150 new tenders per portal per run.
+  page is read. At most 150 new tenders per portal per run (450 for a pilot city's
+  organisation). Tenders read and rejected are remembered for 120 days so later runs
+  skip them; this memory is reset when the road-work filter changes
+  (`FILTER_VERSION` in `common.py`). Portals with a pilot city (Tamil Nadu,
+  Maharashtra) go first and get four times the time share.
 - **Fields:** Tender ID, work description, organisation chain, tender value (often
   "NA"), period of work in days, location, PIN code, published and bid-opening dates.
 - **Pilot cities:** Corporation of Chennai to `chennai` (wards from "Ward 114",
   "Dn114,116"); Municipal Corporation of Greater Mumbai to `mumbai` (wards from
-  "K/E ward", "L Ward").
+  "K/E ward", "G/North", "RC ward", "P South ward", "L Ward", also in the office
+  name). Mumbai's local works are mostly "improvement of passage and drainage"
+  (the lanes between chawls and buildings), so "passage", "pathway", "drainage" and
+  "divider" count as road words, and the portal's own "Civil Works - Roads" category
+  is trusted. Checked on 2026-10-23 against all 353 active MCGM tenders: 142 kept,
+  120 of them matched to a ward.
 - **Missing:** award results (contractor, contract value) are behind a captcha and
   are not collected. Tender detail links are session-bound, so the record gives the
   Tender ID to search for.

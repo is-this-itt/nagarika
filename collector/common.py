@@ -63,8 +63,10 @@ ROAD_STRONG = re.compile(
     r"flyovers?|under ?pass|subway|skywalk|foot over bridge|culverts?|storm ?water drains?|swd|"
     r"road ?(works?|repairs?|widening|cutting|restoration|improvements?|construction|development)|"
     r"cc roads?|wbm|speed breakers?|road ?side drains?|trench\w*)\b", re.I)
-ROAD_NOUN = re.compile(r"\b(roads?|rd|streets?|lanes?|cross|drains?|junctions?|bridges?|highways?|"
-                       r"nh-?\d+|sh-?\d+|walkways?|medians?|pipe ?lines?|cables?)\b", re.I)
+ROAD_NOUN = re.compile(r"\b(roads?|rd|streets?|lanes?|cross|drains?|drainage|junctions?|bridges?|highways?|"
+                       r"nh-?\d+|sh-?\d+|walkways?|medians?|dividers?|pipe ?lines?|cables?|"
+                       # Mumbai: "passage" and "pathway" are the public lanes between chawls and buildings.
+                       r"passages?|pathways?)\b", re.I)
 ROAD_ACTION = re.compile(r"\b(improv\w*|repair\w*|construct\w*|develop\w*|widen\w*|concret\w*|"
                          r"maint\w*|restor\w*|reinstat\w*|re-?lay\w*|lay\w*|strengthen\w*|upgrad\w*|"
                          r"patch\w*|surfac\w*|paving|rehabilit\w*|reconstruct\w*|desilt\w*|"
@@ -76,7 +78,14 @@ NOT_ROAD = re.compile(r"\b(street ?lights?|lighting|toilets?|buildings?|schools?
                       r"compound walls?|quarters|hostels?|temples?|statues?)\b", re.I)
 
 
-def is_road_work(*texts):
+# Bump when the road-work filter changes, so sources re-check tenders they skipped before.
+FILTER_VERSION = 2
+
+
+def is_road_work(*texts, category=""):
+    # Some portals classify the work themselves ("Civil Works - Roads").
+    if re.search(r"\broads?\b", category or "", re.I):
+        return True
     for t in texts:
         if not t:
             continue
