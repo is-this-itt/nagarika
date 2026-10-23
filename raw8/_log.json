@@ -1,0 +1,9 @@
+[
+"home loaded",
+"01_home",
+"02_dashboard_popup",
+"02_dashboard",
+"02_dashboard_full",
+"filter error TimeoutError('Page.click: Timeout 10000ms exceeded.\\nCall log:\\n  - waiting for locator(\"#lok\")\\n')",
+"tiles 0"
+]
