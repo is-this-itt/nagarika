@@ -1,0 +1,16 @@
+200 315166 tntenders_orglist.html https://tntenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndTendersByOrganisation&service=direct&session=T&sp=S9nWAOBAD2MB2mhgCDg9jAQ%3D%3D
+tntenders tender links 149 sample ['/nicgep/app?component=%24DirectLink&page=FrontEndViewTender&service=direct&session=T&sp=SyTre5NALVUrdOJNsfHaR9g%3D%3D', '/nicgep/app?component=%24DirectLink&page=FrontEndViewTender&service=direct&session=T&sp=SvshyK%2BmIXlPG22p2Xt8BDg%3D%3D']
+200 76888 tntenders_tender0.html https://tntenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndViewTender&service=direct&session=T&sp=SyTre5NALVUrdOJNsfHaR9g%3D%3D
+200 76983 tntenders_tender1.html https://tntenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndViewTender&service=direct&session=T&sp=SvshyK%2BmIXlPG22p2Xt8BDg%3D%3D
+200 76843 tntenders_tender2.html https://tntenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndViewTender&service=direct&session=T&sp=St83Yj%2Blekgykjd3pmBFk2w%3D%3D
+200 725286 mahatenders_orglist.html https://mahatenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndTendersByOrganisation&service=direct&session=T&sp=Slfp5mzAdjykYeCqOGrxfNtS0Fec7wUuNy1YFXyqSerE%3D
+mahatenders tender links 353 sample ['/nicgep/app?component=%24DirectLink&page=FrontEndViewTender&service=direct&session=T&sp=S9tnboTzbgmcL%2B2nnPtSeJg%3D%3D', '/nicgep/app?component=%24DirectLink&page=FrontEndViewTender&service=direct&session=T&sp=SeST5yN8XIc0UuoKapR4RCQ%3D%3D']
+200 76757 mahatenders_tender0.html https://mahatenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndViewTender&service=direct&session=T&sp=S9tnboTzbgmcL%2B2nnPtSeJg%3D%3D
+200 75124 mahatenders_tender1.html https://mahatenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndViewTender&service=direct&session=T&sp=SeST5yN8XIc0UuoKapR4RCQ%3D%3D
+200 77465 mahatenders_tender2.html https://mahatenders.gov.in/nicgep/app?component=%24DirectLink&page=FrontEndViewTender&service=direct&session=T&sp=SK5EihOggmuiuXFJEJ6kS%2Bw%3D%3D
+200 1995 kppp_geninfo_200000.json https://kppp.karnataka.gov.in/supplier-registration-service/v1/api/portal-service/200000/get-works-tender-general-info
+200 291339 kppp_departments.json https://kppp.karnataka.gov.in/supplier-registration-service/v1/api/portal-service/departments/activeDepartment
+200 2789 kppp_workcats.json https://kppp.karnataka.gov.in/supplier-registration-service/v1/api/portal-service/active-work-categories
+200 97 kppp_metrics.json https://kppp.karnataka.gov.in/supplier-registration-service/v1/api/portal-service/metrics/get-portal-metrics
+kppp max works id ~ 336562..336591
+bbmp csv 200 rows 1160
