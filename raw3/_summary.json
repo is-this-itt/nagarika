@@ -1,0 +1,284 @@
+{
+ "gba_369": {
+  "status": 200,
+  "count": 369,
+  "sample_props": [
+   {
+    "id": "ward_369_final.1",
+    "Corporation": "West",
+    "corporation_kn": "ಪಶ್ಚಿಮ",
+    "corporation_id": "5",
+    "ac": "Rajarajeshwarinagar",
+    "ac_kn": "ರಾಜರಾಜೇಶ್ವರಿನಗರ",
+    "ac_no": "154",
+    "Assembly": "154 - Rajarajeshwarinagar",
+    "ward_id": "25",
+    "ward_name": "Vinayaka Layout",
+    "ward_name_kn": "ವಿನಾಯಕ ಲೇಔಟ್",
+    "Ward_Name": "25 - Vinayaka Layout",
+    "TOT_P": "20170.0",
+    "TOT_M": "10168.0",
+    "TOT_F": "10002.0",
+    "SC_P": "1496.0",
+    "SC_M": "767.0",
+    "SC_F": "729.0",
+    "ST_P": "406.0",
+    "ST_M": "205.0",
+    "ST_F": "201.0",
+    "low_range": "18949",
+    "high_range": "28424",
+    "RO_Code": "11",
+    "RO_Division": "RO- Rajarajeswari Nagara",
+    "ARO_Code": "34",
+    "ARO_ Sub Division": "ARO- Jnana Bharathi",
+    "zone": "Zone1",
+    "zone_name": "Rajarajeshwarinagar"
+   },
+   {
+    "id": "ward_369_final.2",
+    "Corporation": "North",
+    "corporation_kn": "ಉತ್ತರ",
+    "corporation_id": "2",
+    "ac": "Yelahanka",
+    "ac_kn": "ಯಲಹಂಕ",
+    "ac_no": "150",
+    "Assembly": "150 - Yelahanka",
+    "ward_id": "2",
+    "ward_name": "Aerocity",
+    "ward_name_kn": "ಏರೋಸಿಟಿ",
+    "Ward_Name": "2 - Aerocity",
+    "TOT_P": "20655.0",
+    "TOT_M": "10844.0",
+    "TOT_F": "9810.0",
+    "SC_P": "1636.0",
+    "SC_M": "846.0",
+    "SC_F": "790.0",
+    "ST_P": "563.0",
+    "ST_M": "292.0",
+    "ST_F": "270.0",
+    "low_range": "19943",
+    "high_range": "29914",
+    "RO_Code": "11",
+    "RO_Division": "RO- Yelahanka",
+    "ARO_Code": "29",
+    "ARO_ Sub Division": "ARO- Yelahanka Old Town",
+    "zone": "Zone2",
+    "zone_name": "Yelahanka"
+   },
+   {
+    "id": "ward_369_final.3",
+    "Corporation": "North",
+    "corporation_kn": "ಉತ್ತರ",
+    "corporation_id": "2",
+    "ac": "Yelahanka",
+    "ac_kn": "ಯಲಹಂಕ",
+    "ac_no": "150",
+    "Assembly": "150 - Yelahanka",
+    "ward_id": "3",
+    "ward_name": "Chowdeshwari ward",
+    "ward_name_kn": "ಚೌಡೇಶ್ವರಿ ವಾರ್ಡ್",
+    "Ward_Name": "3 - Chowdeshwari ward",
+    "TOT_P": "26795.0",
+    "TOT_M": "14502.0",
+    "TOT_F": "12281.0",
+    "SC_P": "2432.0",
+    "SC_M": "1336.0",
+    "SC_F": "1096.0",
+    "ST_P": "477.0",
+    "ST_M": "264.0",
+    "ST_F": "213.0",
+    "low_range": "19943",
+    "high_range": "29914",
+    "RO_Code": "11",
+    "RO_Division": "RO- Yelahanka",
+    "ARO_Code": "29",
+    "ARO_ Sub Division": "ARO- Yelahanka Old Town",
+    "zone": "Zone2",
+    "zone_name": "Yelahanka"
+   }
+  ]
+ },
+ "bbmp_198": {
+  "status": 200,
+  "count": 198,
+  "sample_props": [
+   {
+    "name": "Ward 1",
+    "Ward Name": "Kempegowda Ward",
+    "Zone": "Yelahanka",
+    "Division": "Yelahanka",
+    "Subdivision": "Yelahanka",
+    "Assembly (MLA) Constituency ": "Yelahanka",
+    "Parliament (MP) Constituency": "Chikballapur"
+   },
+   {
+    "name": "Ward 2",
+    "Ward Name": "Chowdeswari Ward",
+    "Zone": "Yelahanka",
+    "Division": "Yelahanka",
+    "Subdivision": "Yelahanka",
+    "Assembly (MLA) Constituency ": "Yelahanka",
+    "Parliament (MP) Constituency": "Chikballapur"
+   },
+   {
+    "name": "Ward 3",
+    "Ward Name": "Atturu",
+    "Zone": "Yelahanka",
+    "Division": "Yelahanka",
+    "Subdivision": "Yelahanka",
+    "Assembly (MLA) Constituency ": "Yelahanka",
+    "Parliament (MP) Constituency": "Chikballapur"
+   }
+  ]
+ },
+ "bbmp_243": {
+  "status": 200,
+  "count": 243,
+  "sample_props": [
+   {
+    "name": "1-Kempegowda Ward",
+    "TownCode": "2003",
+    "WardCode": "2003001",
+    "WardID": "4878",
+    "WardName": "Kempegowda Ward",
+    "WardNo": "1",
+    "LGD_WardCode": "1303139",
+    "OBJECTID": "21141",
+    "fid": "6512"
+   },
+   {
+    "name": "2-Chowdeswari Ward",
+    "TownCode": "2003",
+    "WardCode": "2003002",
+    "WardID": "4879",
+    "WardName": "Chowdeswari Ward",
+    "WardNo": "2",
+    "LGD_WardCode": "1303140",
+    "OBJECTID": "21142",
+    "fid": "6513"
+   },
+   {
+    "name": "3-Someshwara Ward",
+    "TownCode": "2003",
+    "WardCode": "2003003",
+    "WardID": "4882",
+    "WardName": "Someshwara Ward",
+    "WardNo": "3",
+    "LGD_WardCode": "1303141",
+    "OBJECTID": "21143",
+    "fid": "6514"
+   }
+  ]
+ },
+ "bbmp_225": {
+  "status": 200,
+  "count": 225,
+  "sample_props": [
+   {
+    "id": "3",
+    "proposed_ward_name_en": "3-Atturu",
+    "proposed_ward_name_ka": "3-ಅತ್ತೂರು",
+    "ward_area": "8.26924984497956",
+    "name_en": "Atturu",
+    "name_ka": "ಅತ್ತೂರು",
+    "population": "42569",
+    "sc_population": "4878",
+    "st_population": "1404",
+    "male_population": "22772",
+    "female_population": "19797",
+    "assembly_constituency_id": "150",
+    "assembly_constituency_name_en": "150-YELAHANKA",
+    "assembly_constituency_name_ka": "150-YELAHANKA",
+    "parliamentary_constituency_id": "27",
+    "parliamentary_constituency_name_en": "CHIKBALLAPUR",
+    "parliamentary_constituency_name_ka": "ಚಿಕ್ಕಬಳ್ಳಾಪುರ",
+    "bbox": "775505,1.44756e+06,779824,1.45304e+06"
+   },
+   {
+    "id": "17",
+    "proposed_ward_name_en": "17-Chikkasandra",
+    "proposed_ward_name_ka": "17-ಚಿಕ್ಕಸಂದ್ರ",
+    "ward_area": "3.95884799740846",
+    "name_en": "Chikkasandra",
+    "name_ka": "ಚಿಕ್ಕಸಂದ್ರ",
+    "population": "37486",
+    "sc_population": "2612",
+    "st_population": "1014",
+    "male_population": "19694",
+    "female_population": "17792",
+    "assembly_constituency_id": "155",
+    "assembly_constituency_name_en": "155-DASARAHALLI",
+    "assembly_constituency_name_ka": "155-DASARAHALLI",
+    "parliamentary_constituency_id": "24",
+    "parliamentary_constituency_name_en": "BANGALORE NORTH",
+    "parliamentary_constituency_name_ka": "ಬೆಂಗಳೂರು ಉತ್ತರ",
+    "bbox": "770249,1.44471e+06,773304,1.44691e+06"
+   },
+   {
+    "id": "15",
+    "proposed_ward_name_en": "15-Kammagondanahalli",
+    "proposed_ward_name_ka": "15-ಕಮ್ಮಗೊಂಡನಹಳ್ಳಿ",
+    "ward_area": "5.71959870159253",
+    "name_en": "Kammagondanahalli",
+    "name_ka": "ಕಮ್ಮಗೊಂಡನಹಳ್ಳಿ",
+    "population": "42954",
+    "sc_population": "8843",
+    "st_population": "1166",
+    "male_population": "22445",
+    "female_population": "20509",
+    "assembly_constituency_id": "155",
+    "assembly_constituency_name_en": "155-DASARAHALLI",
+    "assembly_constituency_name_ka": "155-DASARAHALLI",
+    "parliamentary_constituency_id": "24",
+    "parliamentary_constituency_name_en": "BANGALORE NORTH",
+    "parliamentary_constituency_name_ka": "ಬೆಂಗಳೂರು ಉತ್ತರ",
+    "bbox": "771599,1.44457e+06,775501,1.44879e+06"
+   }
+  ]
+ },
+ "chennai_200": {
+  "status": 200,
+  "count": 200,
+  "sample_props": [
+   {
+    "name": "168",
+    "id_2": "ID_00000"
+   },
+   {
+    "name": "169",
+    "id_2": "ID_00001"
+   },
+   {
+    "name": "170",
+    "id_2": "ID_00002"
+   }
+  ]
+ },
+ "mumbai_24": {
+  "status": 200,
+  "count": 24,
+  "sample_props": [
+   {
+    "name": "G/S",
+    "NAME": "G/S",
+    "OBJECTID": "1",
+    "Shape__Area": "9741111.91455",
+    "Shape__Length": "15974.681034"
+   },
+   {
+    "name": "F/N",
+    "NAME": "F/N",
+    "OBJECTID": "2",
+    "Shape__Area": "12853652.852",
+    "Shape__Length": "16825.3683394"
+   },
+   {
+    "name": "M/W",
+    "NAME": "M/W",
+    "OBJECTID": "3",
+    "Shape__Area": "17620181.5264",
+    "Shape__Length": "25266.9563095"
+   }
+  ]
+ }
+}
