@@ -95,6 +95,19 @@ files (e.g. OpenCity); OpenStreetMap for map tiles.
   Older work orders use 198/243/225-ward numbering, so they are matched to new wards
   through a spatial crosswalk, flagged as approximate.
 
+- Mission (owner, 2026-10-23): (1) help citizens collect more civic data, (2) make it as
+  easy as possible to use, (3) act as middleware: fetch and structure sources no one is
+  structuring yet. Nagarika is a catalyst, not a competitor, for data collectors such as
+  OpenCity: we build on their datasets, credit them, and give our structured data back.
+- Sectors (owner, 2026-10-23): the site lists all planned topics (water, streetlights,
+  buildings, parks, garbage, MP/MLA funds) as "coming soon"; only roads has data. Roads
+  came first because it answers one concrete question with sources that are reachable.
+- MPLADS (owner asked to link it): eSAKSHI (mplads.mospi.gov.in) is reachable from
+  GitHub runners; its dashboard is a ZK web app with no documented API. v1 links to it;
+  ingesting works by constituency is the next candidate module.
+- UI (owner, 2026-10-23): standard components: results table with numbered pagination,
+  sort and filter chips kept in the URL, stacked rows on phones; search results page.
+
 ## Open questions
 - Which unconfirmed state GePNIC portals are reachable from GitHub runners (the run
   summary reports each one)

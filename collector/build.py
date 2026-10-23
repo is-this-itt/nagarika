@@ -52,7 +52,8 @@ def main():
     cities, ward_index = [], {}
     for slug, c in CITIES.items():
         wards = load_wards(slug)
-        ward_index[slug] = [[w["ward_key"], w["ward_no"], w["ward_name"], w.get("zone", "")] for w in wards]
+        ward_index[slug] = [[w["ward_key"], w["ward_no"], w["ward_name"], w.get("zone", ""), w.get("assembly", "")]
+                            for w in wards]
         cw = [r for r in rows if r["city"] == slug]
         src = os.path.join(DATA, "boundaries", f"{slug}.geojson")
         if os.path.exists(src):
