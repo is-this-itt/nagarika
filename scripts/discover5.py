@@ -17,6 +17,6 @@ def post(name, path, body):
         log.write(f"ERR {name} {e!r}\n")
 post("mps_ka.json", "getMpNamesData", {"state_combo": "18,2,7"})
 post("mpconst_blrs.json", "getMpAndConstCombo", {"const_combo": "182,2,7"})
-for i, combo in enumerate(["18,182,0,2", "18,182,0,7", "0,0,0,2"]):
+for i, combo in enumerate(["18,182,0,2", "18,182,0,2,7", "18,0,0,2,7"]):
     for key in ["Works Sanctioned", "Works Completed", "Works Recommended"]:
         post(f"rep_{i}_{key.split()[1].lower()}.json", "getTilesReportData", {"combo": combo, "key": key})
