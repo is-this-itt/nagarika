@@ -11,7 +11,7 @@ location" finds your ward in cities that have ward maps.
 | Topic | Question it answers | Data |
 |---|---|---|
 | Road works | Why is my road dug up? | [`data/works.csv`](data/works.csv) |
-| MP funds (MPLADS) | What did my MP spend their fund on? | [`data/mplads.csv`](data/mplads.csv) |
+| MP funds (MPLADS) | What did my MP spend their fund on? | [`data/mplads/`](data/mplads/) (one CSV per state) |
 
 - **Site:** https://is-this-itt.github.io/nagarika/
 - **Data:** CSV files above, ODbL ([data licence](data/LICENSE.md))
@@ -53,6 +53,22 @@ python -m http.server -d _site 8000
 Several Indian government sites refuse connections from outside India. The
 collectors report each source's result in the Actions run summary. If a source
 needs an Indian connection later, run the workflow on a self-hosted runner in India.
+
+## Guides
+
+The site also teaches people to use the official portals themselves
+(`#/guides`), starting with the MPLADS eSAKSHI portal. Spreading that know-how is
+one of the project's aims.
+
+## Hosting limits
+
+The site is static files on GitHub Pages: a 1 GB site limit and a soft 100 GB a
+month of traffic. Data files are served compressed (about 0.6 MB for all road works,
+0.9 MB for the largest state's MP works), which is roughly 100,000 page visits a
+month before the traffic limit matters. Repository files must stay under 100 MB each,
+which is why MPLADS data is split by state. If traffic outgrows Pages, the same
+`_site/` folder can be served from Cloudflare Pages (no traffic limit) without code
+changes.
 
 ## Principles
 

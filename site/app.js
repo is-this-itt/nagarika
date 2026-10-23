@@ -400,6 +400,10 @@ function roadView(where) {
 
 // MPLADS view.
 const STAGE_DONE = s => s === "Work Completed";
+// MoSPI: "sanctioned works are generally required to be completed within one year of sanction".
+const YEAR_AGO = new Date(Date.now() - 365 * 864e5).toISOString().slice(0, 10);
+const overYear = w => !!w.sanction_date && w.sanction_date < YEAR_AGO && !STAGE_DONE(w.stage);
+const yearBadge = w => overYear(w) ? '<span class="badge past_estimate">Over a year since sanction</span>' : "";
 const STAGE_PENDING = s => /pending/i.test(s || "") || !s;
 function mpView(stateSlug, showConstituency) {
   return {
@@ -414,12 +418,13 @@ function mpView(stateSlug, showConstituency) {
       "": ["All", () => true],
       done: ["Completed", w => STAGE_DONE(w.stage)],
       going: ["In progress", w => !STAGE_DONE(w.stage) && !STAGE_PENDING(w.stage)],
+      late: ["Over a year since sanction", overYear],
       pending: ["Awaiting sanction", w => STAGE_PENDING(w.stage)],
     },
     table: rows => `<table class="works">
       <thead><tr><th>Work</th><th>Type</th><th class="num">Amount</th><th>Recommended</th><th>Stage</th></tr></thead>
       <tbody>${rows.map(w => `<tr>
-        <td data-label="Work"><a href="#/mpwork/${stateSlug}/${enc(w.id)}">${esc(w.description || w.activity)}</a>
+        <td data-label="Work"><a href="#/mpwork/${stateSlug}/${enc(w.id)}">${esc(w.description || w.activity)}</a> ${yearBadge(w)}
           ${showConstituency ? `<div class="sub">${esc(w.constituency)} · ${esc(person(w.mp_name))}</div>` : ""}</td>
         <td data-label="Type">${esc(w.activity) || NP}</td>
         <td data-label="Amount" class="num">${inr(w.amount) || NP}</td>
@@ -485,6 +490,36 @@ async function nearMe(btn, out) {
     out.textContent = "Location not available. Search by area or PIN code instead.";
   }, { enableHighAccuracy: true, timeout: 15000 });
 }
+
+// Plain-language explanations shown under each field on detail pages.
+const HELP = {
+  // road works
+  "Agency": "The government body that issued the tender or work order, such as a city corporation or the PWD.",
+  "Office": "The zone, division or office inside that body that handles the work.",
+  "Contractor": "The firm or person given the work. Tender portals show it only after the award, and some hide it behind a captcha.",
+  "Sanctioned cost": "The money approved for the work. Which figure it is (tender estimate, tender value) is noted beside it.",
+  "Amount paid": "Bills paid to the contractor so far, from the city's accounts.",
+  "Tender published": "When the agency invited contractors to bid.",
+  "Start or award date": "When the contract was awarded or the work order issued.",
+  "Period of work": "How long the contractor has to finish, as written in the tender.",
+  "Finish by": "When the work should be done. \"(est.)\" means we worked it out from the bid opening date plus the period of work.",
+  "Status": "The stage the source shows, such as open for bids, awarded, bill paid or cancelled.",
+  "Ward": "The ward the work is in, and how we know it.",
+  "Location in source": "The location words exactly as the official record gives them.",
+  "Place": "Town or district, PIN code and state, as the source gives them.",
+  // MPLADS
+  "MP": "The Member of Parliament who recommended this work from their MPLADS fund (₹5 crore a year).",
+  "Constituency": "The Lok Sabha constituency the MP represents.",
+  "Type of work": "The kind of work, from the list of works the MPLADS guidelines allow. The number refers to that list.",
+  "Category": "\"Normal/Others\" is a regular new work. \"Repair and Renovation\" is upkeep of an existing asset. \"Trust and Society\" is a work for a registered trust or society, which the rules allow within limits.",
+  "District authority": "The Implementing District Authority (IDA), usually the District Collector or Deputy Commissioner's office. It checks the MP's recommendation, sanctions the work, chooses who carries it out and pays for it.",
+  "Recommended": "When the MP proposed the work, and the amount they asked for.",
+  "Sanctioned": "When the district authority approved the work, and the amount approved. Until then the work is only a proposal.",
+  "Stage": "Where the work stands on the official portal. The MPLADS guide explains each stage.",
+  "Completed": "When the work was marked complete, and the money actually spent.",
+  "Recommendation letter": "The reference number of the MP's letter proposing the work. Quote it to find the work on the official portal, or in an RTI or complaint.",
+};
+const fieldRow = (label, val) => `<tr><th scope="row">${label}${HELP[label] ? `<span class="help">${HELP[label]}</span>` : ""}</th><td>${val || NP}</td></tr>`;
 
 // ---------- pages: home and search ----------
 async function home() {
@@ -673,7 +708,7 @@ async function work(id) {
   const how = w.ward_match === "text" ? "Named in the work's title or location."
     : w.ward_match.startsWith("crosswalk") ? `Filed under ${esc(w.ward_match.replace("crosswalk from ", "the ").replace(" (approximate)", ""))}. Shown in each current ward overlapping it (approximate).`
     : "The source does not name a ward we could recognise.";
-  const row = (label, val) => `<tr><th scope="row">${label}</th><td>${val || NP}</td></tr>`;
+  const row = fieldRow;
   app.innerHTML = `
     ${crumbs([["Home", "#/"], ["Road works", "#/roads"], w.city ? [cityName, `#/city/${w.city}`] : [w.state, `#/state/${enc(w.state)}`], ["Work"]])}
     <h1 class="title">${esc(w.title)}</h1>
@@ -736,7 +771,7 @@ async function mpHome() {
     <h2>By state</h2>
     <table class="plain stack"><thead><tr><th>State</th><th class="num">Works</th><th class="num">Sanctioned</th><th class="num">Completed</th></tr></thead>
     <tbody>${idx.map(s => `<tr><td><a href="#/mp/${s.slug}">${esc(s.state)}</a></td><td class="num" data-label="Works">${fmtN(s.works)}</td><td class="num" data-label="Sanctioned">${inr(s.sanctioned) || "—"}</td><td class="num" data-label="Completed">${fmtN(s.completed)}</td></tr>`).join("")}</tbody></table>
-    <p class="muted small">Source: <a href="https://mplads.mospi.gov.in/digigov/dashboard.html">eSAKSHI MPLADS dashboard</a>, Ministry of Statistics and Programme Implementation.</p>`;
+    <p class="muted small">Source: <a href="https://mplads.mospi.gov.in/digigov/dashboard.html">eSAKSHI MPLADS dashboard</a>, Ministry of Statistics and Programme Implementation. New to MPLADS? Read <a href="#/guides/mplads">the guide</a>.</p>`;
   const all = idx.flatMap(s => s.constituencies.map(c => ({ ...c, state: s.state, slug: s.slug })));
   document.getElementById("cq").oninput = e => {
     const hits = e.target.value.trim().length > 1 ? fuzzy(all, e.target.value, ["name", "mp", "state"], 1).slice(0, 10) : [];
@@ -780,7 +815,9 @@ async function mpConstituency(slug, id) {
     ${crumbs([["Home", "#/"], ["MP funds", "#/mp"], [s.state, `#/mp/${slug}`], [c.name]])}
     <h1>${esc(c.name)}</h1>
     <p class="muted">MP: <b>${esc(person(c.mp))}</b> · ${esc(s.tenure)}</p>
-    ${stats([[fmtN(c.works), "Works recommended"], [inr(c.sanctioned) || "—", "Sanctioned"], [fmtN(c.completed), "Completed"], [inr(c.spent) || "—", "Spent on completed works"]])}
+    ${stats([[fmtN(c.works), "Works recommended"], [inr(c.sanctioned) || "—", "Sanctioned"], [fmtN(c.completed), "Completed"],
+      [`<a href="#/mp/${slug}/${id}?f=late">${fmtN(list.filter(overYear).length)}</a>`, "Over a year since sanction"]])}
+    <p class="small"><a href="#/guides/mplads">How MPLADS works, and how to check this on the official portal</a></p>
     <div id="res"></div>
     <p class="muted small">MPs may also recommend some works outside their constituency, so a few works here are in other districts.</p>`;
   results(document.getElementById("res"), list, mpView(slug, false));
@@ -791,19 +828,20 @@ async function mpWork(slug, id) {
   if (!w) return notFound();
   const idx = await load("mplads_index.json");
   const s = idx.find(x => x.slug === slug);
-  const row = (label, val) => `<tr><th scope="row">${label}</th><td>${val || NP}</td></tr>`;
+  const row = fieldRow;
   app.innerHTML = `
     ${crumbs([["Home", "#/"], ["MP funds", "#/mp"], [s.state, `#/mp/${slug}`], [w.constituency, `#/mp/${slug}/${w.constituency_id}`], ["Work"]])}
     <h1 class="title">${esc(w.description || w.activity)}</h1>
+    ${overYear(w) ? `<p>${yearBadge(w)}</p><p class="note warn">Sanctioned on ${date(w.sanction_date)} and not marked complete. MPLADS rules say sanctioned works are generally to be completed within one year. The work may be finished but not yet marked complete on the portal, so treat this as a question for the district authority.</p>` : ""}
     <table class="fields"><tbody>
       ${row("MP", esc(person(w.mp_name)))}
       ${row("Constituency", `<a href="#/mp/${slug}/${w.constituency_id}">${esc(w.constituency)}</a>`)}
       ${row("Type of work", esc(w.activity))}
       ${row("Category", esc(w.category))}
-      ${row("Implementing agency", esc(titleCase(w.implementing_agency)))}
+      ${row("District authority", esc(titleCase(w.implementing_agency)))}
       ${row("Recommended", [date(w.recommended_date), inr(w.recommended_amount)].filter(Boolean).join(" · "))}
       ${row("Sanctioned", [date(w.sanction_date), inr(w.sanction_amount)].filter(Boolean).join(" · "))}
-      ${row("Stage", esc(w.stage))}
+      ${row("Stage", `${esc(w.stage) || NP} <a class="small" href="#/guides/mplads?s=stages">What does this mean?</a>`)}
       ${row("Completed", [date(w.completed_date), w.actual_amount ? `${inr(w.actual_amount)} spent` : ""].filter(Boolean).join(" · "))}
       ${row("Recommendation letter", esc(w.letter_no))}
     </tbody></table>
@@ -870,6 +908,96 @@ async function about() {
     <p>Code is MIT-licensed on <a href="${REPO}">GitHub</a>. Adding a city or a state portal is usually a few lines; see <a href="${REPO}/blob/main/CONTRIBUTING.md">the contributing guide</a>. Found a mistake? <a href="${REPO}/issues">Open an issue</a>.</p>`;
 }
 
+// ---------- guides: how to use the official sources yourself ----------
+const GUIDES = [
+  { key: "mplads", title: "MP funds (MPLADS) on the official eSAKSHI portal", ready: true,
+    blurb: "How the scheme works, what each stage means, and how to look up your MP's works, download them and suggest a work." },
+  { key: "kppp", title: "Karnataka tenders (KPPP)", blurb: "Finding a tender, its value and the awarded contractor." },
+  { key: "gepnic", title: "State and central tender portals (eProcure)", blurb: "Searching tenders by organisation and Tender ID." },
+  { key: "rti", title: "Filing an RTI for missing details", blurb: "What to ask, whom to send it to, and how to cite a work number." },
+];
+
+async function guides() {
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Guides"]])}
+    <h1>Guides</h1>
+    <p class="lede">Nagarika shows the data, but it all comes from official portals that anyone can use. These guides show you how, step by step, so you can check the source yourself.</p>
+    <div class="cards topics">${GUIDES.map(g => g.ready
+      ? `<a class="card live" href="#/guides/${g.key}"><h3>${esc(g.title)}</h3><p>${esc(g.blurb)}</p></a>`
+      : `<div class="card soon"><h3>${esc(g.title)}</h3><span class="tag">Coming soon</span></div>`).join("")}</div>`;
+}
+
+async function guideMplads() {
+  const img = (f, alt) => `<figure class="shot"><img src="guides/mplads/${f}" alt="${esc(alt)}" loading="lazy" onerror="this.parentNode.remove()"><figcaption>${esc(alt)}</figcaption></figure>`;
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Guides", "#/guides"], ["MPLADS"]])}
+    <article class="guide">
+    <h1>MP funds (MPLADS): how it works and how to check it yourself</h1>
+    <p class="lede">Every Member of Parliament gets ₹5 crore a year to spend on works in their constituency through the Members of Parliament Local Area Development Scheme (MPLADS). Since April 2023 every step is recorded on the government's eSAKSHI portal, which anyone can read without logging in.</p>
+
+    <h2>Who does what</h2>
+    <ol class="flow">
+      <li><b>The MP recommends a work.</b> They send a recommendation letter on the portal, saying what should be built and how much it should cost.</li>
+      <li><b>The district authority sanctions it.</b> The District Collector or Deputy Commissioner's office (the "Implementing District Authority") checks the work is allowed and feasible, sanctions it and names an implementing agency.</li>
+      <li><b>The implementing agency builds it.</b> Usually a government department or local body. It hires a vendor and asks for payments on the portal as the work progresses.</li>
+      <li><b>The work is marked complete.</b> After the final payment, the implementing agency marks the work complete on the portal. Only then does it show as completed.</li>
+    </ol>
+    <p class="note">The rules say sanctioned works are generally to be completed within one year of sanction. Nagarika flags works that are past that as "Over a year since sanction".</p>
+
+    <h2 id="stages">What each stage means</h2>
+    <table class="fields"><tbody>
+      <tr><th scope="row">Pending for Sanction</th><td>The MP has recommended the work; the district authority has not approved it yet.</td></tr>
+      <tr><th scope="row">Sanction</th><td>The district authority has approved the work and the amount, and named an implementing agency.</td></tr>
+      <tr><th scope="row">Time Estimation</th><td>The implementing agency is working out how long the work will take.*</td></tr>
+      <tr><th scope="row">Vendor Identification</th><td>The implementing agency is choosing the contractor or supplier.*</td></tr>
+      <tr><th scope="row">Physical Inspection</th><td>The work or purchase is being inspected on the ground, usually before a payment.*</td></tr>
+      <tr><th scope="row">Work partially Completed</th><td>Some payments have been made for work done; the work is not finished.</td></tr>
+      <tr><th scope="row">Work Completed</th><td>The final payment was made and the work was marked complete on the portal.</td></tr>
+    </tbody></table>
+    <p class="muted small">* The portal does not define these stages; this is our plain reading of the names. If you know better, tell us.</p>
+
+    <h2>Look up your MP's works on the official portal</h2>
+    <ol class="steps">
+      <li>Open <a href="https://mplads.mospi.gov.in/" target="_blank" rel="noopener">mplads.mospi.gov.in</a> and tap <b>Dashboard</b> in the top menu.</li>
+      <li>A notice titled "What you need to know about the process…" opens. Read it if you like, then close it with the <b>×</b> at its top right.${img("02_dashboard_popup.jpg", "The notice that opens over the dashboard; close it with the × at the top right.")}</li>
+      <li>Choose <b>Lok Sabha</b> (or <b>Rajya Sabha</b>).</li>
+      <li>Tap <b>Filter</b>. Pick the <b>Tenure</b> (the current one is 18th Lok Sabha), your <b>State</b>, your <b>Constituency</b> and, if you like, the <b>MP Name</b>. Tap <b>Search</b>.${img("04_filter_chosen.jpg", "The filter with tenure, state and constituency chosen.")}</li>
+      <li>The tiles now show totals for that MP: <b>Allocated Limit</b>, <b>Works Recommended</b>, <b>Works Sanctioned</b>, <b>Works Completed</b> and <b>Expenditure</b>.${img("05_after_search.jpg", "Totals for one constituency after Search.")}</li>
+      <li>Tap a tile, for example <b>Works Recommended</b>. The list of works loads below the tiles.${img("06_works_table.jpg", "The list of works below the tiles.")}</li>
+      <li>Use the <b>Search</b> box above the list to find a place or a recommendation letter number (it looks like <code>LN/MP341/2025-2026/170</code>; Nagarika shows it on every work).</li>
+      <li>Tap <b>Excel</b>, <b>CSV</b> or <b>PDF</b> to download the list.</li>
+      <li>Some works have <b>Attachments</b> (photos of the asset at each stage, sanction orders) and <b>Reviews and Rating</b> from citizens.</li>
+    </ol>
+
+    <h2>Suggest a work to your MP</h2>
+    <ol class="steps">
+      <li>On <a href="https://mplads.mospi.gov.in/" target="_blank" rel="noopener">mplads.mospi.gov.in</a>, tap <b>Citizen Request</b>.</li>
+      <li>Log in with your mobile number and the OTP sent to it.</li>
+      <li>Fill in the place (state, district, city or village, ward, locality), choose your MP, and describe the work, items and approximate cost. Attach a photo if useful.</li>
+      <li>Submit, and use <b>Track Request</b> later to see what happened.</li>
+    </ol>
+    <p class="muted small">The portal says the choice of works "rests entirely at the discretion of the concerned MP". A request is a suggestion, not an application.</p>
+
+    <h2>What the portal does not show</h2>
+    <ul>
+      <li>Works from before April 2023: the first four years of the 17th Lok Sabha (2019-20 to 2022-23) and Rajya Sabha works before 2023-24 were handled on paper by the districts.</li>
+      <li>Works that are finished but not yet marked complete by the implementing agency still show as in progress.</li>
+      <li>"Expenditure" is payments released to vendors, not the value of what was built.</li>
+    </ul>
+
+    <h2>If something looks wrong</h2>
+    <ul>
+      <li>Ask the district authority named on the work (the Collector or Deputy Commissioner's MPLADS cell), quoting the recommendation letter number.</li>
+      <li>File an RTI with the same office for the sanction order, the implementing agency's progress reports or the completion certificate.</li>
+      <li>MoSPI, the ministry that runs the scheme: <a href="mailto:cna-mplads@mospi.gov.in">cna-mplads@mospi.gov.in</a>.</li>
+    </ul>
+
+    <h2>How Nagarika gets this data</h2>
+    <p>The public dashboard loads its figures from the portal's own data service, which needs no login. Nagarika reads the same lists the dashboard shows (works recommended, sanctioned and completed) once a day, for every state, and links each work back to the portal.</p>
+    </article>`;
+  if (parseHash().q.get("s") === "stages") setTimeout(() => document.getElementById("stages")?.scrollIntoView(), 0);
+}
+
 function notFound() {
   app.innerHTML = `${crumbs([["Home", "#/"], ["Not found"]])}<h1>Page not found</h1><p><a href="#/">Go to the home page</a></p>`;
 }
@@ -902,6 +1030,8 @@ async function route() {
     else if (parts[0] === "mp") await mpHome();
     else if (parts[0] === "mpwork") await mpWork(parts[1], parts.slice(2).join("/"));
     else if (parts[0] === "about") await about();
+    else if (parts[0] === "guides" && parts[1] === "mplads") await guideMplads();
+    else if (parts[0] === "guides") await guides();
     else notFound();
     if (toResults) document.getElementById("res")?.scrollIntoView({ block: "start" });
     else window.scrollTo(0, keepY);

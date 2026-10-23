@@ -122,6 +122,14 @@ files (e.g. OpenCity); OpenStreetMap for map tiles.
   Lok Sabha, all states, daily; separate dataset data/mplads.csv. Rajya Sabha and
   earlier tenures later.
 
+- Owner, 2026-10-23: light mode only for now. Every field on detail pages carries a
+  plain-language explanation. A Guides section teaches citizens to use the official
+  portals themselves (first: MPLADS eSAKSHI), as one of the project's aims is to spread
+  the resources to reach data at its source.
+- MPLADS data stored one CSV per state (data/mplads/) to stay under GitHub's 100 MB
+  file limit; works sanctioned over a year ago and not complete are flagged, per the
+  portal's own one-year guideline.
+
 ## Open questions
 - Which unconfirmed state GePNIC portals are reachable from GitHub runners (the run
   summary reports each one)

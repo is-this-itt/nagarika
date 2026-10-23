@@ -72,8 +72,10 @@ gba.karnataka.gov.in. These need a collector running from an Indian network.
 
 - **What:** works recommended, sanctioned and completed under MPLADS, from the
   Ministry of Statistics' eSAKSHI portal (https://mplads.mospi.gov.in), for the
-  current Lok Sabha, all states. Saved separately as `data/mplads.csv`, because MPs
-  fund every sector, not only roads.
+  current Lok Sabha, all states. Saved separately, one CSV per state in
+  `data/mplads/`, because MPs fund every sector, not only roads (per-state files keep
+  each one well under GitHub's file size limits). The site also offers one combined
+  `mplads.csv` download, built at deploy time.
 - **How:** the portal's public dashboard calls POST endpoints under
   `/rest/PreLoginDashboardData/` that need no login: `getStateData`, `getTilesData`
   (gives the current tenure) and `getTilesReportData` with
@@ -91,4 +93,8 @@ gba.karnataka.gov.in. These need a collector running from an Indian network.
   Sabha constituency, so a ward page links to its MP's works and lists those whose
   description names the ward.
 - **Source link:** the eSAKSHI dashboard has no per-work URL; the record gives the
-  state, constituency and letter number to find it.
+  state, constituency and letter number to find it. The site's MPLADS guide
+  (`#/guides/mplads`) walks citizens through the portal itself.
+- **One-year rule:** the portal's own notice says sanctioned works are "generally
+  required to be completed within one year of sanction". The site flags works
+  sanctioned over a year ago and not marked complete as "Over a year since sanction".

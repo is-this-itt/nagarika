@@ -96,12 +96,20 @@ def slug(s):
 
 def build_mplads():
     """Per-state MPLADS files and an index of states and constituencies."""
-    path = os.path.join(DATA, "mplads.csv")
-    if not os.path.exists(path):
+    import glob
+    paths = sorted(glob.glob(os.path.join(DATA, "mplads", "*.csv")))
+    if not paths:
         return []
     os.makedirs(os.path.join(OUT, "data", "mplads"), exist_ok=True)
-    shutil.copy(path, os.path.join(OUT, "data", "mplads.csv"))
-    rows = list(csv.DictReader(open(path, newline="", encoding="utf-8")))
+    rows = []
+    for path in paths:
+        rows += list(csv.DictReader(open(path, newline="", encoding="utf-8")))
+        shutil.copy(path, os.path.join(OUT, "data", "mplads", os.path.basename(path)))
+    # One combined download as well (the site may serve files larger than the repo allows).
+    with open(os.path.join(OUT, "data", "mplads.csv"), "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader()
+        w.writerows(rows)
     keep = ["id", "constituency_id", "constituency", "mp_name", "category", "activity", "description",
             "implementing_agency", "letter_no", "recommended_date", "recommended_amount", "sanction_date",
             "sanction_amount", "stage", "completed_date", "actual_amount", "tenure", "last_checked"]

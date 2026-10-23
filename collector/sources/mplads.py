@@ -8,12 +8,15 @@ combo is "state_id,constituency_id,mp_id,house,tenure_id" (0 = all; house 2 = Lo
 For each state this adapter reads "Works Recommended", "Works Sanctioned" and
 "Works Completed" and merges them by the work's recommendation id.
 
-Output is a separate dataset, data/mplads.csv, because MPLADS works are chosen by
-MPs for any sector (schools, roads, water...), not only roads.
+Output is a separate dataset, one CSV per state in data/mplads/, because MPLADS works
+are chosen by MPs for any sector (schools, roads, water...), not only roads. Files are
+per state so none grows past GitHub's file size limits.
 """
 import csv
+import glob
 import json
 import os
+import re
 import time
 
 import requests
@@ -23,7 +26,8 @@ from common import DATA, parse_date, today
 BASE = "https://mplads.mospi.gov.in/rest/PreLoginDashboardData/"
 DASHBOARD = "https://mplads.mospi.gov.in/digigov/dashboard.html"
 UA = "Mozilla/5.0 (compatible; nagarika civic data; +https://github.com/is-this-itt/nagarika)"
-CSV_PATH = os.path.join(DATA, "mplads.csv")
+CSV_DIR = os.path.join(DATA, "mplads")
+OLD_CSV = os.path.join(DATA, "mplads.csv")  # single-file layout used before per-state files
 HOUSE = 2  # Lok Sabha. Rajya Sabha MPs may pick any district in their state; later.
 REFRESH_HOURS = 20
 
@@ -61,6 +65,11 @@ def rows_of(resp):
     return v if isinstance(v, list) else []
 
 
+def clean_activity(v):
+    """'WS/MP341/2025-2026/195605-Construction of ...' or 'NA-1.5 Construction ...' -> the activity name."""
+    return re.sub(r"^(?:[A-Z]+/[^/]+/\d{4}-\d{4}/\d+|NA)-", "", (v or "").strip()).strip()
+
+
 def amount(v):
     try:
         f = float(v)
@@ -69,19 +78,31 @@ def amount(v):
     return str(int(round(f))) if f > 0 else ""
 
 
+def slug(s):
+    return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+
+
 def load():
-    if not os.path.exists(CSV_PATH):
-        return {}
-    with open(CSV_PATH, newline="", encoding="utf-8") as f:
-        return {r["id"]: r for r in csv.DictReader(f)}
+    rows = {}
+    for path in sorted(glob.glob(os.path.join(CSV_DIR, "*.csv"))) + ([OLD_CSV] if os.path.exists(OLD_CSV) else []):
+        with open(path, newline="", encoding="utf-8") as f:
+            rows.update({r["id"]: r for r in csv.DictReader(f)})
+    return rows
 
 
 def save(rows):
-    with open(CSV_PATH, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS)
-        w.writeheader()
-        for r in sorted(rows.values(), key=lambda r: (r["state"], r["constituency"], r["id"])):
-            w.writerow({k: r.get(k, "") for k in FIELDS})
+    os.makedirs(CSV_DIR, exist_ok=True)
+    by_state = {}
+    for r in rows.values():
+        by_state.setdefault(r["state"], []).append(r)
+    for state, rs in by_state.items():
+        with open(os.path.join(CSV_DIR, f"{slug(state)}.csv"), "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=FIELDS)
+            w.writeheader()
+            for r in sorted(rs, key=lambda r: (r["constituency"], r["id"])):
+                w.writerow({k: r.get(k, "") for k in FIELDS})
+    if os.path.exists(OLD_CSV):
+        os.remove(OLD_CSV)
 
 
 def run(works, state, matchers, report, budget_s):
@@ -127,7 +148,7 @@ def run(works, state, matchers, report, budget_s):
                 "constituency": (x.get("CONSTITUENCY") or "").title(), "constituency_id": str(x.get("CONSTITUENCY_ID", "")),
                 "mp_name": (x.get("MP_NAME") or "").strip(), "tenure": x.get("TENURE") or tenure_name,
                 "implementing_agency": x.get("IDA_NAME", ""), "category": x.get("WORK_CATEGORY", ""),
-                "activity": (x.get("ACTIVITY_NAME") or "").split("-", 1)[-1].strip(),
+                "activity": clean_activity(x.get("ACTIVITY_NAME")),
                 "description": (x.get("WORK_DESCRIPTION") or "").strip(), "letter_no": x.get("LETTER_NO", ""),
                 "recommended_date": parse_date(x.get("RECOMMENDATION_DATE")),
                 "recommended_amount": amount(x.get("RECOMMENDED_AMOUNT")),

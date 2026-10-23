@@ -1,17 +1,10 @@
 :root {
+  color-scheme: light;
   --bg: #f7f7f5; --surface: #ffffff; --fg: #1c1c1a; --muted: #5f5f58; --line: #deddd6; --line-strong: #c4c3bb;
   --accent: #1d5a91; --accent-fg: #ffffff; --accent-soft: #e8eff6;
   --red: #a4261d; --red-soft: #fcecea; --amber: #7a5000; --amber-soft: #fbf1dc;
   --map0: #ecebe6; --map1: #c6d7e8; --map2: #7fa6cc; --map3: #1d5a91;
   --radius: 8px;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #141413; --surface: #1d1d1b; --fg: #ebeae5; --muted: #a2a198; --line: #34332f; --line-strong: #4a4943;
-    --accent: #86b3df; --accent-fg: #10202f; --accent-soft: #1b2a38;
-    --red: #f0a198; --red-soft: #361d1a; --amber: #eec36a; --amber-soft: #352a14;
-    --map0: #2a2a27; --map1: #284057; --map2: #3f6c99; --map3: #86b3df;
-  }
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -187,7 +180,8 @@ table.works td[data-label="Work"] > a:visited { color: var(--muted); }
   .hero h1 { font-size: 1.55rem; }
   main { padding: 12px 12px 32px; }
   .brand { font-size: 1rem; }
-  .top nav a { padding: 8px 7px; font-size: .9rem; }
+  .top { padding: 8px 8px 8px 12px; gap: 8px; }
+  .top nav a { padding: 8px 5px; font-size: .85rem; }
   /* Filter chips scroll sideways instead of wrapping. */
   .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: -12px; padding-right: 12px; }
   .chips::-webkit-scrollbar { display: none; }
@@ -215,3 +209,14 @@ table.works td[data-label="Work"] > a:visited { color: var(--muted); }
   .map { height: 300px; }
   .scrollbox { max-height: 320px; }
 }
+
+/* field explanations on detail pages */
+table.fields th .help { display: block; font-weight: 400; font-size: .78rem; color: var(--muted); margin-top: 2px; line-height: 1.35; }
+
+/* guides */
+.guide { max-width: 760px; }
+.guide .steps li, .guide .flow li { margin-bottom: 12px; }
+.shot { margin: 10px 0 4px; }
+.shot img { display: block; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+.shot figcaption { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+code { font-size: .85em; background: var(--accent-soft); padding: 1px 4px; border-radius: 4px; }
