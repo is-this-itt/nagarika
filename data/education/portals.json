@@ -1,0 +1,826 @@
+{
+ "checked": "2026-10-26",
+ "portals": [
+  {
+   "state": "National",
+   "kind": "scholarship",
+   "name": "National Scholarship Portal (NSP)",
+   "url": "https://scholarships.gov.in/",
+   "about": "Central scholarships, including pre-matric for SC, ST, OBC and minority students (classes 9 and 10) and the National Means-cum-Merit Scholarship.",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "Apply For Scholarship",
+     "url": "https://scholarships.gov.in/ApplicationForm/",
+     "date": ""
+    },
+    {
+     "text": "Scholarship Eligibility",
+     "url": "https://scholarships.gov.in/scholarshipEligibility",
+     "date": ""
+    },
+    {
+     "text": "List of Applicants Processed for Scholarships",
+     "url": "https://scholarships.gov.in/onlineSanctionedList",
+     "date": ""
+    },
+    {
+     "text": "Applications Processed for Scholarships",
+     "url": "https://scholarships.gov.in/searchInstitute",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "deadlines": [
+    {
+     "scheme": "Students apply",
+     "level": "All NSP scholarships",
+     "last_date": "2026-10-31"
+    },
+    {
+     "scheme": "School or college verifies",
+     "level": "All NSP scholarships",
+     "last_date": "2026-11-15"
+    },
+    {
+     "scheme": "State (L2) verifies",
+     "level": "All NSP scholarships",
+     "last_date": "2026-11-30"
+    }
+   ],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Chhattisgarh",
+   "kind": "rte",
+   "name": "RTE portal",
+   "url": "https://rte.cg.nic.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Delhi",
+   "kind": "rte",
+   "name": "Directorate of Education (EWS/DG admissions)",
+   "url": "https://www.edudel.nic.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "CM SHRI Schools Admission Test - 2026",
+     "url": "https://www.edudel.nic.in/cmshriapp/home.aspx",
+     "date": ""
+    },
+    {
+     "text": "Govt. School Admission",
+     "url": "https://www.edudel.nic.in/edu/govtadmission.html",
+     "date": ""
+    },
+    {
+     "text": "EWS / DG Admissions and EWS / Freeship Admissions",
+     "url": "https://ewsadmissions.delhi.gov.in",
+     "date": ""
+    },
+    {
+     "text": "SCERT Admission",
+     "url": "https://www.edudel.nic.in/edu/SCERTAdmissionWebsite.html",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Gujarat",
+   "kind": "rte",
+   "name": "RTE admission portal",
+   "url": "https://rte.orpgujarat.com/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": false
+  },
+  {
+   "state": "Haryana",
+   "kind": "rte",
+   "name": "School Education Department",
+   "url": "https://schooleducationharyana.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "Regarding opening of CHEERAG Portal for the pending/non-entitled Schools for the Academic Session 2025-26 and Seat Declaration 2026-27. (22.01.2026 & 28.01.2026) New",
+     "url": "http://117.239.183.208/cheerag/",
+     "date": "2026-01-28"
+    },
+    {
+     "text": "Regarding updation of student data on MIS School Portal for payment of incentive amount based on attendance under monthly schemes for the 2nd and 3rd quarters of 2026–27. (23.10.2026)",
+     "url": "https://schooleducationharyana.gov.in/regarding-updation-of-student-data-on-mis-school-portal-for-payment-of-incentive-amount-based-on-attendance-under-monthly-schemes-for-the-2nd-and-3rd-quarters-of-2026-27-23-10-2026/",
+     "date": "2026-10-23"
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Jharkhand",
+   "kind": "rte",
+   "name": "RTE portal",
+   "url": "https://rte.jharkhand.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "RTE Service Act Jharkhand",
+     "url": "https://rte.jharkhand.gov.in/public/assets/Guideline/20210313192616_604cc4808efe9.pdf",
+     "date": ""
+    },
+    {
+     "text": "Student Registration",
+     "url": "https://rte.jharkhand.gov.in/student_register",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Karnataka",
+   "kind": "rte",
+   "name": "RTE admission (School Education Department)",
+   "url": "https://schooleducation.karnataka.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "RTE Seat Allotment Results of 2nd Round - 2026",
+     "url": "https://sdcedn.karnataka.gov.in/RTELOTTERYRESULT/rteresult19.aspx",
+     "date": ""
+    },
+    {
+     "text": "New application are invited for the remaining seats for the second round lottery-2026",
+     "url": "https://sdcedn.karnataka.gov.in/rteadmission/RTE/page1.aspx",
+     "date": ""
+    },
+    {
+     "text": "RTE Seat Allotment Results of 1st Round - 2026",
+     "url": "https://sdcedn.karnataka.gov.in/RTELOTTERYRESULT/rteresult19.aspx",
+     "date": ""
+    },
+    {
+     "text": "RTE Application Status for Seat Selection Process-2026",
+     "url": "https://sdcedn.karnataka.gov.in/rteadmission/RTE2015/Application_status.aspx",
+     "date": ""
+    },
+    {
+     "text": "Application Submission for RTE 2026 Admission Process",
+     "url": "https://sdcedn.karnataka.gov.in/rteadmission/RTE/page1.aspx",
+     "date": ""
+    },
+    {
+     "text": "Know My School - Neighborhood School List for RTE 2026- Final Provisional",
+     "url": "https://sdcedn.karnataka.gov.in/rteadmission/RTE2015/Form1_Public.aspx",
+     "date": ""
+    },
+    {
+     "text": "2025-26ನೇ ಸಾಲಿನ RTE ಶುಲ್ಕ ಮರುಪಾವತಿಗೆ ಅರ್ಹ ಖಾಸಗಿ ಅನುದಾನರಹಿತ ಶಾಲೆಗಳು ಬೇಡಿಕೆ ಸಲ್ಲಿಸಲು ತಂತ್ರಾಂಶ ಬಿಡುಗಡೆ ಮಾಡಿರುವ ಬಗ್ಗೆ",
+     "url": "https://schooleducation.karnataka.gov.in/uploads/media_to_upload1765891931.pdf",
+     "date": ""
+    },
+    {
+     "text": "Click here to download KARTET-2025 - Admission ticket",
+     "url": "https://sts.karnataka.gov.in/TET/",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Madhya Pradesh",
+   "kind": "rte",
+   "name": "RTE portal",
+   "url": "https://rteportal.mp.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": false
+  },
+  {
+   "state": "Maharashtra",
+   "kind": "rte",
+   "name": "RTE 25% admission",
+   "url": "https://student.maharashtra.gov.in/adm_portal/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": false
+  },
+  {
+   "state": "Odisha",
+   "kind": "rte",
+   "name": "RTE Paradarshi",
+   "url": "https://rteparadarshi.odisha.gov.in/odisha",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "RTE - PARADARSHI Odisha",
+     "url": "https://rteparadarshi.odisha.gov.in/odisha",
+     "date": ""
+    },
+    {
+     "text": "For Student/Parent",
+     "url": "https://rteparadarshi.odisha.gov.in/odisha/instructions/student-registration",
+     "date": ""
+    },
+    {
+     "text": "Student Transfer",
+     "url": "https://rteparadarshi.odisha.gov.in/odisha/student-transfer",
+     "date": ""
+    },
+    {
+     "text": "View School Seat Info",
+     "url": "https://rteparadarshi.odisha.gov.in/odisha/view-seat-info",
+     "date": ""
+    },
+    {
+     "text": "Notification No. 8582_Dt: 29.04.2026",
+     "url": "https://rteparadarshi.odisha.gov.in/api/odisha/get-file?filePath=gallery%2F8582-1777467269.pdf",
+     "date": "2026-04-29"
+    },
+    {
+     "text": "1st Round Admission Extension Timeline",
+     "url": "https://rteparadarshi.odisha.gov.in/api/odisha/get-file?filePath=gallery%2F6600-1774871906.pdf",
+     "date": ""
+    },
+    {
+     "text": "RTE 12.1.c Admission Timeline 26-27",
+     "url": "https://rteparadarshi.odisha.gov.in/api/odisha/get-file?filePath=gallery%2FRTE+12.1.c_+Admission+Timeline_26-27-1766570294.pdf",
+     "date": ""
+    },
+    {
+     "text": "Reimbursement Submission for 2024-25 | Notification No. 18129-Dt. 25.09.2025",
+     "url": "https://rteparadarshi.odisha.gov.in/api/odisha/get-file?filePath=gallery%2F18129_25.09.25-1758880059.pdf",
+     "date": "2025-09-25"
+    }
+   ],
+   "helplines": [
+    "1800 3456 722"
+   ],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Punjab",
+   "kind": "rte",
+   "name": "ePunjab School",
+   "url": "https://epunjabschool.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "Scholarship",
+     "url": "https://epunjabschool.gov.in/SchoolOfficeLogin.aspx",
+     "date": ""
+    },
+    {
+     "text": "Online Admission",
+     "url": "https://epunjabschool.gov.in/online-admission-form.aspx",
+     "date": ""
+    },
+    {
+     "text": "Joint Entrance Test for Admission in School of Eminence/Meritorious Schools",
+     "url": "https://schoolofeminence.pseb.ac.in",
+     "date": ""
+    },
+    {
+     "text": "Notification regarding online applications of RTE Recognition",
+     "url": "https://epunjabschool.gov.in/Grievances/GrievanceDoc/Notice/NotificationregardingonlineapplicationsofRTERecognition.pdf",
+     "date": ""
+    },
+    {
+     "text": "Student Admission Form For Government Schools(English)",
+     "url": "https://epunjabschool.gov.in/Grievances/GrievanceDoc/ACR/StudentAdmissionFormForGovtSchool_English.pdf",
+     "date": ""
+    },
+    {
+     "text": "Student Admission Form For Government Schools(Punjabi)",
+     "url": "https://epunjabschool.gov.in/Grievances/GrievanceDoc/ACR/StudentAdmissionFormForGovtSchool_Punjabi.pdf",
+     "date": ""
+    },
+    {
+     "text": "Scholarship Guidelines",
+     "url": "http://ssapunjab.org/scholarships/circulars_scholarships.html",
+     "date": ""
+    },
+    {
+     "text": "RTE Recognition",
+     "url": "https://epunjabschool.gov.in/school-recognition-guidelines.aspx",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Rajasthan",
+   "kind": "rte",
+   "name": "Private School Portal (RTE)",
+   "url": "https://rajpsp.nic.in/PSP1/Home/home.aspx",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": false
+  },
+  {
+   "state": "Tamil Nadu",
+   "kind": "rte",
+   "name": "RTE admission",
+   "url": "https://rte.tnschools.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": false
+  },
+  {
+   "state": "Uttar Pradesh",
+   "kind": "rte",
+   "name": "RTE 25% admission",
+   "url": "https://rte25.upsdc.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": false
+  },
+  {
+   "state": "Uttarakhand",
+   "kind": "rte",
+   "name": "RTE online",
+   "url": "https://rteonline.uk.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": false
+  },
+  {
+   "state": "Andhra Pradesh",
+   "kind": "scholarship",
+   "name": "Jnanabhumi",
+   "url": "https://jnanabhumi.ap.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Delhi",
+   "kind": "scholarship",
+   "name": "e-District Delhi",
+   "url": "https://edistrict.delhigovt.nic.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Gujarat",
+   "kind": "scholarship",
+   "name": "Digital Gujarat",
+   "url": "https://www.digitalgujarat.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "Scholarship Services",
+     "url": "https://gssp.gujarat.gov.in/",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Haryana",
+   "kind": "scholarship",
+   "name": "Harchhatravratti (higher education)",
+   "url": "https://harchhatravratti.highereduhry.ac.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "Student Registration",
+     "url": "https://harchhatravratti.highereduhry.ac.in/StudentRegistration",
+     "date": ""
+    },
+    {
+     "text": "Regarding open online submission of Scholarship Applications on Har-Chhatravratti Scholarship Portal only for State Schemes of Higher Education Department for the 2026-27..",
+     "url": "https://harchhatravratti.highereduhry.ac.in/Notices/Notice38.pdf",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Karnataka",
+   "kind": "scholarship",
+   "name": "State Scholarship Portal (SSP)",
+   "url": "https://ssp.karnataka.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "Scholarship application is open to submit applications for FY 2026-27.",
+     "url": "https://ssp.postmatric.karnataka.gov.in/post_sa_2627/login",
+     "date": ""
+    },
+    {
+     "text": "NSP-OTR registration is mandatory to apply for schemes of the Backward Classes welfare, Scheduled Tribe welfare & Social Welfare departments and to avail scholarship. Click here to register NSP-OTR number.",
+     "url": "https://scholarships.gov.in/otrapplication/#/registration-page",
+     "date": ""
+    },
+    {
+     "text": "Aadhaar seeding to bank account is mandatory for submission of application and to avail scholarship. To check Aadhaar seeding status click here",
+     "url": "https://myaadhaar.uidai.gov.in/bank-seeding-status",
+     "date": ""
+    },
+    {
+     "text": "It is mandatory for Universities/ Educational Boards to publish results details in National Academic Depository (NAD) to display applications of OBC and Minority students for approval.",
+     "url": "https://nad.karnataka.gov.in/#/YuvaNidhi",
+     "date": ""
+    },
+    {
+     "text": "Create New Account (Pre & Postmatric)",
+     "url": "https://ssp.postmatric.karnataka.gov.in/ca/",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "deadlines": [
+    {
+     "scheme": "Social Welfare Department",
+     "level": "Classes 1 to 10 (pre-matric)",
+     "last_date": "2026-12-31"
+    },
+    {
+     "scheme": "Tribal Welfare Department",
+     "level": "Classes 1 to 10 (pre-matric)",
+     "last_date": "2026-12-31"
+    },
+    {
+     "scheme": "Backward Classes Welfare Department",
+     "level": "Classes 1 to 10 (pre-matric)",
+     "last_date": "2026-09-30"
+    },
+    {
+     "scheme": "Department of Minority welfare",
+     "level": "Classes 1 to 10 (pre-matric)",
+     "last_date": "2026-11-30"
+    },
+    {
+     "scheme": "Department of Technical Education",
+     "level": "Classes 1 to 10 (pre-matric)",
+     "last_date": "2026-09-30"
+    },
+    {
+     "scheme": "Department of Disability Welfare",
+     "level": "Classes 1 to 10 (pre-matric)",
+     "last_date": "2026-09-30"
+    },
+    {
+     "scheme": "Karnataka building and other constructions workers",
+     "level": "Classes 1 to 10 (pre-matric)",
+     "last_date": "2026-12-31"
+    },
+    {
+     "scheme": "Sainik School",
+     "level": "Classes 1 to 10 (pre-matric)",
+     "last_date": "2026-10-30"
+    },
+    {
+     "scheme": "Social Welfare Department",
+     "level": "Class 11 and above (post-matric)",
+     "last_date": "2027-01-31"
+    },
+    {
+     "scheme": "Tribal Welfare Department",
+     "level": "Class 11 and above (post-matric)",
+     "last_date": "2026-12-31"
+    },
+    {
+     "scheme": "Backward Classes Welfare Department",
+     "level": "Class 11 and above (post-matric)",
+     "last_date": "2026-10-31"
+    },
+    {
+     "scheme": "Department of Minority welfare",
+     "level": "Class 11 and above (post-matric)",
+     "last_date": "2026-11-30"
+    },
+    {
+     "scheme": "Department of Technical Education",
+     "level": "Class 11 and above (post-matric)",
+     "last_date": "2026-10-31"
+    },
+    {
+     "scheme": "Karnataka State Brahmin Development Board",
+     "level": "Class 11 and above (post-matric)",
+     "last_date": "2026-12-31"
+    },
+    {
+     "scheme": "Department of Disability Welfare",
+     "level": "Class 11 and above (post-matric)",
+     "last_date": "2026-11-30"
+    },
+    {
+     "scheme": "Karnataka Arya Vysya Community Development Corporation",
+     "level": "Class 11 and above (post-matric)",
+     "last_date": "2026-11-30"
+    }
+   ],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Kerala",
+   "kind": "scholarship",
+   "name": "e-Grantz",
+   "url": "https://egrantz.kerala.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "e-Grantz Overseas Scholarship notification",
+     "url": "https://egrantz.kerala.gov.in/egrantz_uploads/overseas notification 26-27.pdf",
+     "date": ""
+    },
+    {
+     "text": "OEC Prematric circular & Amended circular",
+     "url": "https://egrantz.kerala.gov.in/egrantz_uploads/2d4bff24b8b04383d5fe06f7bb9eb1a9.pdf",
+     "date": ""
+    },
+    {
+     "text": "Overseas scholarship Notification 2025-26 published",
+     "url": "https://egrantz.kerala.gov.in/egrantz_uploads/d3c63aabbf194791169bdc6ca515a87f.pdf",
+     "date": ""
+    },
+    {
+     "text": "Revised University Rank list- Overseas scholarship 2025-26",
+     "url": "https://egrantz.kerala.gov.in/egrantz_uploads/436ff11b791287002dcdf9fe9d3e13ac.pdf",
+     "date": ""
+    },
+    {
+     "text": "OEC Postmatric Educational Assistance (outside state) – circular",
+     "url": "https://egrantz.kerala.gov.in/egrantz_uploads/b1452989d1bacb205915c20bb0f847fd.pdf",
+     "date": ""
+    },
+    {
+     "text": "Circular published for Special scholarship for OBC/SEBC girls studying medical/medical allied courses, and lost either/both of their parents.",
+     "url": "https://egrantz.kerala.gov.in/egrantz_uploads/1b3a6ba1aca338f112eb1447a078f96d.pdf",
+     "date": ""
+    },
+    {
+     "text": "Overseas scholarship 2021-22 - List of selected applicants.",
+     "url": "https://egrantz.kerala.gov.in/GO-8-2022-Overseas-selection-of-applicants_rearranged.pdf",
+     "date": ""
+    },
+    {
+     "text": "OEC Prematric Assistance 2022-23.",
+     "url": "https://egrantz.kerala.gov.in/OEC_pre2022-23.pdf",
+     "date": ""
+    }
+   ],
+   "helplines": [
+    "1800 425 2312"
+   ],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Madhya Pradesh",
+   "kind": "scholarship",
+   "name": "MP Scholarship Portal",
+   "url": "https://scholarshipportal.mp.nic.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": false
+  },
+  {
+   "state": "Maharashtra",
+   "kind": "scholarship",
+   "name": "MahaDBT",
+   "url": "https://mahadbt.maharashtra.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "Government of India Post-Matric Scholarship",
+     "url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51ACE99921E698B1EE85995B38445F14746E1B0DD7E66FFF88B",
+     "date": ""
+    },
+    {
+     "text": "Post-Matric Tuition Fee and Examination Fee (Freeship)",
+     "url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AE0CB048159E784170A4F3BD768B3A64E4772B0EF7B9990B2",
+     "date": ""
+    },
+    {
+     "text": "Maintenance Allowance for student Studying in professional courses",
+     "url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A178A7905AEC2C82CFA6A7ADA9024B0C242EEB3AA7065D22A",
+     "date": ""
+    },
+    {
+     "text": "Rajarshri Chhatrapati Shahu Maharaj Merit Scholarship",
+     "url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51ADF0B5B3136AAAD4C06BEFD7079D45EBAADC7F5BA9DCAA1F3",
+     "date": ""
+    },
+    {
+     "text": "Post-Matric Scholarship for persons with disability",
+     "url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51ABCC44582035F06CB9B6B2704869FE16E9E8F561A36261D4D",
+     "date": ""
+    },
+    {
+     "text": "Vocational Training Fee reimbursement for the students belonging to Scheduled Caste category Students",
+     "url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A018CC49F7EDF7669263658A643602B20E9A001B39A682B16",
+     "date": ""
+    },
+    {
+     "text": "Post Matric Scholarship Scheme (Government Of India )",
+     "url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A668ED132B54E2162E54C475F826D85C79DA948301E5F7772",
+     "date": ""
+    },
+    {
+     "text": "Tuition Fee & Exam Fee for Tribal Students ( Freeship)",
+     "url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AE7C10C1B9446574716EB93196C4CB29808753F77C61BEF29",
+     "date": ""
+    }
+   ],
+   "helplines": [
+    "022-49150800"
+   ],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Odisha",
+   "kind": "scholarship",
+   "name": "State Scholarship Portal",
+   "url": "https://scholarship.odisha.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Rajasthan",
+   "kind": "scholarship",
+   "name": "SJMS scholarships",
+   "url": "https://sjmsnew.rajasthan.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Tamil Nadu",
+   "kind": "scholarship",
+   "name": "UMIS",
+   "url": "https://umis.tn.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": false
+  },
+  {
+   "state": "Telangana",
+   "kind": "scholarship",
+   "name": "ePASS",
+   "url": "https://telanganaepass.cgg.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "Scholarships",
+     "url": "https://telanganaepass.cgg.gov.in/Scholarships.do",
+     "date": ""
+    },
+    {
+     "text": "Scholarships Offered",
+     "url": "https://telanganaepass.cgg.gov.in/SchoalrshipsOffered.do",
+     "date": ""
+    },
+    {
+     "text": "Post Matric Scholarship Services",
+     "url": "https://telanganaepass.cgg.gov.in/epassonlinelinks.do",
+     "date": ""
+    },
+    {
+     "text": "Pre Matric Scholarship Services",
+     "url": "https://telanganaepass.cgg.gov.in/PrematricLinks.do",
+     "date": ""
+    },
+    {
+     "text": "Corporate Admissions",
+     "url": "https://telanganaepass.cgg.gov.in/CorporateApplicationForm.do",
+     "date": ""
+    },
+    {
+     "text": "Overseas Scholarship Services",
+     "url": "https://telanganaepass.cgg.gov.in/OverseasLinks.do",
+     "date": ""
+    },
+    {
+     "text": "National Scholarship Portal",
+     "url": "https://scholarships.gov.in/",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Uttar Pradesh",
+   "kind": "scholarship",
+   "name": "UP Scholarship",
+   "url": "https://scholarship.up.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": false
+  },
+  {
+   "state": "West Bengal",
+   "kind": "scholarship",
+   "name": "OASIS",
+   "url": "https://oasis.wb.gov.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": true,
+   "notices": [
+    {
+     "text": "Student's registration",
+     "url": "https://oasis.wb.gov.in/index/1",
+     "date": ""
+    },
+    {
+     "text": "Renew Scholarship",
+     "url": "https://oasis.wb.gov.in/index/3",
+     "date": ""
+    },
+    {
+     "text": "REGISTRATION PRE MATRIC SCHOLARSHIP COMPONENT II - HAZARDOUS OCCUPATION, TANNER/ FLAYER/ SANITATION / NAMASTE SCHEME",
+     "url": "https://oasis.wb.gov.in/index/register_unclened",
+     "date": ""
+    },
+    {
+     "text": "Format for Certificate Regarding the Occupation of Parent(s)/Guardian for the Pre-Matric CSS Scholarship (SC Component-II)",
+     "url": "https://oasis.wb.gov.in/download_perent_certi_blank",
+     "date": ""
+    },
+    {
+     "text": "Post Matric Scholarships to the Students belonging to Scheduled Castes for studies in India (PMS-SC)",
+     "url": "https://oasis.wb.gov.in/web/pdf/Post Matric for SCs.pdf",
+     "date": ""
+    },
+    {
+     "text": "User Manual for OTR. (ST Students Only)",
+     "url": "https://oasis.wb.gov.in/web/pdf/nsp_otr_generation_process_0.pdf",
+     "date": ""
+    },
+    {
+     "text": "As per direction of Ministry of Social Justice and Empowerment Biometric KYC is mandatory for Pre Matric SC & Post Matric SC Students for 2024-25 Session.",
+     "url": "https://oasis.wb.gov.in/web/pdf/Letter Instructions001.pdf",
+     "date": ""
+    },
+    {
+     "text": "Notification Regarding Schedule of Events in Centralised Admission Programme 2024.",
+     "url": "https://oasis.wb.gov.in/web/pdf/Notification_CAP_2024_19.06.2024.pdf",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-26"
+  },
+  {
+   "state": "Bihar",
+   "kind": "scholarship",
+   "name": "PMS online",
+   "url": "https://pmsonline.bih.nic.in/",
+   "about": "",
+   "checked": "2026-10-26",
+   "loads": false
+  }
+ ]
+}
