@@ -52,11 +52,12 @@ RTI, or partners who already hold the data.
 ## Roadmap
 
 1. **Live:** road works, MP funds, RTI and MPLADS guides, ward report cards
-2. **Now:** "Help for children's education" guide (question 2)
+2. **Done:** "Help for children's education" guide (question 2); "Where to complain"
+   on city, ward, work and MP pages (question 3)
 3. **Next:** a collector running in India, which unblocks MLA funds, BBMP's own
    sites, GeM, data.gov.in and PMGSY (question 1)
-4. **Next:** "Where to complain here": official portals and grievance channels on
-   each topic and place page (question 3)
+4. **Next:** more complaint channels (other cities, water and power utilities), each
+   with its source and the date it was checked
 5. **Later:** water and sewerage, streetlights, schools and hospitals (buildings,
    repairs), parks and lakes, garbage
 

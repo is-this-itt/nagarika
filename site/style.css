@@ -247,3 +247,9 @@ ol.tight li, ul.tight li { margin: 2px 0; }
   body.printcard .report { border: 0; padding: 0; }
   a { color: inherit; text-decoration: none; }
 }
+
+/* Where to complain */
+.complain { margin: 24px 0 16px; }
+.channels { list-style: none; padding: 0; margin: 0; }
+.channels li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.channels li:last-child { border-bottom: 0; }

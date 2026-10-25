@@ -760,6 +760,49 @@ function wireAsk(drafts, fileStem) {
   draw();
 }
 
+// ---------- where to complain ----------
+// Official complaint channels by place. Numbers change: each entry records where it was
+// confirmed and when, and the site shows that next to it.
+const CHANNELS = {
+  bengaluru: [
+    { name: "GBA helpline (toll-free)", how: "Call 1533, or 080-22221188", what: "Potholes, waterlogging, fallen trees, streetlights, garbage",
+      src: "https://x.com/GBA_office/status/2060368453664731506", checked: "2026-10-25" },
+  ],
+  chennai: [
+    { name: "Greater Chennai Corporation helpline", how: "Call 1913", what: "Roads, drains, streetlights, garbage",
+      src: "https://citizenmatters.in/chennai-citizen-clinic-1913-namma-chennai-rwa-complaints-activists/", checked: "2026-10-25" },
+    { name: "Namma Chennai app", how: "Android and iPhone", what: "Complaints with a photo and location; you can track them",
+      src: "https://citizenmatters.in/chennai-citizen-clinic-1913-namma-chennai-rwa-complaints-activists/", checked: "2026-10-25" },
+  ],
+  mumbai: [
+    { name: "BMC helpline", how: "Call 1916", what: "Potholes, drains, water, garbage",
+      src: "https://citizenmatters.in/accountability-how-to-raise-complaints-with-the-bmc", checked: "2026-10-25" },
+    { name: "MyBMC 24x7 app", how: "Android and iPhone", what: "Complaints with a photo; you can track them",
+      src: "https://citizenmatters.in/accountability-how-to-raise-complaints-with-the-bmc", checked: "2026-10-25" },
+  ],
+  roads: [
+    { name: "National highways helpline (NHAI)", how: "Call 1033", what: "Only for national highways: potholes, accidents, toll plazas" },
+  ],
+  national: [
+    { name: "CPGRAMS", how: '<a href="https://pgportal.gov.in" target="_blank" rel="noopener">pgportal.gov.in</a>', what: "Grievances against central government offices; it also forwards grievances to state governments. You get a number to track the reply." },
+    { name: "RTI", how: '<a href="#/guides/rti">How to file</a>', what: "When you need the records, not just a fix" },
+  ],
+  mp: [
+    { name: "District authority (MPLADS cell)", how: "The Collector or Deputy Commissioner's office named on the work", what: "Sanction, delays, payments and completion of MPLADS works" },
+    { name: "MoSPI (runs MPLADS)", how: '<a href="mailto:cna-mplads@mospi.gov.in">cna-mplads@mospi.gov.in</a>', what: "When the district does not respond" },
+    { name: "Suggest a work to your MP", how: '<a href="#/guides/mplads">Citizen Request on eSAKSHI</a>', what: "Ask your MP to fund a work in your area" },
+  ],
+};
+
+function complainBox(keys, where) {
+  const items = keys.flatMap(k => CHANNELS[k] || []);
+  if (!items.length) return "";
+  return `<section class="complain"><h2>Where to complain${where ? ` in ${esc(where)}` : ""}</h2>
+    <ul class="channels">${items.map(c => `<li><b>${esc(c.name)}</b>: ${c.how}<div class="muted small">${esc(c.what)}${c.src
+      ? ` · <a href="${esc(c.src)}" target="_blank" rel="noopener">source</a>, checked ${date(c.checked)}` : ""}</div></li>`).join("")}</ul>
+    <p class="muted small">Note the complaint number you are given. If nothing happens, an <a href="#/guides/rti">RTI</a> asks the office for the action taken. Wrong or out-of-date number? <a href="${REPO}/issues/new?title=${enc("Complaint channel: " + (where || "national"))}">Tell us</a>.</p></section>`;
+}
+
 // ---------- pages: home and search ----------
 async function home() {
   const [meta, mp] = await Promise.all([load("meta.json"), load("mplads_index.json").catch(() => [])]);
@@ -858,7 +901,8 @@ async function city(slug) {
       </div>
     </div>
     <h2>All works in ${esc(c.name)}</h2>
-    <div id="res"></div>`;
+    <div id="res"></div>
+    ${complainBox([slug, "roads", "national"], c.name)}`;
   const drawWards = t => {
     const shown = t ? fuzzy(wl, t, ["name", "no", "assembly"], 1) : wl;
     document.querySelector("#wt tbody").innerHTML = shown.map(w =>
@@ -1031,7 +1075,8 @@ async function ward(slug, key) {
     ${ww.some(x => x.ward_match.startsWith("crosswalk")) ? `<p class="note">Some works were filed under an older ward map. They are listed in every current ward that overlaps the old ward, so they can also appear in a neighbouring ward.</p>` : ""}
     <h2>Road works</h2>
     <div id="res"></div>
-    ${mpHtml}`;
+    ${mpHtml}
+    ${complainBox([slug, "national"], c.name)}`;
   results(document.getElementById("res"), ww, roadView());
   wireCard(`${w ? w.name : c.name}: ward report card`);
   if (!none) {
@@ -1090,6 +1135,7 @@ async function work(id) {
     <h2>Official source</h2>
     <p><a class="btn" href="${esc(w.source_url)}" target="_blank" rel="noopener">Open source record</a></p>
     <p class="muted small">${esc(w.source_note)} Record ${esc(w.source_id)}. First seen ${date(w.first_seen)}, last checked ${date(w.last_checked)}.</p>
+    ${complainBox([w.city, "roads", "national"].filter(Boolean), cityName || "")}
     ${askPanel(missing.length ? `The source does not publish ${missing.join(", ")}. An RTI application makes the agency give it to you.` : "Want the full file, or the work is stuck? Send an RTI application or a complaint.")}
     <p class="small"><a href="${REPO}/issues/new?title=${enc("Data: " + w.id)}">Report a mistake</a></p>`;
   wireAsk([["rti", "RTI application", me => roadRti(w, me)], ["complaint", "Complaint letter", me => roadComplaint(w, me)]], w.source_id);
@@ -1178,7 +1224,8 @@ async function mpConstituency(slug, id) {
       [`<a href="#/mp/${slug}/${id}?f=late">${fmtN(list.filter(overYear).length)}</a>`, "Over a year since sanction"]])}
     <p class="small"><a href="#/guides/mplads">How MPLADS works, and how to check this on the official portal</a></p>
     <div id="res"></div>
-    <p class="muted small">MPs may also recommend some works outside their constituency, so a few works here are in other districts.</p>`;
+    <p class="muted small">MPs may also recommend some works outside their constituency, so a few works here are in other districts.</p>
+    ${complainBox(["mp", "national"], "")}`;
   results(document.getElementById("res"), list, mpView(slug, false));
 }
 
@@ -1208,6 +1255,7 @@ async function mpWork(slug, id) {
     <h2>Official source</h2>
     <p><a class="btn" href="https://mplads.mospi.gov.in/digigov/dashboard.html" target="_blank" rel="noopener">Open eSAKSHI dashboard</a></p>
     <p class="muted small">On the dashboard choose ${esc(s.state)} › ${esc(w.constituency)}, open "Works Recommended" and search letter ${esc(w.letter_no)}. Last checked ${date(w.last_checked)}.</p>
+    ${complainBox(["mp", "national"], "")}
     ${askPanel(overYear(w) ? "This work is over a year past sanction and not marked complete. Ask the district authority why."
       : STAGE_PENDING(w.stage) ? "This work is still waiting for sanction. Ask the district authority where it stands."
       : "Want the sanction order, the contractor's name or the completion certificate? Ask the district authority.")}
