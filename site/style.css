@@ -151,6 +151,10 @@ ul.links { padding-left: 18px; columns: 2 260px; }
 .badge { display: inline-block; font-size: .72rem; font-weight: 600; padding: 1px 8px; border-radius: 99px; white-space: nowrap; vertical-align: 1px; }
 .badge.overdue { background: var(--red-soft); color: var(--red); }
 .badge.past_estimate { background: var(--amber-soft); color: var(--amber); }
+.badge.open { background: var(--accent-soft); color: var(--accent); }
+.badge.closed { background: var(--line); color: var(--muted); }
+.eduportal { border-top: 1px solid var(--line); padding-top: 4px; margin-top: 12px; }
+.eduportal h3 { margin-bottom: 4px; }
 .note { background: var(--accent-soft); border-radius: var(--radius); padding: 10px 12px; margin: 12px 0; font-size: .9rem; }
 .note.warn { background: var(--amber-soft); }
 .pager { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; justify-content: center; margin: 16px 0; }
@@ -253,3 +257,6 @@ ol.tight li, ul.tight li { margin: 2px 0; }
 .channels { list-style: none; padding: 0; margin: 0; }
 .channels li { padding: 8px 0; border-bottom: 1px solid var(--line); }
 .channels li:last-child { border-bottom: 0; }
+.eduldates { padding-left: 18px; }
+.eduldates li { margin: 4px 0; }
+.eduportal h4 { margin: 12px 0 4px; font-size: .95rem; }

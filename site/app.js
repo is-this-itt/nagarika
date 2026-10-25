@@ -1664,13 +1664,21 @@ function guideRti() {
     </article>`;
 }
 
-function guideEducation() {
+async function eduData() {
+  try { return await load("education.json"); } catch { return null; }
+}
+
+async function guideEducation() {
   const ext = (url, label) => `<a href="${url}" target="_blank" rel="noopener">${label}</a>`;
+  const ed = await eduData();
+  const states = ed ? [...new Set(ed.portals.map(p => p.state))].filter(s => s !== "National").sort() : [];
   app.innerHTML = `
     ${crumbs([["Home", "#/"], ["Guides", "#/guides"], ["Children's education"]])}
     <article class="guide">
     <h1>Help for children's education</h1>
     <p class="lede">For parents, teachers and volunteers working with children from poor or disadvantaged families: what the government provides, how to claim it, and how to find organisations that help. Everything here links to the official source.</p>
+    ${states.length ? `<div class="note"><label class="select"><span><b>Your state:</b> admission portal, scholarship portals and their current last dates</span>
+      <select id="edst"><option value="">Choose a state</option>${states.map(st => `<option value="${slugify(st)}">${esc(st)}</option>`).join("")}</select></label></div>` : ""}
 
     <h2>Start here: find every scheme a child qualifies for</h2>
     <p>${ext("https://www.myscheme.gov.in", "myScheme")} is the Government of India's search for central and state schemes. Choose the state, the child's age, gender and category (SC, ST, OBC, minority, disability, below poverty line) and it lists the schemes they are eligible for, with the documents needed and the link to apply.</p>
@@ -1728,6 +1736,70 @@ function guideEducation() {
 
     <p class="muted small">Schemes, amounts and rules change. Always check the official portal before applying. Spotted something out of date? <a href="${REPO}/issues">Tell us</a>.</p>
     </article>`;
+  document.getElementById("edst")?.addEventListener("change", e => { if (e.target.value) location.hash = "#/guides/education/" + e.target.value; });
+}
+
+const EDU_KIND = { rte: "Free seats in private schools (RTE 25%)", scholarship: "Scholarships" };
+
+function eduDeadlines(list) {
+  if (!list?.length) return "";
+  const today = new Date().toISOString().slice(0, 10);
+  const levels = [...new Set(list.map(d => d.level))];
+  const item = d => {
+    const left = Math.round((new Date(d.last_date) - new Date(today)) / 864e5);
+    const tag = left < 0 ? '<span class="badge closed">Closed</span>'
+      : `<span class="badge open">${left === 0 ? "Last day today" : left + (left === 1 ? " day" : " days") + " left"}</span>`;
+    return `<li>${esc(d.scheme)}: <b>${date(d.last_date)}</b> ${tag}</li>`;
+  };
+  return levels.map(l => {
+    const ds = list.filter(d => d.level === l).sort((a, b) => (a.last_date < today) - (b.last_date < today) || a.last_date.localeCompare(b.last_date));
+    return `<h4>Last dates: ${esc(l)}</h4><ul class="eduldates">${ds.map(item).join("")}</ul>`;
+  }).join("");
+}
+
+function eduPortal(p) {
+  const seen = p.loads
+    ? `Checked ${date(p.checked)}: the page opened.`
+    : `Checked ${date(p.checked)}: the page did not open${p.last_loaded ? `. What is shown below is from ${date(p.last_loaded)}` : ""}. Try again later.`;
+  return `<section class="eduportal">
+    <h3><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.name)}</a></h3>
+    ${p.about ? `<p>${esc(p.about)}</p>` : ""}
+    <p class="muted small">${seen}</p>
+    ${eduDeadlines(p.deadlines)}
+    ${p.helplines?.length ? `<p>Helpline shown on the portal: ${p.helplines.map(h => `<a href="tel:${esc(h.replace(/\D/g, ""))}">${esc(h)}</a>`).join(", ")}</p>` : ""}
+    ${p.notices?.length ? `<details${p.deadlines?.length ? "" : " open"}><summary>Links on the official page about admissions and scholarships</summary><ul>${p.notices.map(n =>
+      `<li><a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.text)}</a>${n.date ? ` <span class="muted small">(${date(n.date)})</span>` : ""}</li>`).join("")}</ul></details>` : ""}
+  </section>`;
+}
+
+async function educationState(slug) {
+  const ed = await eduData();
+  const mine = (ed?.portals || []).filter(p => slugify(p.state) === slug);
+  if (!mine.length) return notFound();
+  const st = mine[0].state;
+  const nsp = ed.portals.filter(p => p.state === "National");
+  const group = kind => mine.filter(p => p.kind === kind);
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Guides", "#/guides"], ["Children's education", "#/guides/education"], [st]])}
+    <article class="guide">
+    <h1>Help for children's education in ${esc(st)}</h1>
+    <p class="lede">The official ${esc(st)} portals for free school seats and scholarships, with the last dates and notices they show. We open each page from India and read it again regularly, but always confirm on the portal before applying.</p>
+    ${group("rte").length ? `<h2>${EDU_KIND.rte}</h2>
+      <p>Private unaided schools keep 25% of entry-level seats free for children from weaker sections and disadvantaged groups. Admission is through the state's online application and lottery, usually early in the year.</p>
+      ${group("rte").map(eduPortal).join("")}` : ""}
+    <h2>${EDU_KIND.scholarship}</h2>
+    ${group("scholarship").length ? group("scholarship").map(eduPortal).join("") : `<p>We have not added a ${esc(st)} scholarship portal yet. Use <a href="https://www.myscheme.gov.in" target="_blank" rel="noopener">myScheme</a> to find the state's schemes.</p>`}
+    <h3 class="sub">Central scholarships, for every state</h3>
+    ${nsp.map(eduPortal).join("")}
+    <h2>Also useful</h2>
+    <ul>
+      <li><a href="https://www.myscheme.gov.in" target="_blank" rel="noopener">myScheme</a>: every central and ${esc(st)} scheme a child qualifies for.</li>
+      <li><a href="https://ngodarpan.gov.in" target="_blank" rel="noopener">NGO Darpan</a>: registered organisations working on education in your district.</li>
+      <li><b>1098</b> (Childline): free, day and night, for a child in danger or out of school because of child labour.</li>
+      <li><a href="#/guides/education">The full guide</a>: free schooling, documents to get ready, and what to do if a child is refused.</li>
+    </ul>
+    <p class="muted small">Dates and links are read automatically from the official pages and may lag behind them. Spotted something wrong, or know a portal we are missing? <a href="${REPO}/issues/new?title=${enc("Education help: " + st)}">Tell us</a>.</p>
+    </article>`;
 }
 
 function notFound() {
@@ -1769,7 +1841,8 @@ async function route() {
     else if (parts[0] === "about") await about();
     else if (parts[0] === "guides" && parts[1] === "mplads") await guideMplads();
     else if (parts[0] === "guides" && parts[1] === "rti") guideRti();
-    else if (parts[0] === "guides" && parts[1] === "education") guideEducation();
+    else if (parts[0] === "guides" && parts[1] === "education" && parts[2]) await educationState(parts[2]);
+    else if (parts[0] === "guides" && parts[1] === "education") await guideEducation();
     else if (parts[0] === "guides") await guides();
     else notFound();
     if (toResults) document.getElementById("res")?.scrollIntoView({ block: "start" });

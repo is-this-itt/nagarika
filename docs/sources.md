@@ -79,6 +79,21 @@ crosswalk), Greater Chennai Corporation 2022 (200 wards), BMC administrative war
 GeM, data.gov.in, PMGSY (omms.nic.in), bbmp.gov.in, accounts.bbmp.gov.in,
 gba.karnataka.gov.in. These need a collector running from an Indian network.
 
+## Education portals by state: `edu_portals.py`, collected from India
+
+- **What:** for each state, the official RTE 25% admission portal and scholarship
+  portals, plus the National Scholarship Portal: whether the page opened, the date we
+  checked, helpline numbers shown on it, and its links about admissions and scholarships.
+  The list of portals is curated in the script. Output: `data/education/portals.json`,
+  shown at `#/guides/education/<state>`.
+- **Last dates:** read from Karnataka SSP's "Last Dates" cards (per department, pre- and
+  post-matric) and from NSP's closing-dates banner. Other portals post dates inside PDFs
+  or images, so only their notice links are shown.
+- **How:** many of these sites refuse visitors outside India, so this runs on the
+  self-hosted runner (task `education`). Python's TLS fails on several older state
+  servers; the script then retries with Windows' `curl.exe`. A portal that stops opening
+  keeps what it last showed, marked with the date it last opened.
+
 ## MLALADS (MLA local area development funds): `mlalads.py`, collected from India
 
 - **What:** works sanctioned under each state's MLA fund. Odisha so far, from the

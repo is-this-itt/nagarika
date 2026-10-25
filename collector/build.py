@@ -86,7 +86,8 @@ def main():
     shutil.copy(WORKS_CSV, os.path.join(OUT, "data", "works.csv")) if os.path.exists(WORKS_CSV) else None
     mp_index = build_mplads()
     mla_index = build_mlalads()
-    build_places(meta, ward_index, rows, mp_index, mla_index)
+    edu_states = build_education()
+    build_places(meta, ward_index, rows, mp_index, mla_index, edu_states)
     shutil.copy(os.path.join(DATA, "LICENSE.md"), os.path.join(OUT, "data", "LICENSE.md"))
     print(f"built _site with {len(rows)} works")
 
@@ -185,7 +186,16 @@ def build_mlalads():
     return index
 
 
-def build_places(meta, ward_index, rows, mp_index, mla_index=()):
+def build_education():
+    """State RTE and scholarship portals (collected from India, see collector/edu_portals.py)."""
+    src = os.path.join(DATA, "education", "portals.json")
+    if not os.path.exists(src):
+        return []
+    shutil.copy(src, os.path.join(OUT, "data", "education.json"))
+    return sorted({p["state"] for p in json.load(open(src, encoding="utf-8"))["portals"]} - {"National"})
+
+
+def build_places(meta, ward_index, rows, mp_index, mla_index=(), edu_states=()):
     """One small list of everything a person might type: places, constituencies, MPs, PIN codes.
     Each entry: [kind, label, detail, link, extra search words]."""
     out = []
@@ -212,6 +222,9 @@ def build_places(meta, ward_index, rows, mp_index, mla_index=()):
         for c in s["constituencies"]:
             out.append(["Assembly constituency", c["name"], f"{s['state']} · MLA funds · {c['district']} district",
                         f"#/mla/{s['slug']}/{c['id']}", c["district"]])
+    for st in edu_states:
+        out.append(["State", st, "Education help: RTE seats, scholarships", f"#/guides/education/{slug(st)}",
+                    "school scholarship rte admission"])
     places = {}
     for r in rows:
         if r["place"] and not r["city"]:

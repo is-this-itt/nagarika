@@ -141,6 +141,8 @@ collection jobs will be switched on.
   **Run workflow**. Its tasks:
   - `mlalads` collects MLA fund works (Odisha so far) into `data/mlalads/` and asks for a
     site rebuild.
+  - `education` checks each state's RTE admission and scholarship portals into
+    `data/education/portals.json` and asks for a site rebuild. `all` runs both.
   - `probe` saves sample pages from a site for study. It runs a script from the
     `discovery` branch. Name those scripts `scripts/india_*.py` so they don't also trigger
     `discover.yml` on GitHub's servers.
