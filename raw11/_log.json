@@ -1,22 +1,243 @@
 [
  {
   "site": "odisha",
-  "error": "UnicodeEncodeError('charmap', '<!DOCTYPE html>\\r\\n<html lang=\"en\" data-theme=\"light\">\\r\\n<head>\\r\\n    <meta charset=\"UTF-8\" />\\r\\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\\r\\n    <title>MLALADS \u2013 Planning & Convergence Department, Govt. of Odisha</title>\\r\\n    <l"
+  "url": "https://mlalads.odisha.gov.in/",
+  "status": 200,
+  "final": "https://mlalads.odisha.gov.in/",
+  "bytes": 230098,
+  "links": [
+   "C:\\Users\\Guruprasad\\OneDrive\\Desktop",
+   "https://cmsa.odisha.gov.in",
+   "https://fonts.googleapis.com",
+   "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap",
+   "https://mlalads.odisha.gov.in/${n.url}",
+   "https://mlalads.odisha.gov.in/Home/Index",
+   "https://mlalads.odisha.gov.in/IPMS/AboutUs",
+   "https://mlalads.odisha.gov.in/IPMS/ContactUs",
+   "https://mlalads.odisha.gov.in/IPMS/Gallery",
+   "https://mlalads.odisha.gov.in/IPMS/Guidelines",
+   "https://mlalads.odisha.gov.in/IPMS/Index",
+   "https://mlalads.odisha.gov.in/IPMS/LegacyReport",
+   "https://mlalads.odisha.gov.in/IPMS/NewsEventsView",
+   "https://mlalads.odisha.gov.in/IPMS/Policy",
+   "https://mlalads.odisha.gov.in/IPMS/Report",
+   "https://mlalads.odisha.gov.in/IPMS/SOP",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/030339cd-70a1-4883-9aff-d7617e608c32.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/04054236-fd9f-4cfa-95b3-18000dd689ec.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/09fedebb-f066-432a-ab2b-9b0ec7730d34.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/0e8ef9ff-430f-482d-9681-5d5ca196bbae.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/375c406c-cb31-4314-8c1d-2ffe1f7a83a4.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/41ab46d4-e918-4827-9568-8b7fcad80cbc.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/48cf670a-e164-4138-badf-f759e4389751.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/4a10139b-3882-4f5f-957c-81c694289c87.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/4d1df3d3-3bde-4df7-9abf-61055cb68f1a.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/5044503f-ea75-4e48-81c6-a0b984898ae0.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/5e74fd50-9019-40a9-abd1-3abe961fea5e.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/61db5502-293e-411d-8574-5b2844fda0eb.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/6f0152bc-414c-4d19-ac1f-ef61cfdd46cf.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/72d91634-cc63-483d-a43b-a198308db048.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/73b481e3-4e94-4955-b15b-0be9d5af08a0.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/9380551b-7652-479f-9f0e-a289d0788a91.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/List of MLAs.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/a1515e85-c4a0-4543-82ea-2be16907f27c.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/bab0534b-8146-46f1-a15a-80d67916ece0.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/d4d588a5-1282-4268-bf62-1508cc5c4d86.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/d77e63be-eeaf-493b-a6fc-e934268314dc.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/e0a6b541-4e50-48d0-a77f-c44436c88fa8.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/e586891c-44cb-41f6-806a-8f1738b89e87.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/f4a62416-89ff-425a-a082-8fa163f938b6.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/f783c7b5-1647-4038-a6dd-8feede445763.pdf",
+   "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/f9a8c508-5c07-4ed0-9dad-ea62d89446ef.pdf",
+   "https://ncds.odisha.gov.in",
+   "https://odisha.gov.in/",
+   "https://odishaone.gov.in/citizen/",
+   "https://pc.odisha.gov.in/",
+   "mailto:mlalads@odishaone.gov.in",
+   "tel:06742390336"
+  ],
+  "scripts": [
+   "/landingpagev3/chart.umd.min.js",
+   "/landingpagev3/bootstrap.bundle.min.js",
+   "/mlalads_files/jquery-3.6.0.min.js",
+   "/js/CustomJS/localization.js",
+   "/mlalads_files/jquery.fancybox.min.js"
+  ],
+  "pages": [
+   {
+    "url": "https://mlalads.odisha.gov.in/${n.url}",
+    "file": "odisha_p00.html",
+    "status": 404,
+    "bytes": 3480
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Home/Index",
+    "file": "odisha_p01.html",
+    "status": 200,
+    "bytes": 15430
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/IPMS/AboutUs",
+    "file": "odisha_p02.html",
+    "status": 200,
+    "bytes": 168209
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/IPMS/ContactUs",
+    "file": "odisha_p03.html",
+    "status": 200,
+    "bytes": 167973
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/IPMS/Gallery",
+    "file": "odisha_p04.html",
+    "status": 200,
+    "bytes": 199751
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/IPMS/Guidelines",
+    "file": "odisha_p05.html",
+    "status": 200,
+    "bytes": 150023
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/IPMS/Index",
+    "file": "odisha_p06.html",
+    "status": 200,
+    "bytes": 237789
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/IPMS/LegacyReport",
+    "file": "odisha_p07.html",
+    "status": 200,
+    "bytes": 169816
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/IPMS/NewsEventsView",
+    "file": "odisha_p08.html",
+    "status": 200,
+    "bytes": 182545
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/IPMS/Policy",
+    "file": "odisha_p09.html",
+    "status": 200,
+    "bytes": 105489
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/IPMS/Report",
+    "file": "odisha_p10.html",
+    "status": 200,
+    "bytes": 183516
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/IPMS/SOP",
+    "file": "odisha_p11.html",
+    "status": 200,
+    "bytes": 149988
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/030339cd-70a1-4883-9aff-d7617e608c32.pdf",
+    "file": "odisha_p12.pdf",
+    "status": 200,
+    "bytes": 121654
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/04054236-fd9f-4cfa-95b3-18000dd689ec.pdf",
+    "file": "odisha_p13.pdf",
+    "status": 200,
+    "bytes": 385637
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/09fedebb-f066-432a-ab2b-9b0ec7730d34.pdf",
+    "file": "odisha_p14.pdf",
+    "status": 200,
+    "bytes": 319227
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/0e8ef9ff-430f-482d-9681-5d5ca196bbae.pdf",
+    "file": "odisha_p15.pdf",
+    "status": 200,
+    "bytes": 9447943
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/375c406c-cb31-4314-8c1d-2ffe1f7a83a4.pdf",
+    "file": "odisha_p16.pdf",
+    "status": 200,
+    "bytes": 290325
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/41ab46d4-e918-4827-9568-8b7fcad80cbc.pdf",
+    "file": "odisha_p17.pdf",
+    "status": 200,
+    "bytes": 102880
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/48cf670a-e164-4138-badf-f759e4389751.pdf",
+    "file": "odisha_p18.pdf",
+    "status": 200,
+    "bytes": 176990
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/4a10139b-3882-4f5f-957c-81c694289c87.pdf",
+    "file": "odisha_p19.pdf",
+    "status": 200,
+    "bytes": 116735
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/4d1df3d3-3bde-4df7-9abf-61055cb68f1a.pdf",
+    "file": "odisha_p20.pdf",
+    "status": 200,
+    "bytes": 798793
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/5044503f-ea75-4e48-81c6-a0b984898ae0.pdf",
+    "file": "odisha_p21.pdf",
+    "status": 200,
+    "bytes": 798793
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/5e74fd50-9019-40a9-abd1-3abe961fea5e.pdf",
+    "file": "odisha_p22.pdf",
+    "status": 200,
+    "bytes": 121654
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/61db5502-293e-411d-8574-5b2844fda0eb.pdf",
+    "file": "odisha_p23.pdf",
+    "status": 200,
+    "bytes": 55734
+   },
+   {
+    "url": "https://mlalads.odisha.gov.in/Utility/DownloadFileV1/6f0152bc-414c-4d19-ac1f-ef61cfdd46cf.pdf",
+    "file": "odisha_p24.pdf",
+    "status": 200,
+    "bytes": 116735
+   }
+  ]
  },
  {
   "site": "mp",
+  "url": "http://mlalads.mp.gov.in/",
   "error": "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
  },
  {
-  "site": "up",
-  "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'mlalads.up.gov.in\\', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host=\\'mlalads.up.gov.in\\', port=443): Failed to resolve \\'mlalads.up.gov.in\\' ([Errno 11001] getaddrinfo failed)\"))'))"
+  "site": "mp",
+  "url": "https://mlalads.mp.gov.in/",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='mlalads.mp.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"))"
  },
  {
   "site": "delhi",
+  "url": "https://udd.delhi.gov.in/mlalad",
   "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='udd.delhi.gov.in', port=443): Max retries exceeded with url: /mlalad (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"))"
  },
  {
+  "site": "delhi",
+  "url": "http://udd.delhi.gov.in/",
+  "error": "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+ },
+ {
   "site": "kar_plan",
-  "error": "UnicodeEncodeError('charmap', '<!DOCTYPE html>\\r\\n<html lang=\"kn\" data-dbim=\"purple\">\\r\\n\\r\\n<head>\\r\\n        <meta charset=\"UTF-8\">\\r\\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\\r\\n    <title>\u0cae\u0cc1\u0c96\u0caa\u0cc1\u0c9f | \u0caf\u0ccb\u0c9c\u0ca8\u0cc6,\u0c95\u0cbe\u0cb0\u0ccd\u0caf\u0c95\u0ccd\u0cb0\u0cae \u0cb8\u0c82\u0caf\u0ccb\u0c9c\u0ca8\u0cc6 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb8\u0cbe\u0c82\u0c96\u0ccd\u0caf\u0cbf\u0c95 \u0c87\u0cb2\u0cbe\u0c96\u0cc6 | \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95 \u0cb8\u0cb0\u0ccd\u0c95\u0cbe\u0cb0</ti"
+  "url": "https://planning.karnataka.gov.in/",
+  "error": "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
  }
 ]

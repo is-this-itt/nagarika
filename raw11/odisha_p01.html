@@ -1,0 +1,284 @@
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="description" content="Your Secure Application Login Page">
+<link rel="icon" type="image/x-icon" href="/ico/mlaladlogo.ico">
+<link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/assets/vendor/fonts/boxicons.css" rel="stylesheet" />
+<link href="/assets/vendor/fonts/flag-icons.css" rel="stylesheet" />
+<link href="/assets/vendor/css/rtl/core.css" rel="stylesheet" />
+<link href="/assets/vendor/css/rtl/theme-semi-dark.css" rel="stylesheet" />
+<link href="/assets/css/demo.css" rel="stylesheet" />
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+    }
+
+    body {
+        background: url('/assets/img/login-bg-new.png') no-repeat center center fixed;
+        background-size: cover;
+        position: relative;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-container {
+        position: relative;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+        width: 480px;
+        z-index: 1;
+    }
+
+        .login-container .input-group-text {
+            position: absolute;
+            height: 42px;
+            right: 0;
+            background: transparent;
+            border: 0;
+        }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+        .logo img {
+            width: 90px;
+            margin-right: 10px;
+        }
+
+    .logo-text {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 1.3;
+        color: #0428B1;
+    }
+
+    label {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        display: block;
+        color: #000000;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #00000012;
+        border-radius: 10px;
+        height: 42px;
+        position: relative;
+    }
+
+        input[type="text"]::placeholder {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 1);
+            opacity: 60%;
+        }
+
+    .captcha-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .captcha-img {
+        height: 38px;
+        border: 1px solid #ccc;
+        padding: 4px;
+        background: #fff;
+    }
+
+    .refresh-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 0 10px;
+        height: 38px;
+        border-radius: 10px;
+        width: 55px;
+        cursor: pointer;
+    }
+
+    .forgot-password {
+        float: right;
+        font-size: 12px;
+        color: #007bff;
+        text-decoration: none;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    .signin-btn {
+        background-color: #FF7900;
+        color: white;
+        border: none;
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+</style>
+
+
+<script src="/assets/vendor/js/helpers.js"></script>
+<script src="/assets/vendor/js/config.js"></script>
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8BLZK9JJdMdItAia2ofENr_JYMZEbCAx-6BkAYgNdao4xxa2wrq-awkgywwmTadsE4LTd7dyhkVQfeEdncS6doxyUf_zq1BuycjJL3rAroM2r-BEKsIgRpLsPV5syFP12TgjWMWDoKw1-cNj7RpiFhE" />
+<div id="preloader"></div>
+<div class="login-container">
+
+
+
+
+    <div class="logo" id="section-mlalad-login">
+
+        <img src="/assets/img/loginlogo-live-1.svg" alt="Logo" />
+        <div class="logo-text">
+
+            MLALADS <br />
+            MLA - Local Area Development Scheme
+        </div>
+    </div>
+
+    <div class="logo" id="section-cgf-login">
+       
+            <img src="/assets/img/loginlogo-live-2.svg" alt="Logo" />
+            <div class="logo-text">
+                CGF <br />
+                Critical Gap Fund Scheme
+            </div>
+    </div>
+
+<form action="/Home/Index" method="post">        <div class="mb-3">
+            <label for="email" class="form-label">User Name</label>
+            <input autocomplete="off" class="form-control secureInput" data-val="true" data-val-maxlength="The field UserName must be a string or array type with a maximum length of &#x27;30&#x27;." data-val-maxlength-max="30" data-val-required="Please Enter User Name." id="UserName" maxlength="30" name="UserName" placeholder="Enter your email or user name" type="text" value="" />
+            <span class="text-danger field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span>
+        </div>
+        <div class="mb-3 form-password-toggle">
+            <div class="d-flex justify-content-between">
+                <label class="form-label" for="password">Password</label>
+                <a href="/Home/ForgotPassword">
+                    <small>Forgot Password?</small>
+                </a>
+            </div>
+            <div class="input-group input-group-merge">
+                <input autocomplete="off" class="form-control secureInput" data-val="true" data-val-maxlength="The field Password must be a string or array type with a maximum length of &#x27;30&#x27;." data-val-maxlength-max="30" data-val-required="Please Enter Password." id="Password" maxlength="30" name="Password" placeholder="Enter Password" type="password" />
+                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                <br />
+            </div>
+            <span class="text-danger field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+        </div>
+        <label for="captcha">Captcha</label>
+        <div class="captcha-row">
+            <input class="form-control IntegerOnlyMax6" data-val="true" data-val-maxlength="The field Captcha must be a string or array type with a maximum length of &#x27;6&#x27;." data-val-maxlength-max="6" data-val-required="Please Enter Captcha." id="Captcha" maxlength="6" name="Captcha" placeholder="Enter Captcha" type="text" value="" />
+            <img id="captcha" class="captcha-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAoCAYAAAB5LPGYAAAABHNCSVQICAgIfAhkiAAAD01JREFUeJztXHlQU9cX/iIQFo1gsAWpmkRBbLVoRUaslR9TXDoug2NtHad1HW0ZHMW1lpm2iIBW61jrdIC6VKWbVsYypaO1GHAXaxQhOrgASVDZLMEqIGTh/P5wcichhLwXgqDlm8m8m/fOPfe&#x2B;87537j3nvfsERER4RlCr1QAAqVT6rJrsQSdBo9EAACQSSYf0uDqjMy8yem6attFR4pkgeJYe8HmEiYAm9BDRuejV1R3o7pBKpT2k60Rw9oA9Q9GLB2dd047o6fGAPehS2PWA3cHznT17Fm5ubhAKhZy2AoGgy/r6IoILBxzlicNR8IMHD1BWVoY7d&#x2B;7g5s2bUCgUOHHiBDuuVCoxcuRI3nrVajWSkpLw/fffs31RUVGciOfp6QkXFxe4urryIqxQKERFRQWUSiVu374NtVqN/v37Y&#x2B;jQoYiIiMD//vc/eHl5QSgUolcv7oOG0WhEaWkprl&#x2B;/joKCApSXl6OiogJ37txBnz59EBQUhLCwMEyePBljx4516MaZN28eDh06xLtedHQ0srKyeNerqqrC8ePHceHCBRQWFkKj0cDPzw9jx47F8OHDMWPGDLz22muc9dklYFuMvn//PgYOHMir4x2BXC7nJBcTE4O0tDTo9Xro9XrodDq726amJpw6dQoKhYIRMjAwEG5ubmhqakJeXh6uXr0KLy8v6PV6CAQCzsRWqVTIyMiwahMAtFotzp07h9zcXCQnJ&#x2B;ODDz5AUlIS/P39O9OUDAMGDOAsa&#x2B;JAZmYmVq5cicrKSovjNTU1UCqVAIANGzYgMTERGzZsgLu7u4VcXV0dNBoNRo8ezfZZEbCrh1ypVIrGxka7MoB1iiQ6OhoA4ObmBjc3N3h5edltLzk5GRs3brQrN2fOHBw4cAAeHh6ciK3X6wEAvXv35kzY9PR0CIVCuLu7Wx23VcfHxwejR4&#x2B;22x&#x2B;DwdCmrbji999/x3vvvcdJNiEhAc3NzVi1ahU0Gg37ubi4QCKRWBDQag7IhYAKhQLbt29HUFAQhg8fjqCgIMhkMixatAjHjh0D4PgQzAWmPkokEsyePRtZWVkICgrCtWvXOJHOhEuXLiE8PJz9//TTT7Fs2TIMGjQIdXV1yM7OxtKlS9nx9PR0fPzxx5z1Hzt2DEePHkVYWBhGjhyJAQMGwNvbG3379oXRaIRKpcJPP/2ElJQUAIBAIMD69evx2WefWRGIK&#x2B;ltbQ0GA4xGI548eQIigkwmg7u7u01iR0VFsfNoamrCmDFjUFxcDACIjIzE&#x2B;vXrERoaCrFYjPr6epSUlGDfvn0oLCyERCKBRCKBn58fhg0bxv737dvX2kjkAFQqFalUKqv906ZNIwAEgJRKpSOqeeHatWusvS&#x2B;//JJ3/YULF7L6a9eupbKyMqvz&#x2B;vnnn5mMRCKhhw8f2tVryz62sGPHDtYGAKqpqeF5JvZRUFBAQqGQevfuTZs3b6aqqiq6e/culZaW0s2bN6moqIiuXLlCFy9epDNnzljUVSgUrG8ikYhKS0uJiKi8vJzOnj1LP/74I6WkpFBaWhrFxsbS8OHDydPTk3bv3m23Xw4R0BacSUAuFzEhIcHh9qqqqiwuukajabNNg8FAkZGRTO7EiRN2&#x2B;8iXgI8ePSKxWMzayM/P53UuXNARW&#x2B;Xk5JBAICCpVErLly&#x2B;nAwcOUGJiIu3du5dycnLo9u3b1NzcTEREqamprJ3Nmzfb1f3cPguuq6tDWloagKfzmREjRvCqr1AoWHn&#x2B;/PkYPHhwm3J3797F7NmzcerUKQDA&#x2B;fPnMWXKlHZ1850/i0QihIeHs&#x2B;lLc3Mzr/r24IitdDodm7vduHEDn3/&#x2B;OTQaDQQCASIiIiCRSNrMCJjvE4vFdtvptgS0dxFPnDiBmpoaAE9TEXxTGCUlJaw8bty4dmWHDh3KykVFRZz7yAWm&#x2B;axWq2X7nB0Jm9sqOjoaGo3Gqu&#x2B;NjY0WAUNtbS2bu02fPh1z5sxBYWEhxGIx1q5d2yb5mpqa8Oeff7L/EyZMsNu3bkvA9kBEOHjwIICnd9mkSZN46ygtLWVlW94PeEoyc2OfOXMGBoMBrq7OM111dTXy8/MBPM15BgUFOU13a1uFhoYCAB49emRBuIaGBka4UaNGWaVptm/fjunTp0Or1WLJkiX45JNPEBoaCh8fH9TX16O0tBTfffcdyy1u27aNUxDa6QTsjLSOQqFgd9qyZcvg6&#x2B;vLW0d1dTUr9&#x2B;/fv11Zc/1arRb19fXw8fHh3WZbkEqlFonklStXOvVJjslW/fr1Q0xMDFQqFdRqNYxGIyPcuHHj8NJLL7WrZ9KkSTh37hzi4&#x2B;Mhl8uRl5fXptyrr76KL774AnPnzuXUP4cI2NW5wqNHj7Iy33wWYJ0/9PDwAADU19cjKSkJv/32G8aPH4&#x2B;EhAQMGTKEHTehqamJf6dt4Pz584iPjwcALFq0CNOnT3eK3gcPHkCj0SA7Oxtr1qyB0WiEVCrF4MGDERERgX79&#x2B;vHWGRYWhoyMDGzduhW7du2yOj5t2jQkJSVhzJgx3JU6EFB1aRqmpqaGRCIRAaA333yT9Ho9bx0qlYpmzpzJ&#x2B;lpUVERERH/99ZdFZJySksLqCIVCi4jZHgoKCuymbFQqFY0YMYIA0IQJEzqUfqmoqKCLFy/SoUOHaOvWrfTtt9/SkSNHaOzYsSQSiXjZqq3rq9PpaOfOncz27f1iY2PbPJe29DrkAbvyxYRjx47h8ePHAICFCxc6NBeTSqXsSQUA9pRg3LhxiIuLQ3Z2NsaPH8&#x2B;GEaPRyB6hAYBQKLTbhlqtRl5eHlxcXCCTySCVSiGTydCnTx8AQGVlJRYvXowbN24gODgY&#x2B;/btszsMmuPu3bsWczhfX19IJBKEhIRg5syZ8PLywsGDB1m076itTNi4cSM2b94MAHjnnXewbt06vPHGG/D29saTJ09w69Yt7N27F&#x2B;np6UhNTUVpaSmOHDkCkUjUvmJbzHQEne0BW&#x2B;fkuHgiW3j//feZngsXLrQrW19fb3GH19XVcW6ntraWFAoFZWZm0ldffcU809y5c8nDw4MkEgkVFBS0q8NoNFJZWRnl5eW1m4MzhzNtlZ2dTVKplABQVFSUTc9uMBhozZo1rM2dO3daHFer1VZ1nqsoOD8/n&#x2B;Xjli5d2m70ag9&#x2B;fn6s/M8//7QrW1tby8pisZh5MS4Qi8UW0efNmzexZcsWEBFWr16N/v37o7q6Grdu3YJMJoNQKLTIwWk0Gty/f58FDOY5ONNcti2P7ExbmSJ0AIiNjYW3t3ebci4uLoiNjcWOHTsAAHv27MGKFStQVVWF3Nxc6PV6LF682KKOK2A5pHZ1gNEeMjMzWXnOnDkd0mWe2ysvL29XtqKigpUjIiIcHsoqKyuxYsUKnDx5Ei&#x2B;//DJWrVoFmUyG27dv4/Tp0/j111/Rq1cvtLS0wN/fH8HBwZgyZQoGDRrEuy1n2ury5cuMF8OGDWtXdsiQIRCLxdBqtaiurkZGRgZ0Oh3efvttBAYGWsk/Nx6wsrISqampAIDg4GBERESwY47cNObG&#x2B;Pvvv7F8&#x2B;XKL4&#x2B;Y6CwsL2f7XX3&#x2B;dZ8&#x2B;foqKiAgsWLIBcLsegQYPw9ddfo7a2FlevXmU5uJCQEHh6euLx48dQq9U4ffo0SkpKLOaQ5rB1vu3ZyhGYjwDEYQVHnz59EBkZiYCAAEilUkRGRtqUtSJgd/R8APDHH3&#x2B;wQGDJkiXw9PTskD7TkAgAGRkZSE5ObtPTGI1GHD58mP1/6623eLd17949zJ8/Hz4&#x2B;Pli9ejULNvz9/W3m4EztlJeXQ6VS4cyZM8jIyGCLpGQymc1h1dm2GjhwIK5cuQLg6RTC1k3Y2NiIrKwsvPvuu5DL5Th69CgSEhLaV&#x2B;7wzLQNdFYQotPpKDw8nOm&#x2B;fv26U/QuWLCA6Vy3bh21tLRYyRw6dMjqbRg&#x2B;QZtGo6GJEyeyVIv5ywyOoKysjHJzc2nfvn20adMm&#x2B;uGHH&#x2B;js2bN07949IuJmK75BZ1JSEtMXGRlJWq3W4rhOp6Pjx4/T1q1bKT4&#x2B;3kK2LZua47kgYF5eHtM7a9YsamlpcUrkfvHiRYvoNj4&#x2B;nsrKykin01FNTQ3t3bvXIv&#x2B;XmppKRNwvoEqlYmQQi8VWrzl1FAaDge7cuUM5OTm0e/duSklJoV27dlF4eDj5&#x2B;fkxW7XVLz62KygosLDT1KlTKScnh7RaLeXk5FBycjJlZmbSihUrLOT2799vV7fDBFy2bJndhGTrH5/0hTliYmKYjsOHDxORc1JHLS0tlJiYyKnvH374IRUXF/PSv23bNt42AkB79uxx6Hyam5spLi6Opk6dSjExMbRp0yY6fPgwXbp0yeEkt8nOW7ZssejjxIkTaePGjcy7t/7NnTuXGhsb7erv9kFIeXk50tPTAVi&#x2B;eOCMuapAIMCGDRtgNBqxadMmm3Lz5s3D6tWr2SO5jmYKbC0p6CiqqqrwzTffAHhqK6VSiYcPH0KtVuPy5ct48uQJZDIZRCIR/P39ERISwln3&#x2B;vXrIRKJ8MsvvyAyMhL5&#x2B;fk2lzLExcUhISGB09zT9dy5c2wdgvm29T4&#x2B;q8GciezsbFb&#x2B;6KOPOL1jxgfu7u5ITEzEjBkzkJ2djUuXLqG4uBhSqRQhISGYNm0aJk&#x2B;eDDc3N6e22xlobauAgAAEBASwVWr19fVQqVRQKpVQKpWQy&#x2B;WQyWSYNWuWTZ2mm&#x2B;XKlStoaGhAXFwcamtrMXjwYISGhkKlUuGVV15BcHAwwsLCMGXKFIwaNYrzCxWCkydPkk6nQ3NzM8y3rfcJBAK7JOVCZNO2dQe7c/7xRcW///4LlUplsUioNYqKiiCXyxEYGIioqChea264gPOnOYxGo12SciGyaevi4mJBUiJiq7z4ENm07SGwc1FcXAy5XI6AgABERUXZfPrRUXTZ17EMBgOam5tRVlYGg8EAX19fh4hsTmjTUkxHPHJrme6AZ3VTmbdTUlKC3NxceHt7Iyoqyu67kh3FMw9CzE/W1dWVvS1hSqqq1Wr07t2bt9FNSxDteeSGhgZotVq7ZLdHVj7Tj&#x2B;dh/ggA&#x2B;/fvh5ubG2bMmIGAgIBn0uYz94D27uruMpTa87p8ph96vd4pRDZtnbkcwBwajcZpH57kiv/0ByqfJdmdQWTT1mg0OjUgdHFx6fTzt4Vunwd8UeDu7g53d3f7L2hyABFxJnJDQ4NdGSLiRFbzryU4C/9pAnb1MM8VrT21QCCAh4eH1VoVR9HS0sKJ0J2B/zQBe/AUvXr1gqenp90nF50xZekh4HOA58VTO4L/AzH1V1dY/Gq9AAAAAElFTkSuQmCC" alt="Captcha Img" style="box-shadow: 0 0 1px #959595;">
+            <button type="button" class="ms-3 refresh-btn" onclick="RefreshCaptcha()">
+                ⟳
+            </button>
+            <span class="text-danger field-validation-valid" data-valmsg-for="Captcha" data-valmsg-replace="true"></span>
+        </div>
+        <button type="submit" class="signin-btn">Sign in</button>
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8BLZK9JJdMdItAia2ofENr_JYMZEbCAx-6BkAYgNdao4xxa2wrq-awkgywwmTadsE4LTd7dyhkVQfeEdncS6doxyUf_zq1BuycjJL3rAroM2r-BEKsIgRpLsPV5syFP12TgjWMWDoKw1-cNj7RpiFhE" /></form>
+    <span class="text-danger span-cls">
+
+    </span>
+</div>
+
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="/assets/vendor/js/menu.js"></script>
+<script src="/assets/vendor/js/main.js"></script>
+<script src="/js/CustomJS/CommonReusable.js"></script>
+<script>
+
+    // Preloader
+    $(window).on('load', function () {
+        if ($('#preloader').length) {
+            $('#preloader').delay(100).fadeOut('slow', function () {
+                $(this).remove();
+            });
+        }
+    });
+    function RefreshCaptcha() {
+        $(".span-cls").html("");
+        $.ajax({
+            url: "/Home/RefreshCaptcha",
+            method: "POST",
+            contentType: 'application/x-www-form-urlencoded',
+            dataType: "json",
+            headers: {
+                'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+            },
+            success: function (res) {
+                $('#captcha').attr('src', res);
+            },
+            error: function (err) {
+
+            }
+        });
+    }
+    $("#Captcha, #UserName, #Password").on('keyup', function () {
+        $(".span-cls").html('');
+    })
+    $(document).ready(function () {
+        let title = "IPMS";
+        if ('MLALADS Login' != null) {
+            title = 'MLALADS Login';
+        }
+        document.title = title;
+        ToggleLoginHeader();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // 🔒 Disable right-click on entire page
+        $(document).on("contextmenu", function (e) {
+            return false; // prevents right-click menu
+        });
+
+        // 🔒 Disable copy, paste, cut on a specific control (e.g., input with id='secureInput')
+        $('.secureInput').on('copy paste cut', function (e) {
+            e.preventDefault();
+        });
+
+        // 🔒 Optional: Also disable right-click on the specific control
+        $('.secureInput').on("contextmenu", function (e) {
+            return false;
+        });
+        SetValue("Captcha", "");
+    });
+</script>
+<script>window.DomainSchemeId = 1;</script>
+<script>
+    function ToggleLoginHeader(){
+         if (window.location.href.toLowerCase().includes("cgf") || window.DomainSchemeId === 2) {
+              $("#section-cgf-login").show();
+             $("#section-mlalad-login").hide();
+             document.body.style.background = 'none';
+             document.body.style.backgroundColor = '#888888';
+          }else{
+              $("#section-mlalad-login").show();
+              $("#section-cgf-login").hide();
+          }
+    }
+</script>
+
