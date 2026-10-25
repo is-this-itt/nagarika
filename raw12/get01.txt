@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- beautify ignore:start -->
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed " dir="ltr" data-theme="theme-semi-dark" data-assets-path="../assets/" data-template="vertical-menu-template-semi-dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>MLALADS</title>    
+    <meta name="description" content="MLALDS Layout">
+
+    <!-- Icons -->
+    <link href="/assets/vendor/fonts/boxicons.css" rel="stylesheet" />
+    <link href="/assets/vendor/fonts/fontawesome.css" rel="stylesheet" />
+    <link href="/assets/vendor/fonts/flag-icons.css" rel="stylesheet" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/assets/vendor/css/rtl/core.css" />
+    <link rel="stylesheet" href="/assets/vendor/css/rtl/theme-semi-dark.css" />
+    <link href="/assets/css/demo.css" rel="stylesheet" />
+    <link href="/lib/bootstrap-select/bootstrap-select.css" rel="stylesheet" />
+    <!-- Vendors CSS -->
+
+    <link href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="/assets/vendor/libs/typeahead-js/typeahead.css" rel="stylesheet" />
+    <link href="/assets/vendor/libs/flatpickr/flatpickr.css" rel="stylesheet" />
+
+    <!-- Page CSS -->
+    <link href="/assets/css/datatables.min.css" rel="stylesheet" />
+    <link href="/css/sweetalert2.min.css" rel="stylesheet" />
+    <!-- Datatable Fixed Column CSS -->
+    <link href="/css/fixedColumns.dataTables.css" rel="stylesheet" />
+    <!-- Helpers -->
+    <script src="/assets/vendor/js/helpers.js"></script>
+    <script src="/assets/vendor/js/template-customizer.js"></script>
+    <script src="/assets/js/config.js"></script>
+
+    <style>
+        .inVisible {
+            display: none;
+        }
+
+        .floatRight {
+            float: right;
+        }
+
+        .custom-datatable-style {
+            background-color: white !important;
+            box-shadow: inset 0px -1px 2px 9999px #f7f7f7 !important;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8BLZK9JJdMdItAia2ofENr_5Y7Fb2xiyTz5zzhAnSoXcDtdJ8xZ9nXsk4CiYnpPHXICXzs3bIxHyhYxgJStBfI9CvojIxV70tcjVBO1Hbm1Roz88LyQDO-2qprBqqybcpE8BFHBYbc-6jNO5xPJzVYk" />
+    <div class="content-wrapper">
+
+
+    <div class="row align-items-center justify-content-center">
+        <div class="col-lg-6 text-center permission-denied">
+            <h4>Error!</h4>
+            <p><strong></strong></p>
+
+        </div>
+        <div class="col-lg-6">
+            <img src="/assets/img/page-not-found.png" class="img-fluid">
+        </div>
+    </div>
+    <div class="content-backdrop fade"></div>
+</div>
+
+
+    <script src="/js/client-error-logger.js"></script>
+    <script>
+        $(function () {
+            ClientErrorLogger.init({
+                logApiUrl: "/ErrorLog/LogBatch",
+                appName: "IPMS",
+                appVersion: "1.0.0",
+                enableConsoleDebug: true,
+                pageUrl: '/Error/Index?errorCode=405',
+                pagePath: '/Error/Index',
+                pageName: 'Error/Index'
+            });
+        });
+    </script>
+</body>
+</html>

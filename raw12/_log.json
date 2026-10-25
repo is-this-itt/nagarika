@@ -1,0 +1,148 @@
+[
+ {
+  "file": "report.html",
+  "url": "https://mlalads.odisha.gov.in/IPMS/Report",
+  "method": "GET",
+  "status": 200,
+  "type": "text/html; charset=utf-8",
+  "bytes": 183516,
+  "body": "None"
+ },
+ {
+  "file": "LandingPageReport.js",
+  "url": "https://mlalads.odisha.gov.in/landingpage/js/CustomJS/LandingPageReport.js",
+  "method": "GET",
+  "status": 200,
+  "type": "text/javascript",
+  "bytes": 7969,
+  "body": "None"
+ },
+ {
+  "file": "localization.js",
+  "url": "https://mlalads.odisha.gov.in/js/CustomJS/localization.js",
+  "method": "GET",
+  "status": 200,
+  "type": "text/javascript",
+  "bytes": 42617,
+  "body": "None"
+ },
+ {
+  "file": "home.html",
+  "url": "https://mlalads.odisha.gov.in/",
+  "method": "GET",
+  "status": 200,
+  "type": "text/html; charset=utf-8",
+  "bytes": 237789,
+  "body": "None"
+ },
+ {
+  "paths_found": [
+   "/Home/Index",
+   "/IPMS/AboutUs",
+   "/IPMS/ContactUs",
+   "/IPMS/Gallery",
+   "/IPMS/GetMLALADData",
+   "/IPMS/GetMLALADLegacyPieChartData",
+   "/IPMS/Guidelines",
+   "/IPMS/Index",
+   "/IPMS/NewsEventsView",
+   "/IPMS/Policy",
+   "/IPMS/Report",
+   "/IPMS/SOP",
+   "/MIS/MISReport/GetMLAWiseRecommendedWorkDetailsReport",
+   "/Masters/Ajax/GetMLAOrConstituencyId",
+   "/Masters/Ajax/GetProjectFinancialList"
+  ],
+  "has_token": true
+ },
+ {
+  "file": "get00.txt",
+  "url": "https://mlalads.odisha.gov.in/IPMS/GetMLALADData",
+  "method": "GET",
+  "status": 405,
+  "type": "text/html; charset=utf-8",
+  "bytes": 3466,
+  "body": "None"
+ },
+ {
+  "file": "post00.txt",
+  "url": "https://mlalads.odisha.gov.in/IPMS/GetMLALADData",
+  "method": "POST",
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "bytes": 400,
+  "body": "__RequestVerificationToken=CfDJ8BLZK9JJdMdItAia2ofENr_wJPaVWfzPZLQLDybngz9-Ov09jT0o21P5bDQQCaWihWtVZxbrMRFY2Cd-yY5hjz1DDN7faFRVTxCnrdb7OhB7WS8SO1gipn3OS2PBgBPdNrWcTfO0bpNdaO2po5fvQ08"
+ },
+ {
+  "file": "get01.txt",
+  "url": "https://mlalads.odisha.gov.in/IPMS/GetMLALADLegacyPieChartData",
+  "method": "GET",
+  "status": 405,
+  "type": "text/html; charset=utf-8",
+  "bytes": 3466,
+  "body": "None"
+ },
+ {
+  "file": "post01.txt",
+  "url": "https://mlalads.odisha.gov.in/IPMS/GetMLALADLegacyPieChartData",
+  "method": "POST",
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "bytes": 420,
+  "body": "__RequestVerificationToken=CfDJ8BLZK9JJdMdItAia2ofENr_wJPaVWfzPZLQLDybngz9-Ov09jT0o21P5bDQQCaWihWtVZxbrMRFY2Cd-yY5hjz1DDN7faFRVTxCnrdb7OhB7WS8SO1gipn3OS2PBgBPdNrWcTfO0bpNdaO2po5fvQ08"
+ },
+ {
+  "file": "get02.txt",
+  "url": "https://mlalads.odisha.gov.in/MIS/MISReport/GetMLAWiseRecommendedWorkDetailsReport",
+  "method": "GET",
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "bytes": 455,
+  "body": "None"
+ },
+ {
+  "file": "post02.txt",
+  "url": "https://mlalads.odisha.gov.in/MIS/MISReport/GetMLAWiseRecommendedWorkDetailsReport",
+  "method": "POST",
+  "status": 405,
+  "type": "text/html; charset=utf-8",
+  "bytes": 3466,
+  "body": "__RequestVerificationToken=CfDJ8BLZK9JJdMdItAia2ofENr_wJPaVWfzPZLQLDybngz9-Ov09jT0o21P5bDQQCaWihWtVZxbrMRFY2Cd-yY5hjz1DDN7faFRVTxCnrdb7OhB7WS8SO1gipn3OS2PBgBPdNrWcTfO0bpNdaO2po5fvQ08"
+ },
+ {
+  "file": "get03.txt",
+  "url": "https://mlalads.odisha.gov.in/Masters/Ajax/GetMLAOrConstituencyId",
+  "method": "GET",
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "bytes": 1,
+  "body": "None"
+ },
+ {
+  "file": "post03.txt",
+  "url": "https://mlalads.odisha.gov.in/Masters/Ajax/GetMLAOrConstituencyId",
+  "method": "POST",
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "bytes": 1,
+  "body": "__RequestVerificationToken=CfDJ8BLZK9JJdMdItAia2ofENr_wJPaVWfzPZLQLDybngz9-Ov09jT0o21P5bDQQCaWihWtVZxbrMRFY2Cd-yY5hjz1DDN7faFRVTxCnrdb7OhB7WS8SO1gipn3OS2PBgBPdNrWcTfO0bpNdaO2po5fvQ08"
+ },
+ {
+  "file": "get04.txt",
+  "url": "https://mlalads.odisha.gov.in/Masters/Ajax/GetProjectFinancialList",
+  "method": "GET",
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "bytes": 4468982,
+  "body": "None"
+ },
+ {
+  "file": "post04.txt",
+  "url": "https://mlalads.odisha.gov.in/Masters/Ajax/GetProjectFinancialList",
+  "method": "POST",
+  "status": 200,
+  "type": "application/json; charset=utf-8",
+  "bytes": 4468982,
+  "body": "__RequestVerificationToken=CfDJ8BLZK9JJdMdItAia2ofENr_wJPaVWfzPZLQLDybngz9-Ov09jT0o21P5bDQQCaWihWtVZxbrMRFY2Cd-yY5hjz1DDN7faFRVTxCnrdb7OhB7WS8SO1gipn3OS2PBgBPdNrWcTfO0bpNdaO2po5fvQ08"
+ }
+]
