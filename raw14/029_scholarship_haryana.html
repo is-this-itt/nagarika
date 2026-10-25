@@ -1,0 +1,812 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>
+	DHE - Centralized Online Scholarship
+</title><meta name="description" content="Welcome to the Centralized Online Scholarship portal of Directorate of Higher Education, Government of Haryana. Apply for Scholarship in all Colleges across Haryana." /><meta name="keywords" content="Har-Chhatravratti, Centralized Online Scholarship, Directorate of Higher Education, Government of Haryana, Degree Colleges, Haryana Scholarship, UG Scholarship, PG Scholarship, DHE Scholarship, Online Scholarship Haryana, Haryana College Scholarship." /><meta name="author" content="Department of Higher Education Haryana" /><meta name="robots" content="Har-Chhatravratti" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.css" />
+    <link rel="icon" type="image/ico" href="/img/favicon.ico" />
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/plugins/select2/css/select2.min.css" />
+    <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css" />
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+    <link href="/dist/fontawesome-free-6.1.0-web/css/fontawesome.css" rel="stylesheet" />
+    <link href="/dist/fontawesome-free-6.1.0-web/css/brands.css" rel="stylesheet" />
+    <link href="/dist/fontawesome-free-6.1.0-web/css/regular.css" rel="stylesheet" />
+    <link href="/dist/fontawesome-free-6.1.0-web/css/solid.css" rel="stylesheet" />
+    <link href="/dist/fontawesome-free-6.1.0-web/css/v4-shims.css" rel="stylesheet" />
+    <link href="/dist/fonts/text-security.css" rel="stylesheet" type="text/css" />
+    <link href="/dist/swalJs/sweetalert.css" rel="stylesheet" />
+    <link href="/dist/swalJs/swal-forms.css" rel="stylesheet" />
+
+
+</head>
+<body class="hold-transition layout-top-nav">
+    <form method="post" action="./" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZIXKhS1--LpppFw_xX1kNmmMlNegboXdxjlKMxCP_g8nNXvff2VcoLrhcNCxWdgCKQ2&amp;t=638901734248157332" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=yeSNAJTOPtPimTGCAo3Llf21SNfq2sRdP7LIwlWHFIaxI1XM9Yo9OANU5AYq-rzOZY8TINyhXJDCYEmZGfJwesCcRrcB9UVQ98iwxSd6_BVjHpUj84zVOdNvp35n_4Of0&amp;t=f2cd5c5" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=DT3YJR8QaqV61-teuz0hgn1HFdSe8KBW21R8-1ACbEAbqk3KbvL-OhKpp_2ZtcWgTu2Ae-MsbO-kFbHn_ALmcAt9akiD1ob6NJrFmwmzL8IL6JW1pJ19mBeNAvTNLBQYR-cVhjLBquAuKWwJqDoZmw2&amp;t=f2cd5c5" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="90059987" />
+</div>
+
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$SM1', 'form1', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <header class="main-header">
+                <a href="#" class="logo">
+                    <img src="/Images/Scholarship-logo.png" alt="Haryana Logo" style="width: 100%">
+                </a>
+            </header>
+
+            <!-- Navbar -->
+
+            <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+
+                <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+
+
+                        <li class="nav-item">
+                            <a href="/Index" class="nav-link">Home</a>
+                        </li>
+
+
+                        <li class="nav-item dropdown">
+                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Student</a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                                <li><a href="/StudentRegistration" class="dropdown-item">Student Registration</a></li>
+                                <li class="dropdown-divider"></li>
+                                
+                                <li><a href="/TrackApplication" class="dropdown-item">Track Application</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a href="/Eligibility" class="dropdown-item">Eligibility</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a href="/HowToApply" class="dropdown-item">How To Apply</a></li>
+                            </ul>
+                        </li>
+
+
+                        
+
+                       <li class="nav-item dropdown">
+                            <a id="dropdownSubMenu2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Grievance</a>
+                            <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                                <li><a href="/Grievance" class="dropdown-item">Register Grievance</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a href="/GrievanceTrack" class="dropdown-item">Track Grievance</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/CoursesList" class="nav-link">List of Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/CollegeList" class="nav-link">List of Institutes</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="https://play.google.com/store/apps/details?id=dhe.digital.har_chhatravrattii&pli=1" target="_blank" class="nav-link">Mobile Application </a>
+                        </li>
+                        <li class="nav-item">                           
+                            <a href="/KnowYourAISHE" class="nav-link">Know Your AISHE </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/ContactUs" class="nav-link">Contact Us </a>
+                        </li>
+                        
+                       
+                    </ul>
+                </div>
+
+                <!-- Right navbar links -->
+
+
+                <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+
+                    <li class="nav-item" style="float: right; font-size:larger;">
+                        <a class="nav-link" href="/UserLogin" target="_blank" role="button">
+                            <i class="fa fa-user"></i>&nbsp; User Login
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.navbar -->
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+
+                <section class="content" style="padding: 7px 0px 0px 0px">
+                    <div class="container-fluid">
+                        
+
+
+
+    <style>
+        .counts {
+            /*background: #036980;*/
+            color: #ffffff;
+        }
+
+            .counts .counters span {
+                font-size: 38px;
+                display: block;
+                font-weight: 700;
+            }
+    </style>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <img src="/img/Banner4.png" alt="Banner1" style="width: 100%;" />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/img/Banner2.jpg" alt="Banner2" style="width: 100%;" />
+                            </div>
+                        </div>
+
+
+
+                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-custom-icon" aria-hidden="true">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-custom-icon" aria-hidden="true">
+                                <i class="fas fa-chevron-right"></i>
+                            </span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 style="color: #036980">Introduction</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p style="text-align: justify;">
+                                Scholarships are offered to deserving and needy students to encourage them to take up Higher education. This incentive falls in line with the motto of Higher Education of the State: Access, Equity and Quality. Generation makes Nation. Therefore the Govt. of India and Govt. of Haryana are always putting their efforts to attract the students towards Higher Education.
+                            </p>
+                            <p style="text-align: justify;">
+                                <code><b>"Har-Chhatravratti"</b></code> is a centralized portal developed by the Department of Higher Education that provides one stop solution for end-to-end scholarship process right from submission of application, verification and disbursal to end beneficiary. Keeping in view the State Government’s commitment to make beneficiary-oriented schemes easily accessible, seamless and transparent, a centralized State Scholarship Portal has been developed by bringing in <b>14 scholarship</b> schemes of <b>3 major department</b> of the government under a single platform.
+                            </p>
+                            <p style="text-align: justify;">
+                                <code><b>"Har-Chhatravratti"</b></code> Portal emerges as one of the most prominent scholarship portal that offers three tier verification of the application. Student Application form got verified from three levels i.e. Institute, University/Nodal Body and Head Office thus ensuring the complete authentication of the applicant. This portal is also integrated with state flagship programme i.e. <code><b>Parivar Pehchan Patra (PPP)</b></code> scheme of Haryana Government. In order to avail the benefits of scholarship schemes of the state government, it is mandatory for each applicant to have Parivar Pehchan Patra (PPP). Har-chhatrvratti portal would also include the students of Haryana domicile who are <code><b>studying outside Haryana</b></code>. Such application would directly be verified by the concerned department.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======= Counts Section ======= -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                
+                <div class="card-body" style="background-color: #036980;">
+                    <section id="counts" class="counts">
+                        <div class="container">
+
+                            <div class="row counters">
+                                <div class="col-lg-2 col-6 text-center">
+                                    <span data-toggle="counter-up">
+                                        <span id="ContentPlaceHolder1_lblDepartments">3</span></span>
+                                    <p style="font-size: 18px">Department   </p>
+                                </div>
+                                <div class="col-lg-2 col-6 text-center">
+                                    <span data-toggle="counter-up">
+                                        <span id="ContentPlaceHolder1_lblScholarshipSchemes">14</span></span>
+                                    <p style="font-size: 18px">Scholarship Schemes   </p>
+                                </div>
+                                
+                                <div class="col-lg-2 col-6 text-center">
+                                    <span data-toggle="counter-up">
+                                        <span id="ContentPlaceHolder1_lblTotalInstitutes">2830</span></span>
+                                    <p style="font-size: 18px">Total Institutes</p>
+                                </div>
+
+                                <div class="col-lg-2 col-6 text-center">
+                                    <span data-toggle="counter-up">
+                                        <span id="ContentPlaceHolder1_lblTotalApplications">824562</span></span>
+                                    <p style="font-size: 18px">Total Applications</p>
+                                </div>
+
+                                <div class="col-lg-2 col-6 text-center">
+                                    <span data-toggle="counter-up">
+                                        <span id="ContentPlaceHolder1_lblTotalBeneficiaries">635642</span></span>
+                                    <p style="font-size: 18px">Total Beneficiaries</p>
+                                </div>
+
+                                <div class="col-lg-2 col-6 text-center">
+                                    <span data-toggle="counter-up">
+                                        <span id="ContentPlaceHolder1_lblAmountDisbursed">1179.07</span></span>
+                                    <p style="font-size: 18px">
+                                        Amount Disbursed
+                                        <br />
+                                        (In Cr.)
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Counts Section -->
+
+    
+
+    <div class="row">
+
+
+        <div class="col-md-4">
+
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-warning">
+                        <div class="card-header">
+                            <h3 class="card-title">Latest Notices</h3>
+                        </div>
+                        <div class="card-body">
+                            <ol>
+                                <li> <a href='/Notices/Notice38.pdf' target='_blank'><b>Regarding open online submission of Scholarship Applications on Har-Chhatravratti Scholarship Portal only for State Schemes of Higher Education Department for the 2026-27..</a></b><br/>Notice Date: 17/09/2026 </li><li> <a href='/Notices/Notice37.pdf' target='_blank'><b>clear all pendency of Academic Year 2022-23,2023-24 &2024-25 till 10.06.2026 in reference--Extension of timeline for pushing the State Share Paid Data on     Central Portal under Post Matric for SC Students and Pre Matric Scholarship Scheme for SCs a...</a></b><br/>Notice Date: 14/05/2026 </li><li> <a href='/Notices/Notice36.pdf' target='_blank'><b>All concerned are hereby informed that the scholarship amounts of many students of Acedmic Year 2022-23,23-24 and 24-25 have been returned to the department due to issues such as discrepancies in their bank accounts or updating of their Aadhaar detai...</a></b><br/>Notice Date: 19/03/2026 </li><li> <a href='/Notices/Notice35.pdf' target='_blank'><b>All concerned are hereby informed that the scholarship amounts of many students of Acedmic Year 2022-23,23-24 and 24-25 have been returned to the department due to issues such as discrepancies in their bank accounts or updating of their Aadhaar detai...</a></b><br/>Notice Date: 19/03/2026 </li><li> <a href='/Notices/Notice34.pdf' target='_blank'><b>All concerned are hereby informed that the scholarship amounts of many students of Acedmic Year 2022-23,23-24 and 24-25 have been returned to the department due to issues such as discrepancies in their bank accounts or updating of their Aadhaar detai...</a></b><br/>Notice Date: 19/03/2026 </li>
+                            </ol>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/Notice" class="btn btn-warning float-right">Read More </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Video Tutorials</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/HVBa1W1AzXk?si=R2God7xwluRLF0wo" title="Adhaar Seeding Awareness Video Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-danger">
+                        <div class="card-header">
+                            <h3 class="card-title">Instructions</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+
+                            <i class="fas fa-pencil-alt mr-1"></i><strong><a class="text-muted" href="forms_mis/Download/Standard Operating Procedure.pdf" target="_blank">SOP for Online Application Process </a></strong>
+                            <hr>
+                            <i class="fas fa-pencil-alt mr-1"></i><strong><a class="text-muted" href="forms_mis/Download/FAQ-Students.pdf" target="_blank">FAQs- Student </a></strong>
+                            <hr>
+                            <i class="fas fa-pencil-alt mr-1"></i><strong><a class="text-muted" href="forms_mis/Download/AadharSeedingDocument.pdf" target="_blank">How to Seed Aadhaar with bank account
+                                <img src='img/newicon.gif' alt='new' /></a></strong>
+                            <hr>
+                            <i class="fas fa-pencil-alt mr-1"></i><strong><a class="text-muted" href="https://resident.uidai.gov.in/bank-mapper" target="_blank">Check Aadhaar Bank Seeding Status in NPCI mapper</a></strong>
+
+                            
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-danger"><i class="far fa-envelope"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">
+                                <h5 style="color: #036980">Help Desk Email</h5>
+                            </span>
+                            <span class="info-box-number">helpdeskscholarship@highereduhry.ac.in</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            
+        </div>
+
+        <div class="col-md-8">
+            <div class="card">
+
+                <div class="card-header p-2">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><a class="nav-link active" href="#ScholarshipSchemes" data-toggle="tab">Scholarship Schemes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#Vision" data-toggle="tab">Vision</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#Features" data-toggle="tab">Salient Features</a></li>
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="ScholarshipSchemes">
+                            <div class="card mb-4">
+                                <div class="card-header bg-info text-white">
+                                    <strong>Directorate of Higher Education</strong>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-bordered mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Sr No.</th>
+                                                <th>Scheme Name</th>
+                                                <th>Closing Date</th>
+                                                <th class="text-center">Guideline</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Consolidated Stipend Scheme For SC Students</td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lbl_Consolidated_Stipend" style="color:Green;font-weight:bold;">Open till 31/12/2026</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/Consolidate Stipend and Free Books to SC Students Scheme.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Consolidated Stipend Scheme For Grand Children of Freedom Fighters</td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lbl_Consolidated_Stipend_FF" style="color:Green;font-weight:bold;">Open till 31/12/2026</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/Stipend Scheme for Grand Children for Freedom Fighter.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Free Books For SC Students</td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblFreeBooks" style="color:Green;font-weight:bold;">Open till 31/12/2026</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/Consolidate Stipend and Free Books to SC Students Scheme.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>State Merit Scholarship To Under Graduate Girls Students</td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblUnderGraduateGirls" style="color:Green;font-weight:bold;">Open till 31/12/2026</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/State Merit Scholarship To UG Girls.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>Haryana State Meritorious Incentives Scheme</td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblMeritoriousIncentives" style="color:Green;font-weight:bold;">Open till 31/12/2026</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/Haryana State Meritorious Incentive Scheme.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>Haryana State Meritorious Incentives Scheme (CBSE)</td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblMeritoriousIncentives_CBSE" style="color:Green;font-weight:bold;">Open till 31/12/2026</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/Haryana State Meritorious Incentives Scheme (CBSE).pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>State Merit Scholarship To UG/PG Students</td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblStateMerit_UG_PG" style="color:Green;font-weight:bold;">Open till 31/12/2026</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/Haryana State Merit Scholarship Scheme.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td>Lower Income Group Scheme</td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblLower_Income_Group" style="color:Green;font-weight:bold;">Open till 31/12/2026</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/Lower Income Group Scheme.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- ================= Directorate of Technical Education ================= -->
+                            <div class="card mb-4">
+                                <div class="card-header bg-success text-white">
+                                    <strong>Directorate of Technical Education</strong>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-bordered mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Sr No.</th>
+                                                <th>Scheme Name</th>
+                                                <th>Closing Date</th>
+                                                <th class="text-center">Guideline</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>9</td>
+                                                <td>Merit-cum-Means Scholarship  
+                                            
+
+                                                </td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblMerit_cum_Means" style="color:Red;font-weight:bold;">Closed on 30/06/2024</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/Merit_cum_means_2024.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td>Reimbursement of Tuition Fee to Schedule Castes </td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblTuitionFee_to_Schedule_Castes" style="color:Red;font-weight:bold;">Closed on 30/03/2024</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/Reimbursement of Tuition Fee and Transport Facility.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>11</td>
+                                                <td>Reimbursement of Transport Facility to Schedule Castes</td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblTransportFacility_to_Schedule_Castes" style="color:Red;font-weight:bold;">Closed on 30/03/2024</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/Reimbursement of Tuition Fee and Transport Facility.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- ================= Directorate of Science & Technology ================= -->
+                            <div class="card mb-4">
+                                <div class="card-header bg-warning">
+                                    <strong>Directorate of Science & Technology</strong>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-bordered mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Sr No.</th>
+                                                <th>Scheme Name</th>
+                                                <th>Closing Date</th>
+                                                <th class="text-center">Guideline</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>12</td>
+                                                <td>HSCST Fellowship Programme
+
+                                            
+
+                                                </td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblHSCST_Fellowship" style="color:Red;font-weight:bold;">Closed on 03/09/2026</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/HSCST Fellowship Programme May 2025.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>13</td>
+                                                <td>Promotion of Science Education (POSE) Scholarship Scheme</td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblPOSE" style="color:Red;font-weight:bold;">Closed on 18/01/2026</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/POSEGuidelinesandAnnesures2025.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>14</td>
+                                                <td>Kalpana Chawla Chhatravratti Yojna for Girls (For engineering students) Scholarship Scheme
+
+                                                    
+                                                </td>
+                                                <td>
+                                                    <span id="ContentPlaceHolder1_lblKCCY" style="color:Red;font-weight:bold;">Closed on 10/08/2026</span>
+                                                </td>
+                                                <td class="text-center"><a class="link" href="Notices/SchemeGuidelines15072026.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="Vision">
+
+                            <p style="text-align: justify;">
+                                <ol>
+                                    <li style="line-height: 40px;">Facilitating students with financial support to pursue Higher Education.</li>
+                                    <li style="line-height: 40px;">Diminishing the dropout rate in Higher Education institutions.</li>
+                                    <li style="line-height: 40px;">Fostering a strong enthusiasm for Higher Education among students.</li>
+                                    <li style="line-height: 40px;">Offering students a pathway to integrate into the mainstream through Higher Education.</li>
+                                    <li style="line-height: 40px;">Disbursing benefits such as tuition fees, academic/maintenance allowances, and stipends to eligible students.</li>
+                                </ol>
+                            </p>
+                        </div>
+                        <div class="tab-pane" id="Features">
+                            <p style="text-align: justify;">
+                                <ol>
+                                    <li style="line-height: 40px;"><b>State Level Award 2023 </b>(1st Rank) Project in Haryana.</li>
+                                    <li style="line-height: 40px;"><b>A-Level</b> Security Audit Certificate for Centralized Scholarship Portal.</li>
+                                    <li style="line-height: 40px;">Unified platform for accessing all available scholarships.</li>
+                                    <li style="line-height: 40px;">Streamlined one-time registration for all scholarship programs.</li>
+                                    <li style="line-height: 40px;">Elimination of duplicate scholarship applications.</li>
+                                    <li style="line-height: 40px;">A user-friendly and transparent system for applicants.</li>
+                                    <li style="line-height: 40px;">Seamless integration with the Parivar Pehchan Patra (<b>PPP</b>) Portal.</li>
+                                    <li style="line-height: 40px;">Integration with the <b>SARAL</b> Portal.</li>
+                                    <li style="line-height: 40px;">Integration with National Scholarship Portal (<b>NSP</b>) Portal.</li>
+                                    <li style="line-height: 40px;">Integration with National Payments Corporation of India (<b>NPCI</b>) Portal.</li>
+                                    <li style="line-height: 40px;">Integration with All India Survey on Higher Education (<b>AISHE</b>) Portal.</li>
+                                </ol>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    
+    <div class="modal fade" id="DocModal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title"><b>Centralized Scholarship Portal</b> </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div style="text-align: center;">
+                        <h4><b>Important Instructions :</b> </h4>
+                        <ul style="text-align: justify; line-height: 28px;">
+                            <li><b style="color: green; font-size: 18px;"> शैक्षणिक सत्र 2026–27 के लिए स्कॉलरशिप पोर्टल अब खुल गया है। स्कॉलरशिप के लिए आवेदन जमा करने की आखिरी तारीख 31.12.2026 है। </b> </li>
+                            <li> <b style="color: blue; font-size: 18px;"> जिन विद्यार्थियों का  आधार सीडिंग सफलतापूर्वक एक्टिवेट हो गया है, उनसे अनुरोध है कि वे अपने संबंधित कॉलेजों को सूचित करें ताकि कॉलेज लॉगिन में उपलब्ध आधार-सीडेड डेटा को उसी के अनुसार अपडेट किया जा सके।</b></li>
+                            
+
+                            <li><b>जिन विद्यार्थियों ने गलत योजना के तहत आवेदन किया है, वे अपने लॉगिन से अनुरोध उत्पन्न कर सकते हैं। इसके बाद कॉलेज अपने स्तर पर मौजूदा शैक्षणिक सत्र के आवेदन को डिलीट कर सकते हैं, जिससे विद्यार्थी सही योजना चुन सकेंगे। </b></li>
+
+                            
+                            
+                            
+                            
+                        </ul>
+                    </div>
+
+
+                    
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        
+                    </div>
+                </section>
+                <!-- /Main.content -->
+            </div>
+            <!-- /.content-wrapper -->
+
+            <footer class="main-footer">
+                <div class="float-right d-none d-sm-block">
+                    <b>Version</b> 2.0   
+                </div>
+                Website Designed & Developed By : <strong>IT Cell, Department of Higher Education, Haryana</strong>
+            </footer>
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+        </div>
+        <!-- ./wrapper -->
+    </form>
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="/plugins/select2/js/select2.full.min.js"></script>
+    <!-- jquery-validation -->
+    <script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/plugins/jquery-validation/additional-methods.min.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+    <!-- fontawesome -->
+    <script src="/dist/fontawesome-free-6.1.0-web/js/brands.js"></script>
+    <script src="/dist/fontawesome-free-6.1.0-web/js/solid.js"></script>
+    <script src="/dist/fontawesome-free-6.1.0-web/js/v4-shims.js"></script>
+    <!-- ContentPlaceHolder is for Page specific script -->
+    <script>
+        $('.select2').select2();
+
+
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        });
+    </script>
+
+
+    <script src="/dist/swalJs/sweetalert.min.js"></script>
+    <script src="/dist/swalJs/swal-forms.js"></script>
+    <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+    <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="/plugins/jszip/jszip.min.js"></script>
+    <script src="/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("form").bind("keypress", function (e) {
+                if (e.keyCode == 13) {
+                    return false;
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+
+        function checkDecNum(evt) {
+            var carCode = (evt.which) ? evt.which : event.keyCode;
+            if (carCode > 31 && (carCode < 46) || (carCode > 57)) {
+                return false;
+            }
+        }
+        function checkIntNum(evt) {
+            var carCode = (evt.which) ? evt.which : event.keyCode;
+            if (carCode > 31 && (carCode < 48) || (carCode > 57)) {
+                return false;
+            }
+        }
+
+    </script>
+    <script>
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+
+    
+
+
+    <script src="/plugins/counterup/jquery.waypoints.min.js"></script>
+    <script src="/plugins/counterup/counterup.min.js"></script>
+    <script src="/plugins/counterup/main.js"></script>
+
+
+    <script>
+        $(function () {
+            $("#DocModal").modal("show");
+        });
+    </script>
+
+
+
+</body>
+</html>
+
