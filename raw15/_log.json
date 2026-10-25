@@ -1,0 +1,571 @@
+[
+ {
+  "kind": "rte",
+  "state": "Andhra Pradesh",
+  "url": "https://cse.ap.gov.in/RTE",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='cse.ap.gov.in', port=443): Max retries exceeded with url: /RTE (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in"
+ },
+ {
+  "kind": "rte",
+  "state": "Bihar",
+  "url": "https://pmsonline.bih.nic.in/rte",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='pmsonline.bih.nic.in', port=443): Max retries exceeded with url: /rte (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occu"
+ },
+ {
+  "kind": "rte",
+  "state": "Chhattisgarh",
+  "url": "https://rte.cg.nic.in/",
+  "status": 200,
+  "final": "https://rte.cg.nic.in/",
+  "title": "RTE Portal (शिक्षा का अधिकार)",
+  "bytes": 38030,
+  "hits": [
+   "12 (1)(c)",
+   "2025",
+   "2026",
+   "2026-27",
+   "2027-",
+   "25%",
+   "RTE",
+   "rte"
+  ],
+  "dates": [],
+  "file": "003_rte_chhattisgarh.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Delhi",
+  "url": "https://www.edudel.nic.in/",
+  "status": 200,
+  "final": "https://www.edudel.nic.in/",
+  "title": "Education Department - Govt. of NCT of Delhi",
+  "bytes": 20979,
+  "hits": [
+   "2025-26",
+   "2026",
+   "Admission",
+   "rte"
+  ],
+  "dates": [],
+  "file": "004_rte_delhi.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Delhi",
+  "url": "https://edustud.nic.in/",
+  "status": 200,
+  "final": "https://edustud.nic.in/",
+  "title": "Student Module, Education Department, GNCT of Delhi",
+  "bytes": 9706,
+  "hits": [
+   "2025-26",
+   "2026"
+  ],
+  "dates": [],
+  "file": "005_rte_delhi.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Gujarat",
+  "url": "https://rte.orpgujarat.com/",
+  "status": 503,
+  "final": "https://rte.orpgujarat.com/",
+  "title": "Down for maintenance",
+  "bytes": 1644,
+  "hits": [],
+  "dates": [],
+  "file": "006_rte_gujarat.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Gujarat",
+  "url": "https://gscpcr.gujarat.gov.in/rte-structure",
+  "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'gscpcr.gujarat.gov.in\\', port=443): Max retries exceeded with url: /rte-structure (Caused by NameResolutionError(\"HTTPSConnection(host=\\'gscpc"
+ },
+ {
+  "kind": "rte",
+  "state": "Haryana",
+  "url": "https://schooleducationharyana.gov.in/",
+  "status": 200,
+  "final": "https://schooleducationharyana.gov.in/",
+  "title": "Homepage | Department of secondary education, Government of Haryana |  | India",
+  "bytes": 185209,
+  "hits": [
+   "2025",
+   "2025-26",
+   "2026",
+   "2026-27",
+   "rte"
+  ],
+  "dates": [],
+  "file": "008_rte_haryana.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Jharkhand",
+  "url": "https://rte.jharkhand.gov.in/",
+  "status": 200,
+  "final": "https://rte.jharkhand.gov.in/",
+  "title": "Private School Recognition System | Home",
+  "bytes": 23117,
+  "hits": [
+   "2026",
+   "RTE"
+  ],
+  "dates": [],
+  "file": "009_rte_jharkhand.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Karnataka",
+  "url": "https://sdcedn.karnataka.gov.in/rteadmission/RTE/page1.aspx",
+  "status": 200,
+  "final": "https://sdcedn.karnataka.gov.in/rteadmission/RTE2015/TimeOut1.aspx",
+  "title": "Untitled Page",
+  "bytes": 1412,
+  "hits": [],
+  "dates": [],
+  "file": "010_rte_karnataka.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Karnataka",
+  "url": "https://schooleducation.karnataka.gov.in/",
+  "status": 200,
+  "final": "https://schooleducation.karnataka.gov.in/",
+  "title": "ಕರ್ನಾಟಕ ಸರ್ಕಾರ - Index",
+  "bytes": 245288,
+  "hits": [
+   "2025",
+   "2025-",
+   "2025-26",
+   "2026",
+   "2026-",
+   "2026-27",
+   "2027",
+   "ADMISSION",
+   "Admission",
+   "Last date",
+   "RTE",
+   "Scholarship",
+   "admission",
+   "last date",
+   "lottery"
+  ],
+  "dates": [
+   " for PST/GPT/CST/HST/PE-Grade-I/PE-Grade-II teachers recruitment is extended up to 25/09/2026 ( 2026-09-04 11:31:08 ) ಮತ್ತಷ್ಟು ಓದಿ &t",
+   " for PST/GPT/CST/HST/PE-Grade-I/PE-Grade-II teachers recruitment is extended up to 25/09/2026 ( 2026-09-04 11:31:08 ) ಸಾರ್ವಜನಿಕ ಶಾಲಾ "
+  ],
+  "file": "011_rte_karnataka.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Madhya Pradesh",
+  "url": "https://rteportal.mp.gov.in/",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='rteportal.mp.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred"
+ },
+ {
+  "kind": "rte",
+  "state": "Maharashtra",
+  "url": "https://student.maharashtra.gov.in/adm_portal/",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='student.maharashtra.gov.in', port=443): Max retries exceeded with url: /adm_portal/ (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_REA"
+ },
+ {
+  "kind": "rte",
+  "state": "Odisha",
+  "url": "https://rteparadarshi.odisha.gov.in/",
+  "status": 200,
+  "final": "https://rteparadarshi.odisha.gov.in/odisha",
+  "title": "Odisha -  | Right To Education - RTE",
+  "bytes": 70240,
+  "hits": [
+   "12(1)(c)",
+   "2025",
+   "2026",
+   "2026-27",
+   "25%",
+   "Admission",
+   "Lottery",
+   "RTE",
+   "admission",
+   "lottery",
+   "rte"
+  ],
+  "dates": [],
+  "file": "014_rte_odisha.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Punjab",
+  "url": "https://epunjabschool.gov.in/",
+  "status": 200,
+  "final": "https://epunjabschool.gov.in/",
+  "title": ":: ePunjab Schools ::",
+  "bytes": 25209,
+  "hits": [
+   "Admission",
+   "RTE",
+   "Scholarship"
+  ],
+  "dates": [],
+  "file": "015_rte_punjab.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Rajasthan",
+  "url": "https://rajpsp.nic.in/PSP1/Home/home.aspx",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='rajpsp.nic.in', port=443): Max retries exceeded with url: /PSP1/Home/home.aspx (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING]"
+ },
+ {
+  "kind": "rte",
+  "state": "Tamil Nadu",
+  "url": "https://rte.tnschools.gov.in/",
+  "status": 200,
+  "final": "https://rte.tnschools.gov.in/",
+  "title": "Apache2 Ubuntu Default Page: It works",
+  "bytes": 10918,
+  "hits": [
+   "rte"
+  ],
+  "dates": [],
+  "file": "017_rte_tamil-nadu.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Tamil Nadu",
+  "url": "https://tnschools.gov.in/rte",
+  "status": 200,
+  "final": "https://tnschools.gov.in/rte",
+  "title": "TN Schools",
+  "bytes": 8513,
+  "hits": [],
+  "dates": [],
+  "file": "018_rte_tamil-nadu.html"
+ },
+ {
+  "kind": "rte",
+  "state": "Telangana",
+  "url": "https://schooledu.telangana.gov.in/ISMS/",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='schooledu.telangana.gov.in', port=443): Max retries exceeded with url: /ISMS/ (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] "
+ },
+ {
+  "kind": "rte",
+  "state": "Uttar Pradesh",
+  "url": "https://rte25.upsdc.gov.in/",
+  "error": "ReadTimeout(ReadTimeoutError(\"HTTPSConnectionPool(host='rte25.upsdc.gov.in', port=443): Read timed out. (read timeout=60)\"))"
+ },
+ {
+  "kind": "rte",
+  "state": "Uttarakhand",
+  "url": "https://rteonline.uk.gov.in/",
+  "status": 200,
+  "final": "https://rteonline.uk.gov.in/",
+  "title": "",
+  "bytes": 3,
+  "hits": [],
+  "dates": [],
+  "file": "021_rte_uttarakhand.html"
+ },
+ {
+  "kind": "rte",
+  "state": "West Bengal",
+  "url": "https://banglarshiksha.gov.in/",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='banglarshiksha.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurr"
+ },
+ {
+  "kind": "rte",
+  "state": "Kerala",
+  "url": "https://kescpcr.kerala.gov.in/rte-cell",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='kescpcr.kerala.gov.in', port=443): Max retries exceeded with url: /rte-cell (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EO"
+ },
+ {
+  "kind": "scholarship",
+  "state": "National",
+  "url": "https://scholarships.gov.in/",
+  "status": 200,
+  "final": "https://scholarships.gov.in/",
+  "title": "NSP : National Scholarship Portal",
+  "bytes": 110156,
+  "hits": [
+   "2026",
+   "2026-27",
+   "Scholarship",
+   "scholarship"
+  ],
+  "dates": [],
+  "file": "024_scholarship_national.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Andhra Pradesh",
+  "url": "https://jnanabhumi.ap.gov.in/",
+  "status": 200,
+  "final": "https://jnanabhumi.ap.gov.in/",
+  "title": "JnanaBhumi",
+  "bytes": 1678,
+  "hits": [],
+  "dates": [],
+  "file": "025_scholarship_andhra-pradesh.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Bihar",
+  "url": "https://pmsonline.bih.nic.in/",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='pmsonline.bih.nic.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurre"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Delhi",
+  "url": "https://edistrict.delhigovt.nic.in/",
+  "status": 200,
+  "final": "https://edistrict.delhigovt.nic.in/",
+  "title": "Home | e-District Delhi",
+  "bytes": 48542,
+  "hits": [
+   "2026"
+  ],
+  "dates": [],
+  "file": "027_scholarship_delhi.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Gujarat",
+  "url": "https://www.digitalgujarat.gov.in/",
+  "status": 200,
+  "final": "https://www.digitalgujarat.gov.in/",
+  "title": "Digital Gujarat",
+  "bytes": 74108,
+  "hits": [
+   "2026",
+   "Scholarship"
+  ],
+  "dates": [],
+  "file": "028_scholarship_gujarat.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Haryana",
+  "url": "https://harchhatravratti.highereduhry.ac.in/",
+  "status": 200,
+  "final": "https://harchhatravratti.highereduhry.ac.in/",
+  "title": "DHE - Centralized Online Scholarship",
+  "bytes": 50959,
+  "hits": [
+   "2026",
+   "2026-27",
+   "Post Matric",
+   "Pre Matric",
+   "Scholarship",
+   "scholarship"
+  ],
+  "dates": [
+   "e Date: 17/09/2026 clear all pendency of Academic Year 2022-23,2023-24 &2024-25 till 10.06.2026 in reference--Extension of timeline for",
+   " Name Closing Date Guideline 1 Consolidated Stipend Scheme For SC Students Open till 31/12/2026 2 Consolidated Stipend Scheme For Grand",
+   " Children of Freedom Fighters Open till 31/12/2026 3 Free Books For SC Students Open till ",
+   "31/12/2026 4 State Merit Scholarship To Under Graduate Girls Students Open till 31/12/2026 5 Haryana State Meritorious Incentives ",
+   "Scheme Open till 31/12/2026 6 Haryana State Meritorious Incentives ",
+   "Scheme (CBSE) Open till 31/12/2026 7 State Merit Scholarship To UG/PG Stud"
+  ],
+  "file": "029_scholarship_haryana.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Karnataka",
+  "url": "https://ssp.karnataka.gov.in/",
+  "status": 200,
+  "final": "https://ssp.karnataka.gov.in/",
+  "title": "State Scholarship Portal – Government of Karnataka(ಕರ್ನಾಟಕ ಸರ್ಕಾರ)",
+  "bytes": 357777,
+  "hits": [
+   "2026",
+   "2026-27",
+   "2027",
+   "Last Date",
+   "Last date",
+   "POST MATRIC",
+   "Post Matric",
+   "PostMatric",
+   "Postmatric",
+   "Pre-Matric",
+   "Pre-matric",
+   "Prematric",
+   "SCHOLARSHIP",
+   "Scholarship",
+   "last date",
+   "pre-matric",
+   "scholarship"
+  ],
+  "dates": [],
+  "file": "030_scholarship_karnataka.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Karnataka",
+  "url": "https://ssp.prematric.karnataka.gov.in/",
+  "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'ssp.prematric.karnataka.gov.in\\', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host=\\'ssp.prema"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Kerala",
+  "url": "https://egrantz.kerala.gov.in/",
+  "status": 200,
+  "final": "https://egrantz.kerala.gov.in/",
+  "title": "e-grantz 3.0",
+  "bytes": 50219,
+  "hits": [
+   "2025",
+   "2025-",
+   "2025-26",
+   "2026",
+   "2026-",
+   "2026-27",
+   "Post-matric",
+   "Postmatric",
+   "Pre-matric",
+   "Prematric",
+   "Scholarship",
+   "scholarship"
+  ],
+  "dates": [],
+  "file": "032_scholarship_kerala.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Madhya Pradesh",
+  "url": "https://scholarshipportal.mp.nic.in/",
+  "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'scholarshipportal.mp.nic.in\\', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host=\\'scholarshipp"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Maharashtra",
+  "url": "https://mahadbt.maharashtra.gov.in/",
+  "status": 200,
+  "final": "https://mahadbt.maharashtra.gov.in/",
+  "title": "",
+  "bytes": 162351,
+  "hits": [
+   "Admission",
+   "Post Matric",
+   "Post-Matric",
+   "Pre Matric",
+   "Scholarship",
+   "admission",
+   "rte",
+   "scholarship"
+  ],
+  "dates": [],
+  "file": "034_scholarship_maharashtra.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Odisha",
+  "url": "https://scholarship.odisha.gov.in/",
+  "status": 200,
+  "final": "https://scholarship.odisha.gov.in/",
+  "title": "State Scholarship Portal",
+  "bytes": 1912,
+  "hits": [
+   "Scholarship"
+  ],
+  "dates": [],
+  "file": "035_scholarship_odisha.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Rajasthan",
+  "url": "https://sjmsnew.rajasthan.gov.in/",
+  "status": 200,
+  "final": "https://sjmsnew.rajasthan.gov.in/",
+  "title": "Social Justice Management System (SJMS)",
+  "bytes": 16909,
+  "hits": [],
+  "dates": [],
+  "file": "036_scholarship_rajasthan.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Tamil Nadu",
+  "url": "https://umis.tn.gov.in/",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='umis.tn.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in v"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Telangana",
+  "url": "https://telanganaepass.cgg.gov.in/",
+  "status": 200,
+  "final": "https://telanganaepass.cgg.gov.in/",
+  "title": "Welcome",
+  "bytes": 26244,
+  "hits": [
+   "2025",
+   "Admission",
+   "Last Date",
+   "Last date",
+   "Post Matric",
+   "Post matric",
+   "Post-Matric",
+   "Postmatric",
+   "Pre Matric",
+   "Scholarship",
+   "admission",
+   "last date",
+   "scholarship"
+  ],
+  "dates": [],
+  "file": "038_scholarship_telangana.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "Uttar Pradesh",
+  "url": "https://scholarship.up.gov.in/",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='scholarship.up.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurr"
+ },
+ {
+  "kind": "scholarship",
+  "state": "West Bengal",
+  "url": "https://oasis.gov.in/",
+  "status": 200,
+  "final": "https://oasis.wb.gov.in/",
+  "title": "Online Scholarship in studies | Scholarship for SC,ST,OBC | Backward classes welfare Department",
+  "bytes": 55868,
+  "hits": [
+   "2025-26",
+   "2026",
+   "2026-",
+   "2026-27",
+   "2027",
+   "Admission",
+   "Last Date",
+   "PRE MATRIC",
+   "Post Matric",
+   "Post matric",
+   "Post-Matric",
+   "Pre Matric",
+   "Pre matric",
+   "Pre-Matric",
+   "Pre-matric",
+   "Prematric",
+   "SCHOLARSHIP",
+   "Scholarship",
+   "post-matric",
+   "pre-matric",
+   "rte",
+   "scholarship"
+  ],
+  "dates": [
+   " Scholarship Portal for SC & OBC Centrally Sponsored Schemes will remain open upto 31/07/2023 only for verification of the applicatio",
+   "dents and post-matric scholarship for SC, ST and OBC students has been extended till 28.02.2023 for session 2022-23",
+   " Click Here Online Application for Scholarship is open upto 15/03/2022 for Dakshin Dinajpur District Only ",
+   "Online application for Pre-Matric and Post-Matric Scholarship has been extended till 31.12.2021 for the final phase for the session 202",
+   "ost matric scholarship for 2019-20 session for SC/ST/OBC Students is extended upto 02/12/2019 Online Application for Post matric scho",
+   "4 Paraganas,Bankura, Alipurduar, Uttar Dinajpur, Birbhum District is extended upto 30/11/2019 Online Application for Post matric scho"
+  ],
+  "file": "040_scholarship_west-bengal.html"
+ },
+ {
+  "kind": "scholarship",
+  "state": "West Bengal",
+  "url": "https://svmcm.wbhed.gov.in/",
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='svmcm.wbhed.gov.in', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred "
+ }
+]

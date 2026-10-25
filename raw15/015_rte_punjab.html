@@ -1,0 +1,606 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	:: ePunjab Schools ::
+</title><meta http-equiv="content-type" content="TEXT/HTML; CHARSET=UTF-8" /><meta name="description" content="description" /><meta name="keywords" content="description" /><meta name="language" content="DE" /><meta name="robots" content="index,follow" /><link href="../../CSS/Main.css" rel="stylesheet" /><link href="CSS/Validation-jquery-ui.css.css" rel="stylesheet" />
+    <script src="JS/Validation-jquery.min.js"></script>
+    <script src="JS/Validation-jquery-ui.min.js"></script>
+    <link href="CSS/Validation.css" rel="stylesheet" />
+
+    <script src="JS/Chart.js"></script>
+
+
+    <link href="CSS/New/styles.css" rel="stylesheet" />
+
+    <style type="text/css">
+        #btnTip {
+            color: white !important;
+        }
+    </style>
+    
+    <link href="StaffCSS/PopUp.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ContentPlaceHolder1_txtPassword").hide();
+            $("#overlay").show();
+            $("#divScheduleForLogin").show();
+
+            $("#ContentPlaceHolder1_btnClose").click(function () {
+                $("#ContentPlaceHolder1_divDefault").hide();
+                $("#ContentPlaceHolder1_overlay").hide();
+            });
+
+            $("#btnClose").click(function () {
+                $("#overlay").hide();
+                $("#divScheduleForLogin").hide();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function Dept() {
+            var win = window.open("https://punjabcareerportal.com/", '_blank');
+            win.focus();
+        }
+        function website() {
+            var win = window.open("http://ssapunjab.org/", '_blank');
+            win.focus();
+        }
+        function educationportal() {
+            var win = window.open("http://educationrecruitmentboard.com/", '_blank');
+            win.focus();
+        }
+    </script>
+    <style type="text/css">
+        .SchoolWebsite {
+            background-color: #89cb43;
+            border: 0 none;
+            border-radius: 28px;
+            color: #ffffff;
+            cursor: pointer;
+            display: block;
+            font-family: ArtifikaMedium,verdana,Arial;
+            font-size: 18px;
+            line-height: 35px;
+            text-align: center;
+            text-decoration: none;
+            width: 95%;
+        }
+
+            .SchoolWebsite:hover {
+                background-color: #1F729C;
+                border: 2px solid #dad9d8;
+            }
+
+
+
+        .Grievance {
+            background-color: #f1724b;
+            border: 0 none;
+            border-radius: 28px;
+            color: #ffffff;
+            cursor: pointer;
+            display: block;
+            font-family: ArtifikaMedium,verdana,Arial;
+            font-size: 18px;
+            line-height: 35px;
+            text-align: center;
+            text-decoration: none;
+            width: 95%;
+        }
+
+            .Grievance:hover {
+                background-color: #1F729C;
+                border: 2px solid #dad9d8;
+            }
+
+
+
+        .GIS {
+            background-color: #ffaa02;
+            border: 0 none;
+            border-radius: 28px;
+            color: #ffffff;
+            cursor: pointer;
+            display: block;
+            font-family: ArtifikaMedium,verdana,Arial;
+            font-size: 18px;
+            line-height: 35px;
+            text-align: center;
+            text-decoration: none;
+            width: 95%;
+        }
+
+            .GIS:hover {
+                background-color: #1F729C;
+                border: 2px solid #dad9d8;
+            }
+
+        .Eminence {
+            background-color: #1F729C;
+            border: 0 none;
+            border-radius: 28px;
+            color: #ffffff;
+            cursor: pointer;
+            display: block;
+            font-family: ArtifikaMedium,verdana,Arial;
+            font-size: 18px;
+            line-height: 35px;
+            text-align: center;
+            text-decoration: none;
+            width: 95%;
+        }
+
+            .Eminence:hover {
+                background-color: #1F729C;
+                border: 2px solid #dad9d8;
+            }
+
+
+
+        .fl_left, .imgl {
+            float: left;
+        }
+
+        #services .fl_right {
+            display: block;
+            float: left;
+            margin-left: 5%;
+            padding: 10px 0 0;
+            width: 150px;
+        }
+
+
+
+        .aClass {
+            background-color: #666666;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 5px 15px;
+        }
+
+        .fl_right {
+            display: block;
+            float: left;
+            margin-left: 5%;
+            padding: 10px 0 0;
+            width: 150px;
+        }
+
+        .h2 {
+            background-color: #efefef;
+            border-bottom-color: #666666;
+            color: #666666;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 5px;
+            padding: 0 0 3px;
+        }
+
+        .verticalLine {
+            border-left: 1px solid #999999;
+        }
+    </style>
+    <link href="CSS/LoginPage.css" rel="stylesheet" />
+</head>
+<body>
+    <form method="post" action="./" id="form1" autocomplete="off">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE1MjQ5ODA0NjlkZKAh6sCZ0EFdXrqBClJbnnjWQYtn" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAALkkcx/oPQM2mPYzONpxXMiMoD3h0jG6xGA54QyAbMlUglQoI3FZ5hnoxNzXEFeS7nkS0zH" />
+</div>
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="95%" class="table1" style="border-radius: 10px;">
+            <tr class="tr1">
+                <td style="width: 1%" rowspan="2"></td>
+                <td colspan="7">
+                    <a href="#">
+                        <img src="Images/newHeader.jpg" style="border-radius: 10px; width: 100%; height: 130px" />
+
+                    </a>
+                </td>
+                <td style="width: 1%" rowspan="2"></td>
+
+            </tr>
+            <tr class="tr1">
+                <td id="td1" colspan="2" class="td1">
+                    <div id="cssmenu">
+                        <ul>
+                            <li class="active "><a href="Default.aspx"><span>Home</span></a></li>
+                            <li class="has-sub"><a><span>School</span></a>
+                                <ul>
+
+
+                                    <li>
+                                        <a href="Home/Search.aspx"><span>School Websites</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="Home/Medical_Reports.aspx"><span>School Health Check-up</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="GIS/GIS_Criteria.aspx"><span>School GIS Mapping</span></a>
+                                    </li>
+                                    <li style="display: none">
+                                        <a href="WebPortal/NewGrievanceDashboard.aspx"><span>Grievances Redressal System</span></a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li class="has-sub"><a><span>Useful Links</span></a>
+                                <ul>
+                                    <li>
+                                        <a href="http://ssapunjab.org/"><span>Website of School Education</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://educationrecruitmentboard.com/"><span>Education  Recruitment Portal</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="Home/Graph_Reports.aspx"><span>Report</span></a></li>
+                            <li class="has-sub"><a><span>Login</span></a>
+                                <ul>
+                                    <li>
+                                        <a href="SchoolOfficeLogin.aspx"><span>School/Office Login</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="pre-board-login.aspx"><span>Exam Login</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="Home/LoginStaff.aspx"><span>Staff Login</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="VocationalLogin.aspx"><span>Vocational Login</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="MDMLogin.aspx"><span>Mid Day Meal Login</span></a>
+                                    </li>
+
+
+                                    <li>
+                                        <a href="finance-login.aspx"><span>Finance Login</span></a>
+                                    </li>
+
+
+                                    <li>
+                                        <a href="BM-DM-Login.aspx"><span>BM/DM Login</span></a>
+                                    </li>
+
+                                    <li>
+                                        <a href="NodelLogin.aspx"><span>Nodal Login</span></a>
+                                    </li>
+
+
+
+                                    <li>
+                                        <a href="SchoolInspectionLogin.aspx"><span>School Inspection Login</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="login-regularization-verification.aspx"><span>Staff Verification</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="LoginSOE.aspx"><span>SOE Login</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="SamrathMentorLogin.aspx"><span>Samrath Mentor Login</span></a>
+                                    </li>
+                                      <li>
+                                    <a href="Meritorious/Login.aspx"><span>Meritorious Login</span></a>
+                                        </li>
+                         <li>
+    <a href="Meritorious/MeritoriousSchoolLogin.aspx"><span>Meritorious School/Coordinator Login</span></a>
+</li>
+                                </ul>
+                            </li>
+
+
+                            <li><a href="NominationSMCMemberShip.aspx">SMC Nomination</a> </li>
+                            <li><a href="SchoolOfficeLogin.aspx"><span>Scholarship</span></a></li>
+                            <li><a href="online-admission-form.aspx"><span>Online Admission </span></a></li>
+                            <li><a href="AboutUs.aspx"><span>Contact Us</span></a></li>
+
+                        </ul>
+                    </div>
+
+                </td>
+
+            </tr>
+            <tr>
+                <td class="hauptfenster" style="vertical-align: top" colspan="9">
+                    <div id="main">
+                        <section id="content">
+                            
+
+
+    <table style="width: 100%">
+
+        <tr>
+            <td style="width: 1%" rowspan="2"></td>
+            <td style="width: 60%">
+
+                <ul id="tabs4">
+                    <li id="current4"><a title="tab1" href="#"><span class="auto-style1">Circulars</span></a></li>
+                </ul>
+                <div class="content" style="height: 220px; width: 93%; top: 0px; left: 0px;">
+                    <marquee id="test" behavior="scroll" height="198px" scrolldelay="100" scrollamount="2" direction="up" onmouseover="this.stop();" onmouseout="document.all.test.start();">
+
+                        <br />
+                        <span class="auto-style1">24-03-2024 :: </span>
+                        <a href="https://forms.gle/yAfUJLmurJsEYweY8" target="_blank" style="font-size: small">SCHOOL OF EMINENCE :: APPLICATION FOR TRANSFER (LECTURER/MASTER CADRE AND OTHERS POSTS)                         
+                        </a>
+
+                        <br />
+
+
+                        <br />
+                        <span class="auto-style1">06-03-2024 :: </span>
+                        <a href="http://download.ssapunjab.org/sub/instructions/2024/March/PublicnoticeregardingpostingsatSCERTandDIETs05_03_2024.pdf" target="_blank" style="font-size: small">Public notice regarding postings at SCERT and DIETs                         
+                        </a>
+
+                        <br />
+                        <br />
+                        <span class="auto-style1">10-02-2024 :: </span>
+                        <a href="https://schoolofeminence.pseb.ac.in" target="_blank" style="font-size: small">Joint Entrance Test for Admission in School of Eminence/Meritorious Schools                         
+                        </a>
+
+                        <br />
+                        <br />
+                        <span class="auto-style1"><b>“Share your valuable opinion on the vision of school education on this survey link by 04th January 2023.”</b></span>
+                        <br />
+                        <span class="auto-style1">» </span>
+                        <a href="https://drive.google.com/file/d/1rb8rwIHLQ1Xktl5SkP3kR-C_0JyVKpf0/view" target="_blank" style="font-size: small">Video-Punjab School Education Vision 
+                        </a>
+                        <br />
+                        <br />
+
+                        <span class="auto-style1">» </span>
+                        <a href="https://forms.gle/C8VAyMaGS7hcaUzy7" target="_blank" style="font-size: small">School heads' Survey Punjab School Education Vision
+                        </a>
+                        <br />
+                        <br />
+
+                        <span class="auto-style1">» </span>
+                        <a href="https://forms.gle/BT9puJWekybjENJT6" target="_blank" style="font-size: small">Teacher's Survey Punjab School Education Vision
+                        </a>
+                        <br />
+                        <br />
+                        <hr />
+
+                        <span class="auto-style1">» </span>
+                        <a href="Grievances/GrievanceDoc/Notice/NotificationregardingonlineapplicationsofRTERecognition.pdf" target="_blank" style="font-size: small">Notification regarding online applications of RTE Recognition
+                        </a>
+                        <br />
+                        <br />
+                        <span class="auto-style1">» </span>
+                        <a href="Grievances/GrievanceDoc/Notice/ApplyonlineforpermissionofHigherEducation.pdf" target="_blank" style="font-size: small">Apply online for permission of Higher Education
+                        </a>
+                        <br />
+                        <br />
+
+                        <span class="auto-style1">» </span>
+                        <a href="Grievances/GrievanceDoc/Notice/ApplyonlineforTimeBarredBills.pdf" target="_blank" style="font-size: small">Apply online for TimeBarred Bills
+                        </a>
+                        <br />
+                        <br />
+                        <span class="auto-style1">» </span>
+                        <a href="Grievances/GrievanceDoc/Notice/Applyonlineforupgradationofschools25_08_2020.pdf" target="_blank" style="font-size: small">Apply online for upgradation of schools 
+                        </a>
+                        <br />
+                        <br />
+
+                        <span class="auto-style1">» </span>
+                        <a href="Grievances/GrievanceDoc/Notice/ApplyonlineforMedicalBills.pdf" target="_blank" style="font-size: small">Apply online for Medical Bills
+                        </a>
+                        <br />
+                        <br />
+                        <span class="auto-style1">» </span>
+                        <a href="Grievances/GrievanceDoc/Notice/ApplyonlineforExtensionofService.pdf" target="_blank" style="font-size: small">Apply online for Extension of Service
+                        </a>
+                        <br />
+
+                        <br />
+                        <span class="auto-style1">»  </span>
+                        <a href="Grievances/GrievanceDoc/ACR/StudentAdmissionFormForGovtSchool_English.pdf" target="_blank" style="font-size: small">Student Admission Form For Government Schools(English)
+                        </a>
+                        <br />
+                        <br />
+
+
+                        <span class="auto-style1">»  </span>
+                        <a href="Grievances/GrievanceDoc/ACR/StudentAdmissionFormForGovtSchool_Punjabi.pdf" target="_blank" style="font-size: small">Student Admission Form For Government Schools(Punjabi)           
+                        </a>
+                        <br />
+                        <br />
+
+
+
+                        <span class="auto-style1">»  </span>
+                        <a href="http://ssapunjab.org/scholarships/circulars_scholarships.html" target="_blank" style="font-size: small">Scholarship Guidelines        
+                        </a>
+                        <br />
+                        <br />
+                        <span class="auto-style1">»  </span>
+                        <a href="Grievances/GrievanceDoc/HolidaysList2023.pdf" target="_blank" style="font-size: small">Holidays List - 2023     
+                        </a>
+                        <br />
+                        <br /></marquee>
+                </div>
+                <br />
+            </td>
+            <td style="width: 1%"></td>
+            <td style="width: 44%">
+
+                <ul id="tabs5">
+                    <li id="current5"><a title="tab1" href="#"><span class="auto-style1">Latest Applications</span></a></li>
+
+                </ul>
+                <div class="content" style="height: 220px; width: 92%; top: 0px; left: 0px;">
+                    <span id="ContentPlaceHolder1_lblmess"></span>
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 100%; text-align: center; height: 30px;">
+
+                                <a href="cbse-icse-affiliation-guidelines.aspx" class="Grievance">&nbsp;NOC for CBSE/ICSE Affiliation</a>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100%; text-align: center; height: 30px;">
+                                <a href="school-recognition-guidelines.aspx" class="GIS">&nbsp;RTE Recognition</a>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100%; text-align: center; height: 30px;">
+
+
+                                <a href="Yogdaan.aspx" class="SchoolWebsite">Yogdaan
+                                </a>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100%; text-align: center; height: 50px;">
+
+                                <a href="https://pyep.udhyam.org" class="Eminence">&nbsp;Business Blasters</a>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                </div>
+                <br />
+            </td>
+            <td style="width: 2%" rowspan="2"></td>
+        </tr>
+        <tr>
+            <td colspan="9">
+                <table style="width: 100%">
+                    <tr>
+
+                        <td style="width: 30%; text-align: center">
+                            <img src="Images/Awards.png" style="height: 150px;" />
+                        </td>
+
+                        <td style="width: 1%" class="verticalLine"></td>
+
+                        <td style="width: 30%; text-align: center">
+                            <a href="Home/android-app.aspx">
+                                <img src="Images/AapStore.png" style="height: 150px; width: 150px" />
+                            </a>
+                        </td>
+
+
+                        <td style="width: 15%; text-align: center">
+                            <div id="Div1">
+
+                                <a href="GIS/GIS.aspx" target="_blank">
+                                    <img src="Images/GISMapping.png" style="height: 150px; width: 150px" />
+                                </a>
+                            </div>
+                        </td>
+
+                        <td style="width: 1%" class="verticalLine"></td>
+                        <td style="width: 15%; text-align: center">
+                            <div id="career">
+                                <img class="bottom" src="Images/careerFade.png" style="height: 150px; width: 170px" onclick="return Dept();" />
+                                <img class="top" src="Images/career.png" style="height: 150px; width: 170px" onclick="return Dept();" />
+                            </div>
+                        </td>
+                       
+                        <td style="width: 15%; text-align: center">
+                            <div id="website">
+                                <img class="bottom" src="Images/websiteFade.png" style="height: 150px; width: 170px" onclick="return website();" />
+                                <img class="top" src="Images/website.png" style="height: 150px; width: 170px" onclick="return website();" />
+                            </div>
+                        </td>
+                        <td style="width: 1%"></td>
+                        <td style="width: 15%; text-align: left">
+                            <div id="educationportal">
+                                <img class="bottom" src="Images/educationportalFade.png" style="height: 150px; width: 170px" onclick="return educationportal();" />
+                                <img class="top" src="Images/educationportal.png" style="height: 150px; width: 170px" onclick="return educationportal();" />
+                            </div>
+
+
+                          
+                        </td>
+                        <td style="width: 1%"></td>
+                        <td style="width: 1%"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+
+
+                        </section>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="height: 20px">&nbsp;</td>
+            </tr>
+        </table>
+        <div align="center" style="color: #ffffff;">
+            Powered By : State MIS - Department of School Education, Punjab (India) 
+
+            || 
+            <a id="btnTip" href="javascript:__doPostBack(&#39;ctl00$btnTip&#39;,&#39;&#39;)">Cyber Crime</a>
+        </div>
+
+
+    </form>
+</body>
+</html>

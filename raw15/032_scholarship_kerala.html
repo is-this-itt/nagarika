@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130113507-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-130113507-1');
+</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" />
+        <title>e-grantz 3.0</title>
+        <link rel="stylesheet" href="https://egrantz.kerala.gov.in/assets/css/components.css">
+        <link rel="stylesheet" href="https://egrantz.kerala.gov.in/assets/css/responsee.css">
+        <link rel="stylesheet" href="https://egrantz.kerala.gov.in/assets/plugins/owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" href="https://egrantz.kerala.gov.in/assets/plugins/owl-carousel/owl.theme.css">
+       <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+         CUSTOM STYLE -->
+         <link rel="stylesheet" href="https://egrantz.kerala.gov.in/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://egrantz.kerala.gov.in/assets/css/template-style.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <script src="https://egrantz.kerala.gov.in/assets/js/jquery-ui.min.js"></script>
+        <script src="https://egrantz.kerala.gov.in/assets/js/modernizr.js"></script>
+        <script src="https://egrantz.kerala.gov.in/assets/js/responsee.js"></script><script src="https://egrantz.kerala.gov.in/assets/js/template-scripts.js"></script>
+
+        <!-- Validation Plugin Js -->
+     <!--   <script src="https://egrantz.kerala.gov.in/assets/plugins/jquery-validation/jquery.validate.js"></script>-->
+
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+
+            /* Full-width input fields */
+            input[type=text], input[type=password] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+            }
+
+            /* Set a style for all buttons */
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            button:hover {
+                opacity: 0.8;
+                color:#002147;
+            }
+
+            /* Extra styles for the cancel button */
+            .cancelbtn {
+                width: auto;
+                padding: 10px 18px;
+                background-color: #f44336;
+            }
+            .blackbtn {
+                width: auto;
+                padding: 10px 18px;
+                background-color: #000;
+                color:#002147;
+            }
+            .blackbtn:a {
+
+
+            }
+
+            .container {
+                padding: 16px;
+            }
+
+            span.psw {
+                float: right;
+                padding-top: 16px;
+            }
+
+            /* The Modal (background) */
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: #ffb71c; /* Black w/ opacity */
+                padding-top: 60px;
+            }
+
+            /* Modal Content/Box */
+            .modal-content {
+                background-color: #c1cfda;
+                margin: 0% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+                border: 10px solid #ffb71c;
+                width: 80%; /* Could be more or less, depending on screen size */
+            }
+
+            /* The Close Button (x) */
+            .close {
+                position: absolute;
+                right: 25px;
+                top: 0;
+                color: #000;
+                font-size: 35px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: red;
+                cursor: pointer;
+            }
+
+            /* Add Zoom Animation */
+            .animate {
+                -webkit-animation: animatezoom 0.6s;
+                animation: animatezoom 0.6s
+            }
+
+            @-webkit-keyframes animatezoom {
+                from {-webkit-transform: scale(0)} 
+                to {-webkit-transform: scale(1)}
+            }
+
+            @keyframes animatezoom {
+                from {transform: scale(0)} 
+                to {transform: scale(1)}
+            }
+
+            /* Change styles for span and cancel button on extra small screens */
+            @media screen and (max-width: 300px) {
+                span.psw {
+                    display: block;
+                    float: none;
+                }
+                .cancelbtn {
+                    width: 100%;
+                }
+            }
+        </style>         
+        <style>
+        #h2{
+   font-size: 1em;
+   font-family: serif;
+   color:red;
+   text-align: center;
+   animation: animate 1.5s linear infinite;
+ } 
+  
+ @keyframes animate{
+   0%{
+     opacity: 0;
+   }
+   50%{
+     opacity: 0.7;
+   }
+   100%{
+     opacity: 0;
+   }
+ }
+        </style>        
+        <!--[if lt IE 9]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+          <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    </head>
+    <body style="height:100%;" class="size-1140">
+        <div class="content" style="min-height: calc(100vh - 30px);  padding: 0px 0px 0 0px;">
+            <!-- TOP NAV WITH LOGO -->
+            <header>
+
+                
+
+
+                    <div id="topbar">
+                        <div class="line">
+                            <div class="s-12 m-6 l-6">
+                                <p>Government of Kerala  | <strong>SC/ST/OBC Departments</strong></p>
+                            </div>
+                            <div class="s-12 m-6 l-6">
+                                <div class="social right">
+                                    <a><i class="icon-facebook_circle"></i></a> <a><i class="icon-twitter_circle"></i></a> <a><i class="icon-google_plus_circle"></i></a> 
+                                </div>
+                            </div>
+                        </div>  
+                    </div> 
+                    <nav>
+                        <div class="line">
+
+                            <div class="s-12 l-2">
+                                <p class="logo" ><strong style="color:#FFF">e-grantz </strong>3.0</p>
+                            </div>
+                            <div class="top-nav s-12 l-10">
+                                <p class="nav-text">Menu</p>
+                                <ul class="right">
+                                    <li class="active-item"><a href="#about-us">Home</a></li>
+
+                                    <li><a href="#scholarships">Notice Board</a></li>
+                                    <li><a href="#login">LOGIN</a></li>
+                                    <li><a href="https://egrantz.kerala.gov.in//Registration/contact_me">Contact</a></li>
+                                    <li><a href="https://egrantz.kerala.gov.in//Registration/eg_faq">FAQ</a></li>
+					<li><a href="https://egrantz.kerala.gov.in//Public_Dashboard/dashboard_public">Dashboard</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </header>  
+                <section>
+                    <!-- CAROUSEL --> 
+
+                    <!-- FIRST BLOCK -->
+
+                    <!-- FEATURES -->
+
+                    <!-- ABOUT US -->
+                    <div id="about-us" style="padding-top: 70px">
+                        <div class="hidden-xs s-12 m-12 l-6 media-container">
+                            <img src="https://egrantz.kerala.gov.in/assets/images/about.jpg" alt="">
+                        </div>
+                        <article class="s-12 m-12 l-6">
+                            <p class="hidden-xs">&nbsp; </p>
+                            <h2>e-grantz <b style="color:#ffb71c"> 3.0</h2>
+                            <p style="color:#ffb71c">Online Centralised System for Disbursement of Scholarships/Schemes for all Pre-matric and Post-matric Students of SC, ST& OBC community in the state of Kerala.
+                            </p>
+                            <p align="justify">The system is an integrated online software solution for the disbursement of the various educational assistance schemes of the Scheduled Castes Development Department. The beneficiaries of any educational assistance scheme have to first register by giving their basic details such as Name, Address, Date of Birth, Gender, Mobile Number, Bank Account details and Aadhar Number. Such registered students can apply through the same application for various schemes. Through a single registration, the system could uniquely identify a student and this basic detail shall be used for the disbursement of educational assistance throughout the period of education under various schemes. Provision for institutions will also be available for entering the applications, in case the student is not able to apply online.The financial assistance reaches the students bank account through Direct Beneficiary Transfer (DBT)   </p>
+                            <div class="about-us-icons">
+                                <i class="icon-trophy"></i>Won National  Award for E-governance 2010-11 for exemplary reuse of ICT based technologies.
+                            </div>
+                            
+                                                  <p>&nbsp;</p>
+                                                   <p>&nbsp;</p>
+                        </article>
+                        <p style="color:#f1f1f1">
+                            &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <a style="color:#f1f1f1" href="https://egrantz.kerala.gov.in/assets/video/nsp_video.mp4" target="_new"> How to get your OTR No - CLICK HERE</a>
+                        </p>
+                        <p style="color:#f1f1f1">
+                            &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <a style="color:#f1f1f1" href="https://egrantz.kerala.gov.in/seminar/" target="_new"> Education & Employment Guidance Workshop Registration - CLICK HERE</a></p>
+                    </div>
+
+                    <!-- LOGIN -->
+
+
+                    <!-- Scholarships -->
+                    <div id="scholarships" style="background: #4f6d90; padding-top: 30px; padding-bottom: 30px;">
+                        <div class="line">
+                            <h2 class="section-title">Notice Board</h2>
+                            <div class="tabs">
+                                <div class="tab-item tab-active">
+                                   <!-- <a class="tab-label active-btn">Grant in Aids</a> -->
+                                    <div class="tab-content">
+                                        <div class="margin">
+					                                           <ul style="color: white">
+										<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/8d1f2c736db0f52a6c369ae49b895493.pdf" target="_new" style="color:white">എംപ്ലോയബിലിറ്റി എൻഹാൻസ്മെന്റ്റ് പ്രോഗ്രാം എന്ന പദ്ധതി പ്രകാരം മെഡിക്കൽ/എഞ്ചിനീയറിംഗ് എൻട്രൻസ്, സിവിൽ സർവ്വീസ്, ബാങ്കിങ് സർവ്വീസ്, GATE/MAT, UGC-NET/JRF എന്നീ മത്സര പരീക്ഷകൾക്കുള്ള പരിശീലനം നടത്തുന്ന ഉദ്യാഗാർത്ഥികൾ/ വിദ്യാർത്ഥികളിൽ നിന്നും അപേക്ഷ ക്ഷണിച്ചു. അവസാന തിയതി 20.11.2026</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/f6fec3b4c7e966507a7f0c56aa1a5caf.pdf" target="_new" style="color:white">QA6207 probe p.pdf</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/fee3b4a76b38be2f47e7484c35372a39.pdf" target="_new" style="color:white">QA6207 probe p.php.pdf</a></li>
+																	<li>
+						ഓവർസീസ് സ്കോളർഷിപ്പ് 2026-27 അപേക്ഷ സമർപ്പിക്കുന്നതിനുള്ള അനസാന തീയതി       31-10-2026 വരെ ദീർഘിപ്പിച്ചു.						</li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/overseas notification 26-27.pdf" target="_new" style="color:white">e-Grantz Overseas Scholarship notification</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/a0b77c26ce26536a5338e55ca12edfd6.pdf" target="_new" style="color:white">സംസ്ഥാനത്തിന് പുറത്തെ ദേശീയ പ്രാധാന്യമുള്ള സ്ഥാപനങ്ങളിൽ പഠനം നടത്തുന്ന ഒ.ഇ.സി./ഒ.ബി.സി.(എച്ച്) വിഭാഗത്തിൽപ്പെട്ട പോസ്റ്റ്മെട്രിക് വിദ്യാർത്ഥികൾക്ക് പിന്നാക്ക വിഭാഗ വികസന വകുപ്പ് മുഖേന സ്കോളർഷിപ്പ് അനുവദിക്കുന്ന ഒ.ഇ.സി പോസ്റ്റ്മെട്രിക്  വിദ്യാഭ്യാസാനുകൂല്യ പദ്ധതിയ്ക്ക് അപേക്ഷ ക്ഷണിച്ചു. അവസാന തീയതി 30.11.2026</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/a4c9d0a2e4df570475d8a4c448d1cd28.pdf" target="_new" style="color:white">കെടാവിളക്ക് സ്കോളർഷിപ്പ് പദ്ധതി (2026-27) അപേക്ഷ ക്ഷണിച്ചു. അവസാന തീയതി 30.09.2026</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/5feee394ade51f51720ddb27a266a50e.pdf" target="_new" style="color:white">സംസ്ഥാനത്തെ  ഒ.ബി.സി വിഭാഗത്തിൽ ഉൾപ്പെട്ടതും, മെഡിക്കൽ/ മെഡിക്കൽ അനുബന്ധ കോഴ്സുകൾക്ക് പഠിക്കുന്നതും, മാതാവിനെയോ പിതാവിനെയോ അല്ലെങ്കിൽ ഇരുവരെയുമോ നഷ്ടപ്പെട്ടതുമായ വിദ്യാർത്ഥിനികൾക്ക് പിന്നാക്ക വിഭാഗ വികസന വകുപ്പ് മുഖേന പ്രത്യേക ധനസഹായം അനുവദിക്കുന്ന പദ്ധതി (2026-27) - അപേക്ഷ ക്ഷണിച്ചു. അവസാന തീയതി സെപ്റ്റംബർ 15</a></li>
+																	<li>
+						PM - YASASVI OBC, EBC Prematric Scholarship പദ്ധതി പ്രകാരം സ്കൂളുകളിൽ നിന്നും ഡാറ്റാ എൻട്രി നടത്തുന്നതിനുള്ള അവസാന തീയതി 10.08.2026 വരെ ദീർഘിപ്പിച്ചു.						</li>
+																	<li>
+						ഒ.ഇ.സി, ഒ.ബി.സി(എച്ച്) പ്രീമെട്രിക് വിദ്യാഭ്യാസാനുകൂല്യ പദ്ധതി പ്രകാരം സ്കൂളുകളിൽ നിന്നും ഡാറ്റാ എൻട്രി നടത്തുന്നതിനുള്ള അവസാന തീയതി 10.08.2026 വരെ ദീർഘിപ്പിച്ചു						</li>
+																	<li>
+						ഒ.ഇ.സി, ഒ.ബി.സി(എച്ച്) പ്രീമെട്രിക് വിദ്യാഭ്യാസാനുകൂല്യ പദ്ധതി പ്രകാരം സ്കൂളുകളിൽ നിന്നും ഡാറ്റാ എൻട്രി നടത്തുന്നതിനുള്ള അവസാന തീയതി 27.07.2026 വരെ ദീർഘിപ്പിച്ചു.						</li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/2d4bff24b8b04383d5fe06f7bb9eb1a9.pdf" target="_new" style="color:white">OEC Prematric circular & Amended circular </a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/7c53ae72e34ee672419d8e093bb51589.pdf" target="_new" style="color:white">Standard Operating Procedure (SOP) for Aadhaar Seeding & Mapping Status Verification through NPCI BASE Portal</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/afa5bfe3a7fade2018410df1332bc1c2.pdf" target="_new" style="color:white">EEP-2025-26-Banking, Civil Service, GATE-MAT, UGC-NET Main list published</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/be67ab36ba08701479e9511cde9ae3f3.pdf" target="_new" style="color:white">EEP-2025-26-Banking, Civil Service, GATE-MAT, UGC-NET Draft list published</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/83fe96a8b5b2d5ffbcaad662baca8915.pdf" target="_new" style="color:white">EEP-2025-26-Medical/Engineering- Main list Published </a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/6414a810f9b0865071c5a1f46aac408b.pdf" target="_new" style="color:white">വിദ്യാഭ്യാസ വായ്പയെടുത്ത് വിദേശ പഠനം നടത്തുന്നവർക്ക് പലിശയിളവ് അനുവദിക്കുന്നു.</a></li>
+																	<li>
+						ഓവർസീസ് സ്കോളർഷിപ്പ് 2025-26 അപേക്ഷ സമർപ്പിക്കുന്നതിനുള്ള  അവസാന തീയതി - 2026 ഫെബ്രുവരി 15 വരെ ദീർഘിപ്പിച്ചു						</li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/d3c63aabbf194791169bdc6ca515a87f.pdf" target="_new" style="color:white">Overseas scholarship Notification 2025-26 published </a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/436ff11b791287002dcdf9fe9d3e13ac.pdf" target="_new" style="color:white">Revised University Rank list- Overseas scholarship 2025-26</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/dca5f8a43de4814e7f10a3960c27c33f.pdf" target="_new" style="color:white">Employability Enhancement programme-2025-2026-Med/Eng- Draft list published</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/ddf0ce20b64d1d3c765295c753723c11.pdf" target="_new" style="color:white">എംപ്ലോയബിലിറ്റി എൻഹാൻസ്മെന്റ്റ് പ്രോഗ്രാം എന്ന പദ്ധതി പ്രകാരം മെഡിക്കൽ/എഞ്ചിനീയറിംഗ് എൻട്രൻസ്, സിവിൽ സർവ്വീസ്, ബാങ്കിങ് സർവ്വീസ്, GATE/MAT, UGC-NET/JRF എന്നീ മത്സര പരീക്ഷകൾക്കുള്ള പരിശീലനം നടത്തുന്ന ഉദ്യാഗാർത്ഥികൾ/ വിദ്യാർത്ഥികളിൽ നിന്നും അപേക്ഷ ക്ഷണിച്ചു. അവസാന തിയതി 30.09.2025. </a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/45241434689234814487bbb91f0d787c.pdf" target="_new" style="color:white">സംസ്ഥാനത്തെ ഒ.ഇ.സി /ഒ.ബി.സി(എച്ച്)/എസ്.ഇ.ബി.സി വിദ്യാർത്ഥികൾക്ക് ഒ.ഇ.സി പോസ്റ്റ് മെട്രിക് വിദ്യാഭ്യാസാനുകൂല്യ പദ്ധതി പ്രകാരം അപേക്ഷ സമർപ്പിക്കുന്നതിനും അപേക്ഷയിന്മേൽ ആവശ്യമായ തുടർനടപടികൾ സ്വീകരിക്കുന്നതിനുമായി 2025 സെപ്റ്റംബർ 15 മുതൽ ഇ-ഗ്രാൻ്റ്സ് വെബ്-പോർട്ടൽ ഓപ്പൺ ചെയ്തു നൽകുന്നതാണ്. ഇ-ഗ്രാൻ്റ്സ് വെബ്-പോർട്ടലുമായി ബന്ധപ്പെട്ട സാങ്കേതിക കാരണങ്ങളാലാണ് നിലവിൽ സൈറ്റ് ക്ലോസ് ചെയ്തിട്ടുള്ളത് എന്ന വിവരം അറിയിക്കുന്നു.</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/104305df348499a4bc89fe5b3a7f6bec.pdf" target="_new" style="color:white">ഓവർസീസ് സ്കോളർഷിപ്പ് 2024-25  അന്തിമ ഗുണഭോക്തൃ പട്ടിക പ്രസിദ്ധീകരിച്ചു</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/b3a448a7e3abdde6fd612e0ac9a391eb.pdf" target="_new" style="color:white">സ്പെഷ്യൽ സ്കോളർഷിപ്പ് പദ്ധതി 2025-26 – അപേക്ഷ  ക്ഷണിച്ചു. അവസാന തീയതി – ജൂലൈ 31</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/32706ab4b4816187c27cc8fff2e2a9da.pdf" target="_new" style="color:white">പിന്നാക്ക വിഭാഗം വിദ്യാർത്ഥികൾക്ക് പോസ്റ്റ്മെട്രിക് വിദ്യാഭ്യാസാനുകൂല്യം ലഭിക്കുന്നതിനുള്ള അപേക്ഷാ നടപടികൾ സംബന്ധിച്ച് സർക്കുലർ പുറപ്പെടുവിച്ചു</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/d617322c0272316ef00c05f7f25e7b8a.pdf" target="_new" style="color:white">അഭിഭാഷക ധനസഹായ പദ്ധതി 2024-25 -ഗുണഭോക്താക്കളുടെ അന്തിമ പട്ടിക പ്രസിദ്ധികരിച്ചു. </a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/7f13ea25ed7d4bb95a6ee0b1557c382d.pdf" target="_new" style="color:white">അഭിഭാഷക ധനസഹായ പദ്ധതി  2024-25 </a></li>
+																	<li>
+						പോസ്റ്റ്മെട്രിക് വിദ്യാഭ്യാസനുകൂല്യ പദ്ധതി പ്രകാരം 2024-25 അധ്യയന വർഷത്തെ ഒ.ഇ.സി/ഒ.ബി.സി(എച്ച്) വിഭാഗം വിദ്യാർത്ഥികളുടെ വിദ്യാഭ്യാസാനുകൂല്യങ്ങളുടെ വിതരണം ആരംഭിച്ചിട്ടുണ്ട്.
+വിദ്യാർത്ഥികളുടെ അക്കൗണ്ടിൽ ക്രെഡിറ്റ് ആകുന്ന ട്യൂഷൻ ഫീ, എക്സാം ഫീ, സ്‌പെഷ്യൽ ഫീ തുടങ്ങിയവ ലഭ്യമായി ഒരാഴ്ചയ്ക്കകം സ്ഥാപനത്തിൽ അടക്കേണ്ടതാണ്.						</li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/f59aba44a607c1de32ef3c3f4a35d309.pdf" target="_new" style="color:white">പോസ്റ്റ്മെട്രിക് തലത്തിൽ സംസ്ഥാനത്തിനകത്ത് പഠനം നടത്തുന്ന ഒ.ഇ.സി/ഒ.ബി.സി(എച്ച്)/എസ്.ഇ.ബി.സി വിഭാഗം വിദ്യാർത്ഥികൾക്കു വിദ്യാഭ്യാസാനുകൂല്യം അനുവദിക്കുന്നതിനായി പിന്നാക്ക വിഭാഗ വികസന വകുപ്പ് മുഖേന നടപ്പാക്കി വരുന്ന "ഒ.ഇ.സി പോസ്റ്റ്മെട്രിക് വിദ്യാഭ്യാസാനുകൂല്യ പദ്ധതി" പ്രകാരം 2023-24 വർഷം വരെയുള്ള കുടിശ്ശിക വിദ്യാഭ്യാസാനുകൂല്യങ്ങൾ മുഴുവനായും, 2024-25 വർഷത്തെ വിദ്യാഭ്യാസാനുകൂല്യങ്ങൾ ഭാഗീകമായും വിതരണം നടത്തിയിട്ടുണ്ട്. </a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/e793f3e7f25b8e36be8d856bf09e34fa.pdf" target="_new" style="color:white">പട്ടികവർഗ്ഗ വിദ്യാർത്ഥികൾക്ക് ലാപ്‌ടോപ്പ് വാങ്ങുന്നതിനുള്ള സ്‌കോളർഷിപ്പ് ലഭിക്കുന്നതിനുള്ള അപേക്ഷകൾ സ്വീകരിക്കുന്ന അവസാന തീയതി 22.03.2025 വരെ നീട്ടിയിട്ടുണ്ട്. അർഹതയുള്ള കോഴ്സുകളെ സംബന്ധിച്ച വിവരങ്ങൾക്ക് ബന്ധപ്പെട്ട പ്രോജക്ട് ഓഫീസ്/ ട്രൈബൽ ഡെവലപ്പ്മെന്റ് ഓഫീസുമായി ബന്ധപെടാവുന്നതാണ്</a></li>
+																	<li>
+						OEC/OBC(H) പ്രീമെട്രിക് വിദ്യാഭ്യാസാനുകൂല്യ പദ്ധതി പ്രകാരം സ്കൂളുകളിൽ നിന്നും 15.03.2025 വരെ ഇ-ഗ്രാന്റ്സ് മുഖേന ഡാറ്റാ എൻട്രി നടത്താവുന്നതാണ് . ആദ്യ ഘട്ടത്തിൽ അപേക്ഷിക്കൻ കഴിയാതെ പോയ സ്കൂൾ അധികൃതർ എത്രയും വേഗം ഡാറ്റാ എൻട്രി പൂർത്തിയാക്കുക.						</li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/ec1cb5458bcc9e8ac0ae927242af52e6.pdf" target="_new" style="color:white">ഇ.ഇ.പി 2024-25 – മെഡിക്കൽ/എഞ്ചിനീയറിംഗ് – അന്തിമ ഗുണഭോക്തൃപട്ടിക പ്രസിദ്ധീകരിച്ചു.</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/21f752b0774d32548a715f2c7c055bc4.pdf" target="_new" style="color:white">എംപ്ലോയബിലിറ്റി എൻഹാൻസ്മെന്റ് പ്രോഗ്രാം –2024-25, മത്സര പരീക്ഷാ പരിശീലന ധനസഹായം –ബാങ്കിംഗ് സർവ്വീസ്, സിവിൽ സർവ്വീസ്, UGC/NET/JRF,GATE/MAT – കരട് മുൻഗണനാ പട്ടിക പ്രസിദ്ധീകരിച്ചു.</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/5411ac5baba6af77948bd4e1794ba572.pdf" target="_new" style="color:white">എംപ്ലോയബിലിറ്റി എന്‍ഹാന്‍സ്മെന്റ് പ്രോഗ്രാം 2024-25 മെഡിക്കൽ/എഞ്ചിനിയറിംഗ് കരട്‌ മുന്‍ഗണനാ പട്ടിക പ്രസിദ്ധീകരിച്ചു.</a></li>
+																	<li>
+						കെടാവിളക്ക് സ്കോളർഷിപ്പ് പദ്ധതി -അവസാന തീയതി 10.02.2025 വരെ ദീർഘിപ്പിച്ചു.						</li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/c44bb338b9b84821311c7eb0c71b1b50.pdf" target="_new" style="color:white">കെടാവിളക്ക് സ്കോളർഷിപ്പ് പദ്ധതി - അപേക്ഷ ക്ഷണിച്ചു </a></li>
+																	<li>
+						എംപ്ലോയബിലിറ്റി എൻഹാൻസ്മെന്റ് പ്രോഗ്രാം (2024-25) - അവസാന തീയതി 31.10.2024 വരെ ദീർഘിപ്പിച്ചു.						</li>
+																	<li>
+						PM-YASASVI പ്രീമെട്രിക് സ്കോളർഷിപ്പ് ക്ലാസ് 9,10
+
+
+ വരുമാന സർട്ടിഫിക്കറ്റ് വാലിഡേറ്റ് ചെയ്യുന്നതിന് ഉണ്ടായിരുന്ന സാങ്കേതിക തടസ്സം പരിഹരിച്ചിട്ടുണ്ട്.
+ഡാറ്റാ എൻട്രിക്കുള്ള അവസാന തീയതി - 31.10.2024						</li>
+																	<li>
+						“ഓവര്‍സീസ് സ്കോളര്‍ഷിപ്പ്” പദ്ധതി 2024-25 – - അവസാന തീയതി 25.10.2024 വരെ ദീർഘിപ്പിച്ചു.						</li>
+																	<li>
+						2024-25 ലെ OEC, OBC(H) പ്രീമെട്രിക് വിദ്യാഭ്യാസാനുകൂല്യത്തിനുള്ള ഡാറ്റാ എൻട്രി - അവസാന തീയതി 20.09.2024 വരെ ദീർഘിപ്പിച്ചു.						</li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/1e3f703c08743afb687bde0ebfc5695a.pdf" target="_new" style="color:white">PM-YASASVI OBC, EBC പ്രീമെട്രിക് സ്കോളർഷിപ്പ് പദ്ധതി - അപേക്ഷ ക്ഷണിച്ചു</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/d9a8193968014bdbdeed87f9a0a481f2.pdf" target="_new" style="color:white">എംപ്ലോയബിലിറ്റി എൻഹാൻസ്മെന്റ് പ്രോഗ്രാം (2024-25) – അപേക്ഷ ക്ഷണിച്ചു- അവസാന തീയതി – 15-09-2024</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/adf79e590140bcf274c80cc7c6aa7c00.pdf" target="_new" style="color:white">“ഓവര്‍സീസ് സ്കോളര്‍ഷിപ്പ്” പദ്ധതി 2024-25 – അപേക്ഷ ക്ഷണിച്ചു-അവസാന തീയതി – 20.09.2024</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/974baae8688e4a87f0c2585d517fbe9a.pdf" target="_new" style="color:white">കമ്മ്യൂണിക്കേറ്റീവ് ഇംഗ്ലീഷ് കോഴ്‌സുകളുടെ പരിശീലനത്തിന് ധന സഹായം നൽകുന്നതിന് ഒബിസി വിഭാഗത്തിലുള്ള ബിഎസ്‌സി നഴ്‌സിംഗ് വിദ്യാർത്ഥികളിൽ നിന്ന് അപേക്ഷ ക്ഷണിച്ചു. അവസാന തീയതി 2024 JULY 31</a></li>
+																	<li>
+						കോളേജ് വിദ്യാഭ്യാസ വകുപ്പ് മുഖേന നടപ്പാക്കി വരുന്ന ന്യൂനപക്ഷ സ്കോളർഷിപ്പ് ലഭ്യമാകുന്നതിനാൽ ഹയർ സെക്കന്ററി കോഴ്സിന് പഠിക്കുന്ന ന്യൂനപക്ഷ വിഭാഗം വിദ്യാർത്ഥികൾ പിന്നാക്ക വിഭാഗ വികസന വകുപ്പ് മുഖേന നടപ്പാക്കി വരുന്ന PM-YASASVI – Postmatric Scholarship for OBC, EBC & DNT എന്ന കേന്ദ്രാവിഷ്കൃത പദ്ധതി പ്രകാരം അപേക്ഷ സമർപ്പിക്കേണ്ടതില്ല.						</li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/01d60b004f6a22a0c5032a74d3b9b78e.pdf" target="_new" style="color:white">എംപ്ലോയബിലിറ്റി എൻഹാൻസ്മെന്റ് പ്രോഗ്രാം - മത്സര പരീക്ഷാ പരിശീലന ധനസഹായ പദ്ധതി - 2023-24 - ബാങ്കിംഗ് സർവ്വീസ്, സിവിൽ സർവ്വീസ്,  GATE/MAT, UGC-NET - കരട് മുൻഗണനാ പട്ടിക പ്രസിദ്ധീകരിച്ചു.</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/752b22be554d19a0a277c4ff78ce1bb0.pdf" target="_new" style="color:white">എംപ്ലോയബിലിറ്റി എൻഹാൻസ്മെന്റ് പ്രോഗ്രാം - മത്സര പരീക്ഷാ പരിശീലന ധനസഹായ പദ്ധതി - 2023-24 - മെഡിക്കൽ/എഞ്ചിനീയറിംഗ് - അന്തിമ ഗുണഭോക്തൃപട്ടിക പ്രസിദ്ധീകരിച്ചു.</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/567b2892e6a16632626a78ced3de8bd3.pdf" target="_new" style="color:white">ഓവർസീസ് സ്കോളർഷിപ്പ് – 2023-24, അന്തിമ ഗുണഭോക്തൃ പട്ടിക പ്രസിദ്ധീകരിച്ചു.</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/b1452989d1bacb205915c20bb0f847fd.pdf" target="_new" style="color:white">OEC Postmatric Educational Assistance (outside state) – circular</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/10bd0a1089690a213810f75fc0149bb0.pdf" target="_new" style="color:white">സംസ്ഥാനത്തെ മറ്റ് പിന്നാക്ക വിഭാഗങ്ങളിൽപ്പെട്ട (OBC) ബി.എസ്.സി നഴ്‌സിംഗ് പഠനം പൂർത്തീകരിച്ച് രണ്ടു വർഷം പൂർത്തിയായിട്ടില്ലാത്ത ഉദ്യോഗാർഥികൾക്കും, ബി.എസ്.സി നഴ്‌സിങ് നാലാം വർഷം പഠിക്കുന്ന വിദ്യാർഥികൾക്കും IELTS/TOEFL/OET/NCLEX  തുടങ്ങിയ കമ്മ്യൂണിക്കേറ്റീവ് ഇംഗ്ലീഷ് കോഴ്‌സുകളുടെ പരിശീലനത്തിന് പിന്നാക്ക വിഭാഗ വികസന വകുപ്പ് മുഖേന ധനസഹായം നൽകുന്ന പദ്ധതിക്ക് അപേക്ഷ ക്ഷണിച്ചു. അവസാന തീയതി 2023 ഡിസംബർ 23.</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/ceccdb87abb9537c7277a3722e4a880b.pdf" target="_new" style="color:white">പിന്നാക്ക വിഭാഗ വികസനവകുപ്പ് മുഖേന വിവിധ മത്സര പരീക്ഷാ പരിശീലനത്തിന് ധനസഹായം നൽകുന്ന എംപ്ലോയബിലിറ്റി എൻഹാൻസ്മെന്റ് പ്രോഗ്രാം 2023 24 പദ്ധതി പ്രകാരം  IELTS/TOEFL/OET/NCLEX പരിശീലന സ്ഥാപനങ്ങളെ എംപാനൽ ചെയ്ത് ഉത്തരവ് പുറപ്പെടുവിക്കുന്നു.</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/1b3a6ba1aca338f112eb1447a078f96d.pdf" target="_new" style="color:white">Circular published for Special scholarship for OBC/SEBC girls studying medical/medical allied courses, and lost either/both of their parents.</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/adeaef4a8e3bfded17e941ffe02458c4.pdf" target="_new" style="color:white">PM-YASASVI OBC, EBC പ്രീമെട്രിക് സ്കോളർഷിപ്പ് പദ്ധതി സംബന്ധിച്ചുള്ള മാർഗ്ഗനിർദ്ദേശങ്ങൾ</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/89dbb190c1c4dd9dc416bc7d0b4b422d.pdf" target="_new" style="color:white">അപേക്ഷകൾ എൻട്രി ചെയ്യുമ്പോഴും ഫോർവേർഡ് ചെയ്യുമ്പോഴും വിവരങ്ങൾ ശ്രദ്ധാപൂർവം പരിശോധിച്ച് ഉറപ്പു വരുത്തുക.
+
+ഒരിക്കൽ അപ്രൂവ് ചെയ്ത അപേക്ഷകളിൽ പിന്നീട് ഒരു കാരണവശാലും മാറ്റം അനുവദിക്കുന്നതല്ല.</a></li>
+																	<li>
+						2022-23 വർഷത്തെ ഇ-ഗ്രാന്റ്സ് പോസ്റ്റ് മെട്രിക് സ്കോളർഷിപ്പിന് അപേക്ഷിക്കുവാനുള്ള അവസാന തീയതി 2023 ജൂലൈ 31 ആയിരിക്കും						</li>
+																	<li>
+						=ശ്രദ്ധിക്കുക=
+
+2023-24 വർഷം മുതൽ വിദ്യാർഥികൾക്ക് പോസ്റ്റ്മെട്രിക് സ്കോളർഷിപ്പ് അപേക്ഷ സമർപ്പിക്കുന്നതിന് പഠിക്കുന്ന  സ്ഥാപനങ്ങൾക്ക് സാധുവായ UDISE/ AISHE CODE ഉണ്ടായിരിക്കണം.
+ 
+പ്രസ്തുത കോഡ് ഇല്ലാത്ത സ്ഥാപനങ്ങളിലേക്ക് ഇ-ഗ്രാന്റ്സ് പോസ്റ്റ്മെട്രിക് സ്കോളർഷിപ്പിന് അപേക്ഷ സമർപ്പിക്കുവാൻ സാധിക്കുന്നതല്ല.						</li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/ceccddf2b8e49fea025ce19655e86834.pdf" target="_new" style="color:white">പട്ടികജാതി/ പട്ടികവർഗ വിദ്യാർഥികളുടെ പോസ്റ്റ്മെട്രിക് സ്കോളർഷിപ്പ് നിരക്കുകൾ സംബന്ധിച്ച ഉത്തരവ്
+(2022-23 വർഷം മുതൽ പ്രാബല്യം)</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/aab67494a9a85ace892a8b5d79f29dd6.pdf" target="_new" style="color:white">പട്ടികജാതി/ പട്ടികവർഗ വിദ്യാർഥികളുടെ പോസ്റ്റ്മെട്രിക് സ്കോളർഷിപ്പ് വ്യവസ്ഥകൾ- പുതുക്കിയ ഉത്തരവ്
+(2022-23 വർഷം മുതൽ പ്രാബല്യം)</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/1a85123868a8f082ffae19cc81f82d51.pdf" target="_new" style="color:white">2020-21 വരെയുള്ള ക്ലെയിമുകൾ സമർപ്പിക്കുന്നതിനുള്ള അവസാന അവസരം</a></li>
+																	<li>
+						OBC & OEC Postmatric Scholarship (Outside State) പദ്ധതികൾ പ്രകാരം 2021 - 22, 2022-23 വർഷങ്ങളിലെ വിജ്ഞാപന പ്രകാരം ലഭ്യമായ അപേക്ഷകൾ ന്യൂനതകൾ പരിഹരിക്കുന്നതിനായി revert  ചെയ്തു നൽകിയത് നാളിതുവരെ ന്യൂനത പരിഹരിച്ചു ലഭ്യമാകാത്തതായി കാണുന്നുണ്ട്. പ്രസ്തുത അപേക്ഷകൾ ന്യൂനത പരിഹരിച്ചു ലഭ്യമാക്കുന്നതിന് 2023 ജൂലൈ 10 വരെ സമയം അനുവദിക്കുന്നു. ടി സമയപരിധിക്കകം ന്യൂനത പരിഹരിച്ചു ലഭ്യമാക്കാത്ത അപേക്ഷകൾ എല്ലാം റദ്ദ് ചെയ്തതായി കണക്കാക്കുന്നതാണ് എന്ന് അറിയിക്കുന്നു						</li>
+																<li><a href="https://egrantz.kerala.gov.in/egrantz_uploads/78c91c9e626f1623d6692496c55738af.pdf" target="_new" style="color:white">എംപ്ലോയബിലിറ്റി എൻഹാൻസ്മെന്റ് പ്രോഗ്രാം - മെഡിക്കൽ/എഞ്ചിനീയറിംഗ് പ്രവേശന പരീക്ഷാ പരിശീലനം നടത്തുന്ന സ്ഥാപനങ്ങളിൽ നിന്നും താല്പര്യപത്രം ക്ഷണിക്കുന്നു.താല്പര്യപത്രം സമർപ്പിക്കേണ്ട അവസാന തീയതി10.07.2023</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/course_certificate.pdf" target="_new" style="color:white">Course Certificate format Civil Service Academy</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/goakshaya.pdf" target="_new" style="color:white">അക്ഷയ കേന്ദ്രങ്ങൾ മുഖേന eGrantz അപേക്ഷ പുതിയതായി സമർപ്പിക്കുന്നതിനും പുതുക്കുന്നതിനും സർക്കാർ നിശ്ചയിച്ചിട്ടുള്ള നിരക്കുകൾ.</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/502009.pdf" target="_new" style="color:white">ഇ-ഗ്രാൻറ്‌സ് ആനുകൂല്യം - സർക്കാർ ഉത്തരവ് (സ.ഉ. (അച്ചടി ) നമ്പർ 50/2009/പജ.പവ.വിവ തീയതി : 02/07/2009 )</a></li>
+																<li><a href="https://egrantz.kerala.gov.in/attend_certi.pdf" target="_new" style="color:white">Attendance Certificate format Civil Service Academy</a></li>
+											<!--
+<li>
+<a href="https://egrantz.kerala.gov.in/BCDDempInst.pdf" target="_new" style="color:white">എംപ്ലോയബിലിറ്റി എൻഹാൻസ്മെന്റ് പ്രോഗ്രം 2022-23 പ്രകാരം ബാങ്കിംഗ് സർവ്വീസ്, സിവിൽ സർവ്വീസ്, യു.ജി.സി/ജെ.ആർ.എഫ്/നെറ്റ്, ഗേറ്റ്/മാറ്റ് തുടങ്ങിയ മത്സരപ്പരീക്ഷകൾക്ക് ധനസഹായം അനുവദിക്കുന്ന പദ്ധതിയുടെ ഭാഗമായി വിവിധ സ്ഥാപനങ്ങളെ എംപാനൽ ചെയ്തിട്ടുണ്ട്. സ്ഥാപനങ്ങളുടെ പട്ടികയ്ക്കായി ‘ഇവിടെ ക്ലിക്ക്’ ചെയ്യുക.</a>
+</li>
+  <a target="_new" style="color: white" href="http://egrantz.cdit.org/application_form.pdf"><li blink>കാലതാമസം മാപ്പാക്കുന്ന വിദ്യാർത്ഥികൾക്ക് ഉപയോഗിക്കുന്നതിന് വേണ്ടി മാത്രം (2017-18 വരെയുള്ളത്)</li></a>
+
+ <a target="_new" style="color: white" href="http://egrantz.cdit.org/gov_ordermain.pdf"><li blink>LSG Stipend Rate</li></a>
+
+<a target="_new" style="color: white" href="http://egrantz.kerala.gov.in/502009.pdf"><li blink>ഇ-ഗ്രാൻറ്‌സ് ആനുകൂല്യം - സർക്കാർ ഉത്തരവ് (സ.ഉ. (അച്ചടി ) നമ്പർ 50/2009/പജ.പവ.വിവ  തീയതി : 02/07/2009 )</li></a>
+                                          <a  target="_new" style="color: white" href="http://egrantz.kerala.gov.in/goakshaya.pdf"> <li>അക്ഷയ കേന്ദ്രങ്ങൾ മുഖേന eGrantz അപേക്ഷ പുതിയതായി സമർപ്പിക്കുന്നതിനും പുതുക്കുന്നതിനും സർക്കാർ നിശ്ചയിച്ചിട്ടുള്ള നിരക്കുകൾ.</li></a>
+                                          <a  target="_new" style="color: white" href="http://egrantz.kerala.gov.in/course_certificate.pdf" target="_new"><li>Course Certificate format Civil Service Academy</li></a>
+                                          <a  target="_new" style="color: white" href="http://egrantz.kerala.gov.in/attend_certi.pdf" target="_new"><li>Attendance Certificate format Civil Service Academy</li></a>
+  
+<li>
+<a style="color:white" target="_new" href="https://egrantz.kerala.gov.in/GO-8-2022-Overseas-selection-of-applicants_rearranged.pdf">
+Overseas scholarship 2021-22 - List of selected applicants.
+</a>
+</li>
+<li>
+<a style="color:white" target="_new" href="https://egrantz.kerala.gov.in/EEP_final_RankList.pdf">
+BCDD Employability Enhancement Program 2021-22 - Assistance for Competitive Examinations. Medical/Engineering - Rank List Published.
+</a>
+</li>
+<a style="color:white" target="_new" href="https://egrantz.kerala.gov.in/EEP_BankingandOthers.pdf">
+<li>
+BCDD Employability Enhancement Program 2021-22 - Assistance for Competitive Examinations. Banking Service, Civil Service, UGC/NET/JRF, GATE/MAT  - Short List Published.
+</li>
+</a>
+<a style="color:white" target="_new" href="https://egrantz.kerala.gov.in/OEC_pre2022-23.pdf">
+<li>
+ OEC Prematric Assistance 2022-23.
+</li>
+</a>
+<li>
+<b>പിന്നാക്ക വിഭാഗത്തിൽപ്പെട്ട വിദ്യാർത്ഥിനികൾക്കുള്ള സ്പെഷ്യൽ സ്കോളർഷിപ്പ് പദ്ധതിക്കായി അപേക്ഷ ക്ഷണിച്ചു.</b><br>
+<a href="https://egrantz.kerala.gov.in/specialobcgirlsnotification.pdf" target="_new" style="color:white">സംസ്ഥാനത്തെ പിന്നാക്ക വിഭാഗങ്ങളിൽ ഉൾപ്പെട്ടതും, മെഡിക്കൽ/മെഡിക്കൽ അനുബന്ധ കോഴ്സുകൾക്ക് പഠിക്കുന്നതും, മാതാവിനെയോ പിതാവിനെയോ അല്ലെങ്കിൽ ഇരുവരെയുമോ നഷ്ടപ്പെട്ടതുമായ വിദ്യാർത്ഥിനികൾക്ക് സ്പെഷ്യൽ സ്കോളർഷിപ്പ് അനുവദിക്കുന്ന പദ്ധതിക്കായി അപേക്ഷ ക്ഷണിച്ചു. അവസാന തീയതി – 2022 ഡിസംബർ 10.</a>
+</li>
+<li>
+<a href="https://egrantz.kerala.gov.in/BCDIR4982022-A1.pdf" target="_new" style="color:white">എംപ്ലോയബിലിറ്റി എൻഹാൻസ്മെന്റ് പ്രോഗ്രാം 2022-23 –മത്സര പരീക്ഷാ പരിശീലന ധനസഹായത്തിന് അപേക്ഷ ക്ഷണിച്ചു. അവസാന തീയതി 10.01.2023</a>
+</li>
+-->
+   </ul>
+                                           <p>&nbsp;</p>
+                                            <p>&nbsp;</p>
+                                             <p>&nbsp;</p>
+                                              <p>&nbsp;</p>
+                                               <p>&nbsp;</p>
+                                                <p>&nbsp;</p>
+                                                 <p>&nbsp;</p>
+                                                  <p>&nbsp;</p>
+                                                   <p>&nbsp;</p>
+                                        </div>
+                                    </div>  
+                                </div>
+                                <!--
+                                <div class="tab-item">
+                                    <a class="tab-label">Stipend</a>        
+                                    <div class="tab-content">
+                                        <div class="margin">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="col">Sl No</th>
+                                                        <th scope="col">Title</th>
+                                                        <th scope="col">Beneficiary</th>
+                                                        <th scope="col">Amount</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="tab-item">
+                                    <a class="tab-label">Material Aids</a>
+                                    <div class="tab-content">
+                                        <div class="margin">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="col">Sl No</th>
+                                                        <th scope="col">Title</th>
+                                                        <th scope="col">Beneficiary</th>
+                                                        <th scope="col">Amount</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="tab-item">
+                                    <a class="tab-label">Other</a>
+                                    <div class="tab-content">
+                                        <div class="margin">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="col">Sl No</th>
+                                                        <th scope="col">Title</th>
+                                                        <th scope="col">Beneficiary</th>
+                                                        <th scope="col">Amount</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>  
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>         
+                    <!-- SERVICES -->
+                    <div id="login" style="background: #002147; padding-top: 30px; padding-bottom: 30px">
+
+                        <div class="line">
+                            <h2 class="section-title">LOGIN</h2> 
+                            <div class="margin">
+                                <div class="s-12 m-6 l-6 hidden-xs">
+                                    <div class="s-12 l-2">
+                                        <div class="news-date">
+                                            <p class="day"><i style="color: #000" class="icon icon-information_white"></i></p><p>Important</p>
+                                        </div>
+                                    </div>
+                                    <div class="s-12 l-10">
+                                        <div class="news-text">
+                                            <h4>Notice</h4>
+												<ul style="font-size:12px;color:red">
+<li></li>
+
+		
+												</ul>
+<!--<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=fBXZUGXANoNqy9y7MMnUBZ6BMugBe50GO5taEpOIpyChxidotWEgUuihg8al"></script></span>-->
+                                        </div>
+                                    </div>   
+                                </div> 
+
+
+                                <div class="s-12 m-6 l-6">
+
+
+                                                                        <form class="modal-content animate"  method="post">
+
+                                        <div class="container" align="left" style="color: #000; width: 100%">
+                                            <div class="msg" align="center">OFFICIAL LOGIN</div>
+
+                                                            <!-- Error Message -->
+                                                                                                        
+                                            <label for="username">Username</label>
+                                            <input type="text" placeholder="Enter Username" name="username" required>
+
+                                            <label for="psw">Password</label>
+                                            <input type="password" placeholder="Enter Password" name="password" required>
+
+                                            <input type="hidden" name="csrf_test_name" value="b2f4c4fbc7eab27702b1a51d2cfea98f">
+
+                                            <button type="submit">Login</button><a href="https://egrantz.kerala.gov.in/index.html"></a>
+                                            <label>
+                                                <input type="checkbox" checked="checked" name="remember"> Remember me
+                                            </label>
+                                        </div>
+
+                                        <div class="container" style="background-color:#f1f1f1; width: 100%">
+                                            <button type="button" onclick="document.getElementById('id01').style.display = 'none'" class="cancelbtn">Cancel</button>
+                                           <span class="psw">Forgot <a href="https://egrantz.kerala.gov.in/Admin/forgot_password">password?</a></span>
+					 <!-- <span class="psw">Forgot <a href="https://egrantz.kerala.gov.in/indexdown.html">password?</a></span>-->
+                                        </div>
+                                    </form>
+
+
+
+
+                                </div>  
+                            </div>
+
+
+
+
+                        </div>
+                    </div> 
+                    <!-- CONTACT -->
+                    <div id="contact"  style="background: #4f6d90; padding-top: 30px; padding-bottom: 30px">
+                        <div class="line">
+                            <h2 class="section-title">Contact Us</h2>
+                            <div class="margin">
+                                <div class="s-12 m-12 l-3 hide-m hide-s margin-bottom right-align">
+					 <h3>DIRECTORATE OF SCHEDULED CASTES DEVELOPMENT</h3>
+                                    <address style="color:#002147">
+                                        <p><strong>Adress:</strong> Museum-Nandhavanam Road, Nandhavanam, Vikasbhavan P O,
+                                             Thiruvananthapuram-695033</p>
+                                        <p><strong>Country:</strong> India</p>
+                                        <p><strong>E-mail:</strong>egrantz.sc@gmail.com</p>
+<p>SC Directorate: 0471-2737252, 0471-2737251</p>
+										
+                                    </address>
+                                   
+                                </div>
+                                <div class="s-12 m-12 l-4 margin-bottom right-align">
+                                 <h3>  Directorate of Backward Classes Development Department </h3>
+                                   <address style="color:#002147">
+AyyankaliBhavan
+Kanaka nagar, KowdiyarP.O
+Vellayambalam, Thiruvananthapuram – 695003
+contact no:0471 2727378<br>
+mail_id bcddkerala@gmail.com
+
+</address>
+			
+                                </div>
+                                <div class="s-12 m-12 l-5">
+			   <h3> 	Directorate of Scheduled Tribes Development Department </h3>
+			   <address style="color:#002147">
+4th floor, Vikas Bhavan,Thiruvananthapuram
+contact no:0471-2304594,0471-2303229
+mail_id:egrantzstdd@gmail.com</address>
+<p><strong>TOLL-FREE(ST Department)</strong> 1800 425 2312</p>	
+                                </div>                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MAP -->
+
+                </section>
+                <!-- FOOTER -->
+                <footer>
+                    <div class="line">
+                        <div class="s-12 l-6">
+                            <p><a style="color: #ffb71c" href="www.scdd.kerala.gov.in">&copy; SC ST Development Department</a></p>
+                            <p>Privacy Policy | Terms of Use</p>
+                        </div>
+                        <div class="s-12 l-6">
+                            <a class="right" target="_blank" href="http://cdit.org" style="color: aliceblue" title="Developed by C-DIT">Developed by  C-DIT</a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <div style=" background: #ffb71c;  position: fixed;    left: 0;    bottom: 0;   height: 50px;   width: 100%;  overflow: hidden;">
+                <div class=" s-12 l-12">
+                    <div align="center" style="text-align: center; padding-top: 10px">
+
+                        <a style="color: #ffb71c;" class="blackbtn" href="https://egrantz.kerala.gov.in/Registration/onetime_reg" title="One Time Registration for Postmatric Students">One Time Registration</a>
+                        <a style="color: #ffb71c;"  class="blackbtn"  href="https://egrantz.kerala.gov.in/Registration/index">Student Login</a>
+                        <a style="color: #ffb71c;" class="blackbtn"  href="https://egrantz.kerala.gov.in/Registration/search_application_stat">Track Application</a>
+                        <a style="color: #ffb71c;" class="blackbtn"  href="#login">Official Login</a>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </body>
+    </html>
