@@ -13,6 +13,8 @@ const TOPICS = [
     blurb: "Roads, footpaths and drains: who is doing the work, what it costs, when it should finish." },
   { key: "mp", name: "MP funds (MPLADS)", href: "#/mp", live: true,
     blurb: "Works your Member of Parliament recommended from their ₹5 crore a year local area fund." },
+  { key: "help", name: "Help for children's education", href: "#/guides/education", live: true,
+    blurb: "Free schooling, scholarships, meals and NGOs: what children and families can claim, and how." },
   { key: "water", name: "Water supply & sewerage" },
   { key: "lights", name: "Streetlights" },
   { key: "buildings", name: "Schools, hospitals & offices" },
@@ -1273,6 +1275,8 @@ async function about() {
 
 // ---------- guides: how to use the official sources yourself ----------
 const GUIDES = [
+  { key: "education", title: "Help for children's education", ready: true,
+    blurb: "Free schooling, scholarships, meals, residential schools and NGOs, with where and how to apply." },
   { key: "mplads", title: "MP funds (MPLADS) on the official eSAKSHI portal", ready: true,
     blurb: "How the scheme works, what each stage means, and how to look up your MP's works, download them and suggest a work." },
   { key: "kppp", title: "Karnataka tenders (KPPP)", blurb: "Finding a tender, its value and the awarded contractor." },
@@ -1419,6 +1423,72 @@ function guideRti() {
     </article>`;
 }
 
+function guideEducation() {
+  const ext = (url, label) => `<a href="${url}" target="_blank" rel="noopener">${label}</a>`;
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Guides", "#/guides"], ["Children's education"]])}
+    <article class="guide">
+    <h1>Help for children's education</h1>
+    <p class="lede">For parents, teachers and volunteers working with children from poor or disadvantaged families: what the government provides, how to claim it, and how to find organisations that help. Everything here links to the official source.</p>
+
+    <h2>Start here: find every scheme a child qualifies for</h2>
+    <p>${ext("https://www.myscheme.gov.in", "myScheme")} is the Government of India's search for central and state schemes. Choose the state, the child's age, gender and category (SC, ST, OBC, minority, disability, below poverty line) and it lists the schemes they are eligible for, with the documents needed and the link to apply.</p>
+
+    <h2>Free schooling</h2>
+    <table class="fields"><tbody>
+      <tr><th scope="row">Right to Education</th><td>Every child aged 6 to 14 has the right to free education in a neighbourhood school up to class 8 (RTE Act, 2009). Government schools cannot charge fees.</td></tr>
+      <tr><th scope="row">25% of private school seats</th><td>Private unaided schools must keep 25% of entry-level seats free for children from weaker sections and disadvantaged groups (section 12(1)(c)); the state pays the fee. Admission is usually through an online lottery run by the state education department early in the year. <b>Karnataka:</b> since a 2018 rule change, these seats are offered only where there is no government or aided school in the neighbourhood, so very few are available.</td></tr>
+      <tr><th scope="row">School meals (PM POSHAN)</th><td>A free hot cooked meal every school day for children in classes 1 to 8 (and pre-primary classes) in government and government-aided schools.</td></tr>
+      <tr><th scope="row">Textbooks and uniforms</th><td>Free textbooks, and uniforms for many groups, in government schools under the Samagra Shiksha scheme. What is given varies by state; ask the school or the Block Education Officer.</td></tr>
+      <tr><th scope="row">Residential schools for girls</th><td>Kasturba Gandhi Balika Vidyalayas: free residential schools for girls from SC, ST, OBC, minority and below-poverty-line families, from class 6. Ask the district education office for the nearest one.</td></tr>
+    </tbody></table>
+
+    <h2>Scholarships</h2>
+    <table class="fields"><tbody>
+      <tr><th scope="row">National Scholarship Portal</th><td>${ext("https://scholarships.gov.in", "scholarships.gov.in")} is where most central scholarships are applied for, once a year. For school children the main ones are the pre-matric scholarships for SC, ST, OBC and minority students, which now cover classes 9 and 10 only.</td></tr>
+      <tr><th scope="row">National Means-cum-Merit Scholarship</th><td>₹12,000 a year from class 9 to class 12 for children in government, aided and local-body schools whose family income is up to ₹3.5 lakh a year. Children sit a selection exam in class 8, held by the state; the school registers them. Then apply on the National Scholarship Portal.</td></tr>
+      <tr><th scope="row">State scholarships</th><td>Each state runs its own as well. <b>Karnataka:</b> the ${ext("https://ssp.karnataka.gov.in", "State Scholarship Portal (SSP)")}. Search "[your state] scholarship portal" or use myScheme.</td></tr>
+    </tbody></table>
+
+    <h2>Documents to get ready</h2>
+    <p>Most applications ask for some of these, so getting them early saves missed deadlines:</p>
+    <ul>
+      <li>The child's Aadhaar, and a parent's</li>
+      <li>Caste certificate and income certificate, from the taluk or tahsildar office (in many states also online)</li>
+      <li>A bank account, often in the child's name and linked to Aadhaar, for scholarship payments</li>
+      <li>Last year's marks card and the school's bonafide or study certificate</li>
+      <li>Disability certificate (UDID card), if it applies</li>
+    </ul>
+
+    <h2>Organisations that help</h2>
+    <ul>
+      <li>${ext("https://ngodarpan.gov.in", "NGO Darpan")} (NITI Aayog) lists NGOs registered with the government. Search by state, district and sector ("Education & Literacy", "Children") to find groups working near you, and to check that an organisation is registered.</li>
+      <li>The ${ext("https://www.csr.gov.in", "National CSR Portal")} (Ministry of Corporate Affairs) shows which companies spend their CSR money on education, and in which states and districts. Useful when looking for funding or partners for a drive.</li>
+    </ul>
+
+    <h2>Child safety</h2>
+    <p>Call <b>1098</b> (Childline), free, day and night, for a child who is in danger, being abused, out of school because of child labour, or lost.</p>
+
+    <h2>If a child is refused something they are entitled to</h2>
+    <ol class="steps">
+      <li>Talk to the head teacher and the School Management Committee, which includes parents.</li>
+      <li>Write to the Block Education Officer, and then the District Deputy Director of Public Instruction (or the equivalent in your state). Keep a copy.</li>
+      <li>Complain to the State Commission for Protection of Child Rights, which hears RTE complaints.</li>
+      <li>Use an <a href="#/guides/rti">RTI</a> to ask why: for example, the list of RTE lottery seats and admissions in a school, or the scholarship applications pending at an office.</li>
+    </ol>
+
+    <h2>For volunteers running education drives</h2>
+    <ul>
+      <li>Note each child's school, class and category: it decides which schemes apply.</li>
+      <li>Check myScheme with the family, and note the scholarship portal's opening and closing dates, which change every year.</li>
+      <li>Help families get certificates and bank accounts well before the scholarship season.</li>
+      <li>Children not enrolled in any school can be admitted to a government school at any time of the year, in the class suited to their age, with extra help to catch up (RTE section 4).</li>
+    </ul>
+
+    <p class="muted small">Schemes, amounts and rules change. Always check the official portal before applying. Spotted something out of date? <a href="${REPO}/issues">Tell us</a>.</p>
+    </article>`;
+}
+
 function notFound() {
   app.innerHTML = `${crumbs([["Home", "#/"], ["Not found"]])}<h1>Page not found</h1><p><a href="#/">Go to the home page</a></p>`;
 }
@@ -1454,6 +1524,7 @@ async function route() {
     else if (parts[0] === "about") await about();
     else if (parts[0] === "guides" && parts[1] === "mplads") await guideMplads();
     else if (parts[0] === "guides" && parts[1] === "rti") guideRti();
+    else if (parts[0] === "guides" && parts[1] === "education") guideEducation();
     else if (parts[0] === "guides") await guides();
     else notFound();
     if (toResults) document.getElementById("res")?.scrollIntoView({ block: "start" });

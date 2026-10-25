@@ -1,67 +1,77 @@
 # Scope: what Nagarika is for, and how new ideas are sorted
 
 Ideas will keep coming, and most of them are good. This page keeps the project
-focused: one mission, a short test for every idea, and a parking lot so nothing is
-lost.
+focused. We limit **what we choose to do**, never what the current technology
+allows: if something is worth doing, we find a way to build it.
 
 ## Mission
 
-**Make public money and public works traceable to a place.** A citizen picks a topic
-and their place, and sees from official records what was sanctioned, who is doing it,
-what it cost and whether it was finished. Then they know which office to ask, and
-how.
+**Nagarika is the citizen's front door to government information.** A person picks
+a place, and the site answers three questions about it from official sources, in
+plain language:
 
-We do three things, in this order:
-1. Present official records by topic and place, in plain language.
-2. Fill the gaps: every "not published" field points to an RTI or the right office.
-3. Act as the middle layer: fetch and structure sources nobody structures yet, and
-   publish them as open data.
+1. **What is the government doing here?** Works, funds and spending: who is doing
+   what, for how much, and whether it was finished. *(Accountability. Live: road
+   works, MP funds.)*
+2. **What is the government offering, and to whom?** Schemes, scholarships and
+   entitlements, and how to claim them. *(Access.)*
+3. **Who is responsible, and how do I reach them?** Representatives, offices,
+   portals and grievance channels. *(Action.)*
+
+Across all three we do the same things: present official records by place in plain
+language; turn every gap ("not published") into an RTI or a question for the right
+office; and fetch and structure sources that nobody structures yet, publishing them
+as open data.
 
 ## The test for a new idea
 
-An idea is **in scope** when it passes all five:
+An idea is **in scope** when:
 
-1. **Official record.** The data is published by a government body, or should be and
-   can be asked for by RTI. Not opinions, ratings or claims.
-2. **Tied to a place.** It maps to a ward, constituency, city or district, so it fits
-   "topic, then place".
-3. **Sanctioned vs. done.** It can be tracked over time: approved, spent, finished,
-   late.
-4. **Leads to an action.** There is an office to ask, an RTI to file or a grievance
-   channel to use.
-5. **Non-partisan.** It reports facts about works and money, not judgements about
-   parties or people.
+- it answers **one of the three questions** for a place, and
+- it rests on **official sources** (government records, or organisations registered
+  with the government), not opinions, ratings or claims, and
+- it **leads to an action**: an office to ask, a form to fill, an RTI to file, a
+  channel to complain through, and
+- it stays **non-partisan**: facts about works, money and entitlements, not
+  judgements about parties or people.
 
-Then one practical check: **can we reach the source and keep it updated** without
-manual work?
+## How much we build
 
-## Where ideas land
+Once an idea is in scope, the second choice is how deep to go:
 
-| Bucket | Meaning | What happens |
+| Depth | When | Example |
 |---|---|---|
-| **Core** | Passes the test; a new topic or source | Goes on the roadmap below |
-| **Helper** | Doesn't need its own data, but sends citizens to the right official channel (guides, directories) | Small; fits in Guides or on topic pages |
-| **Parked** | Fits the mission, but too big, too subjective or blocked for now | Stays in the parking lot with the reason |
-| **Out** | A different problem, or someone else already does it well | We link to them at most |
+| **Collect** | Nobody structures the source by place yet | Road tenders by ward, MPLADS works by constituency |
+| **Guide** | A good official source exists; people just can't find or use it | myScheme, the National Scholarship Portal, the eSAKSHI dashboard |
+| **Link** | Someone else does it well, and it's on the edge of our scope | National Judicial Data Grid |
 
-## Roadmap (core)
+Technology is never the reason to say no. When a source blocks us or needs a login
+or a captcha, we find another way: a server in India, an official data request, an
+RTI, or partners who already hold the data.
 
-1. Road works, MP funds (live)
-2. MLA funds: needs an India-based runner, because state portals block GitHub's servers
-3. Then one of: water and sewerage, streetlights, schools and hospitals (buildings,
+## Roadmap
+
+1. **Live:** road works, MP funds, RTI and MPLADS guides, ward report cards
+2. **Now:** "Help for children's education" guide (question 2)
+3. **Next:** a collector running in India, which unblocks MLA funds, BBMP's own
+   sites, GeM, data.gov.in and PMGSY (question 1)
+4. **Next:** "Where to complain here": official portals and grievance channels on
+   each topic and place page (question 3)
+5. **Later:** water and sewerage, streetlights, schools and hospitals (buildings,
    repairs), parks and lakes, garbage
 
-## Parking lot
+## Ideas so far
 
-| Idea | Bucket | Why | Possible narrow version |
+| Idea | Question | Decision | Why |
 |---|---|---|---|
-| Master list of government portals (e.g. city pothole or grievance apps) | **Helper, do soon** | No new data needed. It sends people to the official channel, which is step 2 of the mission | Only portals for our topics, plus grievance channels, listed by place and topic. Each topic page shows "Where to complain here". Not every portal in India |
-| Party manifestos vs. delivery | **Parked** | Promises are prose, not records. Judging "fulfilled" is subjective and risks looking partisan | Later, only for promises with a number we already track (e.g. "X km of roads"), shown next to the data with no verdict |
-| Judiciary issues | **Out** | Not about public works or money. The National Judicial Data Grid already publishes case pendency by court | A guide link on how to check a case's status |
-| Health ministry | **Split** | Health policy is out. Hospitals and health centres as public works (construction, repairs, spending) are in, under "Schools, hospitals & offices" | That topic, when we reach it |
+| Master list of government portals (e.g. city pothole apps) | 3 | **In, guide** | Sends people to the official channel. Roadmap item 4, limited to our topics and grievance channels |
+| Help for underprivileged children (government and NGOs) | 2 | **In, guide** | The government already runs the sources (myScheme, scholarships, RTE quota, NGO Darpan); people need them explained by state |
+| Party manifestos vs. delivery | 1 | **Parked** | Manifestos are promises, not records, and judging "fulfilled" risks looking partisan. Maybe later: promises with a number we already track (e.g. km of roads), shown next to the data with no verdict |
+| Judiciary issues | none | **Link only** | A separate branch of government, not works, money or entitlements. NJDG already publishes case pendency by court |
+| Health | 1 and 2 | **Split** | Hospitals and health centres as public works fit question 1; health schemes (e.g. insurance cover) fit question 2 as a guide. Health policy is out |
 
 ## How we'll use this
 
-When a new idea comes in, it gets one line back: its bucket, why, and where it
-goes. Ideas that aren't core are added to the parking lot, so they are recorded
-without pulling work away from the roadmap.
+Each new idea gets a one-line reply saying which question it answers, its decision
+and why, and it is added to the table above. When an idea doesn't fit, we say so;
+when the scope itself feels wrong, we revisit this page together.
