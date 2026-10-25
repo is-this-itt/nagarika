@@ -1,0 +1,42 @@
+name: India-only sources
+
+# Runs on a self-hosted runner in India (label "india"; see docs/india-runner.md) for
+# sites that refuse requests from outside India. Separate from "Update data and site",
+# so the normal collection and deploy never wait for this runner.
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "probe = save sample pages from the blocked sites for study"
+        required: false
+        default: "probe"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: india
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    if: inputs.task == 'probe'
+    runs-on: [self-hosted, india]
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: discovery
+      - run: python -m pip install --quiet requests
+      - run: python scripts/discover7.py
+      - name: Save samples to the discovery branch
+        if: always()
+        run: |
+          git config user.name "nagarika-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add raw11
+          git commit -m "Discovery samples 11 (from India)"
+          git push origin HEAD:discovery
