@@ -13,7 +13,6 @@ URLS = {
     "sch Uttar Pradesh": "https://scholarship.up.gov.in/", "sch West Bengal SVMCM": "https://svmcm.wbhed.gov.in/",
     "sch Madhya Pradesh": "https://scholarshipportal.mp.nic.in/", "sch Karnataka prematric": "https://ssp.prematric.karnataka.gov.in/",
     "mla Madhya Pradesh": "http://mlalads.mp.gov.in/", "mla Delhi": "https://udd.delhi.gov.in/mlalad",
-    "check ipinfo": "https://ipinfo.io/json",
 }
 log = []
 for i, (k, url) in enumerate(URLS.items()):
@@ -28,5 +27,8 @@ for i, (k, url) in enumerate(URLS.items()):
         m = re.search(r"<title[^>]*>(.*?)</title>", t, re.S | re.I)
         title = (m.group(1).strip() if m else t[:200])[:200]
     log.append({"what": k, "url": url, "out": p.stdout.strip(), "err": p.stderr.strip()[:300], "title": title, "file": name})
+# Which country the sites see us in (only the country is kept: the repo is public).
+p = subprocess.run(["curl.exe", "-sS", "--max-time", "30", "https://ipinfo.io/country"], capture_output=True, text=True)
+log.append({"what": "seen from country", "out": p.stdout.strip()[:5]})
 with open(f"{OUT}/_log.json", "w", encoding="utf-8") as f:
     json.dump(log, f, indent=1, ensure_ascii=False)
