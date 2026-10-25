@@ -1,0 +1,109 @@
+[
+ {
+  "url": "https://indiadataportal.com/api/3/action/package_show?id=udise",
+  "status": 200,
+  "bytes": 17560,
+  "file": "00.json"
+ },
+ {
+  "url": "https://indiadataportal.com/api/3/action/resource_show?id=457fddf1-982f-4c85-855d-5095578accc1",
+  "status": 200,
+  "bytes": 17560,
+  "file": "01.json"
+ },
+ {
+  "url": "https://indiadataportal.com/api/3/action/package_search?q=udise&rows=20",
+  "status": 200,
+  "bytes": 17560,
+  "file": "02.json"
+ },
+ {
+  "url": "https://ckandev.indiadataportal.com/api/3/action/package_show?id=udise",
+  "status": 200,
+  "bytes": 9780,
+  "file": "03.json"
+ },
+ {
+  "url": "https://ckandev.indiadataportal.com/api/3/action/resource_show?id=457fddf1-982f-4c85-855d-5095578accc1",
+  "status": 200,
+  "bytes": 2187,
+  "file": "04.json"
+ },
+ {
+  "url": "https://ckandev.indiadataportal.com/api/3/action/package_search?q=udise&rows=20",
+  "status": 200,
+  "bytes": 20524,
+  "file": "05.json"
+ },
+ {
+  "url": "https://ckan.indiadataportal.com/api/3/action/package_show?id=udise",
+  "status": 200,
+  "bytes": 9728,
+  "file": "06.json"
+ },
+ {
+  "url": "https://ckan.indiadataportal.com/api/3/action/resource_show?id=457fddf1-982f-4c85-855d-5095578accc1",
+  "status": 200,
+  "bytes": 2115,
+  "file": "07.json"
+ },
+ {
+  "url": "https://ckan.indiadataportal.com/api/3/action/package_search?q=udise&rows=20",
+  "status": 200,
+  "bytes": 20142,
+  "file": "08.json"
+ },
+ {
+  "resource_urls": [
+   [
+    "Basic Details of Schools",
+    "https://ckan.indiadataportal.com/dataset/f1b2fdba-3b56-47ca-bfc6-819fc64b712a/resource/457fddf1-982f-4c85-855d-5095578accc1/download/basic-details-of-schools.csv",
+    397662373
+   ],
+   [
+    "Basic Details of Schools",
+    "https://ckandev.indiadataportal.com/dataset/f1b2fdba-3b56-47ca-bfc6-819fc64b712a/resource/457fddf1-982f-4c85-855d-5095578accc1/download/basic-details-of-schools.csv",
+    397662373
+   ],
+   [
+    "State-wise School Education Indicators (2018-19 to 2022-23)",
+    "https://ckan.indiadataportal.com/dataset/f1b2fdba-3b56-47ca-bfc6-819fc64b712a/resource/fdffefea-df47-4d39-ac45-dc01d3421d63/download/statewise-school-education-indicators-201819-to-202223.csv",
+    125285
+   ],
+   [
+    "State-wise School Education Indicators (2018-19 to 2022-23)",
+    "https://ckandev.indiadataportal.com/dataset/f1b2fdba-3b56-47ca-bfc6-819fc64b712a/resource/0c2938f2-e68a-4a46-afb6-278857a2414d/download/statewise-school-education-indicators-201819-to-202223.csv",
+    125285
+   ],
+   [
+    "State-wise School Education Indicators by NEP Stage 2023 Onwards",
+    "https://ckan.indiadataportal.com/dataset/f1b2fdba-3b56-47ca-bfc6-819fc64b712a/resource/71788c25-6fc6-4032-90ec-a4037d0781cd/download/statewise-school-education-indicators-by-nep-stage-2023-onwards.csv",
+    71696
+   ],
+   [
+    "State-wise School Education Indicators by NEP Stage 2023 Onwards",
+    "https://ckandev.indiadataportal.com/dataset/f1b2fdba-3b56-47ca-bfc6-819fc64b712a/resource/6d7217cf-3d80-49ed-bf36-4207c293d663/download/statewise-school-education-indicators-by-nep-stage-2023-onwards.csv",
+    71696
+   ]
+  ]
+ },
+ {
+  "sample": "https://ckan.indiadataportal.com/dataset/f1b2fdba-3b56-47ca-bfc6-819fc64b712a/resource/457fddf1-982f-4c85-855d-5095578accc1/download/basic-details-of-schools.csv",
+  "status": 206,
+  "headers": {
+   "Accept-Ranges": "bytes",
+   "Content-Disposition": "attachment; filename=basic-details-of-schools.csv",
+   "Content-Length": "300001",
+   "Content-Range": "bytes 0-300000/397662373",
+   "Content-Type": "binary/octet-stream",
+   "Date": "Sun, 25 Oct 2026 22:47:00 GMT",
+   "ETag": "\"4a54991000ce1ef78537bdd9c044c869\"",
+   "Last-Modified": "Wed, 22 Jul 2026 14:47:16 GMT",
+   "Server": "WasabiS3/8.1.361-2026-10-15-a8e30f41b2",
+   "x-amz-id-2": "AU26fnUrvnc7uQ2jZJy2u2C5l0YLOpA+pCITURWPugDzLAZUhaxRtIUnOrh0R3+39QdEsPwIRmtp",
+   "x-amz-request-id": "9380F5E2C02C4DF8:A",
+   "x-amz-version-id": "001784731635538662987-z9zrN2Clpi",
+   "x-wasabi-cm-reference-id": "1792968420 R101-U48.prod13.sg4 3173470693:30551328:32"
+  }
+ }
+]
