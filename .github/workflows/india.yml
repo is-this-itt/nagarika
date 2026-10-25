@@ -23,9 +23,11 @@ jobs:
     if: inputs.task == 'probe'
     runs-on: [self-hosted, india]
     timeout-minutes: 30
+    # cmd, not PowerShell: Windows blocks PowerShell scripts by default (execution
+    # policy "Restricted"), and we leave that system setting alone.
     defaults:
       run:
-        shell: powershell
+        shell: cmd
     steps:
       - uses: actions/checkout@v4
         with:
