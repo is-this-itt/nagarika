@@ -87,7 +87,8 @@ def main():
     mp_index = build_mplads()
     mla_index = build_mlalads()
     edu_states = build_education()
-    build_places(meta, ward_index, rows, mp_index, mla_index, edu_states)
+    school_states = build_schools()
+    build_places(meta, ward_index, rows, mp_index, mla_index, edu_states, school_states)
     shutil.copy(os.path.join(DATA, "LICENSE.md"), os.path.join(OUT, "data", "LICENSE.md"))
     print(f"built _site with {len(rows)} works")
 
@@ -195,7 +196,18 @@ def build_education():
     return sorted({p["state"] for p in json.load(open(src, encoding="utf-8"))["portals"]} - {"National"})
 
 
-def build_places(meta, ward_index, rows, mp_index, mla_index=(), edu_states=()):
+def build_schools():
+    """Schools by district from the UDISE+ file, which update.yml downloads into cache/
+    (too big for the repository). Skipped when the file isn't there."""
+    path = os.environ.get("UDISE_CSV", os.path.join(ROOT, "cache", "udise-basic.csv"))
+    if not os.path.exists(path):
+        print("no UDISE+ file, skipping schools")
+        return []
+    import schools
+    return schools.build(path, os.path.join(OUT, "data"))
+
+
+def build_places(meta, ward_index, rows, mp_index, mla_index=(), edu_states=(), school_states=()):
     """One small list of everything a person might type: places, constituencies, MPs, PIN codes.
     Each entry: [kind, label, detail, link, extra search words]."""
     out = []
@@ -225,6 +237,10 @@ def build_places(meta, ward_index, rows, mp_index, mla_index=(), edu_states=()):
     for st in edu_states:
         out.append(["State", st, "Education help: RTE seats, scholarships", f"#/guides/education/{slug(st)}",
                     "school scholarship rte admission"])
+    for s in school_states:
+        for d in s["districts"]:
+            out.append(["District", d["name"], f"{s['state']} · {d['schools']:,} schools", f"#/schools/{s['slug']}/{d['slug']}",
+                        "schools school government aided"])
     places = {}
     for r in rows:
         if r["place"] and not r["city"]:

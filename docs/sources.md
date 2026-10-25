@@ -94,6 +94,20 @@ gba.karnataka.gov.in. These need a collector running from an Indian network.
   servers; the script then retries with Windows' `curl.exe`. A portal that stops opening
   keeps what it last showed, marked with the date it last opened.
 
+## Schools: `schools.py`, UDISE+ via the India Data Portal
+
+- **What:** every operational school in UDISE+ "Basic Details of Schools" (Ministry of
+  Education): name, UDISE code, block, village, PIN, management, classes, girls/boys
+  only, location, teachers and students. The India Data Portal (ISB) republishes it at
+  https://ckan.indiadataportal.com/dataset/udise under the Open Data Commons Attribution
+  licence. It was retrieved in January 2022, so newer or closed schools are not reflected.
+- **How:** the file is about 400 MB, so it is not in the repository. The deploy job in
+  `update.yml` downloads it once into the Actions cache (key `udise-basic-<date>`; change
+  the key when a newer file is published) and `build.py` writes one JSON per district to
+  `_site/data/schools/`. Shown at `#/schools`.
+- **Not used:** UDISE+ Know Your School and NGO Darpan's search both ask for a captcha on
+  each search. We link to them instead of copying their results.
+
 ## MLALADS (MLA local area development funds): `mlalads.py`, collected from India
 
 - **What:** works sanctioned under each state's MLA fund. Odisha so far, from the

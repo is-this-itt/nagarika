@@ -63,6 +63,18 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      # UDISE+ school list (~400 MB, see collector/schools.py): kept in the Actions cache,
+      # not the repository. Change the key when the India Data Portal publishes a new file.
+      - uses: actions/cache@v4
+        with:
+          path: cache/udise-basic.csv
+          key: udise-basic-2026-07-22
+      - name: School list (only if not cached)
+        continue-on-error: true
+        run: |
+          test -s cache/udise-basic.csv && exit 0
+          mkdir -p cache
+          curl -fsSL --retry 3 -o cache/udise-basic.csv "$(python -c 'import sys; sys.path.insert(0, "collector"); import schools; print(schools.SOURCE_URL)')" || rm -f cache/udise-basic.csv
       - run: python collector/build.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

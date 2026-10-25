@@ -280,7 +280,7 @@ function searchBox(id, value = "") {
   </form>`;
 }
 
-const KIND_ORDER = ["City", "Lok Sabha constituency", "State", "Ward", "Assembly constituency", "Town or district", "PIN code"];
+const KIND_ORDER = ["City", "Lok Sabha constituency", "State", "Ward", "Assembly constituency", "Town or district", "District", "PIN code"];
 
 function wireSearch(id) {
   const form = document.getElementById(id);
@@ -351,7 +351,7 @@ function results(el, all, view) {
 
   el.innerHTML = `
     <div class="toolbar">
-      ${view.noFilterBox ? "" : `<input class="input" type="search" id="rq" value="${esc(text)}" placeholder="${esc(view.placeholder || "Filter these works")}" aria-label="Filter these works">`}
+      ${view.noFilterBox ? "" : `<input class="input" type="search" id="rq" value="${esc(text)}" placeholder="${esc(view.placeholder || "Filter these works")}" aria-label="Filter these ${view.noun || "works"}">`}
       <label class="select"><span>Sort</span><select id="rs">
         ${text ? `<option value=""${!sortKey ? " selected" : ""}>Best match</option>` : ""}
         ${Object.entries(view.sorts).map(([k, [l]]) => `<option value="${k}"${k === sortKey ? " selected" : ""}>${l}</option>`).join("")}
@@ -359,7 +359,7 @@ function results(el, all, view) {
     </div>
     <div class="chips" role="group" aria-label="Filter">${Object.entries(view.filters).map(([k, [l]]) =>
       `<button type="button" class="chip" data-f="${k}" aria-pressed="${k === filter}">${l}</button>`).join("")}</div>
-    <p class="count">${list.length ? `Showing ${fmtN(from + 1)}–${fmtN(from + rows.length)} of ${fmtN(list.length)} works` : "No works match. Try fewer or shorter words."}</p>
+    <p class="count">${list.length ? `Showing ${fmtN(from + 1)}–${fmtN(from + rows.length)} of ${fmtN(list.length)} ${view.noun || "works"}` : `No ${view.noun || "works"} match. Try fewer or shorter words.`}</p>
     ${rows.length ? view.table(rows) : ""}
     ${pager(page, pages)}`;
 
@@ -1683,6 +1683,9 @@ async function guideEducation() {
     <h2>Start here: find every scheme a child qualifies for</h2>
     <p>${ext("https://www.myscheme.gov.in", "myScheme")} is the Government of India's search for central and state schemes. Choose the state, the child's age, gender and category (SC, ST, OBC, minority, disability, below poverty line) and it lists the schemes they are eligible for, with the documents needed and the link to apply.</p>
 
+    <h2>Schools near you</h2>
+    <p><a href="#/schools">Find schools by district</a>: every government, aided and private school in the UDISE+ list, with the classes it teaches and how far it is from you.</p>
+
     <h2>Free schooling</h2>
     <table class="fields"><tbody>
       <tr><th scope="row">Right to Education</th><td>Every child aged 6 to 14 has the right to free education in a neighbourhood school up to class 8 (RTE Act, 2009). Government schools cannot charge fees.</td></tr>
@@ -1711,7 +1714,7 @@ async function guideEducation() {
 
     <h2>Organisations that help</h2>
     <ul>
-      <li>${ext("https://ngodarpan.gov.in", "NGO Darpan")} (NITI Aayog) lists NGOs registered with the government. Search by state, district and sector ("Education & Literacy", "Children") to find groups working near you, and to check that an organisation is registered.</li>
+      <li>${ext("https://ngodarpan.gov.in/search-ngo", "NGO Darpan")} (NITI Aayog) lists NGOs registered with the government. Search by state, district and sector ("Education & Literacy", "Children") to find groups working near you, and to check that an organisation is registered.</li>
       <li>The ${ext("https://www.csr.gov.in", "National CSR Portal")} (Ministry of Corporate Affairs) shows which companies spend their CSR money on education, and in which states and districts. Useful when looking for funding or partners for a drive.</li>
     </ul>
 
@@ -1791,15 +1794,133 @@ async function educationState(slug) {
     ${group("scholarship").length ? group("scholarship").map(eduPortal).join("") : `<p>We have not added a ${esc(st)} scholarship portal yet. Use <a href="https://www.myscheme.gov.in" target="_blank" rel="noopener">myScheme</a> to find the state's schemes.</p>`}
     <h3 class="sub">Central scholarships, for every state</h3>
     ${nsp.map(eduPortal).join("")}
+    <h2>Schools near you</h2>
+    <p><a href="#/schools/${slug}">Every school in ${esc(st)}, by district</a>: government, aided and private, the classes each teaches, and a distance sort from where you are.</p>
+    <h2>Organisations working on education near you</h2>
+    <p><a href="https://ngodarpan.gov.in/search-ngo" target="_blank" rel="noopener">NGO Darpan's search</a> (NITI Aayog) lists non-profits registered with the government. Choose ${esc(st)} as the state, then your district, and education under Sector. The site asks you to type a captcha before it shows results, so we link to it rather than copy its list. Each result has a DARPAN ID, which shows the organisation is registered.</p>
     <h2>Also useful</h2>
     <ul>
       <li><a href="https://www.myscheme.gov.in" target="_blank" rel="noopener">myScheme</a>: every central and ${esc(st)} scheme a child qualifies for.</li>
-      <li><a href="https://ngodarpan.gov.in" target="_blank" rel="noopener">NGO Darpan</a>: registered organisations working on education in your district.</li>
       <li><b>1098</b> (Childline): free, day and night, for a child in danger or out of school because of child labour.</li>
       <li><a href="#/guides/education">The full guide</a>: free schooling, documents to get ready, and what to do if a child is refused.</li>
     </ul>
     <p class="muted small">Dates and links are read automatically from the official pages and may lag behind them. Spotted something wrong, or know a portal we are missing? <a href="${REPO}/issues/new?title=${enc("Education help: " + st)}">Tell us</a>.</p>
     </article>`;
+}
+
+// ---------- schools (UDISE+) ----------
+const SCHOOL_MG = { G: "Government", A: "Government-aided", P: "Private", U: "Unrecognised" };
+let here = null;   // the visitor's location, only if they ask to sort by distance
+
+async function schoolRows(ss, ds) {
+  const key = `_sch_${ss}_${ds}`;
+  if (!cache[key]) cache[key] = load(`schools/${ss}/${ds}.json`).then(d => table2objects(d).map(o => {
+    o.name = titleCase(o.name.replace(/^\d+\s*-\s*/, ""));
+    o.village = titleCase(o.village);
+    o.block = titleCase(o.block);
+    return o;
+  }));
+  return cache[key];
+}
+
+const classes = s => s.from == null ? "" : s.to == null ? `${s.from}` : s.from === 0 ? `Pre-primary to ${s.to}` : `${s.from} to ${s.to}`;
+
+function km(a, b) {
+  const r = x => x * Math.PI / 180, dLat = r(b.lat - a.lat), dLon = r(b.lon - a.lon);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(dLon / 2) ** 2;
+  return 12742 * Math.asin(Math.sqrt(h));
+}
+
+function schoolView() {
+  const sorts = {
+    name: ["Name", (a, b) => a.name.localeCompare(b.name)],
+    students: ["Most students", (a, b) => (b.students || 0) - (a.students || 0)],
+  };
+  if (here) sorts.near = ["Nearest to me", (a, b) => (a.lat == null) - (b.lat == null) || km(here, a) - km(here, b)];
+  return {
+    noun: "schools",
+    keys: ["name", "village", "block", "pin", "code"],
+    placeholder: "Filter by school, village, block or PIN code",
+    sort: here ? "near" : "name",
+    sorts,
+    filters: {
+      "": ["All", () => true],
+      gov: ["Government", s => s.mg === "G"],
+      aided: ["Government-aided", s => s.mg === "A"],
+      private: ["Private", s => s.mg === "P"],
+      girls: ["Girls only", s => s.type === "G"],
+      primary: ["Classes 1 to 5", s => s.from != null && s.from <= 1 && s.to >= 5],
+      sec: ["Class 10", s => s.to >= 10 && s.from <= 10],
+      hsec: ["Class 12", s => s.to >= 12],
+    },
+    table: rows => `<table class="works">
+      <thead><tr><th>School</th><th>Run by</th><th>Classes</th><th class="num">Teachers</th><th class="num">Students</th></tr></thead>
+      <tbody>${rows.map(s => `<tr>
+        <td data-label="School">${esc(s.name)}${s.type === "G" ? ' <span class="badge open">Girls</span>' : s.type === "B" ? ' <span class="badge closed">Boys</span>' : ""}
+          <div class="sub">${[s.village, s.block, s.pin].filter(Boolean).map(esc).join(" · ")}${here && s.lat != null ? ` · ${km(here, s).toFixed(1)} km away` : ""}
+          · UDISE code ${esc(s.code)}${s.lat != null ? ` · <a href="https://www.openstreetmap.org/?mlat=${s.lat}&amp;mlon=${s.lon}#map=17/${s.lat}/${s.lon}" target="_blank" rel="noopener">Map</a>` : ""}</div></td>
+        <td data-label="Run by">${esc(SCHOOL_MG[s.mg])}<div class="sub">${esc(s.management)}</div></td>
+        <td data-label="Classes">${esc(classes(s)) || NP}</td>
+        <td data-label="Teachers" class="num">${s.teachers ?? NP}</td>
+        <td data-label="Students" class="num">${s.students == null ? NP : fmtN(s.students)}</td></tr>`).join("")}</tbody></table>`,
+  };
+}
+
+const schoolSource = idx => `<p class="muted small">Source: UDISE+ (Ministry of Education), ${esc(idx.as_of.replace(/^UDISE\+ data /, ""))}, via the <a href="${esc(idx.source)}" target="_blank" rel="noopener">India Data Portal</a> (Open Data Commons Attribution licence). Schools opened or closed since then are not shown; for a school's latest details, search its UDISE code on <a href="https://kys.udiseplus.gov.in/" target="_blank" rel="noopener">Know Your School</a>.</p>`;
+
+async function schoolsHome() {
+  const idx = await load("schools_index.json");
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Guides", "#/guides"], ["Children's education", "#/guides/education"], ["Schools"]])}
+    <h1>Schools near you</h1>
+    <p class="lede">Every recognised and unrecognised school in the government's UDISE+ list, by district: who runs it, the classes it teaches, and its teachers and students.</p>
+    <div class="cards">${idx.states.map(s => `<a class="card" href="#/schools/${s.slug}"><h3>${esc(s.state)}</h3><p class="tag">${fmtN(s.districts.reduce((n, d) => n + d.schools, 0))} schools</p></a>`).join("")}</div>
+    ${schoolSource(idx)}`;
+}
+
+async function schoolsState(ss) {
+  const idx = await load("schools_index.json");
+  const s = idx.states.find(x => x.slug === ss);
+  if (!s) return notFound();
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Children's education", "#/guides/education"], ["Schools", "#/schools"], [s.state]])}
+    <h1>Schools in ${esc(s.state)}</h1>
+    <p>Choose a district.</p>
+    <table class="works"><thead><tr><th>District</th><th class="num">Schools</th><th class="num">Government</th><th class="num">Aided</th><th class="num">Private</th></tr></thead>
+    <tbody>${s.districts.map(d => `<tr><td data-label="District"><a href="#/schools/${ss}/${d.slug}">${esc(d.name)}</a></td>
+      <td data-label="Schools" class="num">${fmtN(d.schools)}</td><td data-label="Government" class="num">${fmtN(d.government)}</td>
+      <td data-label="Aided" class="num">${fmtN(d.aided)}</td><td data-label="Private" class="num">${fmtN(d.private)}</td></tr>`).join("")}</tbody></table>
+    ${schoolSource(idx)}`;
+}
+
+async function schoolsDistrict(ss, ds) {
+  const idx = await load("schools_index.json");
+  const s = idx.states.find(x => x.slug === ss);
+  const d = s && s.districts.find(x => x.slug === ds);
+  if (!d) return notFound();
+  const list = await schoolRows(ss, ds);
+  const ed = await eduData();
+  const rteLink = ed?.portals.some(p => slugify(p.state) === ss)
+    ? `<a href="#/guides/education/${ss}">${esc(s.state)}'s admission portal</a>` : `<a href="#/guides/education">the education guide</a>`;
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Children's education", "#/guides/education"], ["Schools", "#/schools"], [s.state, `#/schools/${ss}`], [d.name]])}
+    <h1>Schools in ${esc(d.name)} district</h1>
+    ${stats([[fmtN(d.schools), "Schools"], [fmtN(d.government), "Government"], [fmtN(d.aided), "Government-aided"], [fmtN(d.private), "Private"]])}
+    <p class="note">Government schools are free up to class 8 and give free meals, textbooks and often uniforms. Private schools must keep 25% of entry seats free under the RTE Act: see ${rteLink}.</p>
+    <p><button type="button" class="btn" id="nearme">${here ? "Update my location" : "Sort by distance from me"}</button> <span class="muted small" id="nearmsg">Your location stays in your browser; it is not sent anywhere.</span></p>
+    <div id="res"></div>
+    ${schoolSource(idx)}`;
+  results(document.getElementById("res"), list, schoolView());
+  document.getElementById("nearme").onclick = () => {
+    const msg = document.getElementById("nearmsg");
+    if (!navigator.geolocation) { msg.textContent = "This browser can't share its location."; return; }
+    msg.textContent = "Finding your location…";
+    navigator.geolocation.getCurrentPosition(p => {
+      here = { lat: p.coords.latitude, lon: p.coords.longitude };
+      setQuery({ sort: "near", page: "" });
+      route();
+    }, () => { msg.textContent = "Location not available. Filter by village or PIN code instead."; }, { timeout: 15000 });
+  };
 }
 
 function notFound() {
@@ -1838,6 +1959,9 @@ async function route() {
     else if (parts[0] === "mla") await mlaHome();
     else if (parts[0] === "mlawork") await mlaWork(parts[1], parts.slice(2).join("/"));
     else if (parts[0] === "mpwork") await mpWork(parts[1], parts.slice(2).join("/"));
+    else if (parts[0] === "schools" && parts[2]) await schoolsDistrict(parts[1], parts[2]);
+    else if (parts[0] === "schools" && parts[1]) await schoolsState(parts[1]);
+    else if (parts[0] === "schools") await schoolsHome();
     else if (parts[0] === "about") await about();
     else if (parts[0] === "guides" && parts[1] === "mplads") await guideMplads();
     else if (parts[0] === "guides" && parts[1] === "rti") guideRti();
