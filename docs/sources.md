@@ -79,6 +79,27 @@ crosswalk), Greater Chennai Corporation 2022 (200 wards), BMC administrative war
 GeM, data.gov.in, PMGSY (omms.nic.in), bbmp.gov.in, accounts.bbmp.gov.in,
 gba.karnataka.gov.in. These need a collector running from an Indian network.
 
+## MLALADS (MLA local area development funds): `mlalads.py`, collected from India
+
+- **What:** works sanctioned under each state's MLA fund. Odisha so far, from the
+  Planning & Convergence Department's portal (https://mlalads.odisha.gov.in), for the
+  current years (2025-26 and 2026-27): about 10,900 works. One CSV per state in
+  `data/mlalads/`.
+- **How:** the portal answers only visitors in India, so this runs on the self-hosted
+  runner (`India-only sources`, task `mlalads`; see `india-runner.md`). The landing page
+  reads `GET /Masters/Ajax/GetProjectFinancialList`, which needs no login and returns
+  every current project in one list. Works that drop off the list stay in the CSV with
+  their last-checked date.
+- **Fields:** project code, year, district, constituency, component (General / Road /
+  Education), category, department, name, sanctioned and spent amounts, days allowed,
+  status.
+- **Not yet:** the MLA's name, the recommendation date and the letter number. They are
+  in the portal's MLA-wise report (`/MIS/MISReport/GetMLAWiseRecommendedWorkDetailsReport`,
+  parameters not worked out yet). Yearly totals since 1997-98 are on `/IPMS/LegacyReport`.
+  The Madhya Pradesh and Delhi portals drop the connection even from India. The UP
+  address we had (mlalads.up.gov.in) does not exist. Karnataka planning answered only
+  once.
+
 ## MPLADS (MP local area development funds): `mplads.py`
 
 - **What:** works recommended, sanctioned and completed under MPLADS, from the

@@ -85,7 +85,8 @@ def main():
 
     shutil.copy(WORKS_CSV, os.path.join(OUT, "data", "works.csv")) if os.path.exists(WORKS_CSV) else None
     mp_index = build_mplads()
-    build_places(meta, ward_index, rows, mp_index)
+    mla_index = build_mlalads()
+    build_places(meta, ward_index, rows, mp_index, mla_index)
     shutil.copy(os.path.join(DATA, "LICENSE.md"), os.path.join(OUT, "data", "LICENSE.md"))
     print(f"built _site with {len(rows)} works")
 
@@ -140,7 +141,51 @@ def build_mplads():
     return index
 
 
-def build_places(meta, ward_index, rows, mp_index):
+def build_mlalads():
+    """Per-state MLA fund files (collected from India, see collector/mlalads.py) and an index."""
+    import glob
+    paths = sorted(glob.glob(os.path.join(DATA, "mlalads", "*.csv")))
+    if not paths:
+        return []
+    os.makedirs(os.path.join(OUT, "data", "mlalads"), exist_ok=True)
+    keep = ["id", "project_code", "financial_year", "district", "constituency", "component", "category",
+            "department", "name", "sanction_amount", "spent_amount", "days_allowed", "status", "last_checked"]
+    num = lambda v: int(v) if v and v.isdigit() else 0
+    index = []
+    for path in paths:
+        rows = list(csv.DictReader(open(path, newline="", encoding="utf-8")))
+        if not rows:
+            continue
+        shutil.copy(path, os.path.join(OUT, "data", "mlalads", os.path.basename(path)))
+        st = slug(rows[0]["state"])
+        json.dump({"fields": keep, "rows": [[r[k] for k in keep] for r in rows]},
+                  open(os.path.join(OUT, "data", "mlalads", f"{st}.json"), "w"),
+                  separators=(",", ":"), ensure_ascii=False)
+        cons = {}
+        for r in rows:
+            c = cons.setdefault(r["constituency"], {"id": slug(r["constituency"]), "name": r["constituency"],
+                                                    "district": r["district"], "works": 0, "sanctioned": 0,
+                                                    "spent": 0, "completed": 0, "not_started": 0})
+            c["works"] += 1
+            c["sanctioned"] += num(r["sanction_amount"])
+            c["spent"] += num(r["spent_amount"])
+            c["completed"] += r["status"] == "Completed"
+            c["not_started"] += r["status"] == "Not Started"
+        cl = sorted(cons.values(), key=lambda c: c["name"])
+        cats = {}
+        for r in rows:
+            cats[r["category"]] = cats.get(r["category"], 0) + 1
+        index.append({"state": rows[0]["state"], "slug": st, "works": len(rows),
+                      "sanctioned": sum(c["sanctioned"] for c in cl), "spent": sum(c["spent"] for c in cl),
+                      "completed": sum(c["completed"] for c in cl), "not_started": sum(c["not_started"] for c in cl),
+                      "years": sorted({r["financial_year"] for r in rows}), "constituencies": cl,
+                      "categories": sorted(cats.items(), key=lambda kv: -kv[1]),
+                      "last_checked": max(r["last_checked"] for r in rows)})
+    json.dump(index, open(os.path.join(OUT, "data", "mlalads_index.json"), "w"), separators=(",", ":"), ensure_ascii=False)
+    return index
+
+
+def build_places(meta, ward_index, rows, mp_index, mla_index=()):
     """One small list of everything a person might type: places, constituencies, MPs, PIN codes.
     Each entry: [kind, label, detail, link, extra search words]."""
     out = []
@@ -162,6 +207,11 @@ def build_places(meta, ward_index, rows, mp_index):
             mp = c["mp"].title() if c["mp"].isupper() else c["mp"]
             out.append(["Lok Sabha constituency", c["name"], f"{s['state']} · MP: {mp}",
                         f"#/mp/{s['slug']}/{c['id']}", mp])
+    for s in mla_index:
+        out.append(["State", s["state"], "MLA funds", f"#/mla/{s['slug']}", ""])
+        for c in s["constituencies"]:
+            out.append(["Assembly constituency", c["name"], f"{s['state']} · MLA funds · {c['district']} district",
+                        f"#/mla/{s['slug']}/{c['id']}", c["district"]])
     places = {}
     for r in rows:
         if r["place"] and not r["city"]:

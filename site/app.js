@@ -13,6 +13,8 @@ const TOPICS = [
     blurb: "Roads, footpaths and drains: who is doing the work, what it costs, when it should finish." },
   { key: "mp", name: "MP funds (MPLADS)", href: "#/mp", live: true,
     blurb: "Works your Member of Parliament recommended from their ₹5 crore a year local area fund." },
+  { key: "mla", name: "MLA funds", href: "#/mla", live: true,
+    blurb: "Works your MLA chose from their local area fund: temples, community halls, lights, roads. Odisha first." },
   { key: "help", name: "Help for children's education", href: "#/guides/education", live: true,
     blurb: "Free schooling, scholarships, meals and NGOs: what children and families can claim, and how." },
   { key: "water", name: "Water supply & sewerage" },
@@ -20,8 +22,11 @@ const TOPICS = [
   { key: "buildings", name: "Schools, hospitals & offices" },
   { key: "parks", name: "Parks & lakes" },
   { key: "waste", name: "Garbage & sanitation" },
-  { key: "mla", name: "MLA funds" },
 ];
+
+// States whose MLA fund portals we collect from (from India; see docs/india-runner.md).
+// Other states' portals are blocked, missing or need a login so far.
+const MLA_STATES_NOTE = "Odisha only, for now. Madhya Pradesh, Delhi, Karnataka and Uttar Pradesh portals are next; their sites have not answered reliably yet.";
 
 // ---------- data ----------
 async function load(name) {
@@ -63,6 +68,20 @@ async function mpWorks(stateSlug) {
   }
   return cache[key];
 }
+
+async function mlaWorks(stateSlug) {
+  const key = "_mla_" + stateSlug;
+  if (!cache[key]) {
+    cache[key] = load(`mlalads/${stateSlug}.json`).then(d => table2objects(d).map(o => {
+      o.amount = Number(o.sanction_amount) || 0;
+      o.spent = Number(o.spent_amount) || 0;
+      o.cons = slugify(o.constituency);
+      return o;
+    }));
+  }
+  return cache[key];
+}
+const slugify = t => (t || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 async function wardLookup() {
   if (!cache._wards) {
@@ -435,6 +454,39 @@ function mpView(stateSlug, showConstituency) {
   };
 }
 
+// MLA funds view.
+const MLA_DONE = s => s === "Completed";
+const MLA_NOT_STARTED = s => s === "Not Started";
+function mlaView(stateSlug, showConstituency) {
+  return {
+    keys: ["name", "category", "constituency", "district", "project_code"],
+    placeholder: "Filter by village, temple, school, road…",
+    sort: "amount",
+    sorts: {
+      amount: ["Highest amount", (a, b) => b.amount - a.amount],
+      spent: ["Most spent", (a, b) => b.spent - a.spent],
+      code: ["Project code", (a, b) => a.project_code.localeCompare(b.project_code)],
+    },
+    filters: {
+      "": ["All", () => true],
+      done: ["Completed", w => MLA_DONE(w.status)],
+      going: ["Started or in progress", w => !MLA_DONE(w.status) && !MLA_NOT_STARTED(w.status)],
+      notstarted: ["Not started", w => MLA_NOT_STARTED(w.status)],
+      road: ["Roads", w => w.component === "Road"],
+      edu: ["Education", w => w.component === "Education"],
+    },
+    table: rows => `<table class="works">
+      <thead><tr><th>Work</th><th>Type</th><th class="num">Sanctioned</th><th class="num">Spent</th><th>Status</th></tr></thead>
+      <tbody>${rows.map(w => `<tr>
+        <td data-label="Work"><a href="#/mlawork/${stateSlug}/${enc(w.id)}">${esc(w.name)}</a>
+          ${showConstituency ? `<div class="sub">${esc(w.constituency)} · ${esc(w.district)} district</div>` : ""}</td>
+        <td data-label="Type">${esc(w.category) || NP}</td>
+        <td data-label="Sanctioned" class="num">${inr(w.amount) || NP}</td>
+        <td data-label="Spent" class="num">${inr(w.spent) || "₹0"}</td>
+        <td data-label="Status">${esc(w.status) || NP}</td></tr>`).join("")}</tbody></table>`,
+  };
+}
+
 // ---------- maps ----------
 let maps = [];
 function newMap(id) {
@@ -495,6 +547,16 @@ async function nearMe(btn, out) {
 
 // Plain-language explanations shown under each field on detail pages.
 const HELP = {
+  // MLA funds
+  "Assembly constituency": "The Vidhan Sabha constituency whose MLA recommended the work.",
+  "Project code": "The portal's own number for this work. Quote it to find the work on the portal, or in an RTI or complaint.",
+  "Kind of work": "The category the scheme's guidelines put the work in, and which share of the MLA's fund it comes from (general, roads or education).",
+  "Carried out by": "The department that executes the work, usually Panchayati Raj through the block office.",
+  "Amount sanctioned": "The amount approved for the work.",
+  "Spent so far": "Money spent on the work as shown on the portal. It often lags behind what is happening at the site.",
+  "Time allowed": "The number of days the portal gives for finishing the work. It does not show the start date, so we cannot tell if it is late.",
+  "Work status": "Not started, started, in progress or completed, as the portal shows it.",
+  "MLA": "The portal's work list does not name the MLA. Its MLA-wise report does; we will add it.",
   // road works
   "Agency": "The government body that issued the tender or work order, such as a city corporation or the PWD.",
   "Office": "The zone, division or office inside that body that handles the work.",
@@ -787,6 +849,11 @@ const CHANNELS = {
     { name: "CPGRAMS", how: '<a href="https://pgportal.gov.in" target="_blank" rel="noopener">pgportal.gov.in</a>', what: "Grievances against central government offices; it also forwards grievances to state governments. You get a number to track the reply." },
     { name: "RTI", how: '<a href="#/guides/rti">How to file</a>', what: "When you need the records, not just a fix" },
   ],
+  mla_odisha: [
+    { name: "MLALADS cell, Planning & Convergence Department, Odisha", how: '<a href="mailto:mlalads@odishaone.gov.in">mlalads@odishaone.gov.in</a>, 0674-2390336',
+      what: "Questions about MLALADS works anywhere in Odisha", src: "https://mlalads.odisha.gov.in/", checked: "2026-10-25" },
+    { name: "Block Development Officer", how: "The block office where the work is", what: "Most MLALADS works are carried out by the Panchayati Raj department through blocks" },
+  ],
   mp: [
     { name: "District authority (MPLADS cell)", how: "The Collector or Deputy Commissioner's office named on the work", what: "Sanction, delays, payments and completion of MPLADS works" },
     { name: "MoSPI (runs MPLADS)", how: '<a href="mailto:cna-mplads@mospi.gov.in">cna-mplads@mospi.gov.in</a>', what: "When the district does not respond" },
@@ -805,9 +872,12 @@ function complainBox(keys, where) {
 
 // ---------- pages: home and search ----------
 async function home() {
-  const [meta, mp] = await Promise.all([load("meta.json"), load("mplads_index.json").catch(() => [])]);
+  const [meta, mp, mla] = await Promise.all([load("meta.json"), load("mplads_index.json").catch(() => []),
+    load("mlalads_index.json").catch(() => [])]);
   const mpWorksN = mp.reduce((a, s) => a + s.works, 0);
-  const counts = { roads: `${fmtN(meta.total)} works`, mp: mpWorksN ? `${fmtN(mpWorksN)} works` : "" };
+  const mlaWorksN = mla.reduce((a, s) => a + s.works, 0);
+  const counts = { roads: `${fmtN(meta.total)} works`, mp: mpWorksN ? `${fmtN(mpWorksN)} works` : "",
+    mla: mlaWorksN ? `${fmtN(mlaWorksN)} works` : "" };
   app.innerHTML = `
     <section class="hero">
       <h1>What is being built near you, and by whom?</h1>
@@ -1264,6 +1334,129 @@ async function mpWork(slug, id) {
   wireAsk([["rti", "RTI application", me => mpRti(ws, me)], ["complaint", "Letter to the Collector", me => mpComplaint(ws, me)]], w.letter_no || w.id);
 }
 
+// ---------- MLA funds ----------
+async function mlaHome() {
+  const idx = await load("mlalads_index.json").catch(() => []);
+  if (idx.length === 1) return mlaState(idx[0].slug);
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["MLA funds"]])}
+    <h1>MLA funds</h1>
+    <p class="lede">Most states give each MLA a yearly fund to recommend works in their constituency. ${MLA_STATES_NOTE}</p>
+    <table class="plain stack"><thead><tr><th>State</th><th class="num">Works</th><th class="num">Sanctioned</th><th class="num">Completed</th></tr></thead>
+    <tbody>${idx.map(s => `<tr><td><a href="#/mla/${s.slug}">${esc(s.state)}</a></td><td class="num" data-label="Works">${fmtN(s.works)}</td><td class="num" data-label="Sanctioned">${inr(s.sanctioned) || "—"}</td><td class="num" data-label="Completed">${fmtN(s.completed)}</td></tr>`).join("")}</tbody></table>`;
+}
+
+function mlaStats(x) {
+  return stats([[fmtN(x.works), "Works sanctioned"], [inr(x.sanctioned) || "—", "Sanctioned"], [inr(x.spent) || "₹0", "Spent so far"],
+    [fmtN(x.completed), "Completed"]]);
+}
+
+async function mlaState(slug) {
+  const idx = await load("mlalads_index.json");
+  const s = idx.find(x => x.slug === slug);
+  if (!s) return notFound();
+  const list = await mlaWorks(slug);
+  const top = s.categories.slice(0, 5);
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["MLA funds", "#/mla"], [s.state]])}
+    <h1>MLA funds in ${esc(s.state)}</h1>
+    <p class="lede">Each of ${esc(s.state)}'s MLAs recommends works from the MLA Local Area Development Scheme (MLALADS). In Odisha that is ₹2 crore per constituency a year: ₹1 crore for general works, ₹50 lakh for roads and ₹50 lakh for education. These are the works sanctioned for ${s.years.map(esc).join(" and ")}.</p>
+    ${mlaStats(s)}
+    <p class="note">${fmtN(s.not_started)} of ${fmtN(s.works)} works (${Math.round(100 * s.not_started / s.works)}%) are marked <b>not started</b>.</p>
+    <h2>What the money is for</h2>
+    <table class="plain"><tbody>${top.map(([c, n]) => `<tr><td>${esc(c)}</td><td class="num">${fmtN(n)} works (${Math.round(100 * n / s.works)}%)</td></tr>`).join("")}</tbody></table>
+    <h2>Constituencies</h2>
+    <div class="toolbar"><input class="input" id="cq" type="search" placeholder="Find your constituency or district" aria-label="Find a constituency or district"></div>
+    <table class="plain stack" id="ct"><thead><tr><th>Constituency</th><th>District</th><th class="num">Works</th><th class="num">Sanctioned</th><th class="num">Spent</th><th class="num">Completed</th></tr></thead><tbody></tbody></table>
+    <h2>All works in ${esc(s.state)}</h2>
+    <div id="res"></div>
+    <p class="muted small">Source: <a href="https://mlalads.odisha.gov.in/IPMS/Report" target="_blank" rel="noopener">MLALADS portal</a>, Planning &amp; Convergence Department, Government of Odisha. Last checked ${date(s.last_checked)}. The portal answers only visitors in India, so this is collected from a computer in India. It does not list the MLA's name with each work, or the sanction date. ${MLA_STATES_NOTE}</p>`;
+  const drawCons = t => {
+    const shown = t ? fuzzy(s.constituencies, t, ["name", "district"], 1) : s.constituencies;
+    document.querySelector("#ct tbody").innerHTML = shown.map(c => `<tr><td><a href="#/mla/${slug}/${c.id}">${esc(c.name)}</a></td>
+      <td class="sub-cell" data-label="District">${esc(c.district)}</td><td class="num" data-label="Works">${fmtN(c.works)}</td>
+      <td class="num" data-label="Sanctioned">${inr(c.sanctioned) || "—"}</td><td class="num" data-label="Spent">${inr(c.spent) || "₹0"}</td>
+      <td class="num" data-label="Completed">${fmtN(c.completed)}</td></tr>`).join("");
+  };
+  drawCons("");
+  document.getElementById("cq").oninput = e => drawCons(e.target.value);
+  results(document.getElementById("res"), list, mlaView(slug, true));
+}
+
+async function mlaConstituency(slug, id) {
+  const idx = await load("mlalads_index.json");
+  const s = idx.find(x => x.slug === slug);
+  const c = s && s.constituencies.find(x => x.id === id);
+  if (!c) return notFound();
+  const list = (await mlaWorks(slug)).filter(w => w.cons === id);
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["MLA funds", "#/mla"], [s.state, `#/mla/${slug}`], [c.name]])}
+    <h1>${esc(c.name)}</h1>
+    <p class="muted">Assembly constituency · ${esc(c.district)} district, ${esc(s.state)} · ${s.years.map(esc).join(", ")}</p>
+    ${mlaStats(c)}
+    ${c.not_started ? `<p class="note"><a href="#/mla/${slug}/${id}?f=notstarted">${fmtN(c.not_started)} works</a> are marked not started.</p>` : ""}
+    <div id="res"></div>
+    ${complainBox(["mla_" + slug, "national"], "")}`;
+  results(document.getElementById("res"), list, mlaView(slug, false));
+}
+
+function mlaRef(w) {
+  return [
+    `Work: ${w.name}`,
+    `Project code: ${w.project_code} (MLALADS, ${w.financial_year})`,
+    `Constituency: ${w.constituency}, ${w.district} district`,
+    w.sanction_amount ? `Amount sanctioned: ${inr(w.sanction_amount)}` : "",
+    `Spent so far, as shown on the MLALADS portal: ${inr(w.spent_amount) || "Rs 0"}`,
+    w.status ? `Status on the portal: ${w.status}` : "",
+  ].filter(Boolean).join("\n");
+}
+
+function mlaRti(w, me) {
+  const to = ["The Public Information Officer", "Office of the Block Development Officer / Office of the District Collector (MLALADS)", `${w.district} district, Odisha`].join("\n");
+  return rtiLetter(to, "Application for information under section 6(1) of the Right to Information Act, 2005 (MLALADS work)",
+    `I request the following information about this work under the MLA Local Area Development Scheme:\n\n${mlaRef(w)}`, [
+      "A copy of the MLA's recommendation letter for this work, with its date.",
+      "A certified copy of the administrative approval and sanction order, with the approved estimate.",
+      "The name of the executing agency and of the contractor, committee or vendor doing the work, with a copy of the work order.",
+      "The amounts released and spent so far, with dates, and copies of the utilisation certificates.",
+      MLA_DONE(w.status) ? "A copy of the completion certificate, and photographs of the completed work."
+        : `The present status of the work and the date by which it will be completed.${w.days_allowed ? ` The portal gives ${w.days_allowed} days for this work; please give the records showing the reasons for any delay.` : ""}`,
+      "Under section 2(j) of the Act, I also wish to inspect the file for this work. Please tell me a date and time.",
+    ], me);
+}
+
+async function mlaWork(slug, id) {
+  const w = (await mlaWorks(slug)).find(x => x.id === id);
+  if (!w) return notFound();
+  const idx = await load("mlalads_index.json");
+  const s = idx.find(x => x.slug === slug);
+  const row = fieldRow;
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["MLA funds", "#/mla"], [s.state, `#/mla/${slug}`], [w.constituency, `#/mla/${slug}/${w.cons}`], ["Work"]])}
+    <h1 class="title">${esc(w.name)}</h1>
+    <p><a class="jump" href="#" onclick="document.getElementById('ask').scrollIntoView();return false">Ask about this work ↓</a></p>
+    <table class="fields"><tbody>
+      ${row("Assembly constituency", `<a href="#/mla/${slug}/${w.cons}">${esc(w.constituency)}</a>, ${esc(w.district)} district`)}
+      ${row("Project code", esc(w.project_code))}
+      ${row("Year", esc(w.financial_year))}
+      ${row("Kind of work", [esc(w.category), w.component ? `${esc(w.component)} share of the fund` : ""].filter(Boolean).join(" · "))}
+      ${row("Carried out by", esc(w.department))}
+      ${row("Amount sanctioned", inr(w.sanction_amount))}
+      ${row("Spent so far", inr(w.spent_amount) || "₹0")}
+      ${row("Time allowed", w.days_allowed ? `${fmtN(w.days_allowed)} days` : "")}
+      ${row("Status", esc(w.status))}
+      ${row("MLA", "")}
+    </tbody></table>
+    <h2>Official source</h2>
+    <p><a class="btn" href="https://mlalads.odisha.gov.in/IPMS/Report" target="_blank" rel="noopener">Open the MLALADS report</a></p>
+    <p class="muted small">The portal opens only from India. On it, choose ${esc(w.district)} › ${esc(w.constituency)} and look for project ${esc(w.project_code)}. Last checked ${date(w.last_checked)}.</p>
+    ${complainBox(["mla_" + slug, "national"], "")}
+    ${askPanel(MLA_NOT_STARTED(w.status) ? "This work is sanctioned but marked not started. Ask the block or district office why."
+      : "Want the sanction order, the contractor's name or the completion certificate? Ask the block or district office.")}
+    <p class="small"><a href="${REPO}/issues/new?title=${enc("Data: " + w.id)}">Report a mistake</a></p>`;
+  wireAsk([["rti", "RTI application", me => mlaRti(w, me)]], w.project_code);
+}
+
 // ---------- about ----------
 const SOURCE_INFO = {
   "kppp": ["Karnataka Public Procurement Portal", "https://kppp.karnataka.gov.in", "All Karnataka works tenders, including Bengaluru's five city corporations. Estimated cost, status and, once awarded, the contractor. No finish date."],
@@ -1568,6 +1761,10 @@ async function route() {
     else if (parts[0] === "mp" && parts[2]) await mpConstituency(parts[1], parts[2]);
     else if (parts[0] === "mp" && parts[1]) await mpState(parts[1]);
     else if (parts[0] === "mp") await mpHome();
+    else if (parts[0] === "mla" && parts[2]) await mlaConstituency(parts[1], parts[2]);
+    else if (parts[0] === "mla" && parts[1]) await mlaState(parts[1]);
+    else if (parts[0] === "mla") await mlaHome();
+    else if (parts[0] === "mlawork") await mlaWork(parts[1], parts.slice(2).join("/"));
     else if (parts[0] === "mpwork") await mpWork(parts[1], parts.slice(2).join("/"));
     else if (parts[0] === "about") await about();
     else if (parts[0] === "guides" && parts[1] === "mplads") await guideMplads();

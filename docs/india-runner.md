@@ -8,6 +8,30 @@ collection jobs run from an Indian address.
 
 ## Option A (current): a Windows laptop at home
 
+Set up on 2026-10-25 as `rushi-laptop` (labels `self-hosted, Windows, X64, india`).
+
+**House rules for any change on the laptop.** It is the owner's personal computer:
+- Look first and change nothing until the owner says OK, in their own words.
+- Install only through winget, from official sources, and only what is needed.
+- Keep everything in `C:\actions-runner`, and record every change in `INSTALL-LOG.txt` with
+  the command that undoes it.
+- Say before every admin (UAC) prompt.
+- Leave antivirus, firewall, the execution policy, startup and other apps alone.
+
+What is installed, and where the notes live:
+- Python 3.12 and Git, installed for all users with winget from an admin PowerShell. On
+  this laptop, `winget ... --scope machine` fails with error 0x80070005 from a normal
+  window.
+- The runner, in `C:\actions-runner`, as the service
+  `actions.runner.is-this-itt-nagarika.rushi-laptop`. It runs as NETWORK SERVICE and is
+  set to **Manual** start, so it only takes jobs while the owner has started it.
+- `INSTALL-LOG.txt`, `START-STOP.txt` and `HOW-TO-REMOVE.txt` in that folder.
+
+Workflow steps run in `cmd`. Windows blocks PowerShell scripts there (execution policy
+"Restricted"), and we leave that setting as it is.
+
+The original setup steps follow.
+
 The owner's laptop runs the India-only jobs whenever it is on and online. When it is
 off, those jobs wait; everything else keeps running on GitHub.
 
@@ -112,6 +136,14 @@ Back on https://github.com/is-this-itt/nagarika/settings/actions/runners the run
 collection jobs will be switched on.
 
 ## How it's used
+
+- `India-only sources` (`.github/workflows/india.yml`) only runs when someone clicks
+  **Run workflow**. Its tasks:
+  - `mlalads` collects MLA fund works (Odisha so far) into `data/mlalads/` and asks for a
+    site rebuild.
+  - `probe` saves sample pages from a site for study. It runs a script from the
+    `discovery` branch. Name those scripts `scripts/india_*.py` so they don't also trigger
+    `discover.yml` on GitHub's servers.
 
 Jobs that need an Indian address run with `runs-on: [self-hosted, india]` in their
 own workflow, so the normal six-hourly collection and the site deploy never wait on
