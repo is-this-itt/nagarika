@@ -2,7 +2,26 @@
 Records status, final URL, page title and keyword hits; saves each page for reading."""
 import json, os, re, requests, urllib3
 urllib3.disable_warnings()
-OUT = "raw14"
+import ssl
+from requests.adapters import HTTPAdapter
+
+
+class LegacyTLS(HTTPAdapter):
+    """Many state portals still use old TLS settings that Python refuses by default."""
+    def init_poolmanager(self, *a, **kw):
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        ctx.set_ciphers("DEFAULT:@SECLEVEL=0")
+        ctx.options |= getattr(ssl, "OP_LEGACY_SERVER_CONNECT", 0x4)
+        ctx.minimum_version = ssl.TLSVersion.TLSv1
+        kw["ssl_context"] = ctx
+        return super().init_poolmanager(*a, **kw)
+
+
+S = requests.Session()
+S.mount("https://", LegacyTLS())
+OUT = os.environ.get("OUT", "raw15")
 os.makedirs(OUT, exist_ok=True)
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36",
      "Accept-Language": "en-IN,en;q=0.9"}
@@ -53,7 +72,7 @@ for kind, table in (("rte", RTE), ("scholarship", SCHOL)):
         for url in urls:
             n += 1
             try:
-                r = requests.get(url, headers=H, timeout=45, verify=False, allow_redirects=True)
+                r = S.get(url, headers=H, timeout=60, verify=False, allow_redirects=True)
                 t = r.text
                 name = f"{n:03d}_{kind}_{re.sub(r'[^a-z]+', '-', state.lower())}.html"
                 with open(f"{OUT}/{name}", "w", encoding="utf-8") as f:
