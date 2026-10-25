@@ -1,0 +1,150 @@
+[
+ {
+  "what": "rte Andhra Pradesh",
+  "url": "https://cse.ap.gov.in/RTE",
+  "out": "000 https://cse.ap.gov.in/RTE 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "00.html"
+ },
+ {
+  "what": "rte Bihar",
+  "url": "https://pmsonline.bih.nic.in/rte",
+  "out": "000 https://pmsonline.bih.nic.in/rte 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "01.html"
+ },
+ {
+  "what": "rte Madhya Pradesh",
+  "url": "https://rteportal.mp.gov.in/",
+  "out": "000 https://rteportal.mp.gov.in/ 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "02.html"
+ },
+ {
+  "what": "rte Maharashtra",
+  "url": "https://student.maharashtra.gov.in/adm_portal/",
+  "out": "000 https://student.maharashtra.gov.in/adm_portal/ 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "03.html"
+ },
+ {
+  "what": "rte Rajasthan",
+  "url": "https://rajpsp.nic.in/PSP1/Home/home.aspx",
+  "out": "000 https://rajpsp.nic.in/PSP1/Home/home.aspx 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "04.html"
+ },
+ {
+  "what": "rte Telangana",
+  "url": "https://schooledu.telangana.gov.in/ISMS/",
+  "out": "000 https://schooledu.telangana.gov.in/ISMS/ 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "05.html"
+ },
+ {
+  "what": "rte Uttar Pradesh",
+  "url": "https://rte25.upsdc.gov.in/",
+  "out": "000 https://rte25.upsdc.gov.in/ 0",
+  "err": "curl: (28) Connection timed out after 60004 milliseconds",
+  "title": "",
+  "file": "06.html"
+ },
+ {
+  "what": "rte West Bengal",
+  "url": "https://banglarshiksha.gov.in/",
+  "out": "000 https://banglarshiksha.gov.in/ 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "07.html"
+ },
+ {
+  "what": "rte Kerala",
+  "url": "https://kescpcr.kerala.gov.in/rte-cell",
+  "out": "000 https://kescpcr.kerala.gov.in/rte-cell 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "08.html"
+ },
+ {
+  "what": "rte Gujarat",
+  "url": "https://rte.orpgujarat.com/",
+  "out": "503 https://rte.orpgujarat.com/ 1644",
+  "err": "",
+  "title": "Down for maintenance",
+  "file": "09.html"
+ },
+ {
+  "what": "sch Bihar",
+  "url": "https://pmsonline.bih.nic.in/",
+  "out": "000 https://pmsonline.bih.nic.in/ 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "10.html"
+ },
+ {
+  "what": "sch Tamil Nadu",
+  "url": "https://umis.tn.gov.in/",
+  "out": "000 https://umis.tn.gov.in/ 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "11.html"
+ },
+ {
+  "what": "sch Uttar Pradesh",
+  "url": "https://scholarship.up.gov.in/",
+  "out": "000 https://scholarship.up.gov.in/ 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "12.html"
+ },
+ {
+  "what": "sch West Bengal SVMCM",
+  "url": "https://svmcm.wbhed.gov.in/",
+  "out": "000 https://svmcm.wbhed.gov.in/ 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "13.html"
+ },
+ {
+  "what": "sch Madhya Pradesh",
+  "url": "https://scholarshipportal.mp.nic.in/",
+  "out": "000 https://scholarshipportal.mp.nic.in/ 0",
+  "err": "curl: (6) Could not resolve host: scholarshipportal.mp.nic.in",
+  "title": "",
+  "file": "14.html"
+ },
+ {
+  "what": "sch Karnataka prematric",
+  "url": "https://ssp.prematric.karnataka.gov.in/",
+  "out": "000 https://ssp.prematric.karnataka.gov.in/ 0",
+  "err": "curl: (6) Could not resolve host: ssp.prematric.karnataka.gov.in",
+  "title": "",
+  "file": "15.html"
+ },
+ {
+  "what": "mla Madhya Pradesh",
+  "url": "http://mlalads.mp.gov.in/",
+  "out": "000 http://mlalads.mp.gov.in/ 0",
+  "err": "curl: (52) Empty reply from server",
+  "title": "",
+  "file": "16.html"
+ },
+ {
+  "what": "mla Delhi",
+  "url": "https://udd.delhi.gov.in/mlalad",
+  "out": "000 https://udd.delhi.gov.in/mlalad 0",
+  "err": "curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed",
+  "title": "",
+  "file": "17.html"
+ },
+ {
+  "what": "seen from country",
+  "out": "SG"
+ }
+]
