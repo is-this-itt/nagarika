@@ -1,22 +1,22 @@
 [
  {
   "site": "odisha",
-  "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='mlalads.odisha.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='mlalads.odisha.gov.in', port=443) at 0x7fdeac8a92b0>, 'Connection to mlalads.odisha.gov.in timed out. (connect timeout=60)"
+  "error": "UnicodeEncodeError('charmap', '<!DOCTYPE html>\\r\\n<html lang=\"en\" data-theme=\"light\">\\r\\n<head>\\r\\n    <meta charset=\"UTF-8\" />\\r\\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\\r\\n    <title>MLALADS \u2013 Planning & Convergence Department, Govt. of Odisha</title>\\r\\n    <l"
  },
  {
   "site": "mp",
-  "error": "ConnectTimeout(MaxRetryError(\"HTTPConnectionPool(host='mlalads.mp.gov.in', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPConnection(host='mlalads.mp.gov.in', port=80) at 0x7fdeac27d040>, 'Connection to mlalads.mp.gov.in timed out. (connect timeout=60)'))\"))"
+  "error": "ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
  },
  {
   "site": "up",
-  "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'mlalads.up.gov.in\\', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host=\\'mlalads.up.gov.in\\', port=443): Failed to resolve \\'mlalads.up.gov.in\\' ([Errno -2] Name or service not known)\"))'))"
+  "error": "ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\\'mlalads.up.gov.in\\', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host=\\'mlalads.up.gov.in\\', port=443): Failed to resolve \\'mlalads.up.gov.in\\' ([Errno 11001] getaddrinfo failed)\"))'))"
  },
  {
   "site": "delhi",
-  "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='udd.delhi.gov.in', port=443): Max retries exceeded with url: /mlalad (Caused by ConnectTimeoutError(<HTTPSConnection(host='udd.delhi.gov.in', port=443) at 0x7fdeac8a8860>, 'Connection to udd.delhi.gov.in timed out. (connect timeout=60)'))\"))"
+  "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='udd.delhi.gov.in', port=443): Max retries exceeded with url: /mlalad (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"))"
  },
  {
   "site": "kar_plan",
-  "error": "ConnectTimeout(MaxRetryError(\"HTTPSConnectionPool(host='planning.karnataka.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='planning.karnataka.gov.in', port=443) at 0x7fdeac27d7c0>, 'Connection to planning.karnataka.gov.in timed out. (connect"
+  "error": "UnicodeEncodeError('charmap', '<!DOCTYPE html>\\r\\n<html lang=\"kn\" data-dbim=\"purple\">\\r\\n\\r\\n<head>\\r\\n        <meta charset=\"UTF-8\">\\r\\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\\r\\n    <title>\u0cae\u0cc1\u0c96\u0caa\u0cc1\u0c9f | \u0caf\u0ccb\u0c9c\u0ca8\u0cc6,\u0c95\u0cbe\u0cb0\u0ccd\u0caf\u0c95\u0ccd\u0cb0\u0cae \u0cb8\u0c82\u0caf\u0ccb\u0c9c\u0ca8\u0cc6 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb8\u0cbe\u0c82\u0c96\u0ccd\u0caf\u0cbf\u0c95 \u0c87\u0cb2\u0cbe\u0c96\u0cc6 | \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95 \u0cb8\u0cb0\u0ccd\u0c95\u0cbe\u0cb0</ti"
  }
 ]
