@@ -1,0 +1,1 @@
+import{Ab as i,Tb as a,cb as n,zb as o}from"./chunk-653EANPF.js";import"./chunk-OXVY4BEJ.js";var s=(()=>{class e{static{this.\u0275fac=function(t){return new(t||e)}}static{this.\u0275cmp=n({type:e,selectors:[["app-faq"]],decls:2,vars:0,template:function(t,r){t&1&&(o(0,"p"),a(1,"faq works!"),i())},encapsulation:2})}}return e})();export{s as FaqComponent};
