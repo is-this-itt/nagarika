@@ -10,6 +10,14 @@ on:
         description: "probe = save sample pages from the blocked sites for study"
         required: false
         default: "probe"
+      script:
+        description: "probe script on the discovery branch (scripts/...)"
+        required: false
+        default: "discover7.py"
+      out:
+        description: "folder the script writes (committed to the discovery branch)"
+        required: false
+        default: "raw11"
 
 permissions:
   contents: write
@@ -33,12 +41,12 @@ jobs:
         with:
           ref: discovery
       - run: python -m pip install --quiet requests
-      - run: python scripts/discover7.py
+      - run: python scripts/${{ inputs.script }}
       - name: Save samples to the discovery branch
         if: always()
         run: |
           git config user.name "nagarika-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add raw11
-          git commit -m "Discovery samples 11 (from India)"
+          git add ${{ inputs.out }}
+          git commit -m "Discovery samples ${{ inputs.out }} (from India)"
           git push origin HEAD:discovery
