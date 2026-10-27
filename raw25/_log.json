@@ -1,0 +1,26 @@
+[
+ {
+  "file": "up_ac.json",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&page=List+of+constituencies+of+the+Uttar+Pradesh+Legislative+Assembly&prop=wikitext&format=json&redirects=1",
+  "status": 200,
+  "bytes": 63157
+ },
+ {
+  "file": "delhi_ac.json",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&page=List+of+constituencies+of+the+Delhi+Legislative+Assembly&prop=wikitext&format=json&redirects=1",
+  "status": 200,
+  "bytes": 13002
+ },
+ {
+  "file": "delhi_list0.html",
+  "url": "https://udd.delhi.gov.in/mlalad-scheme",
+  "status": 200,
+  "bytes": 49724
+ },
+ {
+  "file": "delhi_node.html",
+  "url": "https://udd.delhi.gov.in/ud/ac41-5062-5072-17-09-2026",
+  "status": 200,
+  "bytes": 45672
+ }
+]
