@@ -235,7 +235,7 @@ def up():
                 who = plain(col(w, "प्रस्तावक"))
                 m = re.search(r"विo\s*सo\s*(.+?)\s*\(", who + " (")
                 hi_ac = m[1].strip() if m else ""
-                mla = re.sub(r"\s*माननीय विधायक.*", "", who).strip()
+                mla = re.split(r"\s*(?:माननीय|विo\s*सo)", who)[0].strip()
                 prog = col(w, "भौतिकप्रगति", "प्रतिशत")
                 prog = float(prog) if isinstance(prog, (int, float)) else None
                 done = dmy(col(w, "कार्यपूर्ण"))
@@ -326,11 +326,14 @@ def delhi():
     return orders
 
 
-def save(state_slug, rows):
-    path = os.path.join(CSV_DIR, f"{state_slug}.csv")
+def save(state_slug, rows, by_year=False):
+    """Write a state's works to data/mlalads/<state>.csv, or with by_year to one
+    <state>-<year>.csv per financial year (keeps each file well under GitHub's limits)."""
+    import glob
+    paths = glob.glob(os.path.join(CSV_DIR, f"{state_slug}.csv")) + glob.glob(os.path.join(CSV_DIR, f"{state_slug}-*.csv"))
     old = {}
-    if os.path.exists(path):
-        old = {r["id"]: r for r in csv.DictReader(open(path, newline="", encoding="utf-8"))}
+    for path in paths:
+        old.update({r["id"]: r for r in csv.DictReader(open(path, newline="", encoding="utf-8"))})
     t = today()
     for r in rows:
         r["first_seen"] = old.get(r["id"], {}).get("first_seen") or t
@@ -341,10 +344,18 @@ def save(state_slug, rows):
     rows += [r for i, r in old.items() if i not in seen]
     rows.sort(key=lambda r: (r["constituency"], r["project_code"]))
     os.makedirs(CSV_DIR, exist_ok=True)
-    with open(path, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS)
-        w.writeheader()
-        w.writerows(rows)
+    files = {}
+    for r in rows:
+        name = f"{state_slug}-{r['financial_year'] or 'unknown'}.csv" if by_year else f"{state_slug}.csv"
+        files.setdefault(name, []).append(r)
+    for path in paths:
+        if os.path.basename(path) not in files:
+            os.remove(path)
+    for name, rs in files.items():
+        with open(os.path.join(CSV_DIR, name), "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=FIELDS, extrasaction="ignore")
+            w.writeheader()
+            w.writerows(rs)
     return len(rows)
 
 
@@ -363,7 +374,7 @@ def main():
         print("uttar pradesh: no data (portal down or not reachable from here)")
         ok = False
     else:
-        print(f"uttar pradesh: {len(rows)} works fetched, {save('uttar-pradesh', rows)} kept")
+        print(f"uttar pradesh: {len(rows)} works fetched, {save('uttar-pradesh', rows, by_year=True)} kept")
     orders = delhi()
     if orders is None:
         print("delhi: no sanction orders (portal down or not reachable from here)")

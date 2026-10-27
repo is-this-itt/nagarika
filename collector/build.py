@@ -144,6 +144,9 @@ def build_mplads():
     return index
 
 
+MLA_WHOLE_STATE_MAX = 40000
+
+
 def build_mlalads():
     """Per-state MLA fund files (collected from India, see collector/mlalads.py) and an index."""
     import glob
@@ -156,16 +159,29 @@ def build_mlalads():
             "recommended_amount", "estimated_amount", "progress", "letter_no", "recommended_on", "sanctioned_on", "agency", "block", "village",
             "last_checked"]
     num = lambda v: int(v) if v and v.isdigit() else 0
-    index = []
+    # A state's works can be split over several CSVs (one per year for big states).
+    states = {}
     for path in paths:
-        rows = list(csv.DictReader(open(path, newline="", encoding="utf-8")))
-        if not rows:
-            continue
         shutil.copy(path, os.path.join(OUT, "data", "mlalads", os.path.basename(path)))
+        for r in csv.DictReader(open(path, newline="", encoding="utf-8")):
+            states.setdefault(r["state"], []).append(r)
+    index = []
+    for rows in states.values():
         st = slug(rows[0]["state"])
-        json.dump({"fields": keep, "rows": [[r.get(k) or "" for k in keep] for r in rows]},
-                  open(os.path.join(OUT, "data", "mlalads", f"{st}.json"), "w"),
-                  separators=(",", ":"), ensure_ascii=False)
+        table = lambda rs: {"fields": keep, "rows": [[r.get(k) or "" for k in keep] for r in rs]}
+        # One file per constituency for the constituency and work pages; the whole state in
+        # one file only where it is small enough for a phone to load.
+        split = len(rows) > MLA_WHOLE_STATE_MAX
+        if not split:
+            json.dump(table(rows), open(os.path.join(OUT, "data", "mlalads", f"{st}.json"), "w"),
+                      separators=(",", ":"), ensure_ascii=False)
+        by_cons = {}
+        for r in rows:
+            by_cons.setdefault(slug(r["constituency"]), []).append(r)
+        os.makedirs(os.path.join(OUT, "data", "mlalads", st), exist_ok=True)
+        for cid, rs in by_cons.items():
+            json.dump(table(rs), open(os.path.join(OUT, "data", "mlalads", st, f"{cid}.json"), "w"),
+                      separators=(",", ":"), ensure_ascii=False)
         cons = {}
         for r in rows:
             c = cons.setdefault(r["constituency"], {"id": slug(r["constituency"]), "name": r["constituency"],
@@ -188,7 +204,7 @@ def build_mlalads():
         cats = {}
         for r in rows:
             cats[r["category"]] = cats.get(r["category"], 0) + 1
-        index.append({"state": rows[0]["state"], "slug": st, "works": len(rows),
+        index.append({"state": rows[0]["state"], "slug": st, "works": len(rows), "split": split,
                       "sanctioned": sum(c["sanctioned"] for c in cl), "spent": sum(c["spent"] for c in cl), "estimated": sum(c["estimated"] for c in cl),
                       "completed": sum(c["completed"] for c in cl), "not_started": sum(c["not_started"] for c in cl),
                       "awaiting": sum(c["awaiting"] for c in cl),

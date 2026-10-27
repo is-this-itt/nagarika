@@ -83,10 +83,11 @@ async function mpWorks(stateSlug) {
   return cache[key];
 }
 
-async function mlaWorks(stateSlug) {
-  const key = "_mla_" + stateSlug;
+// Works for a whole state, or with cons for one constituency (big states only have those).
+async function mlaWorks(stateSlug, cons) {
+  const key = "_mla_" + stateSlug + (cons ? "/" + cons : "");
   if (!cache[key]) {
-    cache[key] = load(`mlalads/${stateSlug}.json`).then(d => table2objects(d).map(o => {
+    cache[key] = load(cons ? `mlalads/${stateSlug}/${cons}.json` : `mlalads/${stateSlug}.json`).then(d => table2objects(d).map(o => {
       o.amount = Number(o.sanction_amount) || Number(o.recommended_amount) || Number(o.estimated_amount) || 0;
       o.spent = Number(o.spent_amount) || 0;
       o.cons = slugify(o.constituency);
@@ -497,7 +498,7 @@ function mlaView(stateSlug, showConstituency) {
     table: rows => progress ? `<table class="works">
       <thead><tr><th>Work</th><th>Type</th><th class="num">Estimated cost</th><th class="num">Progress</th><th>Status</th></tr></thead>
       <tbody>${rows.map(w => `<tr>
-        <td data-label="Work"><a href="#/mlawork/${stateSlug}/${enc(w.id)}">${esc(w.name)}</a>
+        <td data-label="Work"><a href="#/mlawork/${stateSlug}/${w.cons}/${enc(w.id)}">${esc(w.name)}</a>
           ${showConstituency ? `<div class="sub">${esc(w.constituency)} · ${esc(w.district)} district</div>` : ""}</td>
         <td data-label="Type">${esc(w.category) || NP}</td>
         <td data-label="Estimated cost" class="num">${inr(w.estimated_amount) || NP}</td>
@@ -505,7 +506,7 @@ function mlaView(stateSlug, showConstituency) {
         <td data-label="Status">${esc(w.status) || NP}</td></tr>`).join("")}</tbody></table>` : `<table class="works">
       <thead><tr><th>Work</th><th>Type</th><th class="num">Sanctioned</th><th class="num">Spent</th><th>Status</th></tr></thead>
       <tbody>${rows.map(w => `<tr>
-        <td data-label="Work"><a href="#/mlawork/${stateSlug}/${enc(w.id)}">${esc(w.name)}</a>
+        <td data-label="Work"><a href="#/mlawork/${stateSlug}/${w.cons}/${enc(w.id)}">${esc(w.name)}</a>
           ${showConstituency ? `<div class="sub">${esc(w.constituency)} · ${esc(w.district)} district</div>` : ""}</td>
         <td data-label="Type">${esc(w.category) || NP}</td>
         <td data-label="Sanctioned" class="num">${inr(w.sanction_amount) || (w.recommended_amount ? `${inr(w.recommended_amount)} <span class="sub">recommended</span>` : NP)}</td>
@@ -1428,7 +1429,7 @@ async function mlaState(slug) {
   const idx = await load("mlalads_index.json");
   const s = idx.find(x => x.slug === slug);
   if (!s) return notFound();
-  const list = await mlaWorks(slug);
+  const list = s.split ? [] : await mlaWorks(slug);
   const P = mlaPortal(slug);
   const top = s.categories.slice(0, 5);
   app.innerHTML = `
@@ -1442,8 +1443,9 @@ async function mlaState(slug) {
     <h2>Constituencies</h2>
     <div class="toolbar"><input class="input" id="cq" type="search" placeholder="Find your constituency or district" aria-label="Find a constituency or district"></div>
     <table class="plain stack" id="ct"><thead><tr><th>Constituency</th><th>District</th><th class="num">Works</th><th class="num">${P.progress ? "Estimated cost" : "Sanctioned"}</th><th class="num">${P.progress ? "Not started" : "Spent"}</th><th class="num">Completed</th></tr></thead><tbody></tbody></table>
-    <h2>All works in ${esc(s.state)}</h2>
-    <div id="res"></div>
+    ${s.split ? `<p class="note">${esc(s.state)} has ${fmtN(s.works)} works, too many to show on one page. Pick a constituency above to see its works.</p>`
+      : `<h2>All works in ${esc(s.state)}</h2>
+    <div id="res"></div>`}
     <p class="muted small">Source: <a href="${P.url}" target="_blank" rel="noopener">${P.name}</a>, ${P.by}. Last checked ${date(s.last_checked)}. The portal answers only visitors in India, so this is collected from a computer in India. ${P.note || ""} ${MLA_STATES_NOTE}</p>`;
   const drawCons = t => {
     const shown = t ? fuzzy(s.constituencies, t, ["name", "district"], 1) : s.constituencies;
@@ -1455,7 +1457,7 @@ async function mlaState(slug) {
   };
   drawCons("");
   document.getElementById("cq").oninput = e => drawCons(e.target.value);
-  results(document.getElementById("res"), list, mlaView(slug, true));
+  if (!s.split) results(document.getElementById("res"), list, mlaView(slug, true));
 }
 
 async function mlaConstituency(slug, id) {
@@ -1463,7 +1465,7 @@ async function mlaConstituency(slug, id) {
   const s = idx.find(x => x.slug === slug);
   const c = s && s.constituencies.find(x => x.id === id);
   if (!c) return notFound();
-  const list = (await mlaWorks(slug)).filter(w => w.cons === id);
+  const list = await mlaWorks(slug, id);
   app.innerHTML = `
     ${crumbs([["Home", "#/"], ["MLA funds", "#/mla"], [s.state, `#/mla/${slug}`], [c.name]])}
     <h1>${esc(c.name)}</h1>
@@ -1505,8 +1507,8 @@ function mlaRti(w, me) {
     ], me);
 }
 
-async function mlaWork(slug, id) {
-  const found = (await mlaWorks(slug)).find(x => x.id === id);
+async function mlaWork(slug, id, cons) {
+  const found = (await mlaWorks(slug, cons)).find(x => x.id === id);
   if (!found) return notFound();
   const idx = await load("mlalads_index.json");
   const s = idx.find(x => x.slug === slug);
@@ -2046,6 +2048,7 @@ async function route() {
     else if (parts[0] === "mla" && parts[2]) await mlaConstituency(parts[1], parts[2]);
     else if (parts[0] === "mla" && parts[1]) await mlaState(parts[1]);
     else if (parts[0] === "mla") await mlaHome();
+    else if (parts[0] === "mlawork" && parts.length === 4) await mlaWork(parts[1], parts[3], parts[2]);
     else if (parts[0] === "mlawork") await mlaWork(parts[1], parts.slice(2).join("/"));
     else if (parts[0] === "mpwork") await mpWork(parts[1], parts.slice(2).join("/"));
     else if (parts[0] === "schools" && parts[2]) await schoolsDistrict(parts[1], parts[2]);
