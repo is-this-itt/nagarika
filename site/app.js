@@ -73,7 +73,7 @@ async function mlaWorks(stateSlug) {
   const key = "_mla_" + stateSlug;
   if (!cache[key]) {
     cache[key] = load(`mlalads/${stateSlug}.json`).then(d => table2objects(d).map(o => {
-      o.amount = Number(o.sanction_amount) || 0;
+      o.amount = Number(o.sanction_amount) || Number(o.recommended_amount) || 0;
       o.spent = Number(o.spent_amount) || 0;
       o.cons = slugify(o.constituency);
       return o;
@@ -457,6 +457,8 @@ function mpView(stateSlug, showConstituency) {
 // MLA funds view.
 const MLA_DONE = s => s === "Completed";
 const MLA_NOT_STARTED = s => s === "Not Started";
+// Recommended by the MLA, not yet sanctioned: "Pending with MLA / Collector / ZP / EA".
+const MLA_AWAITING = s => /^Pending with/i.test(s || "");
 function mlaView(stateSlug, showConstituency) {
   return {
     keys: ["name", "category", "constituency", "district", "project_code"],
@@ -470,8 +472,9 @@ function mlaView(stateSlug, showConstituency) {
     filters: {
       "": ["All", () => true],
       done: ["Completed", w => MLA_DONE(w.status)],
-      going: ["Started or in progress", w => !MLA_DONE(w.status) && !MLA_NOT_STARTED(w.status)],
+      going: ["Started or in progress", w => /^(started|in progress)$/i.test(w.status)],
       notstarted: ["Not started", w => MLA_NOT_STARTED(w.status)],
+      awaiting: ["Awaiting sanction", w => MLA_AWAITING(w.status)],
       road: ["Roads", w => w.component === "Road"],
       edu: ["Education", w => w.component === "Education"],
     },
@@ -481,7 +484,7 @@ function mlaView(stateSlug, showConstituency) {
         <td data-label="Work"><a href="#/mlawork/${stateSlug}/${enc(w.id)}">${esc(w.name)}</a>
           ${showConstituency ? `<div class="sub">${esc(w.constituency)} · ${esc(w.district)} district</div>` : ""}</td>
         <td data-label="Type">${esc(w.category) || NP}</td>
-        <td data-label="Sanctioned" class="num">${inr(w.amount) || NP}</td>
+        <td data-label="Sanctioned" class="num">${inr(w.sanction_amount) || (w.recommended_amount ? `${inr(w.recommended_amount)} <span class="sub">recommended</span>` : NP)}</td>
         <td data-label="Spent" class="num">${inr(w.spent) || "₹0"}</td>
         <td data-label="Status">${esc(w.status) || NP}</td></tr>`).join("")}</tbody></table>`,
   };
@@ -555,8 +558,12 @@ const HELP = {
   "Amount sanctioned": "The amount approved for the work.",
   "Spent so far": "Money spent on the work as shown on the portal. It often lags behind what is happening at the site.",
   "Time allowed": "The number of days the portal gives for finishing the work. It does not show the start date, so we cannot tell if it is late.",
-  "Work status": "Not started, started, in progress or completed, as the portal shows it.",
-  "MLA": "The portal's work list does not name the MLA. Its MLA-wise report does; we will add it.",
+  "Work status": "As the portal shows it. \"Pending with MLA, Collector, ZP or EA\" means the MLA has recommended the work and it is waiting for approval or sanction at that office (ZP: Zilla Parishad; EA: the executing agency). Then: not started, started or in progress, completed, or rejected.",
+  "MLA": "The MLA who recommended the work, from the portal's MLA-wise report.",
+  "Recommended": "The date and number of the MLA's recommendation letter, and the amount the MLA asked for.",
+  "Sanctioned on": "The date the district sanctioned the work, which releases the money for it.",
+  "Implementing agency": "The officer or office responsible for carrying out the work.",
+  "Where": "The block or urban local body, and the village or ward, as the portal gives them.",
   // road works
   "Agency": "The government body that issued the tender or work order, such as a city corporation or the PWD.",
   "Office": "The zone, division or office inside that body that handles the work.",
@@ -1347,7 +1354,7 @@ async function mlaHome() {
 }
 
 function mlaStats(x) {
-  return stats([[fmtN(x.works), "Works sanctioned"], [inr(x.sanctioned) || "—", "Sanctioned"], [inr(x.spent) || "₹0", "Spent so far"],
+  return stats([[fmtN(x.works), "Works"], [inr(x.sanctioned) || "—", "Sanctioned"], [inr(x.spent) || "₹0", "Spent so far"],
     [fmtN(x.completed), "Completed"]]);
 }
 
@@ -1393,8 +1400,10 @@ async function mlaConstituency(slug, id) {
     ${crumbs([["Home", "#/"], ["MLA funds", "#/mla"], [s.state, `#/mla/${slug}`], [c.name]])}
     <h1>${esc(c.name)}</h1>
     <p class="muted">Assembly constituency · ${esc(c.district)} district, ${esc(s.state)} · ${s.years.map(esc).join(", ")}</p>
+    ${c.mla ? `<p>MLA: <b>${esc(c.mla)}</b></p>` : ""}
     ${mlaStats(c)}
     ${c.not_started ? `<p class="note"><a href="#/mla/${slug}/${id}?f=notstarted">${fmtN(c.not_started)} works</a> are marked not started.</p>` : ""}
+    ${c.awaiting ? `<p class="note"><a href="#/mla/${slug}/${id}?f=awaiting">${fmtN(c.awaiting)} works</a> recommended by the MLA are still waiting for approval or sanction.</p>` : ""}
     <div id="res"></div>
     ${complainBox(["mla_" + slug, "national"], "")}`;
   results(document.getElementById("res"), list, mlaView(slug, false));
@@ -1405,6 +1414,7 @@ function mlaRef(w) {
     `Work: ${w.name}`,
     `Project code: ${w.project_code} (MLALADS, ${w.financial_year})`,
     `Constituency: ${w.constituency}, ${w.district} district`,
+    w.mla ? `Recommended by: ${w.mla}${w.letter_no ? `, letter ${w.letter_no}` : ""}${w.recommended_on ? ` (${date(w.recommended_on)})` : ""}` : "",
     w.sanction_amount ? `Amount sanctioned: ${inr(w.sanction_amount)}` : "",
     `Spent so far, as shown on the MLALADS portal: ${inr(w.spent_amount) || "Rs 0"}`,
     w.status ? `Status on the portal: ${w.status}` : "",
@@ -1445,13 +1455,18 @@ async function mlaWork(slug, id) {
       ${row("Spent so far", inr(w.spent_amount) || "₹0")}
       ${row("Time allowed", w.days_allowed ? `${fmtN(w.days_allowed)} days` : "")}
       ${row("Status", esc(w.status))}
-      ${row("MLA", "")}
+      ${row("MLA", esc(w.mla))}
+      ${row("Recommended", [date(w.recommended_on), w.letter_no ? `letter ${esc(w.letter_no)}` : "", inr(w.recommended_amount)].filter(Boolean).join(" · "))}
+      ${row("Sanctioned on", date(w.sanctioned_on))}
+      ${row("Implementing agency", esc(w.agency))}
+      ${row("Where", [w.village, w.block].filter(Boolean).map(esc).join(", "))}
     </tbody></table>
     <h2>Official source</h2>
     <p><a class="btn" href="https://mlalads.odisha.gov.in/IPMS/Report" target="_blank" rel="noopener">Open the MLALADS report</a></p>
     <p class="muted small">The portal opens only from India. On it, choose ${esc(w.district)} › ${esc(w.constituency)} and look for project ${esc(w.project_code)}. Last checked ${date(w.last_checked)}.</p>
     ${complainBox(["mla_" + slug, "national"], "")}
-    ${askPanel(MLA_NOT_STARTED(w.status) ? "This work is sanctioned but marked not started. Ask the block or district office why."
+    ${askPanel(MLA_AWAITING(w.status) ? `This work was recommended${w.recommended_on ? ` on ${date(w.recommended_on)}` : ""} and is ${esc(w.status.toLowerCase())}. Ask the district office when it will be sanctioned.`
+      : MLA_NOT_STARTED(w.status) ? "This work is sanctioned but marked not started. Ask the block or district office why."
       : "Want the sanction order, the contractor's name or the completion certificate? Ask the block or district office.")}
     <p class="small"><a href="${REPO}/issues/new?title=${enc("Data: " + w.id)}">Report a mistake</a></p>`;
   wireAsk([["rti", "RTI application", me => mlaRti(w, me)]], w.project_code);

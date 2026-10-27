@@ -6,6 +6,9 @@ Odisha: mlalads.odisha.gov.in publishes every current-year project through the p
 endpoint behind its landing page (/Masters/Ajax/GetProjectFinancialList): project code,
 year, district, constituency, category, department, component (General / Road /
 Education), sanctioned and spent amounts, time allowed and status. No login.
+The MLA-wise report (/MIS/MISReport/GetMLAWiseRecommendedWorkDetailsReport, a DataTables
+endpoint, one financial year at a time) adds the MLA's name, the recommendation letter and
+date, the sanction date, the implementing agency, and the block and village.
 
 Output: one CSV per state in data/mlalads/. Amounts are in rupees.
 """
@@ -24,14 +27,17 @@ UA = "Mozilla/5.0 (compatible; nagarika civic data; +https://github.com/is-this-
 CSV_DIR = os.path.join(DATA, "mlalads")
 FIELDS = ["id", "project_code", "state", "financial_year", "district", "constituency", "component",
           "category", "department", "name", "sanction_amount", "spent_amount", "days_allowed",
-          "status", "source_url", "first_seen", "last_checked"]
+          "status", "mla", "recommended_amount", "letter_no", "recommended_on", "sanctioned_on", "agency", "block", "village",
+          "source_url", "first_seen", "last_checked"]
+REPORT_COLS = ["rowNumber", "financialYear", "districtName", "constituencyName", "fullName", "letterNo",
+               "strRecommendationDate", "recommendationAmount", "projectId", "workDescription", "workStatus"]
 ODISHA = "https://mlalads.odisha.gov.in"
 
 
-def get_json(url):
+def get_json(url, params=None):
     for attempt in range(3):
         try:
-            r = requests.get(url, headers={"User-Agent": UA, "X-Requested-With": "XMLHttpRequest"},
+            r = requests.get(url, params=params, headers={"User-Agent": UA, "X-Requested-With": "XMLHttpRequest"},
                              timeout=300, verify=False)
             if r.status_code == 200:
                 return r.json()
@@ -47,6 +53,45 @@ def rupees(v):
     except (TypeError, ValueError):
         return ""
     return str(int(round(f))) if f > 0 else ""
+
+
+def day(v):
+    """'2026-06-21T10:58:58' -> '2026-06-21'; the portal uses 0001-01-01 for 'none'."""
+    v = (v or "")[:10]
+    return v if v[:2] in ("19", "20") else ""
+
+
+def odisha_mla(year):
+    """MLA-wise recommended works for one financial year (2026 = 2026-27), by project id."""
+    out, start, size = {}, 0, 5000
+    while True:
+        params = {"draw": 1, "start": start, "length": size, "search[value]": "", "search[regex]": "false",
+                  "order[0][column]": 1, "order[0][dir]": "asc",
+                  "DistrictId": 0, "FinancialYear": year, "ConstituencyId": 0, "MlaId": 0, "ExtSearch": ""}
+        for i, c in enumerate(REPORT_COLS):
+            params.update({f"columns[{i}][data]": c, f"columns[{i}][name]": "", f"columns[{i}][searchable]": "true",
+                           f"columns[{i}][orderable]": "true", f"columns[{i}][search][value]": "",
+                           f"columns[{i}][search][regex]": "false"})
+        d = get_json(ODISHA + "/MIS/MISReport/GetMLAWiseRecommendedWorkDetailsReport", params)
+        rows = (d or {}).get("aaData") or []
+        for p in rows:
+            code = str(p.get("projectId") or "").strip()
+            if code:
+                out[code] = {
+                    "_row": p,
+                    "mla": " ".join((p.get("fullName") or "").split()),
+                    "recommended_amount": rupees((p.get("recommendationAmount") or 0) * 100000),
+                    "letter_no": " ".join((p.get("letterNo") or "").split()),
+                    "recommended_on": day(p.get("recommendationDate")),
+                    "sanctioned_on": day(p.get("sanctionDate")),
+                    "agency": " ".join((p.get("implementionAgencyName") or "").split()),
+                    "block": (p.get("blockULBName") or "").strip().title(),
+                    "village": (p.get("wordVillageName") or "").strip(),
+                }
+        total = (d or {}).get("iTotalDisplayRecords") or 0
+        start += size
+        if not rows or start >= total:
+            return out
 
 
 def odisha():
@@ -69,6 +114,35 @@ def odisha():
             "sanction_amount": rupees(p.get("sanctionAmount")), "spent_amount": rupees(p.get("expenditureAmount")),
             "days_allowed": str(p.get("completionDays") or ""), "status": p.get("status") or "",
             "source_url": ODISHA + "/IPMS/Report",
+        })
+    years = sorted({int(r["financial_year"][:4]) for r in out if r["financial_year"][:4].isdigit()})
+    extra = {}
+    for y in years:
+        got = odisha_mla(y)
+        print(f"odisha: MLA report {y}: {len(got)} works")
+        extra.update(got)
+    have = set()
+    for r in out:
+        x = extra.get(r["project_code"])
+        if x:
+            r.update({k: v for k, v in x.items() if k != "_row"})
+            have.add(r["project_code"])
+    # Works the MLA recommended that the project list doesn't carry yet (mostly awaiting
+    # sanction, e.g. "Pending with ZP").
+    for code, x in extra.items():
+        if code in have:
+            continue
+        p = x["_row"]
+        out.append({
+            "id": f"od:{code}", "project_code": code, "state": "Odisha",
+            "financial_year": p.get("financialYear") or "",
+            "district": (p.get("districtName") or "").strip().title(),
+            "constituency": (p.get("constituencyName") or "").strip().title(),
+            "component": "", "category": (p.get("workCategory") or "").strip(), "department": "",
+            "name": " ".join((p.get("workDescription") or "").split()),
+            "sanction_amount": rupees(p.get("sanctionAmount")), "spent_amount": "", "days_allowed": "",
+            "status": p.get("workStatus") or "", "source_url": ODISHA + "/IPMS/Report",
+            **{k: v for k, v in x.items() if k != "_row"},
         })
     return out
 

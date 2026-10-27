@@ -52,7 +52,7 @@ def main():
 
     # Compact JSON for the site: only the fields pages show.
     keep = [f for f in FIELDS if f not in ("state_lgd",)] + ["flag"]
-    json.dump({"fields": keep, "rows": [[r[k] for k in keep] for r in rows]},
+    json.dump({"fields": keep, "rows": [[r.get(k) or "" for k in keep] for r in rows]},
               open(os.path.join(OUT, "data", "works.json"), "w"), separators=(",", ":"), ensure_ascii=False)
 
     cities, ward_index = [], {}
@@ -151,7 +151,9 @@ def build_mlalads():
         return []
     os.makedirs(os.path.join(OUT, "data", "mlalads"), exist_ok=True)
     keep = ["id", "project_code", "financial_year", "district", "constituency", "component", "category",
-            "department", "name", "sanction_amount", "spent_amount", "days_allowed", "status", "last_checked"]
+            "department", "name", "sanction_amount", "spent_amount", "days_allowed", "status", "mla",
+            "recommended_amount", "letter_no", "recommended_on", "sanctioned_on", "agency", "block", "village",
+            "last_checked"]
     num = lambda v: int(v) if v and v.isdigit() else 0
     index = []
     for path in paths:
@@ -160,19 +162,26 @@ def build_mlalads():
             continue
         shutil.copy(path, os.path.join(OUT, "data", "mlalads", os.path.basename(path)))
         st = slug(rows[0]["state"])
-        json.dump({"fields": keep, "rows": [[r[k] for k in keep] for r in rows]},
+        json.dump({"fields": keep, "rows": [[r.get(k) or "" for k in keep] for r in rows]},
                   open(os.path.join(OUT, "data", "mlalads", f"{st}.json"), "w"),
                   separators=(",", ":"), ensure_ascii=False)
         cons = {}
         for r in rows:
             c = cons.setdefault(r["constituency"], {"id": slug(r["constituency"]), "name": r["constituency"],
                                                     "district": r["district"], "works": 0, "sanctioned": 0,
-                                                    "spent": 0, "completed": 0, "not_started": 0})
+                                                    "spent": 0, "completed": 0, "not_started": 0,
+                                                    "awaiting": 0, "mlas": {}})
             c["works"] += 1
             c["sanctioned"] += num(r["sanction_amount"])
             c["spent"] += num(r["spent_amount"])
             c["completed"] += r["status"] == "Completed"
             c["not_started"] += r["status"] == "Not Started"
+            c["awaiting"] += r["status"].startswith("Pending with")
+            if r.get("mla"):
+                c["mlas"][r["mla"]] = c["mlas"].get(r["mla"], 0) + 1
+        for c in cons.values():
+            # The MLA named on most of this constituency's recommendations.
+            c["mla"] = max(c.pop("mlas").items(), key=lambda kv: kv[1])[0] if c["mlas"] else ""
         cl = sorted(cons.values(), key=lambda c: c["name"])
         cats = {}
         for r in rows:
@@ -180,6 +189,7 @@ def build_mlalads():
         index.append({"state": rows[0]["state"], "slug": st, "works": len(rows),
                       "sanctioned": sum(c["sanctioned"] for c in cl), "spent": sum(c["spent"] for c in cl),
                       "completed": sum(c["completed"] for c in cl), "not_started": sum(c["not_started"] for c in cl),
+                      "awaiting": sum(c["awaiting"] for c in cl),
                       "years": sorted({r["financial_year"] for r in rows}), "constituencies": cl,
                       "categories": sorted(cats.items(), key=lambda kv: -kv[1]),
                       "last_checked": max(r["last_checked"] for r in rows)})
@@ -232,8 +242,9 @@ def build_places(meta, ward_index, rows, mp_index, mla_index=(), edu_states=(), 
     for s in mla_index:
         out.append(["State", s["state"], "MLA funds", f"#/mla/{s['slug']}", ""])
         for c in s["constituencies"]:
-            out.append(["Assembly constituency", c["name"], f"{s['state']} · MLA funds · {c['district']} district",
-                        f"#/mla/{s['slug']}/{c['id']}", c["district"]])
+            out.append(["Assembly constituency", c["name"], f"{s['state']} · MLA funds · {c['district']} district"
+                        + (f" · MLA: {c['mla']}" if c.get("mla") else ""), f"#/mla/{s['slug']}/{c['id']}",
+                        f"{c['district']} {c.get('mla', '')}"])
     for st in edu_states:
         out.append(["State", st, "Education help: RTE seats, scholarships", f"#/guides/education/{slug(st)}",
                     "school scholarship rte admission"])

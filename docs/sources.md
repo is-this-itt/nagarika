@@ -122,12 +122,14 @@ gba.karnataka.gov.in. These need a collector running from an Indian network.
 - **Fields:** project code, year, district, constituency, component (General / Road /
   Education), category, department, name, sanctioned and spent amounts, days allowed,
   status.
-- **Not yet:** the MLA's name, the recommendation date and the letter number. They are
-  in the portal's MLA-wise report (`/MIS/MISReport/GetMLAWiseRecommendedWorkDetailsReport`,
-  parameters not worked out yet). Yearly totals since 1997-98 are on `/IPMS/LegacyReport`.
-  The Madhya Pradesh and Delhi portals drop the connection even from India. The UP
-  address we had (mlalads.up.gov.in) does not exist. Karnataka planning answered only
-  once.
+- **MLA-wise report:** `/MIS/MISReport/GetMLAWiseRecommendedWorkDetailsReport` (DataTables
+  parameters, `FinancialYear=2026` for 2026-27) adds the MLA's name, recommendation letter
+  and date, sanction date, implementing agency, block and village. It also lists works the
+  MLA recommended that are still awaiting sanction ("Pending with MLA / Collector / ZP / EA");
+  those are added as works with the recommended amount.
+- **Not yet:** yearly totals since 1997-98 are on `/IPMS/LegacyReport`. The Madhya Pradesh
+  and Delhi portals drop the connection; retry from India with the VPN off. The UP address we
+  had (mlalads.up.gov.in) does not exist.
 
 ## MPLADS (MP local area development funds): `mplads.py`
 
