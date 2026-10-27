@@ -26,7 +26,7 @@ const TOPICS = [
 
 // States whose MLA fund portals we collect from (from India; see docs/india-runner.md).
 // Other states' portals are blocked, missing or need a login so far.
-const MLA_STATES_NOTE = "Odisha and Uttar Pradesh, for now. Delhi publishes its sanction orders as PDF files, which we are working on. Madhya Pradesh's portal needs a login.";
+const MLA_STATES_NOTE = "Odisha and Uttar Pradesh, for now. Delhi publishes its sanction orders only as PDF files, which we list by constituency. Madhya Pradesh's portal needs a login.";
 // What each state's portal is called and what it publishes. progress: the portal gives a
 // physical progress % and an estimated cost instead of sanctioned and spent amounts.
 const MLA_PORTAL = {
@@ -1370,13 +1370,51 @@ async function mpWork(slug, id) {
 // ---------- MLA funds ----------
 async function mlaHome() {
   const idx = await load("mlalads_index.json").catch(() => []);
-  if (idx.length === 1) return mlaState(idx[0].slug);
+  const dl = await load("mlalads_delhi.json").catch(() => null);
+  if (idx.length === 1 && !dl) return mlaState(idx[0].slug);
   app.innerHTML = `
     ${crumbs([["Home", "#/"], ["MLA funds"]])}
     <h1>MLA funds</h1>
     <p class="lede">Most states give each MLA a yearly fund to recommend works in their constituency. ${MLA_STATES_NOTE}</p>
     <table class="plain stack"><thead><tr><th>State</th><th class="num">Works</th><th class="num">Sanctioned</th><th class="num">Completed</th></tr></thead>
-    <tbody>${idx.map(s => `<tr><td><a href="#/mla/${s.slug}">${esc(s.state)}</a></td><td class="num" data-label="Works">${fmtN(s.works)}</td><td class="num" data-label="Sanctioned">${inr(s.sanctioned) || (s.estimated ? `${inr(s.estimated)} <span class="sub">estimated</span>` : "—")}</td><td class="num" data-label="Completed">${fmtN(s.completed)}</td></tr>`).join("")}</tbody></table>`;
+    <tbody>${idx.map(s => `<tr><td><a href="#/mla/${s.slug}">${esc(s.state)}</a></td><td class="num" data-label="Works">${fmtN(s.works)}</td><td class="num" data-label="Sanctioned">${inr(s.sanctioned) || (s.estimated ? `${inr(s.estimated)} <span class="sub">estimated</span>` : "—")}</td><td class="num" data-label="Completed">${fmtN(s.completed)}</td></tr>`).join("")}</tbody></table>
+    ${dl ? `<h2>Delhi</h2><p>Delhi publishes its MLA fund sanction orders as PDF files, not as a list of works. <a href="#/mla/delhi">${fmtN(dl.orders.length)} files, by constituency</a>.</p>` : ""}`;
+}
+
+// Delhi: an index of sanction order PDFs by assembly constituency.
+async function delhiOrders(id) {
+  const d = await load("mlalads_delhi.json").catch(() => null);
+  if (!d) return notFound();
+  const by = {};
+  for (const o of d.orders) {
+    const k = String(o.ac);
+    (by[k] = by[k] || { ac: o.ac, name: o.constituency || `Constituency ${o.ac}`, id: slugify(o.constituency) || k, orders: [] }).orders.push(o);
+  }
+  const cons = Object.values(by).sort((a, b) => a.ac - b.ac);
+  const latest = c => c.orders.map(o => o.date).sort().pop();
+  const src = `<p class="muted small">Source: <a href="${esc(d.source)}" target="_blank" rel="noopener">MLALAD Scheme</a>, Department of Urban Development, Government of NCT of Delhi. Each file holds one or more sanction orders; the title gives the constituency number, the order numbers and the date. The works and amounts are only inside the PDFs. Last checked ${date(d.last_checked)}.</p>`;
+  if (id) {
+    const c = cons.find(x => x.id === id);
+    if (!c) return notFound();
+    app.innerHTML = `
+      ${crumbs([["Home", "#/"], ["MLA funds", "#/mla"], ["Delhi", "#/mla/delhi"], [c.name]])}
+      <h1>${esc(c.name)}</h1>
+      <p class="muted">Assembly constituency ${c.ac} · Delhi</p>
+      ${stats([[fmtN(c.orders.length), "Files"], [date(latest(c)), "Latest"]])}
+      <table class="plain stack"><thead><tr><th>Date</th><th>Sanction order numbers</th><th>File</th></tr></thead>
+      <tbody>${c.orders.map(o => `<tr><td data-label="Date">${date(o.date)}</td><td data-label="Order numbers">${esc(o.orders) || NP}</td>
+        <td data-label="File"><a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.title)}</a></td></tr>`).join("")}</tbody></table>
+      ${src}`;
+    return;
+  }
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["MLA funds", "#/mla"], ["Delhi"]])}
+    <h1>MLA funds in Delhi</h1>
+    <p class="lede">Delhi's MLAs recommend works under the MLA Local Area Development (MLALAD) Scheme, and the Urban Development Department publishes the sanction orders as PDF files. Here they are by constituency, newest first. Open a file to see the works and amounts.</p>
+    <table class="plain stack"><thead><tr><th>Constituency</th><th class="num">Files</th><th>Latest</th></tr></thead>
+    <tbody>${cons.map(c => `<tr><td><a href="#/mla/delhi/${c.id}">${c.ac}. ${esc(c.name)}</a></td><td class="num" data-label="Files">${fmtN(c.orders.length)}</td>
+      <td data-label="Latest">${date(latest(c))}</td></tr>`).join("")}</tbody></table>
+    ${src}`;
 }
 
 function mlaStats(x) {
@@ -2004,6 +2042,7 @@ async function route() {
     else if (parts[0] === "mp" && parts[2]) await mpConstituency(parts[1], parts[2]);
     else if (parts[0] === "mp" && parts[1]) await mpState(parts[1]);
     else if (parts[0] === "mp") await mpHome();
+    else if (parts[0] === "mla" && parts[1] === "delhi") await delhiOrders(parts[2]);
     else if (parts[0] === "mla" && parts[2]) await mlaConstituency(parts[1], parts[2]);
     else if (parts[0] === "mla" && parts[1]) await mlaState(parts[1]);
     else if (parts[0] === "mla") await mlaHome();

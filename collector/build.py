@@ -86,6 +86,7 @@ def main():
     shutil.copy(WORKS_CSV, os.path.join(OUT, "data", "works.csv")) if os.path.exists(WORKS_CSV) else None
     mp_index = build_mplads()
     mla_index = build_mlalads()
+    build_delhi_orders()
     edu_states = build_education()
     school_states = build_schools()
     build_places(meta, ward_index, rows, mp_index, mla_index, edu_states, school_states)
@@ -196,6 +197,13 @@ def build_mlalads():
                       "last_checked": max(r["last_checked"] for r in rows)})
     json.dump(index, open(os.path.join(OUT, "data", "mlalads_index.json"), "w"), separators=(",", ":"), ensure_ascii=False)
     return index
+
+
+def build_delhi_orders():
+    """Delhi's MLALAD sanction order files (an index of PDFs, see collector/mlalads.py)."""
+    src = os.path.join(DATA, "mlalads", "delhi_orders.json")
+    if os.path.exists(src):
+        shutil.copy(src, os.path.join(OUT, "data", "mlalads_delhi.json"))
 
 
 def build_education():

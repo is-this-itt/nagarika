@@ -17,6 +17,12 @@ district, block or urban body, ward or gram panchayat, year, recommendation date
 implementing agency's estimated cost (in lakh) and physical progress. Constituencies are
 named by assembly number, matched to English names in data/mlalads/up_constituencies.json.
 
+Delhi: the Urban Development Department lists MLALAD sanction orders as PDF files at
+udd.delhi.gov.in/mlalad-scheme, ten to a page, titled "AC41-(5062-5072) 17-09-2026":
+assembly constituency number, the range of sanction order numbers in the file, and the
+date. We index those titles (data/mlalads/delhi_orders.json); the works themselves are
+only in the PDFs.
+
 Output: one CSV per state in data/mlalads/. Amounts are in rupees.
 """
 import csv
@@ -262,6 +268,64 @@ def up():
     return out
 
 
+DELHI = "https://udd.delhi.gov.in"
+
+
+def delhi():
+    """Every sanction order file listed on the MLALAD scheme pages, newest data merged over old."""
+    names = {}
+    path = os.path.join(CSV_DIR, "delhi_constituencies.json")
+    if os.path.exists(path):
+        names = json.load(open(path, encoding="utf-8"))
+    sess = requests.Session()
+    sess.headers.update({"User-Agent": UA})
+    found, page, last = {}, 0, None
+    while last is None or page <= last:
+        html = None
+        for attempt in range(3):
+            try:
+                r = sess.get(DELHI + "/mlalad-scheme", params={"page": page} if page else None, timeout=120, verify=False)
+                if r.status_code == 200:
+                    html = r.text
+                    break
+            except requests.RequestException:
+                pass
+            time.sleep(10 * (attempt + 1))
+        if html is None:
+            print(f"delhi: page {page} did not load, stopping")
+            break
+        if last is None:
+            pages = [int(x) for x in re.findall(r"[?&]page=(\d+)", html)]
+            last = max(pages) if pages else 0
+        for href, title in re.findall(r'<a href="(/ud/[^"]+)"[^>]*>([^<]+)</a>', html):
+            title = " ".join(title.split())
+            m = re.match(r"AC\s*-?\s*(\d+)\s*-?\s*\(?\s*(\d+)?\s*(?:-\s*(\d+))?\s*\)?\s*(\d{2})-(\d{2})-(\d{4})", title, re.I)
+            if not m:
+                continue
+            ac = str(int(m[1]))
+            a, b = m[2], m[3] or m[2]
+            found[href] = {"ac": int(ac), "constituency": names.get(ac, ""), "title": title,
+                           "orders": f"{a}-{b}" if a and b != a else (a or ""),
+                           "count": int(b) - int(a) + 1 if a and b and int(b) >= int(a) else None,
+                           "date": f"{m[6]}-{m[5]}-{m[4]}", "url": DELHI + href}
+        page += 1
+        time.sleep(1)
+    if not found:
+        return None
+    out = os.path.join(CSV_DIR, "delhi_orders.json")
+    old = {}
+    if os.path.exists(out):
+        old = {o["url"]: o for o in json.load(open(out, encoding="utf-8"))["orders"]}
+    t = today()
+    for o in found.values():
+        o["first_seen"] = old.get(o["url"], {}).get("first_seen") or t
+    orders = list({**old, **{o["url"]: o for o in found.values()}}.values())
+    orders.sort(key=lambda o: (o["ac"], o["date"]), reverse=True)
+    json.dump({"source": DELHI + "/mlalad-scheme", "last_checked": t, "orders": orders},
+              open(out, "w", encoding="utf-8"), indent=0, ensure_ascii=False)
+    return orders
+
+
 def save(state_slug, rows):
     path = os.path.join(CSV_DIR, f"{state_slug}.csv")
     old = {}
@@ -300,6 +364,12 @@ def main():
         ok = False
     else:
         print(f"uttar pradesh: {len(rows)} works fetched, {save('uttar-pradesh', rows)} kept")
+    orders = delhi()
+    if orders is None:
+        print("delhi: no sanction orders (portal down or not reachable from here)")
+        ok = False
+    else:
+        print(f"delhi: {len(orders)} sanction order files")
     sys.exit(0 if ok else 1)
 
 
