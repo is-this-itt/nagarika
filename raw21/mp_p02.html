@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="Referrer-Policy" value="no-referrer | same-origin" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+	<title>:: MLALADS - Monitoring System :: - Forgot
+		Password</title>
+	<link rel="stylesheet" href="/css/font-awesome.min-ef8c533af7f2cf8d8595b1a2f2cb2606.css" />
+	<link rel="stylesheet" href="/css/simple-line-icons-26a36d3b280acea9c4742a08f0e02362.css" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/materialdesignicons.min-6edcf2a5e7862ef959f6e403f087ca4b.css" />
+	<link rel="stylesheet" href="/assets/fonts/fonts-2c071bed980c8b7e8f18776d41d0e12e.css" />
+	<link rel="stylesheet" href="/css/style-1d18f150faf71ef4200c33999124ce20.css" />
+	<link rel="stylesheet" href="/css/custom-00c7a62a2ed547a3b931499c333a4999.css" />
+	<link rel="stylesheet" href="/assets/css/main-e879fa7fca91029cc444da61e4eb5561.css" />
+
+	<script type="text/javascript">
+		//<![CDATA[
+
+		function togglePassword(fieldId, button) {
+
+			var passwordField = document.getElementById(fieldId);
+			var icon = button.querySelector("i");
+
+			if (passwordField.type === "password") {
+
+				passwordField.type = "text";
+
+				icon.classList.remove("fa-eye");
+				icon.classList.add("fa-eye-slash");
+
+			} else {
+
+				passwordField.type = "password";
+
+				icon.classList.remove("fa-eye-slash");
+				icon.classList.add("fa-eye");
+
+			}
+		}
+
+		function checkForgotPasswordStrength() {
+
+			var password = document.getElementById("newPassword").value;
+			var confirmPassword = document.getElementById("forgotConfirmPassword").value;
+
+			var strengthBox = document.getElementById("forgotPasswordStrength");
+			var strengthFill = document.getElementById("forgotStrengthFill");
+			var strengthText = document.getElementById("forgotStrengthText");
+			var errorMsg = document.getElementById("forgotStrongPasswordError");
+			var submitBtn = document.getElementById("resetPasswordBtn");
+
+			if (!password) {
+				strengthBox.style.display = "none";
+				errorMsg.style.display = "none";
+				submitBtn.disabled = true;
+				return;
+			}
+
+			strengthBox.style.display = "block";
+
+			var hasLength = password.length >= 8;
+			var hasUpper = /[A-Z]/.test(password);
+			var hasLower = /[a-z]/.test(password);
+			var hasNumber = /[0-9]/.test(password);
+			var hasSpecial = /[@$!%*#?&]/.test(password);
+
+			if (!(hasLength && hasUpper && hasLower && hasNumber && hasSpecial)) {
+
+				strengthFill.style.width = "33%";
+				strengthFill.style.background = "red";
+				strengthText.innerHTML = "Weak Password";
+
+				errorMsg.style.display = "block";
+				submitBtn.disabled = true;
+
+			} else {
+
+				strengthFill.style.width = "100%";
+				strengthFill.style.background = "green";
+				strengthText.innerHTML = "Strong Password";
+
+				errorMsg.style.display = "none";
+
+				// Strong hai but confirm password bhi same hona chahiye
+				if (password === confirmPassword) {
+					submitBtn.disabled = false;
+				} else {
+					submitBtn.disabled = true;
+				}
+			}
+
+			checkForgotPasswordMatch();
+		}
+
+		function checkForgotPasswordMatch() {
+
+			var password = document.getElementById("newPassword").value;
+			var confirmPassword = document.getElementById("forgotConfirmPassword").value;
+
+			var errorMsg = document.getElementById("forgotPasswordError");
+			var submitBtn = document.getElementById("resetPasswordBtn");
+
+			if (!confirmPassword) {
+				errorMsg.style.display = "none";
+				submitBtn.disabled = true;
+				return;
+			}
+
+			if (password !== confirmPassword) {
+
+				errorMsg.style.display = "block";
+				submitBtn.disabled = true;
+
+			} else {
+
+				errorMsg.style.display = "none";
+
+				// Pehle password strong hai ya nahi
+				var strong =
+					password.length >= 8 &&
+					/[A-Z]/.test(password) &&
+					/[a-z]/.test(password) &&
+					/[0-9]/.test(password) &&
+					/[@$!%*#?&]/.test(password);
+
+				submitBtn.disabled = !strong;
+			}
+		}
+
+		//]]>
+	</script>
+
+</head>
+
+<body class="bgimage">
+	<div class="main">
+		<div class="main-content">
+			<div class="main-header">
+				<div class="logo-wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="col-12  col-lg-8 pr">
+								<div class="logo-holder d-flex align-items-center">
+									<div class="">
+										<a href="#" title="MLALADS - Monitoring System">
+											<img alt="MLALADS - Monitoring System" src="/assets/img/mplogo-4e519dbd03d0f64afa83a8984085960a.png" />
+										</a>
+									</div>
+									<div class="logo-title">
+										<h1>MLALADS - Monitoring System</h1>
+										<p>Government of Madhya Pradesh</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-12 col-lg-4 text-right d-flex flex-wrap flex-lg-nowrap justify-content-end align-items-center user-manual">
+								<a class="btn btn-danger" href="/login"> <em class="fa fa-home"></em> Back to Home
+								</a>
+							</div>
+						</div>
+						<!-- /.row -->
+					</div>
+				</div>
+			</div>
+			<div class="ptop">
+
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-5">
+							<div class="card mt-5">
+								<div class="card-header">Forgot Password</div>
+
+
+
+
+
+								<form method="post" action="/resetpassword">
+
+									<div class="card-body pb-2">
+
+										<input type="hidden" name="_csrf" value="d9ba79c9-58e6-456d-b008-b35e428ce965" />
+
+										<!-- SUCCESS MESSAGE -->
+										
+
+										<!-- ERROR MESSAGE -->
+										
+
+										<!-- VALIDATION ERROR - EMAIL -->
+										
+
+										<!-- VALIDATION ERROR - MOBILE -->
+										
+
+
+										<!-- ================================================= -->
+										<!-- STEP 1 : EMAIL + MOBILE + CAPTCHA -->
+										<!-- ================================================= -->
+
+										<div>
+
+											<!-- EMAIL -->
+											<label>Please enter your registered Email Id</label>
+
+											<div class="input-group mb-3">
+
+												<span class="input-group-prepend">
+													<i class="mdi mdi-email"></i>
+												</span>
+
+												<input type="email" class="form-control" placeholder="Email Id" name="emailId" id="emailId" required="required" maxlength="50" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,}$" value="" />
+
+											</div>
+
+
+											<!-- MOBILE -->
+											<label>Please enter your mobile No.</label>
+
+											<div class="input-group mb-3">
+
+												<span class="input-group-prepend">
+													<i class="mdi mdi-phone"></i>
+												</span>
+
+												<input type="text" class="form-control" placeholder="Mobile No." name="mobileNumber" id="mobileNumber" required="required" maxlength="10" minlength="10" pattern="^[0-9]{10}$" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" value="" />
+
+											</div>
+
+
+											<!-- CAPTCHA -->
+											<div class="row">
+
+												<div class="col-md-5 d-flex">
+
+													<img id="captcha_id" name="imgCaptcha" height="40" src="/captcha?type=reset" />
+
+													<a href="#" class="recaptcha">
+
+														<span class="fa fa-refresh" onclick="document.getElementById('captcha_id').src = 'captcha?' + Math.random() + '&amp;type=reset'; return false">
+														</span>
+
+													</a>
+
+												</div>
+
+												<div class="col-md-7">
+
+													<div class="input-group mb-3">
+
+														<span class="input-group-prepend">
+															<i class="mdi mdi-pencil"></i>
+														</span>
+
+														<input name="captchaText" id="captchaText" type="text" maxlength="6" style="text-transform: uppercase;" autocomplete="off" required="required" class="form-control" placeholder="Captcha" />
+
+													</div>
+
+												</div>
+
+											</div>
+
+										</div>
+
+
+										<!-- ================================================= -->
+										<!-- STEP 2 : OTP -->
+										<!-- ================================================= -->
+
+										
+
+
+										<!-- ================================================= -->
+										<!-- STEP 3 : NEW PASSWORD -->
+										<!-- ================================================= -->
+
+										
+
+									</div>
+
+
+									<!-- ================================================= -->
+									<!-- BUTTONS -->
+									<!-- ================================================= -->
+
+									<div class="card-footer">
+
+										<div class="text-center">
+
+											<!-- SEND OTP -->
+											<input type="submit" class="btn btn-danger px-4" value="Send OTP" />
+
+
+											<!-- VERIFY OTP -->
+											
+
+
+											<!-- RESET PASSWORD -->
+											
+
+										</div>
+
+									</div>
+
+								<input type="hidden" name="_csrf" value="d9ba79c9-58e6-456d-b008-b35e428ce965" /></form>
+
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div th:replace="fragments/loginfooter :: footer" /> -->
+		<footer class="footer">
+			<div class="footer-bottom">
+				<div class="container text-center">
+					Copyright � 2021. All Rights Reserved.<br /> Designed &amp;
+					developed by Center of Excellence (CoE), MAP_IT.
+				</div>
+			</div>
+		</footer>
+	</div>
+
+
+</body>
+
+</html>
+
+<script src="/js/jquery.min-9ac39dc31635a363e377eda0f6fbe03f.js"></script>
+<script src="/js/popper.min-499c736b389842485292bd8cd0b9b3fd.js"></script>
+<script src="/js/bootstrap.min-7fafd33785daad1030c7b8b47ff34e99.js"></script>
+
