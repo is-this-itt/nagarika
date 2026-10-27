@@ -127,9 +127,23 @@ gba.karnataka.gov.in. These need a collector running from an Indian network.
   and date, sanction date, implementing agency, block and village. It also lists works the
   MLA recommended that are still awaiting sanction ("Pending with MLA / Collector / ZP / EA");
   those are added as works with the recommended amount.
-- **Not yet:** yearly totals since 1997-98 are on `/IPMS/LegacyReport`. The Madhya Pradesh
-  and Delhi portals drop the connection; retry from India with the VPN off. The UP address we
-  had (mlalads.up.gov.in) does not exist.
+- **Uttar Pradesh:** https://mlaladsup.in has no login on its MLA-wise report. Its pages
+  POST a body of the form `{'obj':<JSON>}` to `/DropdownBinder/fillDropdown` (years, MLAs),
+  `/Main/DistrictWiseWorkCounts` (`getWorkMLAWisePhysical`: works per MLA for one year) and
+  `/Main/getNikayDistrictWise` (`getWorkDetails` with `seatId` and `yearId`: one MLA's works).
+  Years from 2023-24. Fields are in Hindi: work ID, description, type, district, block or
+  urban body, ward or gram panchayat, recommendation date, implementing agency, estimated
+  cost (lakh) and physical progress %. No sanctioned or spent amounts. Status is ours: 100%
+  or a completion date is Completed, other progress In Progress, none Not Started. The MLA
+  list numbers each MLA by assembly constituency; `data/mlalads/up_constituencies.json`
+  (number, English name, district, from Wikipedia's list of UP assembly constituencies)
+  gives the English names. The portal's MLA profile has phone numbers and emails; we do not
+  collect them.
+- **Not yet:** Odisha's yearly totals since 1997-98 are on `/IPMS/LegacyReport`. Delhi's
+  Urban Development Department lists sanction orders as PDF files
+  (https://udd.delhi.gov.in/mlalad-scheme, titled by assembly constituency, order numbers
+  and date). Madhya Pradesh's portal needs a login; its public dashboard link carries a
+  username and password in the address, which we do not use.
 
 ## MPLADS (MP local area development funds): `mplads.py`
 

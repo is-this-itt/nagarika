@@ -152,7 +152,7 @@ def build_mlalads():
     os.makedirs(os.path.join(OUT, "data", "mlalads"), exist_ok=True)
     keep = ["id", "project_code", "financial_year", "district", "constituency", "component", "category",
             "department", "name", "sanction_amount", "spent_amount", "days_allowed", "status", "mla",
-            "recommended_amount", "letter_no", "recommended_on", "sanctioned_on", "agency", "block", "village",
+            "recommended_amount", "estimated_amount", "progress", "letter_no", "recommended_on", "sanctioned_on", "agency", "block", "village",
             "last_checked"]
     num = lambda v: int(v) if v and v.isdigit() else 0
     index = []
@@ -169,11 +169,12 @@ def build_mlalads():
         for r in rows:
             c = cons.setdefault(r["constituency"], {"id": slug(r["constituency"]), "name": r["constituency"],
                                                     "district": r["district"], "works": 0, "sanctioned": 0,
-                                                    "spent": 0, "completed": 0, "not_started": 0,
+                                                    "spent": 0, "estimated": 0, "completed": 0, "not_started": 0,
                                                     "awaiting": 0, "mlas": {}})
             c["works"] += 1
             c["sanctioned"] += num(r["sanction_amount"])
             c["spent"] += num(r["spent_amount"])
+            c["estimated"] += num(r.get("estimated_amount"))
             c["completed"] += r["status"] == "Completed"
             c["not_started"] += r["status"] == "Not Started"
             c["awaiting"] += r["status"].startswith("Pending with")
@@ -187,7 +188,7 @@ def build_mlalads():
         for r in rows:
             cats[r["category"]] = cats.get(r["category"], 0) + 1
         index.append({"state": rows[0]["state"], "slug": st, "works": len(rows),
-                      "sanctioned": sum(c["sanctioned"] for c in cl), "spent": sum(c["spent"] for c in cl),
+                      "sanctioned": sum(c["sanctioned"] for c in cl), "spent": sum(c["spent"] for c in cl), "estimated": sum(c["estimated"] for c in cl),
                       "completed": sum(c["completed"] for c in cl), "not_started": sum(c["not_started"] for c in cl),
                       "awaiting": sum(c["awaiting"] for c in cl),
                       "years": sorted({r["financial_year"] for r in rows}), "constituencies": cl,

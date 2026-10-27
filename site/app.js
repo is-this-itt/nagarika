@@ -26,7 +26,21 @@ const TOPICS = [
 
 // States whose MLA fund portals we collect from (from India; see docs/india-runner.md).
 // Other states' portals are blocked, missing or need a login so far.
-const MLA_STATES_NOTE = "Odisha only, for now. Madhya Pradesh, Delhi, Karnataka and Uttar Pradesh portals are next; their sites have not answered reliably yet.";
+const MLA_STATES_NOTE = "Odisha and Uttar Pradesh, for now. Delhi publishes its sanction orders as PDF files, which we are working on. Madhya Pradesh's portal needs a login.";
+// What each state's portal is called and what it publishes. progress: the portal gives a
+// physical progress % and an estimated cost instead of sanctioned and spent amounts.
+const MLA_PORTAL = {
+  odisha: { url: "https://mlalads.odisha.gov.in/IPMS/Report", name: "MLALADS portal", by: "Planning &amp; Convergence Department, Government of Odisha",
+    fund: "In Odisha that is ₹2 crore per constituency a year: ₹1 crore for general works, ₹50 lakh for roads and ₹50 lakh for education.",
+    find: w => `On it, choose ${esc(w.district)} › ${esc(w.constituency)} and look for project ${esc(w.project_code)}.`,
+    office: "Office of the Block Development Officer / Office of the District Collector (MLALADS)" },
+  "uttar-pradesh": { url: "https://mlaladsup.in/main/MLAWiseWorkCounts", name: "MLALADS portal (mlaladsup.in)", by: "Government of Uttar Pradesh", progress: true,
+    fund: "",
+    find: w => `On it, open the MLA-wise report for ${esc(w.financial_year)}, click the number of recommended works for ${esc(w.mla || w.constituency)} and look for work ID ${esc(w.project_code)}.`,
+    note: "Work details and MLA names are in Hindi, as the portal gives them. The portal gives the implementing agency's estimated cost and its reported physical progress, not amounts sanctioned or spent; we count 100% as completed and 0% or blank as not started. Constituency and district names in English are matched by assembly constituency number.",
+    office: "Office of the District Magistrate (MLA Local Area Development Scheme)" },
+};
+const mlaPortal = slug => MLA_PORTAL[slug] || { url: "", name: "state portal", by: "", fund: "", find: () => "", office: "Office of the District Collector (MLA Local Area Development Scheme)" };
 
 // ---------- data ----------
 async function load(name) {
@@ -73,7 +87,7 @@ async function mlaWorks(stateSlug) {
   const key = "_mla_" + stateSlug;
   if (!cache[key]) {
     cache[key] = load(`mlalads/${stateSlug}.json`).then(d => table2objects(d).map(o => {
-      o.amount = Number(o.sanction_amount) || Number(o.recommended_amount) || 0;
+      o.amount = Number(o.sanction_amount) || Number(o.recommended_amount) || Number(o.estimated_amount) || 0;
       o.spent = Number(o.spent_amount) || 0;
       o.cons = slugify(o.constituency);
       return o;
@@ -460,16 +474,18 @@ const MLA_NOT_STARTED = s => s === "Not Started";
 // Recommended by the MLA, not yet sanctioned: "Pending with MLA / Collector / ZP / EA".
 const MLA_AWAITING = s => /^Pending with/i.test(s || "");
 function mlaView(stateSlug, showConstituency) {
+  const progress = mlaPortal(stateSlug).progress;
+  const only = (o, keys) => progress ? Object.fromEntries(Object.entries(o).filter(([k]) => keys.includes(k))) : o;
   return {
     keys: ["name", "category", "constituency", "district", "project_code"],
     placeholder: "Filter by village, temple, school, road…",
     sort: "amount",
-    sorts: {
+    sorts: only({
       amount: ["Highest amount", (a, b) => b.amount - a.amount],
       spent: ["Most spent", (a, b) => b.spent - a.spent],
-      code: ["Project code", (a, b) => a.project_code.localeCompare(b.project_code)],
-    },
-    filters: {
+      code: [progress ? "Work ID" : "Project code", (a, b) => a.project_code.localeCompare(b.project_code)],
+    }, ["amount", "code"]),
+    filters: only({
       "": ["All", () => true],
       done: ["Completed", w => MLA_DONE(w.status)],
       going: ["Started or in progress", w => /^(started|in progress)$/i.test(w.status)],
@@ -477,8 +493,16 @@ function mlaView(stateSlug, showConstituency) {
       awaiting: ["Awaiting sanction", w => MLA_AWAITING(w.status)],
       road: ["Roads", w => w.component === "Road"],
       edu: ["Education", w => w.component === "Education"],
-    },
-    table: rows => `<table class="works">
+    }, ["", "done", "going", "notstarted"]),
+    table: rows => progress ? `<table class="works">
+      <thead><tr><th>Work</th><th>Type</th><th class="num">Estimated cost</th><th class="num">Progress</th><th>Status</th></tr></thead>
+      <tbody>${rows.map(w => `<tr>
+        <td data-label="Work"><a href="#/mlawork/${stateSlug}/${enc(w.id)}">${esc(w.name)}</a>
+          ${showConstituency ? `<div class="sub">${esc(w.constituency)} · ${esc(w.district)} district</div>` : ""}</td>
+        <td data-label="Type">${esc(w.category) || NP}</td>
+        <td data-label="Estimated cost" class="num">${inr(w.estimated_amount) || NP}</td>
+        <td data-label="Progress" class="num">${w.progress ? `${esc(w.progress)}%` : NP}</td>
+        <td data-label="Status">${esc(w.status) || NP}</td></tr>`).join("")}</tbody></table>` : `<table class="works">
       <thead><tr><th>Work</th><th>Type</th><th class="num">Sanctioned</th><th class="num">Spent</th><th>Status</th></tr></thead>
       <tbody>${rows.map(w => `<tr>
         <td data-label="Work"><a href="#/mlawork/${stateSlug}/${enc(w.id)}">${esc(w.name)}</a>
@@ -558,6 +582,8 @@ const HELP = {
   "Amount sanctioned": "The amount approved for the work.",
   "Spent so far": "Money spent on the work as shown on the portal. It often lags behind what is happening at the site.",
   "Time allowed": "The number of days the portal gives for finishing the work. It does not show the start date, so we cannot tell if it is late.",
+  "Estimated cost": "The cost the implementing agency worked out for the work, as shown on the portal.",
+  "Physical progress": "How much of the work is done, as the implementing agency reported it on the portal. We count 100% as completed and 0% or blank as not started.",
   "Work status": "As the portal shows it. \"Pending with MLA, Collector, ZP or EA\" means the MLA has recommended the work and it is waiting for approval or sanction at that office (ZP: Zilla Parishad; EA: the executing agency). Then: not started, started or in progress, completed, or rejected.",
   "MLA": "The MLA who recommended the work, from the portal's MLA-wise report.",
   "MLA's recommendation": "The date and number of the MLA's recommendation letter, and the amount the MLA asked for.",
@@ -1350,10 +1376,12 @@ async function mlaHome() {
     <h1>MLA funds</h1>
     <p class="lede">Most states give each MLA a yearly fund to recommend works in their constituency. ${MLA_STATES_NOTE}</p>
     <table class="plain stack"><thead><tr><th>State</th><th class="num">Works</th><th class="num">Sanctioned</th><th class="num">Completed</th></tr></thead>
-    <tbody>${idx.map(s => `<tr><td><a href="#/mla/${s.slug}">${esc(s.state)}</a></td><td class="num" data-label="Works">${fmtN(s.works)}</td><td class="num" data-label="Sanctioned">${inr(s.sanctioned) || "—"}</td><td class="num" data-label="Completed">${fmtN(s.completed)}</td></tr>`).join("")}</tbody></table>`;
+    <tbody>${idx.map(s => `<tr><td><a href="#/mla/${s.slug}">${esc(s.state)}</a></td><td class="num" data-label="Works">${fmtN(s.works)}</td><td class="num" data-label="Sanctioned">${inr(s.sanctioned) || (s.estimated ? `${inr(s.estimated)} <span class="sub">estimated</span>` : "—")}</td><td class="num" data-label="Completed">${fmtN(s.completed)}</td></tr>`).join("")}</tbody></table>`;
 }
 
 function mlaStats(x) {
+  if (!x.sanctioned && x.estimated) return stats([[fmtN(x.works), "Works"], [inr(x.estimated), "Estimated cost"],
+    [fmtN(x.completed), "Completed"], [fmtN(x.not_started), "Not started"]]);
   return stats([[fmtN(x.works), "Works"], [inr(x.sanctioned) || "—", "Sanctioned"], [inr(x.spent) || "₹0", "Spent so far"],
     [fmtN(x.completed), "Completed"]]);
 }
@@ -1363,26 +1391,28 @@ async function mlaState(slug) {
   const s = idx.find(x => x.slug === slug);
   if (!s) return notFound();
   const list = await mlaWorks(slug);
+  const P = mlaPortal(slug);
   const top = s.categories.slice(0, 5);
   app.innerHTML = `
     ${crumbs([["Home", "#/"], ["MLA funds", "#/mla"], [s.state]])}
     <h1>MLA funds in ${esc(s.state)}</h1>
-    <p class="lede">Each of ${esc(s.state)}'s MLAs recommends works from the MLA Local Area Development Scheme (MLALADS). In Odisha that is ₹2 crore per constituency a year: ₹1 crore for general works, ₹50 lakh for roads and ₹50 lakh for education. These are the works sanctioned for ${s.years.map(esc).join(" and ")}.</p>
+    <p class="lede">Each of ${esc(s.state)}'s MLAs recommends works from the MLA Local Area Development Scheme (MLALADS). ${P.fund} These are the works listed for ${s.years.map(esc).join(", ")}.</p>
     ${mlaStats(s)}
-    <p class="note">${fmtN(s.not_started)} of ${fmtN(s.works)} works (${Math.round(100 * s.not_started / s.works)}%) are marked <b>not started</b>.</p>
+    ${s.not_started ? `<p class="note">${fmtN(s.not_started)} of ${fmtN(s.works)} works (${Math.round(100 * s.not_started / s.works)}%) are marked <b>not started</b>.</p>` : ""}
     <h2>What the money is for</h2>
     <table class="plain"><tbody>${top.map(([c, n]) => `<tr><td>${esc(c)}</td><td class="num">${fmtN(n)} works (${Math.round(100 * n / s.works)}%)</td></tr>`).join("")}</tbody></table>
     <h2>Constituencies</h2>
     <div class="toolbar"><input class="input" id="cq" type="search" placeholder="Find your constituency or district" aria-label="Find a constituency or district"></div>
-    <table class="plain stack" id="ct"><thead><tr><th>Constituency</th><th>District</th><th class="num">Works</th><th class="num">Sanctioned</th><th class="num">Spent</th><th class="num">Completed</th></tr></thead><tbody></tbody></table>
+    <table class="plain stack" id="ct"><thead><tr><th>Constituency</th><th>District</th><th class="num">Works</th><th class="num">${P.progress ? "Estimated cost" : "Sanctioned"}</th><th class="num">${P.progress ? "Not started" : "Spent"}</th><th class="num">Completed</th></tr></thead><tbody></tbody></table>
     <h2>All works in ${esc(s.state)}</h2>
     <div id="res"></div>
-    <p class="muted small">Source: <a href="https://mlalads.odisha.gov.in/IPMS/Report" target="_blank" rel="noopener">MLALADS portal</a>, Planning &amp; Convergence Department, Government of Odisha. Last checked ${date(s.last_checked)}. The portal answers only visitors in India, so this is collected from a computer in India. It does not list the MLA's name with each work, or the sanction date. ${MLA_STATES_NOTE}</p>`;
+    <p class="muted small">Source: <a href="${P.url}" target="_blank" rel="noopener">${P.name}</a>, ${P.by}. Last checked ${date(s.last_checked)}. The portal answers only visitors in India, so this is collected from a computer in India. ${P.note || ""} ${MLA_STATES_NOTE}</p>`;
   const drawCons = t => {
     const shown = t ? fuzzy(s.constituencies, t, ["name", "district"], 1) : s.constituencies;
     document.querySelector("#ct tbody").innerHTML = shown.map(c => `<tr><td><a href="#/mla/${slug}/${c.id}">${esc(c.name)}</a></td>
       <td class="sub-cell" data-label="District">${esc(c.district)}</td><td class="num" data-label="Works">${fmtN(c.works)}</td>
-      <td class="num" data-label="Sanctioned">${inr(c.sanctioned) || "—"}</td><td class="num" data-label="Spent">${inr(c.spent) || "₹0"}</td>
+      ${P.progress ? `<td class="num" data-label="Estimated cost">${inr(c.estimated) || "—"}</td><td class="num" data-label="Not started">${fmtN(c.not_started)}</td>`
+        : `<td class="num" data-label="Sanctioned">${inr(c.sanctioned) || "—"}</td><td class="num" data-label="Spent">${inr(c.spent) || "₹0"}</td>`}
       <td class="num" data-label="Completed">${fmtN(c.completed)}</td></tr>`).join("");
   };
   drawCons("");
@@ -1412,17 +1442,19 @@ async function mlaConstituency(slug, id) {
 function mlaRef(w) {
   return [
     `Work: ${w.name}`,
-    `Project code: ${w.project_code} (MLALADS, ${w.financial_year})`,
+    `${w.state === "Uttar Pradesh" ? "Work ID" : "Project code"}: ${w.project_code} (MLALADS, ${w.financial_year})`,
     `Constituency: ${w.constituency}, ${w.district} district`,
     w.mla ? `Recommended by: ${w.mla}${w.letter_no ? `, letter ${w.letter_no}` : ""}${w.recommended_on ? ` (${date(w.recommended_on)})` : ""}` : "",
     w.sanction_amount ? `Amount sanctioned: ${inr(w.sanction_amount)}` : "",
-    `Spent so far, as shown on the MLALADS portal: ${inr(w.spent_amount) || "Rs 0"}`,
+    w.estimated_amount ? `Estimated cost given by the implementing agency: ${inr(w.estimated_amount)}` : "",
+    w.progress ? `Physical progress shown on the MLALADS portal: ${w.progress}%`
+      : `Spent so far, as shown on the MLALADS portal: ${inr(w.spent_amount) || "Rs 0"}`,
     w.status ? `Status on the portal: ${w.status}` : "",
   ].filter(Boolean).join("\n");
 }
 
 function mlaRti(w, me) {
-  const to = ["The Public Information Officer", "Office of the Block Development Officer / Office of the District Collector (MLALADS)", `${w.district} district, Odisha`].join("\n");
+  const to = ["The Public Information Officer", mlaPortal(slugify(w.state)).office, `${w.district} district, ${w.state}`].join("\n");
   return rtiLetter(to, "Application for information under section 6(1) of the Right to Information Act, 2005 (MLALADS work)",
     `I request the following information about this work under the MLA Local Area Development Scheme:\n\n${mlaRef(w)}`, [
       "A copy of the MLA's recommendation letter for this work, with its date.",
@@ -1436,10 +1468,12 @@ function mlaRti(w, me) {
 }
 
 async function mlaWork(slug, id) {
-  const w = (await mlaWorks(slug)).find(x => x.id === id);
-  if (!w) return notFound();
+  const found = (await mlaWorks(slug)).find(x => x.id === id);
+  if (!found) return notFound();
   const idx = await load("mlalads_index.json");
   const s = idx.find(x => x.slug === slug);
+  const w = { ...found, state: s.state };
+  const P = mlaPortal(slug);
   const row = fieldRow;
   app.innerHTML = `
     ${crumbs([["Home", "#/"], ["MLA funds", "#/mla"], [s.state, `#/mla/${slug}`], [w.constituency, `#/mla/${slug}/${w.cons}`], ["Work"]])}
@@ -1447,14 +1481,15 @@ async function mlaWork(slug, id) {
     <p><a class="jump" href="#" onclick="document.getElementById('ask').scrollIntoView();return false">Ask about this work ↓</a></p>
     <table class="fields"><tbody>
       ${row("Assembly constituency", `<a href="#/mla/${slug}/${w.cons}">${esc(w.constituency)}</a>, ${esc(w.district)} district`)}
-      ${row("Project code", esc(w.project_code))}
+      ${row(P.progress ? "Work ID" : "Project code", esc(w.project_code))}
       ${row("Year", esc(w.financial_year))}
       ${row("Kind of work", [esc(w.category), w.component ? `${esc(w.component)} share of the fund` : ""].filter(Boolean).join(" · "))}
-      ${row("Carried out by", esc(w.department))}
-      ${row("Amount sanctioned", inr(w.sanction_amount))}
+      ${P.progress ? "" : row("Carried out by", esc(w.department))}
+      ${P.progress ? `${row("Estimated cost", inr(w.estimated_amount))}
+      ${row("Physical progress", w.progress ? `${esc(w.progress)}%` : "")}` : `${row("Amount sanctioned", inr(w.sanction_amount))}
       ${row("Spent so far", inr(w.spent_amount) || "₹0")}
       ${row("Time allowed", w.days_allowed ? `${fmtN(w.days_allowed)} days` : "")}
-      ${row("Work status", esc(w.status))}
+      ${row("Work status", esc(w.status))}`}
       ${row("MLA", esc(w.mla))}
       ${row("MLA's recommendation", [date(w.recommended_on), w.letter_no ? `letter ${esc(w.letter_no)}` : "", inr(w.recommended_amount)].filter(Boolean).join(" · "))}
       ${row("Sanctioned on", date(w.sanctioned_on))}
@@ -1462,11 +1497,11 @@ async function mlaWork(slug, id) {
       ${row("Where", [w.village, w.block].filter(Boolean).map(esc).join(", "))}
     </tbody></table>
     <h2>Official source</h2>
-    <p><a class="btn" href="https://mlalads.odisha.gov.in/IPMS/Report" target="_blank" rel="noopener">Open the MLALADS report</a></p>
-    <p class="muted small">The portal opens only from India. On it, choose ${esc(w.district)} › ${esc(w.constituency)} and look for project ${esc(w.project_code)}. Last checked ${date(w.last_checked)}.</p>
+    <p><a class="btn" href="${P.url}" target="_blank" rel="noopener">Open the MLALADS report</a></p>
+    <p class="muted small">The portal opens only from India. ${P.find(w)} Last checked ${date(w.last_checked)}.</p>
     ${complainBox(["mla_" + slug, "national"], "")}
     ${askPanel(MLA_AWAITING(w.status) ? `This work was recommended${w.recommended_on ? ` on ${date(w.recommended_on)}` : ""} and is ${esc(w.status.toLowerCase())}. Ask the district office when it will be sanctioned.`
-      : MLA_NOT_STARTED(w.status) ? "This work is sanctioned but marked not started. Ask the block or district office why."
+      : MLA_NOT_STARTED(w.status) ? `This work is ${P.progress ? "recommended" : "sanctioned"} but marked not started. Ask the block or district office why.`
       : "Want the sanction order, the contractor's name or the completion certificate? Ask the block or district office.")}
     <p class="small"><a href="${REPO}/issues/new?title=${enc("Data: " + w.id)}">Report a mistake</a></p>`;
   wireAsk([["rti", "RTI application", me => mlaRti(w, me)]], w.project_code);
