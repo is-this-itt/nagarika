@@ -560,7 +560,7 @@ const HELP = {
   "Time allowed": "The number of days the portal gives for finishing the work. It does not show the start date, so we cannot tell if it is late.",
   "Work status": "As the portal shows it. \"Pending with MLA, Collector, ZP or EA\" means the MLA has recommended the work and it is waiting for approval or sanction at that office (ZP: Zilla Parishad; EA: the executing agency). Then: not started, started or in progress, completed, or rejected.",
   "MLA": "The MLA who recommended the work, from the portal's MLA-wise report.",
-  "Recommended": "The date and number of the MLA's recommendation letter, and the amount the MLA asked for.",
+  "MLA's recommendation": "The date and number of the MLA's recommendation letter, and the amount the MLA asked for.",
   "Sanctioned on": "The date the district sanctioned the work, which releases the money for it.",
   "Implementing agency": "The officer or office responsible for carrying out the work.",
   "Where": "The block or urban local body, and the village or ward, as the portal gives them.",
@@ -1454,9 +1454,9 @@ async function mlaWork(slug, id) {
       ${row("Amount sanctioned", inr(w.sanction_amount))}
       ${row("Spent so far", inr(w.spent_amount) || "₹0")}
       ${row("Time allowed", w.days_allowed ? `${fmtN(w.days_allowed)} days` : "")}
-      ${row("Status", esc(w.status))}
+      ${row("Work status", esc(w.status))}
       ${row("MLA", esc(w.mla))}
-      ${row("Recommended", [date(w.recommended_on), w.letter_no ? `letter ${esc(w.letter_no)}` : "", inr(w.recommended_amount)].filter(Boolean).join(" · "))}
+      ${row("MLA's recommendation", [date(w.recommended_on), w.letter_no ? `letter ${esc(w.letter_no)}` : "", inr(w.recommended_amount)].filter(Boolean).join(" · "))}
       ${row("Sanctioned on", date(w.sanctioned_on))}
       ${row("Implementing agency", esc(w.agency))}
       ${row("Where", [w.village, w.block].filter(Boolean).map(esc).join(", "))}
