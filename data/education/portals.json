@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-26",
+ "checked": "2026-10-27",
  "portals": [
   {
    "state": "National",
@@ -7,7 +7,7 @@
    "name": "National Scholarship Portal (NSP)",
    "url": "https://scholarships.gov.in/",
    "about": "Central scholarships, including pre-matric for SC, ST, OBC and minority students (classes 9 and 10) and the National Means-cum-Merit Scholarship.",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -49,7 +49,7 @@
      "last_date": "2026-11-30"
     }
    ],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Chhattisgarh",
@@ -57,11 +57,11 @@
    "name": "RTE portal",
    "url": "https://rte.cg.nic.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Delhi",
@@ -69,7 +69,7 @@
    "name": "Directorate of Education (EWS/DG admissions)",
    "url": "https://www.edudel.nic.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -94,7 +94,7 @@
     }
    ],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Gujarat",
@@ -102,7 +102,7 @@
    "name": "RTE admission portal",
    "url": "https://rte.orpgujarat.com/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": false
   },
   {
@@ -111,7 +111,7 @@
    "name": "School Education Department",
    "url": "https://schooleducationharyana.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -126,7 +126,7 @@
     }
    ],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Jharkhand",
@@ -134,7 +134,7 @@
    "name": "RTE portal",
    "url": "https://rte.jharkhand.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -149,7 +149,7 @@
     }
    ],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Karnataka",
@@ -157,7 +157,7 @@
    "name": "RTE admission (School Education Department)",
    "url": "https://schooleducation.karnataka.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -202,7 +202,7 @@
     }
    ],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Madhya Pradesh",
@@ -210,8 +210,17 @@
    "name": "RTE portal",
    "url": "https://rteportal.mp.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
-   "loads": false
+   "checked": "2026-10-27",
+   "loads": true,
+   "notices": [
+    {
+     "text": "RTE Admission",
+     "url": "https://rteportal.mp.gov.in/Lottery/Default.aspx?m=1",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Maharashtra",
@@ -219,8 +228,32 @@
    "name": "RTE 25% admission",
    "url": "https://student.maharashtra.gov.in/adm_portal/",
    "about": "",
-   "checked": "2026-10-26",
-   "loads": false
+   "checked": "2026-10-27",
+   "loads": true,
+   "notices": [
+    {
+     "text": "RTE 25% User Manual",
+     "url": "https://student.maharashtra.gov.in/adm_portal/app/webroot/uploads/RTE_user_manual.pdf",
+     "date": ""
+    },
+    {
+     "text": "RTE २५% ऍडमिशन साठी स्कूल रेजिस्ट्रेशन कसे करावे याबाबतचे युजर मॅन्युअल : Click Here to download",
+     "url": "https://student.maharashtra.gov.in/sch_adm_process/rte_registration.pdf",
+     "date": ""
+    },
+    {
+     "text": "RTE २५% ऍडमिशन साठी पालकांकरीता सूचना: Click Here to download",
+     "url": "https://student.maharashtra.gov.in/adm_portal/uploads/RTE_Admission_process_instruction_24.pdf",
+     "date": ""
+    },
+    {
+     "text": "Lottery Logic",
+     "url": "https://student.maharashtra.gov.in/adm_portal/app/webroot/uploads/LotteryLogic.pdf",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Odisha",
@@ -228,7 +261,7 @@
    "name": "RTE Paradarshi",
    "url": "https://rteparadarshi.odisha.gov.in/odisha",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -275,7 +308,7 @@
    "helplines": [
     "1800 3456 722"
    ],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Punjab",
@@ -283,7 +316,7 @@
    "name": "ePunjab School",
    "url": "https://epunjabschool.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -328,7 +361,7 @@
     }
    ],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Rajasthan",
@@ -336,7 +369,7 @@
    "name": "Private School Portal (RTE)",
    "url": "https://rajpsp.nic.in/PSP1/Home/home.aspx",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": false
   },
   {
@@ -345,7 +378,7 @@
    "name": "RTE admission",
    "url": "https://rte.tnschools.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": false
   },
   {
@@ -354,8 +387,47 @@
    "name": "RTE 25% admission",
    "url": "https://rte25.upsdc.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
-   "loads": false
+   "checked": "2026-10-27",
+   "loads": true,
+   "notices": [
+    {
+     "text": "Admission Schedule",
+     "url": "https://rte25.upsdc.gov.in/AdmissionSchedule.aspx",
+     "date": ""
+    },
+    {
+     "text": "RTE Notification",
+     "url": "https://rte25.upsdc.gov.in/Notification.aspx",
+     "date": ""
+    },
+    {
+     "text": "Financial Aid Studentwise\" data-hi=\"छात्रवार वित्तीय सहायता रिपोर्ट\"> Financial Aid Studentwise",
+     "url": "https://rte25.upsdc.gov.in/rptFinAidReimbursementStudentWisePublic.aspx",
+     "date": ""
+    },
+    {
+     "text": "Fee Reimbursement Studentwise",
+     "url": "https://rte25.upsdc.gov.in/rptFeeReibursementStudentWisePublic.aspx",
+     "date": ""
+    },
+    {
+     "text": "Lottery Result",
+     "url": "https://rte25.upsdc.gov.in/rptSeatAllotmentResult.aspx",
+     "date": ""
+    },
+    {
+     "text": "Student Application Status",
+     "url": "https://rte25.upsdc.gov.in/StudentStatusPublic.aspx",
+     "date": ""
+    },
+    {
+     "text": "Districtwise Seat Allotment",
+     "url": "https://rte25.upsdc.gov.in/rptDistrictwiseSeatAllotmentPublic.aspx",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Uttarakhand",
@@ -363,7 +435,7 @@
    "name": "RTE online",
    "url": "https://rteonline.uk.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": false
   },
   {
@@ -372,11 +444,11 @@
    "name": "Jnanabhumi",
    "url": "https://jnanabhumi.ap.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Delhi",
@@ -384,11 +456,11 @@
    "name": "e-District Delhi",
    "url": "https://edistrict.delhigovt.nic.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Gujarat",
@@ -396,7 +468,7 @@
    "name": "Digital Gujarat",
    "url": "https://www.digitalgujarat.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -406,7 +478,7 @@
     }
    ],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Haryana",
@@ -414,7 +486,7 @@
    "name": "Harchhatravratti (higher education)",
    "url": "https://harchhatravratti.highereduhry.ac.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -429,7 +501,7 @@
     }
    ],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Karnataka",
@@ -437,7 +509,7 @@
    "name": "State Scholarship Portal (SSP)",
    "url": "https://ssp.karnataka.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -549,7 +621,7 @@
      "last_date": "2026-11-30"
     }
    ],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Kerala",
@@ -557,7 +629,7 @@
    "name": "e-Grantz",
    "url": "https://egrantz.kerala.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -604,7 +676,7 @@
    "helplines": [
     "1800 425 2312"
    ],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Madhya Pradesh",
@@ -612,7 +684,7 @@
    "name": "MP Scholarship Portal",
    "url": "https://scholarshipportal.mp.nic.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": false
   },
   {
@@ -621,7 +693,7 @@
    "name": "MahaDBT",
    "url": "https://mahadbt.maharashtra.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -668,7 +740,7 @@
    "helplines": [
     "022-49150800"
    ],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Odisha",
@@ -676,11 +748,11 @@
    "name": "State Scholarship Portal",
    "url": "https://scholarship.odisha.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Rajasthan",
@@ -688,11 +760,11 @@
    "name": "SJMS scholarships",
    "url": "https://sjmsnew.rajasthan.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Tamil Nadu",
@@ -700,7 +772,7 @@
    "name": "UMIS",
    "url": "https://umis.tn.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": false
   },
   {
@@ -709,7 +781,7 @@
    "name": "ePASS",
    "url": "https://telanganaepass.cgg.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -749,7 +821,7 @@
     }
    ],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Uttar Pradesh",
@@ -757,8 +829,42 @@
    "name": "UP Scholarship",
    "url": "https://scholarship.up.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
-   "loads": false
+   "checked": "2026-10-27",
+   "loads": true,
+   "notices": [
+    {
+     "text": "छात्रवृत्ति एवं शुल्क प्रतिपूर्ति ऑनलाइन प्रणाली Scholarship and Fee Reimbursement Online System",
+     "url": "https://scholarship.up.gov.in/index.aspx",
+     "date": ""
+    },
+    {
+     "text": "Prematric Students",
+     "url": "https://scholarship.up.gov.in/LoginStudentPreFresh.aspx",
+     "date": ""
+    },
+    {
+     "text": "Postmetric Students",
+     "url": "https://scholarship.up.gov.in/LoginStudentPostInter.aspx",
+     "date": ""
+    },
+    {
+     "text": "Postmetric Other than Inter Students",
+     "url": "https://scholarship.up.gov.in/LoginStudentPost.aspx",
+     "date": ""
+    },
+    {
+     "text": "Postmetric Other State Students",
+     "url": "https://scholarship.up.gov.in/LoginStudentPostOS.aspx",
+     "date": ""
+    },
+    {
+     "text": "Prematric Institution",
+     "url": "https://scholarship.up.gov.in/Inst_login_SM.aspx",
+     "date": ""
+    }
+   ],
+   "helplines": [],
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "West Bengal",
@@ -766,7 +872,7 @@
    "name": "OASIS",
    "url": "https://oasis.wb.gov.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": true,
    "notices": [
     {
@@ -811,7 +917,7 @@
     }
    ],
    "helplines": [],
-   "last_loaded": "2026-10-26"
+   "last_loaded": "2026-10-27"
   },
   {
    "state": "Bihar",
@@ -819,7 +925,7 @@
    "name": "PMS online",
    "url": "https://pmsonline.bih.nic.in/",
    "about": "",
-   "checked": "2026-10-26",
+   "checked": "2026-10-27",
    "loads": false
   }
  ]
