@@ -1,0 +1,32 @@
+[
+ {
+  "url": "https://udd.delhi.gov.in/robots.txt",
+  "status": 403,
+  "bytes": 199,
+  "file": "robots.txt"
+ },
+ {
+  "url": "https://udd.delhi.gov.in/mlalad-scheme",
+  "status": 200,
+  "bytes": 49724,
+  "file": "p0.html"
+ },
+ {
+  "url": "https://udd.delhi.gov.in/mlalad-scheme?page=1",
+  "status": 200,
+  "bytes": 50310,
+  "file": "p1.html"
+ },
+ {
+  "url": "https://udd.delhi.gov.in/mlalad-scheme?page=2",
+  "status": 200,
+  "bytes": 50309,
+  "file": "p2.html"
+ },
+ {
+  "url": "https://udd.delhi.gov.in/mlalad",
+  "status": 404,
+  "bytes": 43456,
+  "file": "mlalad.html"
+ }
+]
