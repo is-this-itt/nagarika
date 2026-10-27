@@ -1,0 +1,154 @@
+[
+ {
+  "file": "robots.txt",
+  "status": 404,
+  "head": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\"/>\r\n<title>404 - File or directory not found.</title>\r\n<style typ"
+ },
+ {
+  "file": "years.json",
+  "path": "/DropdownBinder/fillDropdown",
+  "obj": {
+   "optMode": "bindYear"
+  },
+  "status": 200,
+  "bytes": 1645,
+  "head": "[{\"id\":2,\"companyId\":-1,\"projectId\":0,\"circleId\":-1,\"districtId\":-1,\"seatId\":-1,\"electionYearId\":-1,\"designationId\":0,\"divisionId\":-1,\"wardId\":-1,\"bastiId\":0,\"zoneId\":-1,\"yearId\":0,\"seatTypeId\":0,\"yearTypeId\":0,\"value\":\"2023-24\",\"typeId\":null,\"createdBy\":null,\"createdDate\":\"\\/Date(-62135596800000)\\/\",\"modifiedBy\":null,\"modifydDate\":\"\\/Date(-62135596800000)\\/\",\"ipAddress\":null,\"mcAddress\":null,\"opt"
+ },
+ {
+  "file": "seattypes.json",
+  "path": "/DropdownBinder/fillDropdown",
+  "obj": {
+   "optMode": "bindSeatType"
+  },
+  "status": 200,
+  "bytes": 829,
+  "head": "[{\"id\":2,\"companyId\":-1,\"projectId\":0,\"circleId\":-1,\"districtId\":-1,\"seatId\":-1,\"electionYearId\":-1,\"designationId\":0,\"divisionId\":-1,\"wardId\":-1,\"bastiId\":0,\"zoneId\":-1,\"yearId\":0,\"seatTypeId\":0,\"yearTypeId\":0,\"value\":\"विधान परिषद\",\"typeId\":null,\"createdBy\":null,\"createdDate\":\"\\/Date(-62135596800000)\\/\",\"modifiedBy\":null,\"modifydDate\":\"\\/Date(-62135596800000)\\/\",\"ipAddress\":null,\"mcAddress\":null,"
+ },
+ {
+  "file": "districts.json",
+  "path": "/DropdownBinder/fillDropdown",
+  "obj": {
+   "optMode": "bindAllDistrict"
+  },
+  "status": 200,
+  "bytes": 31429,
+  "head": "[{\"id\":230010034,\"companyId\":-1,\"projectId\":0,\"circleId\":-1,\"districtId\":-1,\"seatId\":-1,\"electionYearId\":-1,\"designationId\":0,\"divisionId\":-1,\"wardId\":-1,\"bastiId\":0,\"zoneId\":-1,\"yearId\":0,\"seatTypeId\":0,\"yearTypeId\":0,\"value\":\"आगरा\",\"typeId\":null,\"createdBy\":null,\"createdDate\":\"\\/Date(-62135596800000)\\/\",\"modifiedBy\":null,\"modifydDate\":\"\\/Date(-62135596800000)\\/\",\"ipAddress\":null,\"mcAddress\":null"
+ },
+ {
+  "file": "mlas.json",
+  "path": "/DropdownBinder/fillDropdown",
+  "obj": {
+   "optMode": "bindMLA",
+   "seatTypeId": "1"
+  },
+  "status": 200,
+  "bytes": 175538,
+  "head": "[{\"id\":240010294,\"companyId\":-1,\"projectId\":0,\"circleId\":-1,\"districtId\":-1,\"seatId\":-1,\"electionYearId\":-1,\"designationId\":0,\"divisionId\":-1,\"wardId\":-1,\"bastiId\":0,\"zoneId\":-1,\"yearId\":0,\"seatTypeId\":0,\"yearTypeId\":0,\"value\":\"1 श्री उमर अली खान \",\"typeId\":null,\"createdBy\":null,\"createdDate\":\"\\/Date(-62135596800000)\\/\",\"modifiedBy\":null,\"modifydDate\":\"\\/Date(-62135596800000)\\/\",\"ipAddress\":null,\""
+ },
+ {
+  "file": "mla_counts.json",
+  "path": "/Main/DistrictWiseWorkCounts",
+  "obj": {
+   "optMode": "getWorkMLAWisePhysical",
+   "seatId": "-1",
+   "seatTypeId": "1",
+   "yearId": "2"
+  },
+  "status": 200,
+  "bytes": 413833,
+  "head": "{\"Table_0\":[{\"क्रम<br/>संo\":1,\"माननीय विधायक <br/> का नाम व क्षेत्र\":\"श्री उमर अली खान (1 विo सo बेहट\\t)\",\"वित्तीय <br/> वर्ष\":\"2023-24\",\"नोडल जनपद \":\"<a href=\\\"javascript:void(0)\\\" onclick=getWorkDistrictWisePhysical('230010073','2')>सहारनपुर</a>\",\"अनुशंसित<br/> कार्य\":\"<a href=\\\"javascript:void(0)\\\" onclick=\\\"getMlaWorkDetailsPopup('श्री उमर अली खान ','proposed',240010294,2,0,0)\\\">131</a>\",\"स्वी"
+ },
+ {
+  "file": "mla_counts_all.json",
+  "path": "/Main/DistrictWiseWorkCounts",
+  "obj": {
+   "optMode": "getWorkMLAWisePhysical",
+   "seatId": "-1",
+   "seatTypeId": "1",
+   "yearId": "-1"
+  },
+  "error": "HTTPSConnectionPool(host='mlaladsup.in', port=443): Read timed out. (read timeout=120)"
+ },
+ {
+  "file": "district_counts.json",
+  "path": "/Main/DistrictWiseWorkCounts",
+  "obj": {
+   "optMode": "getWorkDistrictWisePhysical",
+   "districtId": "-1",
+   "yearId": "2"
+  },
+  "status": 200,
+  "bytes": 81680,
+  "head": "{\"Table_0\":[{\"क्रम<br/>संo\":1,\"जनपद <br/> का नाम\":\"अमेठी\",\"वित्तीय <br/> वर्ष\":\"2023-24\",\"अनुशंसित<br/> कार्य\":\"<a href=\\\"javascript:void(0)\\\" onclick=\\\"getDistrictWorkDetailsPopup('अमेठी','proposed',230010024,2,0,0)\\\">634</a>\",\"स्वीकृति के लिए लंबित कार्य<br/>(45 दिन में)\":null,\"स्वीकृति के लिए लंबित कार्य<br/> (45-60 दिन में)\":null,\"स्वीकृति के लिए लंबित कार्य<br/>(60 दिन के बाद)\":null,\"कुल लंबि"
+ },
+ {
+  "file": "work_details_-1.json",
+  "path": "/Main/getNikayDistrictWise",
+  "obj": {
+   "optMode": "getWorkDetails",
+   "applicationType": "-1",
+   "yearId": "2",
+   "seatId": "240010294",
+   "seatTypeId": "1",
+   "districtId": "-1"
+  },
+  "status": 200,
+  "bytes": 287818,
+  "head": "{\"Table_0\":[{\"क्रम <br/> संo\":1,\"कार्य आईoडीo\":240047276,\"कार्य का विवरण\":\"अब्दुल्लापुर/ कुरडीखेडा इस्लाम\\r\\n-<br/> भडबूजा के सामने हाईमास्ट लाईट\\r\\n-<br/> एक\",\"कार्य का प्रकार\":\"हाई मास्ट लाइट \",\"जनपद\":\"सहारनपुर\",\"ब्लॉक/निकाय \":\"मुजफराबाद\",\"वार्ड/ग्राo पंo का नाम\":\"अब्दुल्लापुर - मुजफराबाद\",\"मोहल्ले/ ग्राम का नाम\":null,\"वित्तीय वर्ष\":\"2023-24\",\"प्रस्तावित मात्रा <br/> (लंo मीo में /<br/> संख्या अ"
+ },
+ {
+  "file": "work_details_0.json",
+  "path": "/Main/getNikayDistrictWise",
+  "obj": {
+   "optMode": "getWorkDetails",
+   "applicationType": "0",
+   "yearId": "2",
+   "seatId": "240010294",
+   "seatTypeId": "1",
+   "districtId": "-1"
+  },
+  "status": 200,
+  "bytes": 287818,
+  "head": "{\"Table_0\":[{\"क्रम <br/> संo\":1,\"कार्य आईoडीo\":240047276,\"कार्य का विवरण\":\"अब्दुल्लापुर/ कुरडीखेडा इस्लाम\\r\\n-<br/> भडबूजा के सामने हाईमास्ट लाईट\\r\\n-<br/> एक\",\"कार्य का प्रकार\":\"हाई मास्ट लाइट \",\"जनपद\":\"सहारनपुर\",\"ब्लॉक/निकाय \":\"मुजफराबाद\",\"वार्ड/ग्राo पंo का नाम\":\"अब्दुल्लापुर - मुजफराबाद\",\"मोहल्ले/ ग्राम का नाम\":null,\"वित्तीय वर्ष\":\"2023-24\",\"प्रस्तावित मात्रा <br/> (लंo मीo में /<br/> संख्या अ"
+ },
+ {
+  "file": "work_details_1.json",
+  "path": "/Main/getNikayDistrictWise",
+  "obj": {
+   "optMode": "getWorkDetails",
+   "applicationType": "1",
+   "yearId": "2",
+   "seatId": "240010294",
+   "seatTypeId": "1",
+   "districtId": "-1"
+  },
+  "status": 200,
+  "bytes": 287818,
+  "head": "{\"Table_0\":[{\"क्रम <br/> संo\":1,\"कार्य आईoडीo\":240047276,\"कार्य का विवरण\":\"अब्दुल्लापुर/ कुरडीखेडा इस्लाम\\r\\n-<br/> भडबूजा के सामने हाईमास्ट लाईट\\r\\n-<br/> एक\",\"कार्य का प्रकार\":\"हाई मास्ट लाइट \",\"जनपद\":\"सहारनपुर\",\"ब्लॉक/निकाय \":\"मुजफराबाद\",\"वार्ड/ग्राo पंo का नाम\":\"अब्दुल्लापुर - मुजफराबाद\",\"मोहल्ले/ ग्राम का नाम\":null,\"वित्तीय वर्ष\":\"2023-24\",\"प्रस्तावित मात्रा <br/> (लंo मीo में /<br/> संख्या अ"
+ },
+ {
+  "file": "work_details_2.json",
+  "path": "/Main/getNikayDistrictWise",
+  "obj": {
+   "optMode": "getWorkDetails",
+   "applicationType": "2",
+   "yearId": "2",
+   "seatId": "240010294",
+   "seatTypeId": "1",
+   "districtId": "-1"
+  },
+  "status": 200,
+  "bytes": 287818,
+  "head": "{\"Table_0\":[{\"क्रम <br/> संo\":1,\"कार्य आईoडीo\":240047276,\"कार्य का विवरण\":\"अब्दुल्लापुर/ कुरडीखेडा इस्लाम\\r\\n-<br/> भडबूजा के सामने हाईमास्ट लाईट\\r\\n-<br/> एक\",\"कार्य का प्रकार\":\"हाई मास्ट लाइट \",\"जनपद\":\"सहारनपुर\",\"ब्लॉक/निकाय \":\"मुजफराबाद\",\"वार्ड/ग्राo पंo का नाम\":\"अब्दुल्लापुर - मुजफराबाद\",\"मोहल्ले/ ग्राम का नाम\":null,\"वित्तीय वर्ष\":\"2023-24\",\"प्रस्तावित मात्रा <br/> (लंo मीo में /<br/> संख्या अ"
+ },
+ {
+  "file": "mla_profile.json",
+  "path": "/Main/DistrictWiseWorkCounts",
+  "obj": {
+   "optMode": "mlaProfile"
+  },
+  "status": 200,
+  "bytes": 35329,
+  "head": "{\"Table_0\":[{\"क्रमांक\":1,\"माननीय विधायक का नाम \":\"ANAND KUMAR YADAV\",\"निर्वाचित क्षेत्र का नाम\":\"KAISERGANJ\",\"वर्ष\":\"2022-2027\",\"जनपद का नाम\":\"BAHRAICH\",\"फ़ोन नंबर\":\"9415765361\",\"सीoयूoजीo नंबर\":\"7355570892\",\"ईमेल\":\"YANANDKUMAR224@GMAIL.COM\"},{\"क्रमांक\":2,\"माननीय विधायक का नाम \":\"ANIL KUMAR TRIPATHI\",\"निर्वाचित क्षेत्र का नाम\":\"MEHDAWAL\",\"वर्ष\":\"2022\",\"जनपद का नाम\":\"SANT KABIR NAGAR\",\"फ़ोन नंबर\":\"\","
+ }
+]
