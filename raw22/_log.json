@@ -1,0 +1,141 @@
+[
+ {
+  "url": "https://mlaladsup.in/main/MLAWiseWorkCounts",
+  "status": 200,
+  "bytes": 29893,
+  "file": "main_MLAWiseWorkCounts.html"
+ },
+ {
+  "url": "https://mlaladsup.in/main/DistrictWiseWorkCounts",
+  "status": 200,
+  "bytes": 29556,
+  "file": "main_DistrictWiseWorkCounts.html"
+ },
+ {
+  "url": "https://mlaladsup.in/main/IAWisePhysical",
+  "status": 200,
+  "bytes": 29831,
+  "file": "main_IAWisePhysical.html"
+ },
+ {
+  "url": "https://mlaladsup.in/main/mlaProfile",
+  "status": 200,
+  "bytes": 27605,
+  "file": "main_mlaProfile.html"
+ },
+ {
+  "url": "https://mlaladsup.in/main/districtProfile",
+  "status": 200,
+  "bytes": 27554,
+  "file": "main_districtProfile.html"
+ },
+ {
+  "url": "https://mlaladsup.in/main/expenseSummaryDetails",
+  "status": 200,
+  "bytes": 28927,
+  "file": "main_expenseSummaryDetails.html"
+ },
+ {
+  "url": "https://mlaladsup.in/main/expenseSummaryDetailsDistrictWise",
+  "status": 200,
+  "bytes": 28865,
+  "file": "main_expenseSummaryDetailsDistrictWise.html"
+ },
+ {
+  "url": "https://mlaladsup.in/Main/MLAWiseFundRelease",
+  "status": 200,
+  "bytes": 29038,
+  "file": "Main_MLAWiseFundRelease.html"
+ },
+ {
+  "url": "https://mlaladsup.in/main/DistrictWiseFundRelease",
+  "status": 200,
+  "bytes": 29344,
+  "file": "main_DistrictWiseFundRelease.html"
+ },
+ {
+  "url": "https://mlaladsup.in/Scripts/DropdownBinderController.js",
+  "status": 200,
+  "bytes": 63905,
+  "file": "js_Scripts_DropdownBinderController.js"
+ },
+ {
+  "url": "https://mlaladsup.in/Scripts/Reports.js",
+  "status": 200,
+  "bytes": 40693,
+  "file": "js_Scripts_Reports.js"
+ },
+ {
+  "url": "https://mlaladsup.in/Scripts/dataTableBinder.js",
+  "status": 200,
+  "bytes": 13453,
+  "file": "js_Scripts_dataTableBinder.js"
+ },
+ {
+  "url": "https://mlaladsup.in/Scripts/datatable/dataTables.tableTools.min.js",
+  "status": 200,
+  "bytes": 60171,
+  "file": "js_Scripts_datatable_dataTables.tableTools.min.js"
+ },
+ {
+  "url": "https://mlaladsup.in/Scripts/datatable/datatables-init.js",
+  "status": 200,
+  "bytes": 16557,
+  "file": "js_Scripts_datatable_datatables_init.js"
+ },
+ {
+  "url": "https://mlaladsup.in/Scripts/globals.js",
+  "status": 200,
+  "bytes": 47655,
+  "file": "js_Scripts_globals.js"
+ },
+ {
+  "url": "https://mlaladsup.in/assets/sweetalert/lib/sweet-alert.min.js",
+  "status": 200,
+  "bytes": 10056,
+  "file": "js_assets_sweetalert_lib_sweet_alert.min.js"
+ },
+ {
+  "url": "https://mlaladsup.in/assets/toastr/build/toastr.min.js",
+  "status": 200,
+  "bytes": 5253,
+  "file": "js_assets_toastr_build_toastr.min.js"
+ },
+ {
+  "scripts": [
+   "/Scripts/DropdownBinderController.js",
+   "/Scripts/Reports.js",
+   "/Scripts/dataTableBinder.js",
+   "/Scripts/datatable/dataTables.tableTools.min.js",
+   "/Scripts/datatable/datatables-init.js",
+   "/Scripts/globals.js",
+   "/Scripts/moment.js",
+   "/assets/js/jquery-ui.min.js",
+   "/assets/js/jquery.2.1.1.min.js",
+   "/assets/js/jquery.canvasjs.min.js",
+   "/assets/sweetalert/lib/sweet-alert.min.js",
+   "/assets/toastr/build/toastr.min.js",
+   "/dist/js/adminlte2167.js",
+   "/plugins/bootstrap/js/bootstrap.bundle.min.js",
+   "/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js",
+   "/plugins/datatables-buttons/js/buttons.bootstrap4.min.js",
+   "/plugins/datatables-buttons/js/buttons.colVis.min.js",
+   "/plugins/datatables-buttons/js/buttons.html5.min.js",
+   "/plugins/datatables-buttons/js/buttons.print.min.js",
+   "/plugins/datatables-buttons/js/dataTables.buttons.min.js",
+   "/plugins/datatables-responsive/js/dataTables.responsive.min.js",
+   "/plugins/datatables-responsive/js/responsive.bootstrap4.min.js",
+   "/plugins/datatables/dataTables.fixedColumns.min.js",
+   "/plugins/datatables/jquery.dataTables.min.js",
+   "/plugins/daterangepicker/daterangepicker.js",
+   "/plugins/jquery-knob/jquery.knob.min.js",
+   "/plugins/jszip/jszip.min.js",
+   "/plugins/moment/moment.min.js",
+   "/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+   "/plugins/pdfmake/pdfmake.min.js",
+   "/plugins/pdfmake/vfs_fonts.js",
+   "/plugins/summernote/summernote-bs4.min.js",
+   "/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"
+  ]
+ }
+]
