@@ -860,49 +860,16 @@ function wireAsk(drafts, fileStem) {
 }
 
 // ---------- where to complain ----------
-// Official complaint channels by place. Numbers change: each entry records where it was
-// confirmed and when, and the site shows that next to it.
-const CHANNELS = {
-  bengaluru: [
-    { name: "GBA helpline (toll-free)", how: "Call 1533, or 080-22221188", what: "Potholes, waterlogging, fallen trees, streetlights, garbage",
-      src: "https://x.com/GBA_office/status/2060368453664731506", checked: "2026-10-25" },
-  ],
-  chennai: [
-    { name: "Greater Chennai Corporation helpline", how: "Call 1913", what: "Roads, drains, streetlights, garbage",
-      src: "https://citizenmatters.in/chennai-citizen-clinic-1913-namma-chennai-rwa-complaints-activists/", checked: "2026-10-25" },
-    { name: "Namma Chennai app", how: "Android and iPhone", what: "Complaints with a photo and location; you can track them",
-      src: "https://citizenmatters.in/chennai-citizen-clinic-1913-namma-chennai-rwa-complaints-activists/", checked: "2026-10-25" },
-  ],
-  mumbai: [
-    { name: "BMC helpline", how: "Call 1916", what: "Potholes, drains, water, garbage",
-      src: "https://citizenmatters.in/accountability-how-to-raise-complaints-with-the-bmc", checked: "2026-10-25" },
-    { name: "MyBMC 24x7 app", how: "Android and iPhone", what: "Complaints with a photo; you can track them",
-      src: "https://citizenmatters.in/accountability-how-to-raise-complaints-with-the-bmc", checked: "2026-10-25" },
-  ],
-  roads: [
-    { name: "National highways helpline (NHAI)", how: "Call 1033", what: "Only for national highways: potholes, accidents, toll plazas" },
-  ],
-  national: [
-    { name: "CPGRAMS", how: '<a href="https://pgportal.gov.in" target="_blank" rel="noopener">pgportal.gov.in</a>', what: "Grievances against central government offices; it also forwards grievances to state governments. You get a number to track the reply." },
-    { name: "RTI", how: '<a href="#/guides/rti">How to file</a>', what: "When you need the records, not just a fix" },
-  ],
-  mla_odisha: [
-    { name: "MLALADS cell, Planning & Convergence Department, Odisha", how: '<a href="mailto:mlalads@odishaone.gov.in">mlalads@odishaone.gov.in</a>, 0674-2390336',
-      what: "Questions about MLALADS works anywhere in Odisha", src: "https://mlalads.odisha.gov.in/", checked: "2026-10-25" },
-    { name: "Block Development Officer", how: "The block office where the work is", what: "Most MLALADS works are carried out by the Panchayati Raj department through blocks" },
-  ],
-  mp: [
-    { name: "District authority (MPLADS cell)", how: "The Collector or Deputy Commissioner's office named on the work", what: "Sanction, delays, payments and completion of MPLADS works" },
-    { name: "MoSPI (runs MPLADS)", how: '<a href="mailto:cna-mplads@mospi.gov.in">cna-mplads@mospi.gov.in</a>', what: "When the district does not respond" },
-    { name: "Suggest a work to your MP", how: '<a href="#/guides/mplads">Citizen Request on eSAKSHI</a>', what: "Ask your MP to fund a work in your area" },
-  ],
-};
+// Official complaint channels by place, from data/complaints.json (also served to the
+// open data API). Numbers change: each entry records where it was confirmed and when,
+// and the site shows that next to it. Loaded by route() before any page draws.
+let CHANNELS = {};
 
 function complainBox(keys, where) {
   const items = keys.flatMap(k => CHANNELS[k] || []);
   if (!items.length) return "";
   return `<section class="complain"><h2>Where to complain${where ? ` in ${esc(where)}` : ""}</h2>
-    <ul class="channels">${items.map(c => `<li><b>${esc(c.name)}</b>: ${c.how}<div class="muted small">${esc(c.what)}${c.src
+    <ul class="channels">${items.map(c => `<li><b>${esc(c.name)}</b>: ${[c.link ? `<a href="${esc(c.link)}"${c.link.startsWith("http") ? ' target="_blank" rel="noopener"' : ""}>${esc(c.link_text)}</a>` : "", esc(c.how || "")].filter(Boolean).join(", ")}<div class="muted small">${esc(c.what)}${c.src
       ? ` · <a href="${esc(c.src)}" target="_blank" rel="noopener">source</a>, checked ${date(c.checked)}` : ""}</div></li>`).join("")}</ul>
     <p class="muted small">Note the complaint number you are given. If nothing happens, an <a href="#/guides/rti">RTI</a> asks the office for the action taken. Wrong or out-of-date number? <a href="${REPO}/issues/new?title=${enc("Complaint channel: " + (where || "national"))}">Tell us</a>.</p></section>`;
 }
@@ -1616,7 +1583,11 @@ const GUIDES = [
   { key: "kppp", title: "Karnataka tenders (KPPP)", blurb: "Finding a tender, its value and the awarded contractor." },
   { key: "gepnic", title: "State and central tender portals (eProcure)", blurb: "Searching tenders by organisation and Tender ID." },
   { key: "rti", title: "Filing an RTI for missing details", ready: true, blurb: "What to ask, whom to send it to, the fee, the deadlines, and what to do if there is no reply." },
+  { key: "ai", title: "Use Nagarika with your AI assistant", ready: true, blurb: "Connect Claude or another AI assistant to this data, or use the open data files in your own programs." },
 ];
+
+// The MCP server (mcp/ in the repository). Empty until it is deployed.
+const MCP_URL = "";
 
 async function guides() {
   app.innerHTML = `
@@ -1808,6 +1779,48 @@ async function guideTraffic(city) {
     draw("");
     document.getElementById("sq").oninput = e => draw(e.target.value);
   }
+}
+
+function guideAi() {
+  const url = MCP_URL || "(address coming soon)";
+  const ask = ["What road works are going on in Vinayaka Layout ward in Bengaluru, and who is the contractor?",
+    "How much of Varanasi's MP fund has been spent, and on what?",
+    "Which MLA fund works in Anandapur, Odisha have not started yet?",
+    "My niece is in class 9 in Karnataka. Which scholarships can she apply for, and by when?",
+    "There is a pothole on my road in Chennai. Where do I complain?"];
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Guides", "#/guides"], ["Use with your AI"]])}
+    <h1>Use Nagarika with your AI assistant</h1>
+    <p class="lede">Nagarika runs an open <abbr title="Model Context Protocol">MCP</abbr> server: connect it to Claude or another AI assistant and ask about works, funds, education help and complaint channels in plain words. The assistant reads the same official records this site shows, with their source links and the date they were checked.</p>
+    ${MCP_URL ? "" : `<p class="note">The server is ready but not yet online. This page will show its address when it is.</p>`}
+
+    <h2>Things you can ask</h2>
+    <ul>${ask.map(q => `<li>${esc(q)}</li>`).join("")}</ul>
+
+    <h2>Connect it</h2>
+    <table class="fields"><tbody>
+      <tr><th scope="row">Server address</th><td><code>${esc(url)}</code></td></tr>
+      <tr><th scope="row">Sign-in</th><td>None. It is free, read-only and needs no key.</td></tr>
+      <tr><th scope="row">Claude (claude.ai and the apps)</th><td>Settings › Connectors › Add custom connector, then paste the server address.</td></tr>
+      <tr><th scope="row">Claude Code</th><td><code>claude mcp add --transport http nagarika ${esc(url)}</code></td></tr>
+      <tr><th scope="row">Other assistants</th><td>Any assistant that supports remote MCP servers ("Streamable HTTP"): add a server with the address above.</td></tr>
+    </tbody></table>
+
+    <h2>What it can look up</h2>
+    <ul>
+      <li><b>search_places</b>: find a city, ward, town, PIN code, state or constituency, and which tool answers questions about it.</li>
+      <li><b>get_road_works</b>: road, footpath and drain works by state, town, city ward or PIN code.</li>
+      <li><b>get_mp_funds</b>: MPLADS works by Lok Sabha constituency.</li>
+      <li><b>get_mla_funds</b>: MLA fund works by assembly constituency (Odisha and Uttar Pradesh so far).</li>
+      <li><b>get_education_help</b>: RTE free-seat and scholarship portals, helplines and last dates, by state.</li>
+      <li><b>where_to_complain</b>: official complaint channels by city and topic.</li>
+      <li><b>list_datasets</b>: what is covered, where it comes from, how fresh it is, and what is missing.</li>
+    </ul>
+    <p class="muted small">Assistants can still misread data. Check anything important on the work's page here or on the official portal it links to. Where a field is empty, the source does not publish it; an <a href="#/guides/rti">RTI</a> can ask for it.</p>
+
+    <h2>For programmers: the open data files</h2>
+    <p>The same data is published as small JSON files, one per place, that you can read without the server. <a href="api/v1/datasets.json">api/v1/datasets.json</a> lists every dataset with its sources, coverage, gaps and file addresses; <a href="api/v1/places.json">api/v1/places.json</a> lists every place. Full downloads are on the <a href="#/about">About</a> page.</p>
+    <p class="muted small">Data licence: <a href="data/LICENSE.md">ODbL 1.0</a>, credit "Nagarika contributors". The server's code is in <a href="${REPO}/tree/main/mcp">mcp/</a> in the repository.</p>`;
 }
 
 function guideRti() {
@@ -2146,6 +2159,7 @@ async function route() {
     a.toggleAttribute("aria-current", a.getAttribute("href") === "#/" + section);
   });
   try {
+    CHANNELS = await load("complaints.json").catch(() => ({}));
     if (!parts.length) await home();
     else if (parts[0] === "search") await search();
     else if (parts[0] === "roads") await roadsHome();
@@ -2173,6 +2187,7 @@ async function route() {
     else if (parts[0] === "traffic") await guideTraffic(parts[1] || "bengaluru");
     else if (parts[0] === "guides" && parts[1] === "mplads") await guideMplads();
     else if (parts[0] === "guides" && parts[1] === "rti") guideRti();
+    else if (parts[0] === "guides" && parts[1] === "ai") guideAi();
     else if (parts[0] === "guides" && parts[1] === "education" && parts[2]) await educationState(parts[2]);
     else if (parts[0] === "guides" && parts[1] === "education") await guideEducation();
     else if (parts[0] === "guides") await guides();
