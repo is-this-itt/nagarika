@@ -1,0 +1,232 @@
+[
+ {
+  "file": "bengaluru-swm-fee-circular-2025__0.pdf",
+  "name": "SWM User Fee Circular - April 2025",
+  "url": "https://data.opencity.in/dataset/a778a5fa-5d2c-4932-9af3-a137b1c663e6/resource/82d89474-0b8e-4e46-a3b4-51463e7036d8/download/ebca01dc-5fa0-4a47-af2b-724f2fad3a0d.pdf",
+  "status": 200,
+  "bytes": 1693522
+ },
+ {
+  "file": "solid-waste-management-rules-2026__0.pdf",
+  "name": "Solid Waste Management Rules 2026",
+  "url": "https://data.opencity.in/dataset/0726dd20-6d63-46fa-8c95-c41c20019cdf/resource/f9ba12fc-f9e6-4847-95e3-e7b64a2221a8/download/new-swm-rules.pdf",
+  "status": 200,
+  "bytes": 3593363
+ },
+ {
+  "file": "bengaluru-traffic-violations-data__0.csv",
+  "name": "BTP - Cases and fines collected under various acts (2011-2025)",
+  "url": "https://data.opencity.in/dataset/7fe6e1c6-43c8-4e16-974b-099a21484c37/resource/169b0ea2-4092-4d78-b450-ae39ad2d8197/download/169b0ea2-4092-4d78-b450-ae39ad2d8197.csv",
+  "status": 200,
+  "bytes": 1546
+ },
+ {
+  "file": "bengaluru-traffic-violations-data__1.csv",
+  "name": "BTP - Drink & Drive cases booked - (month-wise, 2018-2020)",
+  "url": "https://data.opencity.in/dataset/7fe6e1c6-43c8-4e16-974b-099a21484c37/resource/a4515e2d-90dc-47e4-ba87-2b5a3dfa6c69/download/f648e986-e04b-4865-9dc6-8962df21a7c6.csv",
+  "status": 200,
+  "bytes": 415
+ },
+ {
+  "file": "bengaluru-traffic-violations-data__2.csv",
+  "name": "BTP - Cases booked under M.V Act (2018-25)",
+  "url": "https://data.opencity.in/dataset/7fe6e1c6-43c8-4e16-974b-099a21484c37/resource/f46dc1d2-e8d0-40a9-9b84-148071db99de/download/09d692fa-5b74-44a2-89de-5f0940a43117.csv",
+  "status": 200,
+  "bytes": 2788
+ },
+ {
+  "file": "bengaluru-road-crashes-data__0.csv",
+  "name": "BTP - Station-wise accidents & fatalities 2018 to 2020",
+  "url": "https://data.opencity.in/dataset/94e986d6-7836-4a8e-aa3f-273bee4ea795/resource/fcc5762c-2739-4c86-93fd-67fa4cca0750/download/aef42379-f1f7-4a3b-94f5-5f344e7120f2.csv",
+  "status": 200,
+  "bytes": 3060
+ },
+ {
+  "file": "bengaluru-road-crashes-data__1.csv",
+  "name": "BTP - Station-wise accidents & fatalities 2020 to 2022",
+  "url": "https://data.opencity.in/dataset/94e986d6-7836-4a8e-aa3f-273bee4ea795/resource/b3744a95-e486-4022-9c20-ad178dcf23dd/download/492d3dc6-ffc3-4b0e-b7d9-176d0ef7f1ec.csv",
+  "status": 200,
+  "bytes": 2251
+ },
+ {
+  "file": "bengaluru-road-crashes-data__2.csv",
+  "name": "BTP - Station-wise accidents & fatalities 2023",
+  "url": "https://data.opencity.in/dataset/94e986d6-7836-4a8e-aa3f-273bee4ea795/resource/8f0f281c-2cb6-4491-ac76-d1874ce38583/download/abc5af52-08a7-4435-8ba1-12b99f62ee28.csv",
+  "status": 200,
+  "bytes": 2651
+ },
+ {
+  "file": "bengaluru-road-crashes-data__3.csv",
+  "name": "Station-wise Total Crashes and Fatal Crashes 2024",
+  "url": "https://data.opencity.in/dataset/94e986d6-7836-4a8e-aa3f-273bee4ea795/resource/e59bc255-7b94-49df-b934-9b40fb2cc741/download/74e645e3-85d2-4d81-a133-4f346f87fdd6.csv",
+  "status": 200,
+  "bytes": 2277
+ },
+ {
+  "file": "bengaluru-road-crashes-data__4.csv",
+  "name": "Road Crashes from 2007 to 2025",
+  "url": "https://data.opencity.in/dataset/94e986d6-7836-4a8e-aa3f-273bee4ea795/resource/aad98dbe-7451-4ab1-aa8a-8d5c1e46b9a7/download/a583a07c-731b-4e8d-b0cb-d06e76ccc00c.csv",
+  "status": 200,
+  "bytes": 635
+ },
+ {
+  "file": "bengaluru-road-crashes-data__5.csv",
+  "name": "Station-wise Total and Fatal Road Crashes 2025",
+  "url": "https://data.opencity.in/dataset/94e986d6-7836-4a8e-aa3f-273bee4ea795/resource/cf9acd17-f593-45b6-9b98-d3eab9d81143/download/btp_2025_station_wise.csv",
+  "status": 200,
+  "bytes": 2382
+ },
+ {
+  "file": "bbmp-swm-infrastructure__0.csv",
+  "name": "BBMP DWCC and SWM Processing Plants Map",
+  "url": "https://data.opencity.in/dataset/9cfb8af3-bb8f-4f26-a68f-65037c9604ad/resource/f426a47a-b759-45ea-ab67-3673f94f0121/download/4b878b08-140a-48e1-9db7-dd079c3e3951.csv",
+  "status": 200,
+  "bytes": 230816
+ },
+ {
+  "file": "bbmp-swm-infrastructure__1.csv",
+  "name": "BBMP DWCC and SWM Processing Plants List",
+  "url": "https://data.opencity.in/dataset/9cfb8af3-bb8f-4f26-a68f-65037c9604ad/resource/33357680-988d-4505-8022-2e03151c3e33/download/5c6edc63-4777-4234-9ddd-e55107bf897b.csv",
+  "status": 200,
+  "bytes": 31246
+ },
+ {
+  "file": "bengaluru-public-toilets__0.csv",
+  "name": "BBMP Existing Toilets",
+  "url": "https://data.opencity.in/dataset/7626ff0e-b6ff-49d2-b0b9-a2198f3af46a/resource/db2b454f-0122-411b-a66b-b52948f34a50/download/4e4a3896-2880-40dc-874d-01276dfb4f61.csv",
+  "status": 200,
+  "bytes": 100627
+ },
+ {
+  "file": "gba-parking-rules-2026-draft__0.pdf",
+  "name": "Draft - GBA Parking Rules 2026 - August 2026",
+  "url": "https://data.opencity.in/dataset/5a3796a4-6936-43cd-bc67-6ba548fa77fd/resource/923f2869-6312-41f0-a107-d6d1d4171291/download/parking-rules-gba-udd-230-mnu-2026.pdf",
+  "status": 200,
+  "bytes": 551037
+ },
+ {
+  "file": "gba-parking-rules-2026-draft__1.pdf",
+  "name": "Kannada - Final GBA Parking rules September 2026",
+  "url": "https://data.opencity.in/dataset/5a3796a4-6936-43cd-bc67-6ba548fa77fd/resource/685333ca-3893-49f9-ae66-691d8857690a/download/new-parking-rules-kannada-02.09.2026.pdf",
+  "status": 200,
+  "bytes": 959587
+ },
+ {
+  "file": "bbmp-solid-waste-management-data__0.csv",
+  "name": "BBMP Waste Processing Plants",
+  "url": "https://data.opencity.in/dataset/c904b267-5369-4aee-990c-dc86047fee3c/resource/6179d0e6-d303-4ab9-a9d6-0461677d7dd8/download/0f6b5b34-0b4a-4b26-ba94-5e03ec2f76cb.csv",
+  "status": 200,
+  "bytes": 418
+ },
+ {
+  "file": "bbmp-solid-waste-management-data__1.csv",
+  "name": "BBMP: Bangalore Chemical Composition of Municipal Solid Waste",
+  "url": "https://data.opencity.in/dataset/c904b267-5369-4aee-990c-dc86047fee3c/resource/24ba9b87-233a-4710-bb2a-9fca4b75a41b/download/29d76c57-619a-4de8-b327-4d372565a454.csv",
+  "status": 200,
+  "bytes": 277
+ },
+ {
+  "file": "bbmp-solid-waste-management-data__2.csv",
+  "name": "BBMP Segregated Waste Collections April-May 2020",
+  "url": "https://data.opencity.in/dataset/c904b267-5369-4aee-990c-dc86047fee3c/resource/3fce725f-df30-426e-b526-04c6da3960b1/download/37141692-0898-4ad7-aa87-03fc8e2d9dd4.csv",
+  "status": 200,
+  "bytes": 1072
+ },
+ {
+  "file": "bengaluru-traffic-police-jurisdictions__0.kml",
+  "name": "Bengaluru Traffic Police Jurisdictions Map Pre-2022",
+  "url": "https://data.opencity.in/dataset/ba9be930-e313-4f16-b4e2-39a5d8d7eb3f/resource/65302179-fb7f-46f4-8dbf-d9600a83e1ca/download/e78791a7-98a2-4e2e-84ab-9fb15200ff58.kml",
+  "status": 200,
+  "bytes": 585220
+ },
+ {
+  "file": "bengaluru-traffic-police-jurisdictions__1.kml",
+  "name": "Bengaluru Traffic Police Jurisdictions Map 2022",
+  "url": "https://data.opencity.in/dataset/ba9be930-e313-4f16-b4e2-39a5d8d7eb3f/resource/3e7e6a4d-4dce-44ec-aef3-64278c30c06f/download/faceb23a-79e8-47e9-b9ba-c418c5cf6e9c.kml",
+  "status": 200,
+  "bytes": 814994
+ },
+ {
+  "file": "bbmp-waste-list-of-private-vendors__0.pdf",
+  "name": "BBMP: Waste - List of Private Vendors",
+  "url": "https://data.opencity.in/dataset/4b588101-58d9-484b-917a-a5c6f2290722/resource/c6eba523-e70f-45e8-8d0b-9c540c30a557/download/c591e164-73a7-4928-a981-60ea99c8468a.pdf",
+  "status": 200,
+  "bytes": 570600
+ },
+ {
+  "file": "bbmp-waste-service-providers-scope-of-services__0.pdf",
+  "name": "BBMP: Waste Service providers - Scope of Services",
+  "url": "https://data.opencity.in/dataset/b0e5db5f-ec85-49a1-8c40-30eea36ebfe5/resource/bc926b83-0238-4e22-b724-7339cf587515/download/f36724ed-b4a7-498f-a4e2-b470b275d036.pdf",
+  "status": 200,
+  "bytes": 223651
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__0.pdf",
+  "name": "Bengaluru Parking Policy 2.0",
+  "url": "https://data.opencity.in/dataset/eecdad4d-f45c-437e-ba04-0af34dce4670/resource/6cda85e4-246a-4058-9c87-96e473678c10/download/f2e7ecda-fcb3-4e04-ab25-a55509f7def5.pdf",
+  "status": 200,
+  "bytes": 1505853
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__1.pdf",
+  "name": "Detailed Project Report for Bommanahalli Zone",
+  "url": "https://data.opencity.in/dataset/eecdad4d-f45c-437e-ba04-0af34dce4670/resource/0ec66bd4-fcc9-4d4c-abac-1a562033190a/download/11e98011-95b3-49a3-858a-35cf9f7b9c37.pdf",
+  "status": 200,
+  "bytes": 8317640
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__2.pdf",
+  "skipped": 52418981
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__3.pdf",
+  "name": "Detailed Project Report for Dasarahalli Zone",
+  "url": "https://data.opencity.in/dataset/eecdad4d-f45c-437e-ba04-0af34dce4670/resource/87091cf5-221e-4803-9b0d-6dbe5ec6e2ed/download/327a30d8-763d-45b8-9095-32fcaeec986f.pdf",
+  "status": 200,
+  "bytes": 4929966
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__4.pdf",
+  "skipped": 37509655
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__5.pdf",
+  "name": "Detailed Project Report for East Zone",
+  "url": "https://data.opencity.in/dataset/eecdad4d-f45c-437e-ba04-0af34dce4670/resource/ee528cba-f320-4adc-81e4-a7297b6a38a5/download/5af45a8f-2ce2-4c6f-997f-70d1e91f5709.pdf",
+  "status": 200,
+  "bytes": 10886717
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__6.pdf",
+  "skipped": 64847269
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__7.pdf",
+  "name": "Detailed Project Report for Mahadevapura Zone",
+  "url": "https://data.opencity.in/dataset/eecdad4d-f45c-437e-ba04-0af34dce4670/resource/2769a436-8b4e-4f2c-879e-76b860a62eae/download/eb0c7b9e-8faa-4883-b9fd-bee89de5c2ce.pdf",
+  "status": 200,
+  "bytes": 10814404
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__8.pdf",
+  "skipped": 49302513
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__9.pdf",
+  "name": "Detailed Project Report for RRNagar Zone",
+  "url": "https://data.opencity.in/dataset/eecdad4d-f45c-437e-ba04-0af34dce4670/resource/489d7fa0-3eaf-499d-861c-4fb05836a4bb/download/cb294910-cddc-4ded-8317-d5966948083f.pdf",
+  "status": 200,
+  "bytes": 8708316
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__10.pdf",
+  "skipped": 73407717
+ },
+ {
+  "file": "bengaluru-parking-policy-2-0__11.pdf",
+  "name": "Detailed Project Report for South Zone",
+  "url": "https://data.opencity.in/dataset/eecdad4d-f45c-437e-ba04-0af34dce4670/resource/ae3d4e8d-d335-4e31-af4a-4f3f96d924f2/download/6cf0bcf9-b202-4743-90b5-d80069977c0d.pdf",
+  "status": 200,
+  "bytes": 9603709
+ }
+]
