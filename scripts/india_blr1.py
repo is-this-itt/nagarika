@@ -21,7 +21,7 @@ seen = set()
 def safe(u):
     return re.sub(r"[^A-Za-z0-9._-]+", "_", u.split("://", 1)[-1])[:150]
 def get(u, **kw):
-    return requests.get(u, headers=H, timeout=45, verify=False, **kw)
+    return requests.get(u, headers=H, timeout=20, verify=False, **kw)
 for site in SITES:
     host = urlparse(site).netloc
     try:
@@ -49,7 +49,7 @@ for site in SITES:
         same = urlparse(u).netloc in (host, base_host)
         if is_pdf and PDFW.search(t + " " + u):
             try:
-                h = requests.head(u, headers=H, timeout=30, verify=False, allow_redirects=True)
+                h = requests.head(u, headers=H, timeout=15, verify=False, allow_redirects=True)
                 size = int(h.headers.get("content-length") or 0)
                 if size and size > 6_000_000:
                     log.append({"url": u, "skipped_pdf_bytes": size}); continue
@@ -58,7 +58,7 @@ for site in SITES:
                 log.append({"url": u, "status": p.status_code, "bytes": len(p.content), "text": t})
             except Exception as e:
                 log.append({"url": u, "error": repr(e)[:200]})
-        elif same and not is_pdf and WANT.search(t + " " + u) and pages < 40:
+        elif same and not is_pdf and WANT.search(t + " " + u) and pages < 15:
             pages += 1
             try:
                 p = get(u)
@@ -71,6 +71,6 @@ for site in SITES:
                         index.append({"from": p.url, "url": uu, "text": text})
             except Exception as e:
                 log.append({"url": u, "error": repr(e)[:200]})
-        time.sleep(0.5)
+        time.sleep(0.2)
 json.dump(log, open(os.path.join(OUT, "_log.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 json.dump(index, open(os.path.join(OUT, "_links.json"), "w", encoding="utf-8"), indent=0, ensure_ascii=False)
