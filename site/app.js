@@ -17,11 +17,14 @@ const TOPICS = [
     blurb: "Works your MLA chose from their local area fund: temples, community halls, lights, roads. Odisha first." },
   { key: "help", name: "Help for children's education", href: "#/guides/education", live: true,
     blurb: "Free schooling, scholarships, meals and NGOs: what children and families can claim, and how." },
+  { key: "waste", name: "Garbage & clean streets", href: "#/waste/bengaluru", live: true,
+    blurb: "Who collects it, how to sort it, what the fee is, and where to report garbage on the street. Bengaluru first." },
+  { key: "traffic", name: "Traffic rules & road safety", href: "#/traffic/bengaluru", live: true,
+    blurb: "Reporting violations, paying fines, new rules, and how many crashes and cases each year. Bengaluru first." },
   { key: "water", name: "Water supply & sewerage" },
   { key: "lights", name: "Streetlights" },
   { key: "buildings", name: "Schools, hospitals & offices" },
   { key: "parks", name: "Parks & lakes" },
-  { key: "waste", name: "Garbage & sanitation" },
 ];
 
 // States whose MLA fund portals we collect from (from India; see docs/india-runner.md).
@@ -1696,6 +1699,117 @@ async function guideMplads() {
   if (parseHash().q.get("s") === "stages") setTimeout(() => document.getElementById("stages")?.scrollIntoView(), 0);
 }
 
+// ---------- Bengaluru: garbage and street cleanliness ----------
+// Every fact here comes from an official document or an official channel, with its link.
+const BLR_CORPORATIONS = ["Bengaluru Central", "Bengaluru North", "Bengaluru South", "Bengaluru East", "Bengaluru West"];
+const SWM_FEE_HOMES = [["Up to 600 sq ft", 10], ["601 to 1,000 sq ft", 50], ["1,001 to 2,000 sq ft", 100],
+  ["2,001 to 3,000 sq ft", 150], ["3,001 to 4,000 sq ft", 200], ["Above 4,000 sq ft", 400]];
+const SWM_FEE_SHOPS = [["Up to 1,000 sq ft", 2000], ["1,001 to 2,000 sq ft", 6000], ["2,001 to 5,000 sq ft", 14000], ["5,001 to 10,000 sq ft", 38000]];
+const DOCS_WASTE = [
+  ["Solid Waste Management Rules, 2026", "Government of India, notified 27 January 2026 (S.O. 388(E)), in force from 1 April 2026", "https://data.opencity.in/dataset/solid-waste-management-rules-2026"],
+  ["SWM user fee circular", "BBMP Chief Commissioner, 5 April 2025 (in Kannada)", "https://data.opencity.in/dataset/bengaluru-swm-fee-circular-2025"],
+  ["Contract for processing and disposal (ISWM), 2025", "Tender documents for the North and South packages", "https://data.opencity.in/dataset/bswml-contract-for-integrated-solid-waste-management-2025"],
+];
+
+function guideWaste(city) {
+  if (city !== "bengaluru") return notFound();
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Garbage & clean streets"], ["Bengaluru"]])}
+    <article class="guide">
+    <h1>Garbage and clean streets in Bengaluru</h1>
+    <p class="lede">Who picks up the city's waste, how the rules say you must sort it, what the fee is, and where to report garbage left on the street. Each point links to the official document it comes from.</p>
+
+    <h2>Who is responsible</h2>
+    <p>Since 2 September 2025 the city is run by five corporations under the Greater Bengaluru Authority (GBA): ${BLR_CORPORATIONS.map(c => `${esc(c)} City Corporation`).join(", ")}. Collecting waste from homes and shops and keeping streets clean is your corporation's job. Bengaluru Solid Waste Management Ltd (BSWML) runs the processing plants and landfills.
+      <span class="muted small">Sources: <a href="https://www.theweek.in/wire-updates/national/2025/09/02/srg2-ka-new-corporations.html" target="_blank" rel="noopener">notification of the five corporations</a> (PTI, 2 Sept 2025); <a href="https://www.deccanherald.com/india/karnataka/bengaluru/poor-ranking-govt-strips-bswml-of-garbage-collection-3683325" target="_blank" rel="noopener">collection moved from BSWML to the zonal commissioners</a> (Deccan Herald).</span></p>
+    <p>Find your ward and corporation on the <a href="#/city/bengaluru">Bengaluru page</a>.</p>
+
+    <h2>How you must sort your waste</h2>
+    <p>The national <a href="https://data.opencity.in/dataset/solid-waste-management-rules-2026" target="_blank" rel="noopener">Solid Waste Management Rules, 2026</a> apply from 1 April 2026. Every household, shop and office must:</p>
+    <ul>
+      <li><b>Keep four bins:</b> wet waste (food, peels, garden), dry waste (paper, plastic, metal, glass), sanitary waste (diapers, pads) and special care waste (paint tins, pesticide cans, batteries, bulbs, medicines). Hand them over separately to the collector or the collection vehicle.</li>
+      <li><b>Wrap sanitary waste</b> in the pouch it came with, or in paper, before putting it in its own bin.</li>
+      <li><b>Not throw, burn or bury waste</b> on the street, in an open space, in a drain or in a lake.</li>
+      <li><b>Keep building rubble and garden waste separate</b> on your own premises until it is collected.</li>
+      <li><b>Street vendors</b> must keep a bin for the waste their stall makes.</li>
+      <li><b>Tell your corporation three working days ahead</b> before holding an event for more than 100 people at a place that isn't a licensed venue, and make sure its waste is sorted.</li>
+      <li><b>Pay the user fee</b> set by the city.</li>
+    </ul>
+    <p class="muted small">Rule 5(1) of the SWM Rules, 2026. Apartment complexes and campuses over 5,000 sq m, resident welfare associations, markets, hotels and restaurants have extra duties under rule 5(2).</p>
+
+    <h2>The garbage fee (SWM user fee)</h2>
+    <p>Since 1 April 2025 a solid waste management user fee is collected together with property tax. For homes it depends on the built-up area:</p>
+    <table class="plain"><thead><tr><th>Home size</th><th class="num">Fee a month</th></tr></thead>
+      <tbody>${SWM_FEE_HOMES.map(([a, f]) => `<tr><td>${a}</td><td class="num">₹${fmtN(f)}</td></tr>`).join("")}</tbody></table>
+    <p>Vacant plots pay ₹0.60 per sq ft a year. Shops and offices pay from ${SWM_FEE_SHOPS.map(([a, f]) => `₹${fmtN(f)} a month (${a.toLowerCase()})`).slice(0, 2).join(" and ")}, rising with size; hotels, lodges and star hotels pay a yearly fee. For buildings that are partly rented out or used for business, the fee is capped at 60% of the property tax (30% for rented buildings).</p>
+    <p class="muted small">Source: <a href="https://data.opencity.in/dataset/bengaluru-swm-fee-circular-2025" target="_blank" rel="noopener">BBMP circular of 5 April 2025</a> (in Kannada). It also approves a yearly increase from 2026-27, without giving the rate here. Your property tax bill shows the fee you are actually charged.</p>
+
+    <h2>Report garbage on the street</h2>
+    ${complainBox(["bengaluru"], "")}
+
+    <h2>Official documents</h2>
+    <ul>${DOCS_WASTE.map(([t, w, u]) => `<li><a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>: ${esc(w)}</li>`).join("")}</ul>
+    <p class="muted small">Copies held by <a href="https://data.opencity.in" target="_blank" rel="noopener">OpenCity</a>, which collects Bengaluru's public documents. Something out of date? <a href="${REPO}/issues/new?title=${enc("Garbage page: ")}">Tell us</a>.</p>
+    </article>`;
+}
+
+// ---------- Bengaluru: traffic rules and road safety ----------
+async function guideTraffic(city) {
+  if (city !== "bengaluru") return notFound();
+  const t = await load("blr_traffic.json").catch(() => null);
+  const last = t && t.years[t.years.length - 1];
+  const lastCrash = t && t.crashes[t.crashes.length - 1];
+  const y = t && t.offence_years[t.offence_years.length - 1];
+  const top = t ? [...t.offences].filter(o => o.offence !== "Others").sort((a, b) => (b.cases[y] || 0) - (a.cases[y] || 0)).slice(0, 10) : [];
+  app.innerHTML = `
+    ${crumbs([["Home", "#/"], ["Traffic rules & road safety"], ["Bengaluru"]])}
+    <article class="guide">
+    <h1>Traffic rules and road safety in Bengaluru</h1>
+    <p class="lede">How to report a traffic violation, check and pay a fine, which new rules apply, and what the Bengaluru Traffic Police's own numbers show.</p>
+
+    <h2>Report a violation, check or pay a fine</h2>
+    <ul>
+      <li><b>BTP ASTraM app</b> (Bengaluru Traffic Police, on <a href="https://apps.apple.com/in/app/btp-astram/id6736525283" target="_blank" rel="noopener">iPhone</a> and Android): report a violation with a photo taken in the app, check and pay your challans, and see live traffic alerts. It replaced the old Public Eye app. <span class="muted small">Source: <a href="https://www.deccanherald.com/india/karnataka/bengaluru/traffic-police-phase-out-publiceye-app-3466435" target="_blank" rel="noopener">Deccan Herald</a>.</span></li>
+      <li><b>Emergency or crash:</b> call 112.</li>
+    </ul>
+
+    <h2>New rules</h2>
+    <ul>
+      <li><b>Greater Bengaluru Area (Parking) Rules, 2026</b> (Urban Development Department; draft notified 11 August 2026). Each city corporation must prepare area parking plans, and the rules set minimum hourly fees for parking on the street, let vacant plots be run as paid parking, and bring in residential parking permits. <a href="https://data.opencity.in/dataset/gba-parking-rules-2026-draft" target="_blank" rel="noopener">Draft in English, and the final version from September 2026 in Kannada</a>.</li>
+      <li>The rules follow the <b>Parking Policy 2.0 for Bengaluru</b> of the Directorate of Urban Land Transport: <a href="https://data.opencity.in/dataset/bengaluru-parking-policy-2-0" target="_blank" rel="noopener">documents</a>.</li>
+    </ul>
+
+    ${t ? `<h2>What the traffic police's numbers show</h2>
+    ${stats([[fmtN(last.cases), `Cases booked in ${last.year}`], [inr(last.fines), `Fines collected in ${last.year}`],
+      [fmtN(lastCrash.killed), `People killed in crashes in ${lastCrash.year}`], [fmtN(lastCrash.total), `Crashes in ${lastCrash.year}`]])}
+    <h3>Most common offences in ${y}</h3>
+    <table class="plain"><thead><tr><th>Offence</th><th class="num">Cases</th></tr></thead>
+      <tbody>${top.map(o => `<tr><td>${esc(o.offence)}</td><td class="num">${fmtN(o.cases[y])}</td></tr>`).join("")}</tbody></table>
+    <h3>Crashes by year</h3>
+    <table class="plain stack"><thead><tr><th>Year</th><th class="num">Crashes</th><th class="num">Fatal crashes</th><th class="num">People killed</th></tr></thead>
+      <tbody>${[...t.crashes].reverse().slice(0, 10).map(c => `<tr><td>${c.year}</td><td class="num" data-label="Crashes">${fmtN(c.total)}</td>
+        <td class="num" data-label="Fatal crashes">${fmtN(c.fatal)}</td><td class="num" data-label="People killed">${fmtN(c.killed)}</td></tr>`).join("")}</tbody></table>
+    <h3>Crashes in ${lastCrash.year} by traffic police station</h3>
+    <p class="muted small">The ten stations with the most crashes. Type to find yours.</p>
+    <div class="toolbar"><input class="input" id="sq" type="search" placeholder="Find your area's police station" aria-label="Find a police station"></div>
+    <table class="plain stack" id="st"><thead><tr><th>Station</th><th>Division</th><th class="num">Crashes</th><th class="num">Fatal</th></tr></thead><tbody></tbody></table>
+    <h3>Cases and fines by year</h3>
+    <table class="plain stack"><thead><tr><th>Year</th><th class="num">Cases booked</th><th class="num">Of these, by camera</th><th class="num">Fines collected</th></tr></thead>
+      <tbody>${[...t.years].reverse().map(r => `<tr><td>${r.year}</td><td class="num" data-label="Cases booked">${fmtN(r.cases)}</td>
+        <td class="num" data-label="By camera">${r.camera_cases ? fmtN(r.camera_cases) : "—"}</td><td class="num" data-label="Fines collected">${inr(r.fines)}</td></tr>`).join("")}</tbody></table>
+    <p class="muted small">Source: Bengaluru Traffic Police figures, published on <a href="${t.source}" target="_blank" rel="noopener">OpenCity</a>. Fines collected in a year include old challans paid that year, for example during the 50% discount drives.</p>` : ""}
+    </article>`;
+  if (t) {
+    const draw = q => {
+      const rows = q ? fuzzy(t.stations_2025, q, ["station", "subdivision", "zone"], 1) : [...t.stations_2025].sort((a, b) => b.total - a.total).slice(0, 10);
+      document.querySelector("#st tbody").innerHTML = rows.map(r => `<tr><td>${esc(r.station)}</td><td class="sub-cell" data-label="Division">${esc(r.subdivision)}, ${esc(r.zone)}</td>
+        <td class="num" data-label="Crashes">${fmtN(r.total)}</td><td class="num" data-label="Fatal">${fmtN(r.fatal)}</td></tr>`).join("");
+    };
+    draw("");
+    document.getElementById("sq").oninput = e => draw(e.target.value);
+  }
+}
+
 function guideRti() {
   app.innerHTML = `
     ${crumbs([["Home", "#/"], ["Guides", "#/guides"], ["RTI"]])}
@@ -2055,6 +2169,8 @@ async function route() {
     else if (parts[0] === "schools" && parts[1]) await schoolsState(parts[1]);
     else if (parts[0] === "schools") await schoolsHome();
     else if (parts[0] === "about") await about();
+    else if (parts[0] === "waste") guideWaste(parts[1] || "bengaluru");
+    else if (parts[0] === "traffic") await guideTraffic(parts[1] || "bengaluru");
     else if (parts[0] === "guides" && parts[1] === "mplads") await guideMplads();
     else if (parts[0] === "guides" && parts[1] === "rti") guideRti();
     else if (parts[0] === "guides" && parts[1] === "education" && parts[2]) await educationState(parts[2]);

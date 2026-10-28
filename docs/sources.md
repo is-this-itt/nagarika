@@ -175,3 +175,16 @@ gba.karnataka.gov.in. These need a collector running from an Indian network.
 - **One-year rule:** the portal's own notice says sanctioned works are "generally
   required to be completed within one year of sanction". The site flags works
   sanctioned over a year ago and not marked complete as "Over a year since sanction".
+
+## Bengaluru traffic police numbers: `data/bengaluru/`, built by `build.py`
+
+- **What:** Bengaluru Traffic Police (BTP) figures as published on OpenCity
+  (https://data.opencity.in/organization/bengaluru-traffic-police-btp): cases booked and fines
+  collected per year (2011-2025), cases by type of offence (2018-2025), road crashes per year
+  (2007-2025) and crashes by traffic police station (2025). Snapshot copied 2026-10-28; the
+  files change once a year at most, so they are committed rather than fetched on every build.
+- **Pages:** `#/traffic/bengaluru` and `#/waste/bengaluru` are guides. Every rule, fee and
+  channel on them links to its official document (SWM Rules 2026, BBMP's SWM user fee circular
+  of 5 April 2025, the draft GBA Parking Rules 2026), most via OpenCity's copies.
+- **Next:** read the GBA, BSWML and BTP sites from India (they block other countries) for
+  complaint channels, the fine schedule, advisories and notices.

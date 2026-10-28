@@ -70,6 +70,8 @@ RTI, or partners who already hold the data.
 | Help for underprivileged children (government and NGOs) | 2 | **In, guide** | The government already runs the sources (myScheme, scholarships, RTE quota, NGO Darpan); people need them explained by state |
 | Party manifestos vs. delivery | 1 | **Parked** | Manifestos are promises, not records, and judging "fulfilled" risks looking partisan. Maybe later: promises with a number we already track (e.g. km of roads), shown next to the data with no verdict |
 | Judiciary issues | none | **Link only** | A separate branch of government, not works, money or entitlements. NJDG already publishes case pendency by court |
+| Garbage and clean streets (Bengaluru first) | 1 and 3 | **In, guide then collect** | Who collects, the sorting rules, the user fee and where to complain, from official documents; later black spots, contracts and complaints by ward |
+| Traffic rules, fines and road safety (Bengaluru first) | 2 and 3 | **In, guide** | How to report, check and pay; new rules from official notifications only, with date and link; BTP's own numbers. No news commentary |
 | Health | 1 and 2 | **Split** | Hospitals and health centres as public works fit question 1; health schemes (e.g. insurance cover) fit question 2 as a guide. Health policy is out |
 
 ## How we'll use this

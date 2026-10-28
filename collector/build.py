@@ -88,6 +88,7 @@ def main():
     mla_index = build_mlalads()
     build_delhi_orders()
     edu_states = build_education()
+    build_bengaluru_traffic()
     school_states = build_schools()
     build_places(meta, ward_index, rows, mp_index, mla_index, edu_states, school_states)
     shutil.copy(os.path.join(DATA, "LICENSE.md"), os.path.join(OUT, "data", "LICENSE.md"))
@@ -220,6 +221,29 @@ def build_delhi_orders():
     src = os.path.join(DATA, "mlalads", "delhi_orders.json")
     if os.path.exists(src):
         shutil.copy(src, os.path.join(OUT, "data", "mlalads_delhi.json"))
+
+
+def build_bengaluru_traffic():
+    """Bengaluru Traffic Police yearly numbers (published by BTP, via OpenCity; see docs/sources.md)."""
+    d = os.path.join(DATA, "bengaluru")
+    if not os.path.exists(os.path.join(d, "btp_cases_and_fines_2011_2025.csv")):
+        return
+    rd = lambda f: list(csv.DictReader(open(os.path.join(d, f), newline="", encoding="utf-8-sig")))
+    n = lambda v: int(str(v).replace(",", "")) if str(v or "").replace(",", "").isdigit() else None
+    years = [{"year": int(r["YEAR"]), "cases": n(r["Total Cases Booked"]), "fines": n(r["Total Fine Collected"]),
+              "camera_cases": n(r["Automation cases"])} for r in rd("btp_cases_and_fines_2011_2025.csv")]
+    off = rd("btp_offences_2018_2025.csv")
+    ycols = [c for c in off[0] if c.isdigit()]
+    offences = [{"offence": r["Type of Offences"].strip(), "cases": {y: n(r[y]) for y in ycols}}
+                for r in off if r["Type of Offences"].strip() and r["Type of Offences"].strip() != "Total"]
+    crashes = [{"year": int(r["Year"]), "fatal": n(r["Fatal Road Accidents"]), "killed": n(r["Killed"]),
+                "non_fatal": n(r["Non-Fatal Road Accidents"]), "total": n(r["Total"])} for r in rd("btp_road_crashes_2007_2025.csv")]
+    stations = [{"zone": r["Zone"].strip(), "subdivision": r["Sub-division"].strip(), "station": r["Station"].strip(),
+                 "fatal": n(r["2025-Fatal crashes"]), "total": n(r["2025-Total crashes"])}
+                for r in rd("btp_crashes_by_station_2025.csv") if r["Zone"].strip() not in ("", "Total") and r["Station"].strip() and not r["Station"].strip().endswith("Total")]
+    json.dump({"years": years, "offence_years": ycols, "offences": offences, "crashes": crashes, "stations_2025": stations,
+               "source": "https://data.opencity.in/organization/bengaluru-traffic-police-btp"},
+              open(os.path.join(OUT, "data", "blr_traffic.json"), "w"), separators=(",", ":"), ensure_ascii=False)
 
 
 def build_education():
