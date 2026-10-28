@@ -1,0 +1,11 @@
+{
+ "https://btp.karnataka.gov.in/": "HTTPSConnectionPool(host='btp.karnataka.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='btp",
+ "https://gba.karnataka.gov.in/": "HTTPSConnectionPool(host='gba.karnataka.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='gba",
+ "https://site.bbmp.gov.in/": "HTTPSConnectionPool(host='site.bbmp.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='site.bb",
+ "https://bswml.in/": [
+  403,
+  13
+ ],
+ "https://transport.karnataka.gov.in/": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+ "https://echallan.parivahan.gov.in/": "HTTPSConnectionPool(host='echallan.parivahan.gov.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host"
+}
