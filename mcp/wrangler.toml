@@ -1,0 +1,7 @@
+# Cloudflare Workers (free plan is enough). Deploy with: npx wrangler deploy
+name = "nagarika-mcp"
+main = "src/server.js"
+compatibility_date = "2025-09-01"
+
+[vars]
+DATA_BASE = "https://is-this-itt.github.io/nagarika/"

@@ -62,6 +62,14 @@ The site also teaches people to use the official portals themselves
 (`#/guides`), starting with the MPLADS eSAKSHI portal. Spreading that know-how is
 one of the project's aims.
 
+## Use it with an AI assistant, or in your own programs
+
+- **MCP server** ([`mcp/`](mcp/)): connect Claude or another AI assistant and ask
+  about road works, MP and MLA funds, education help and complaint channels by place.
+  Read-only, no keys. How to connect: the site's "Use with your AI" guide (`#/guides/ai`).
+- **Open data files:** `api/v1/datasets.json` on the site lists every dataset with its
+  sources, coverage, gaps and the address of each per-place JSON file.
+
 ## Hosting limits
 
 The site is static files on GitHub Pages: a 1 GB site limit and a soft 100 GB a
