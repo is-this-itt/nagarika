@@ -10,6 +10,8 @@ import json
 import os
 import shutil
 
+import api
+
 from common import DATA, FIELDS, ROOT, WORKS_CSV, load_works
 from places import BENGALURU_AC_TO_PC, CITIES, load_wards
 
@@ -91,7 +93,9 @@ def main():
     build_bengaluru_traffic()
     school_states = build_schools()
     build_places(meta, ward_index, rows, mp_index, mla_index, edu_states, school_states)
+    shutil.copy(os.path.join(DATA, "complaints.json"), os.path.join(OUT, "data", "complaints.json"))
     shutil.copy(os.path.join(DATA, "LICENSE.md"), os.path.join(OUT, "data", "LICENSE.md"))
+    api.build(OUT, rows, meta, ward_index, mp_index, mla_index, edu_states)
     print(f"built _site with {len(rows)} works")
 
 
