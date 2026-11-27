@@ -73,6 +73,7 @@ RTI, or partners who already hold the data.
 | Garbage and clean streets (Bengaluru first) | 1 and 3 | **In, guide then collect** | Who collects, the sorting rules, the user fee and where to complain, from official documents; later black spots, contracts and complaints by ward |
 | Traffic rules, fines and road safety (Bengaluru first) | 2 and 3 | **In, guide** | How to report, check and pay; new rules from official notifications only, with date and link; BTP's own numbers. No news commentary |
 | Health | 1 and 2 | **Split** | Hospitals and health centres as public works fit question 1; health schemes (e.g. insurance cover) fit question 2 as a guide. Health policy is out |
+| MCP server so anyone can connect their AI to the data | all three | **In, helper** | Another way in to the same three questions, and part of publishing open data. Kept small: a few tools shaped by the three questions, reading only what the site publishes, growing as the data does |
 
 ## How we'll use this
 

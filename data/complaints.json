@@ -1,0 +1,35 @@
+{
+  "bengaluru": [
+    {"name": "GBA helpline (toll-free)", "how": "Call 1533, or 080-22221188", "what": "Potholes, waterlogging, fallen trees, streetlights, garbage",
+     "src": "https://x.com/GBA_office/status/2060368453664731506", "checked": "2026-10-25"}
+  ],
+  "chennai": [
+    {"name": "Greater Chennai Corporation helpline", "how": "Call 1913", "what": "Roads, drains, streetlights, garbage",
+     "src": "https://citizenmatters.in/chennai-citizen-clinic-1913-namma-chennai-rwa-complaints-activists/", "checked": "2026-10-25"},
+    {"name": "Namma Chennai app", "how": "Android and iPhone", "what": "Complaints with a photo and location; you can track them",
+     "src": "https://citizenmatters.in/chennai-citizen-clinic-1913-namma-chennai-rwa-complaints-activists/", "checked": "2026-10-25"}
+  ],
+  "mumbai": [
+    {"name": "BMC helpline", "how": "Call 1916", "what": "Potholes, drains, water, garbage",
+     "src": "https://citizenmatters.in/accountability-how-to-raise-complaints-with-the-bmc", "checked": "2026-10-25"},
+    {"name": "MyBMC 24x7 app", "how": "Android and iPhone", "what": "Complaints with a photo; you can track them",
+     "src": "https://citizenmatters.in/accountability-how-to-raise-complaints-with-the-bmc", "checked": "2026-10-25"}
+  ],
+  "roads": [
+    {"name": "National highways helpline (NHAI)", "how": "Call 1033", "what": "Only for national highways: potholes, accidents, toll plazas"}
+  ],
+  "national": [
+    {"name": "CPGRAMS", "link": "https://pgportal.gov.in", "link_text": "pgportal.gov.in", "what": "Grievances against central government offices; it also forwards grievances to state governments. You get a number to track the reply."},
+    {"name": "RTI", "link": "#/guides/rti", "link_text": "How to file", "what": "When you need the records, not just a fix"}
+  ],
+  "mla_odisha": [
+    {"name": "MLALADS cell, Planning & Convergence Department, Odisha", "link": "mailto:mlalads@odishaone.gov.in", "link_text": "mlalads@odishaone.gov.in", "how": "0674-2390336",
+     "what": "Questions about MLALADS works anywhere in Odisha", "src": "https://mlalads.odisha.gov.in/", "checked": "2026-10-25"},
+    {"name": "Block Development Officer", "how": "The block office where the work is", "what": "Most MLALADS works are carried out by the Panchayati Raj department through blocks"}
+  ],
+  "mp": [
+    {"name": "District authority (MPLADS cell)", "how": "The Collector or Deputy Commissioner's office named on the work", "what": "Sanction, delays, payments and completion of MPLADS works"},
+    {"name": "MoSPI (runs MPLADS)", "link": "mailto:cna-mplads@mospi.gov.in", "link_text": "cna-mplads@mospi.gov.in", "what": "When the district does not respond"},
+    {"name": "Suggest a work to your MP", "link": "#/guides/mplads", "link_text": "Citizen Request on eSAKSHI", "what": "Ask your MP to fund a work in your area"}
+  ]
+}

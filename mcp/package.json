@@ -1,0 +1,13 @@
+{
+  "name": "nagarika-mcp",
+  "version": "1.0.0",
+  "description": "Read-only MCP server over Nagarika's open civic data",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "node local.js",
+    "test": "node --test test/*.test.js",
+    "deploy": "wrangler deploy"
+  }
+}
